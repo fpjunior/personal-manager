@@ -1,0 +1,31 @@
+<h5>Single</h5>
+<p-checkbox name="groupname" value="val1" [(ngModel)]="selectedValues"></p-checkbox>
+<input type="text" [(ngModel)]="nome">
+<p>você digitou o {{ nome }}</p>
+
+<section class="two-way-biding"> 
+    <article>
+      <h3>Two-way data biding</h3>
+      <div>
+        <input type="text"
+        [value]="nome"
+        (input)="nome = $event.target.value">
+  
+        <input type="text"
+        [ngModel]="nome"
+        (ngModelChange)="nome = $event">
+  
+        <input type="text" [(ngModel)]="nome">
+        <input type="text" [(ngModel)]="pessoa.nome">
+        <input type="text" [(ngModel)]="pessoa.idade">
+        <input type="text" [(ngModel)]="pessoa.endereco.bairro">
+  
+  
+        <p>{{pessoa.endereco.rua}}</p>
+        <p>você digitou o {{ nome }}</p>
+  
+        <p>Meu nome é {{pessoa.nome}}</p>
+        <p>Minha idade é: {{pessoa.idade}}</p>
+      </div>
+    </article>
+  </section>

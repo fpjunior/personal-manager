@@ -1,0 +1,61 @@
+@import "src/assets/styles/colors.scss";
+
+.top-header {
+  margin: 0px !important;
+  height: 50px;
+  background-color: red;
+  .brand {
+    background: green;
+    float: left;
+    padding-right: 10px;
+    width: 241px;
+    height: 50px;
+    position: relative;
+    a.logo {
+      margin: 6px 0 0 0 !important;
+      font-size: 21px;
+      color: #2e2e2e;
+      float: left;
+      margin: 20px 0 0 25px;
+      text-transform: uppercase;
+    }
+
+    .img-logo {
+      padding: 0px 0 3px 25px;
+      width: auto;
+      height: 42px;
+    }
+
+    .sidebar-toggle-box {
+      float: left;
+      margin-top: 9px;
+      margin-left: -15px;
+      background: #32d2c9;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      right: -15px;
+      background-color: $cor-azul-medio-escuro-padrao;
+      color: $cor-branco-padrao;
+
+      &:hover {
+        background: #f6f6f6;
+        color: $cor-preto-padrao;
+      }
+
+      .fa-bars {
+        cursor: pointer;
+        display: inline-block;
+        font-size: 15px;
+        padding: 8px 8px 8px 9px;
+        color: $cor-branco-padrao;
+
+        &:hover:before {
+          color: $cor-preto-padrao;
+        }
+      }
+    }
+  }
+}

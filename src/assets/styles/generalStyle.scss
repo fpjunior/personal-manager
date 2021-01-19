@@ -1,0 +1,33 @@
+@import "dialogs";
+@import "tables";
+@import "buttons";
+@import "reset";
+@import "colors";
+@import "keyframes";
+
+:host ::ng-deep {
+  .width50 {
+    width: 50%;
+  }
+
+  .width75 {
+    width: 75%;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .required:after {
+    color: $required;
+    content: " *";
+  }
+
+  .info:hover {
+    cursor: help;
+  }
+
+  .clickable:hover {
+    cursor: pointer;
+  }
+}

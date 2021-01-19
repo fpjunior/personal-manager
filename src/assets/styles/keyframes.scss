@@ -1,0 +1,70 @@
+
+
+// LOAD SPINNER
+@-webkit-keyframes custom-progress-spinner-color {
+  100%,
+  0% {
+    stroke: $cor-azul-claro-padrao;
+  }
+  40% {
+    stroke: $cor-azul-claro-padrao;
+  }
+  66% {
+    stroke: $cor-azul-claro-padrao;
+  }
+  80%,
+  90% {
+    stroke: $cor-azul-claro-padrao;
+  }
+}
+
+@-moz-keyframes custom-progress-spinner-color {
+  100%,
+  0% {
+    stroke: $cor-azul-claro-padrao;
+  }
+  40% {
+    stroke: $cor-azul-claro-padrao;
+  }
+  66% {
+    stroke: $cor-azul-claro-padrao;
+  }
+  80%,
+  90% {
+    stroke: $cor-azul-claro-padrao;
+  }
+}
+
+@-o-keyframes custom-progress-spinner-color {
+  100%,
+  0% {
+    stroke: $cor-azul-claro-padrao;
+  }
+  40% {
+    stroke: $cor-azul-claro-padrao;
+  }
+  66% {
+    stroke: $cor-azul-claro-padrao;
+  }
+  80%,
+  90% {
+    stroke: $cor-azul-claro-padrao;
+  }
+}
+
+@keyframes custom-progress-spinner-color {
+  100%,
+  0% {
+    stroke: $cor-azul-claro-padrao;
+  }
+  40% {
+    stroke: $cor-azul-claro-padrao;
+  }
+  66% {
+    stroke: $cor-azul-claro-padrao;
+  }
+  80%,
+  90% {
+    stroke: $cor-azul-claro-padrao;
+  }
+}
