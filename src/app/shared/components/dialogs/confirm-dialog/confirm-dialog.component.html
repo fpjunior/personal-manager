@@ -1,0 +1,15 @@
+<div class="g-dialog">
+
+  <p-dialog [draggable]="false" [modal]="true" [baseZIndex]="10000" [(visible)]="showModal" [header]="header">
+
+    <span>{{content}}</span>
+
+    <ng-template pTemplate="footer">
+      <p-button type="button" icon="fa fa-check" (click)="confirmEvent.emit()" class="standard" [label]="labelConfirm">
+      </p-button>
+      <p-button type="button" icon="fa fa-times" (click)="cancelEvent.emit()" class="dismiss" [label]="labelCancel"
+        [class.hidden]="standard == false"></p-button>
+    </ng-template>
+  </p-dialog>
+
+</div>
