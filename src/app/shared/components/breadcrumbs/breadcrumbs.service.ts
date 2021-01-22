@@ -1,14 +1,11 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class BreadcrumbsService {
-
+@Injectable()
+export class BreadcrumbService {
   items: MenuItem[] = [];
 
-  public breadcrumbsChanged: EventEmitter<MenuItem[]> = new EventEmitter<MenuItem[]>();
+  public breadcrumbChanged: EventEmitter<MenuItem[]> = new EventEmitter<MenuItem[]>();
 
   getBreadcrumb(): MenuItem[] {
     return this.items;
@@ -16,9 +13,7 @@ export class BreadcrumbsService {
 
   setBreadcrumb(breadcrumb: MenuItem[]): void {
     this.items = breadcrumb;
-    this.breadcrumbsChanged.next(this.items);
-  } 
-
-  constructor() { }
+    this.breadcrumbChanged.next(this.items);
+  }
 
 }

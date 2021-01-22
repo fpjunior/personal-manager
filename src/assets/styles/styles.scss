@@ -1,0 +1,34 @@
+@import "generalStyle";
+@import "colors";
+@import "reset";
+
+
+html,
+body {
+  height: 100%;
+  background-color: $cor-cinza-padrao;
+}
+
+* {
+  font-family: Roboto;
+}
+
+body {
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $scroll-bar;
+  border-radius: 4px;
+  &:hover {
+      background: $scroll-bar-hover;
+  }
+}

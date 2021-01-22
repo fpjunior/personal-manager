@@ -1,0 +1,25 @@
+:host ::ng-deep {
+  input,
+  .p-dropdown,
+  p-dropdown,
+  .p-inputgroup > p-dropdown,
+  p-inputmask > input,
+  p-autocomplete > span > input {
+    width: 100% !important;
+    min-width: 100%;
+    height: calc(1.5em + 0.75rem + 2px) !important;
+    color: #4f4f4f !important;
+
+    &:disabled {
+      background-color: #eaeaea;
+      border: 1px solid #cccccc;
+    }
+  }
+
+
+  .p-dropdown .p-dropdown-label.p-placeholder,
+  .p-checkbox-label {
+    color: #4f4f4f !important;
+
+  }
+}

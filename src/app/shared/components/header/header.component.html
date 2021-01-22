@@ -1,6 +1,6 @@
 <div class="top-header" header>
   <div class="brand">
-    <a class="logo" href="./#/">
+    <a class="logo" href="./#/" target="_blank">
       <img class="img-logo" src="./assets/img/logoINFORMATA.svg" alt="Logo" />
     </a>
     <div class="sidebar-toggle-box" icon="fas fa-bars" (click)="visibleSidebar = !visibleSidebar">
@@ -8,12 +8,16 @@
     </div>
   </div>
 
-  <!-- <p-sidebar [blockScroll]="true" [showCloseIcon]="false" [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+  <div class= "router-diverg" routerLink= "./" >
+    <img class="ico" src="./assets/svg/ico_dvg_preco.svg" alt="IcoDvgPreco"  />
+  </div>
+
+  <p-sidebar [blockScroll]="true" [showCloseIcon]="false" [(visible)]="visibleSidebar" [baseZIndex]="10000">
 		<p-panelMenu [multiple]="false" dir="rtl" iconPos="left" [model]="items" [style]="{'width':'239px'}">
 		</p-panelMenu>
-	</p-sidebar> -->
+	</p-sidebar> -
 
-  <!-- <p-splitButton [label]="userLogged" (onClick)="usuario()" icon="fas fa-user fa-lg" class="headSplitButton"
+   <p-splitButton label="Fernando" (onClick)="usuario()" icon="fas fa-user fa-lg" class="headSplitButton"
 		[model]="user">
-	</p-splitButton> -->
+	</p-splitButton> 
 </div>

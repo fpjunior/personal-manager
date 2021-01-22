@@ -1,0 +1,51 @@
+@import "colors";
+
+:host ::ng-deep {
+  .p-button {
+    height: 32px;
+    padding: 0rem 1rem;
+  }
+
+  .icon-right {
+    .fas {
+      float: right;
+    }
+  }
+
+  .standard {
+    .p-button {
+      background-color: $cor-azul-escuro-padrao;
+      border: 1px solid $cor-azul-escuro-padrao;
+    }
+  }
+
+  .dismiss {
+    .p-button {
+      background-color: $cor-cinza-escuro-padrao !important;
+      border: 1px solid $cor-cinza-escuro-padrao !important;
+    }
+  }
+
+  .submitButton {
+    > button {
+      width: 96px;
+    }
+  }
+
+  .newRegisterButton {
+    > button {
+      height: calc(1.5em + 0.75rem + 2px) !important;
+    }
+  }
+
+  .tableButton {
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: #767676;
+    &:hover {
+      background-color: transparent;
+      border: 1px solid transparent;
+      color: #767676;
+    }
+  }
+}

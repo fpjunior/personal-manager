@@ -1,0 +1,32 @@
+@import "colors";
+
+@mixin transitionall3seaseinout {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+@mixin fontStandard {
+  font-size: 13px;
+}
+
+$position: (
+  top: "t",
+  right: "r",
+  left: "l",
+  bottom: "b",
+);
+
+$unit: (
+  rem: "rem",
+  em: "em",
+  px: "px",
+  per: "%",
+);
+
+$text-position: (
+  center: "c",
+  right: "r",
+  left: "l",
+);

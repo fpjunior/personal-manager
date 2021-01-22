@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { PortalUser } from 'src/app/core/model/portal-user';
+import { USER } from '../../constants/local-storage-keys';
 
 @Component({
   selector: 'app-header',
@@ -9,140 +13,198 @@ import { MenuItem } from 'primeng/api';
 export class HeaderComponent implements OnInit {
 
   items: MenuItem[];
-  
-  visibleSidebar: boolean = false;
+  user: MenuItem[];
+  visibleSidebar = false;
+  portalUser: PortalUser;
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.items = [
+  constructor(private route: Router, private authService: AuthService) {
+    this.user = [
+      // {
+      //   label: 'Perfil',
+      //   icon: 'fas fa-user-circle fa-lg:1em',
+      //   command: () => {
+      //     this.router.navigate(['/usuarios/perfil-usuarios/listar-perfil']);
+      //   }
+      // },
       {
-        label: 'File',
-        icon: 'pi pi-fw pi-file',
-        items: [
-          {
-            label: 'New',
-            icon: 'pi pi-fw pi-plus',
-            items: [
-              {
-                label: 'Bookmark',
-                icon: 'pi pi-fw pi-bookmark'
-              },
-              {
-                label: 'Video',
-                icon: 'pi pi-fw pi-video'
-              },
-
-            ]
-          },
-          {
-            label: 'Delete',
-            icon: 'pi pi-fw pi-trash'
-          },
-          {
-            separator: true
-          },
-          {
-            label: 'Export',
-            icon: 'pi pi-fw pi-external-link'
-          }
-        ]
+        label: 'Sair',
+        icon: 'fas fa-sign-out-alt fa-lg:1em',
+        command: () => {
+          this.authService.logout();
+          window.location.href = this.portalUser.baseUrl;
+        },
       },
-      {
-        label: 'Edit',
-        icon: 'pi pi-fw pi-pencil',
-        items: [
-          {
-            label: 'Left',
-            icon: 'pi pi-fw pi-align-left'
-          },
-          {
-            label: 'Right',
-            icon: 'pi pi-fw pi-align-right'
-          },
-          {
-            label: 'Center',
-            icon: 'pi pi-fw pi-align-center'
-          },
-          {
-            label: 'Justify',
-            icon: 'pi pi-fw pi-align-justify'
-          },
-
-        ]
-      },
-      {
-        label: 'Users',
-        icon: 'pi pi-fw pi-user',
-        items: [
-          {
-            label: 'New',
-            icon: 'pi pi-fw pi-user-plus',
-
-          },
-          {
-            label: 'Delete',
-            icon: 'pi pi-fw pi-user-minus',
-
-          },
-          {
-            label: 'Search',
-            icon: 'pi pi-fw pi-users',
-            items: [
-              {
-                label: 'Filter',
-                icon: 'pi pi-fw pi-filter',
-                items: [
-                  {
-                    label: 'Print',
-                    icon: 'pi pi-fw pi-print'
-                  }
-                ]
-              },
-              {
-                icon: 'pi pi-fw pi-bars',
-                label: 'List'
-              }
-            ]
-          }
-        ]
-      },
-      {
-        label: 'Events',
-        icon: 'pi pi-fw pi-calendar',
-        items: [
-          {
-            label: 'Edit',
-            icon: 'pi pi-fw pi-pencil',
-            items: [
-              {
-                label: 'Save',
-                icon: 'pi pi-fw pi-calendar-plus'
-              },
-              {
-                label: 'Delete',
-                icon: 'pi pi-fw pi-calendar-minus'
-              },
-
-            ]
-          },
-          {
-            label: 'Archieve',
-            icon: 'pi pi-fw pi-calendar-times',
-            items: [
-              {
-                label: 'Remove',
-                icon: 'pi pi-fw pi-calendar-minus'
-              }
-            ]
-          }
-        ]
-      },
-      {
-        label: 'Quit',
-        icon: 'pi pi-fw pi-power-off'
-      }
     ];
   }
+
+  ngOnInit(): void {
+    const user = JSON.parse(localStorage.getItem(USER));
+    this.portalUser = user;
+    this.initMenu();
+  }
+
+  usuario(): void {}
+
+  private initMenu = (): MenuItem[] =>
+    (this.items = [
+      {
+        label: 'Cadastro de Eventos',
+        icon: 'fas fa-laptop fa-lg:1em',
+        command: () => {
+          this.visibleSidebar = false;
+          this.route.navigate(['/example']);
+        },
+      },
+      {
+        label: 'Associar Eventos',
+        icon: 'fas fa-exchange-alt fa-lg:1em',
+        items: [
+          {
+            style: { 'margin-left': '0px' },
+            label: 'Sugestão do Preço de Venda',
+            icon: 'fas fa-file-invoice-dollar fa-lg:1em',
+            command: () => {
+              this.visibleSidebar = false;
+              this.route.navigate([
+                '/example2',
+              ]);
+            },
+          },
+          {
+            style: { 'margin-left': '0px' },
+            label: 'Preço de Lista',
+            icon: 'fas fa-file-invoice-dollar fa-lg:1em',
+            command: () => {
+              this.visibleSidebar = false;
+              this.route.navigate([
+                '/example3',
+              ]);
+            },
+          },
+          { separator: true },
+        ],
+      },
+      {
+        label: 'Manutenção Preço de Lista',
+        icon: 'fas fa-list-ul fa-lg:1em',
+        disabled: false,
+        command: () => {
+          this.visibleSidebar = false;
+          this.route.navigate(['']);
+        },
+      },
+      {
+        label: 'UFs de Atuação e Aliq de IR',
+        icon: 'fas fa-map-marked-alt fa-lg:1em',
+        command: () => {
+          this.visibleSidebar = false;
+          this.route.navigate(['/home']);
+        },
+      },
+      {
+        label: 'Motor de Serviço',
+        icon: 'fas fa-cogs fa-lg:1em',
+        disabled: false,
+        items: [
+          {
+            style: { 'margin-left': '0px' },
+            label: 'Configurações do Indicador',
+            icon: 'fas fa-file-invoice fa-lg:1em',
+            command: () => {
+              this.visibleSidebar = false;
+              this.route.navigate(['/main-page']);
+            },
+          },
+          {
+            style: { 'margin-left': '0px' },
+            label: 'Acesso ao Indicador',
+            icon: 'fas fa-calendar-minus fa-lg:1em',
+            command: () => {
+              this.visibleSidebar = false;
+              this.route.navigate(['input-property']);
+            },
+          },
+          {
+            style: { 'margin-left': '0px' },
+            label: 'Direcionamento de OS',
+            icon: 'fas fa-file-export fa-lg:1em',
+            command: () => {
+              this.visibleSidebar = false;
+              this.route.navigate(['']);
+            },
+          },
+          {
+            style: { 'margin-left': '0px' },
+            label: `OS's Pendentes`,
+            icon: 'fas fa-clipboard-list fa-lg:1em',
+            command: () => {
+              this.visibleSidebar = false;
+              this.route.navigate(['']);
+            },
+          },
+          { separator: true },
+        ],
+      },
+      {
+        label: 'Log de Atualização de Preço',
+        icon: 'fas fa-file-invoice fa-lg:1em ',
+        disabled: false,
+        command: () => {
+          this.visibleSidebar = false;
+          this.route.navigate(['']);
+        },
+      },
+      {
+        label: 'Gerenciar Usuários',
+        icon: 'fas fa-users-cog fa-lg:1em',
+        items: [
+          {
+            style: { 'margin-left': '0px' },
+            label: 'Perfil',
+            icon: 'fas fa-users fa-lg:1em',
+            command: () => {
+              this.visibleSidebar = false;
+              this.route.navigate(['/home/gerencia-usuario/perfil/dashboard']);
+            },
+          },
+          {
+            style: { 'margin-left': '0px' },
+            label: 'Usuários',
+            icon: 'fas fa-user fa-lg:1em',
+            command: () => {
+              this.visibleSidebar = false;
+              this.route.navigate(['/home/gerencia-usuario/usuario/dashboard']);
+            },
+          },
+          { separator: true },
+        ],
+      },
+      {
+        label: 'Configurações',
+        icon: 'fas fa-cogs fa-lg:1em',
+        disabled: false,
+        items: [
+          {
+            style: { 'margin-left': '0px' },
+            label: 'Parâmetros Gerais',
+            icon: 'fas fa-list-ul fa-lg:1em',
+            command: () => {
+              this.visibleSidebar = false;
+              this.route.navigate(['/home/configuacoes']);
+            },
+          },
+          { separator: true },
+        ],
+      },
+      {
+        label: 'Cadastro do Custo de Partida',
+        icon: 'fas fa-dollar-sign fa-lg:1em ',
+        disabled: false,
+        command: () => {
+          this.visibleSidebar = false;
+          this.route.navigate(['']);
+        },
+      },
+    ]);
 
 }

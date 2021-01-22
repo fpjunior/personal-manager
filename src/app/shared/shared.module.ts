@@ -8,7 +8,6 @@ import { ExampleDirective } from './directives/example.directive';
 import { PrimengModule } from './modules/primeng.module';
 import { ExamplePipe } from './pipes/example.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MainPageComponent } from '../modules/main-page/main-page/main-page.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 
 
@@ -19,7 +18,6 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
     BreadcrumbsComponent,
     SpinnerComponent,
     ExampleDirective,
-    MainPageComponent,
     ProgressBarComponent,
   ],
 

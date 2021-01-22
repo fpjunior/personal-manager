@@ -1,25 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
-import { BreadcrumbsService } from './breadcrumbs.service';
+import { BreadcrumbService } from './breadcrumbs.service';
 
 @Component({
   selector: 'app-breadcrumbs',
   templateUrl: './breadcrumbs.component.html',
   styleUrls: ['./breadcrumbs.component.scss']
 })
-export class BreadcrumbsComponent implements OnInit {
+export class BreadcrumbsComponent {
 
-  home: MenuItem = { label: 'Home', routerLink: '/home' };
+  home: MenuItem = { label: 'Preço', routerLink: '/home' };
   breadcrumb: MenuItem[];
 
   constructor(
-    private breadcrumbsService: BreadcrumbsService
-  ) {
-    this.breadcrumbsService.breadcrumbsChanged.subscribe(breadcrumb => { this.breadcrumb = breadcrumb })
-  }
+    private breadcrumbService: BreadcrumbService) {
 
-  ngOnInit() {
+    this.breadcrumbService.breadcrumbChanged.subscribe(breadcrumb => { this.breadcrumb = breadcrumb })
   }
 
 }

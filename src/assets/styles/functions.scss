@@ -1,0 +1,31 @@
+@import "variables";
+
+$spaceamounts: (1, 25);
+
+@each $size, $sz in $spaceamounts {
+  @each $unit, $ut in $unit {
+    @each $position, $pos in $position {
+      .m-#{$pos}-#{$size}#{$unit} {
+        margin-#{$position}: #{$size}#{$ut} !important;
+      }
+
+      .p-#{$pos}-#{$size}#{$unit} {
+        padding-#{$position}: #{$size}#{$ut} !important;
+      }
+    }
+
+    .m-#{$size}#{$unit} {
+      margin: #{$size}#{$ut} !important;
+    }
+
+    .p-#{$size}#{$unit} {
+      padding: #{$size}#{$ut} !important;
+    }
+  }
+}
+
+@each $text-position, $t-pos in $text-position {
+  .text-align-#{$text-position} {
+    text-align: $text-position !important;
+  }
+}

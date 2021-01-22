@@ -1,114 +1,67 @@
 @import "colors";
+@import "variables";
 
-p.card {
-    .sub-table {
-        border-collapse: collapse; 
+:host ::ng-deep {
+  .p-datatable {
+    @include fontStandard;
+    .p-datatable-thead > tr > th {
+      padding: 0 0 0 0.5em;
+      text-transform: uppercase;
+      background-color: $border-cinza-claro;
+      color: $cor-cinza-escuro-padrao;
+      height: 36px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      direction: ltr;
+      border: 1px solid $border-cinza-claro;
 
-        .ui-table {
-            width: 90vw;
-            margin: 4px;
-        }
+      &:first-child {
+        width: 4em;
+      }
 
-        .ui-table .ui-table-thead tr {
-            td {
-                border: 05px solid #CCC;
-                padding-left: 14px;
-
-                &:last-child {
-                    text-align: left !important; 
-                    padding-left: 1em !important;
-                    padding-left: 1em !important;
-                }
-            }
-            th {
-
-            }
-        }
+      &:last-child {
+        text-align: center;
+      }
     }
 
-    .ui-table {
+    .p-datatable-tbody > tr {
+      color: $cor-cinza-escuro-padrao-alt;
+      height: 36px !important;
 
-        .ui-sortable-column.ui-state-highlight {
-            background-color: $border-cinza-claro;
-            color: $cor-cinza-escuro-padrao;
-
-            .ui-sortable.column-icon {
-                color: $cor-cinza-escuro-padrao;
-            }
+      > td {
+        padding: 0;
+        border: 1px solid #cccccc;
+        &:last-child {
+          text-align: center;
         }
+      }
 
-        .ui-button-icon-only .ui-button-icon-left {
-            top: 60%;
-        }
+      &:nth-child(odd) {
+        background-color: var(--white-total);
+      }
 
-        .ui-button.ui-state-default.ui-button-secondary,
-        .ui-buttonset.ui-button-secondary>.ui-button.ui-state-default {
-            background-color: transparent;
-            border: none;
-            color: $cor-cinza-escuro-padrao;
+      &:nth-child(even) {
+        background-color: #f4f4f4;
+      }
 
-            &:hover {
-                background-color:transparent;
-            }
-        }
-        .ui-table-loading-content {
-            top: 0;
-            left: 45.8%;
-        }
-
-        .ui-table-loading-icon {
-            font-size: 8em;
-            color: $cor-azul-claro-selecionado
-        }
-
-        .ui-table-thead tr th {
-            padding: 0 0 0 0.5em;
-            text-transform: uppercase;
-            // text-align: left;
-            background-color: $border-cinza-claro;
-            color: $cor-cinza-escuro-padrao;
-            // @include fontePadraoCondensed;
-            height: 36px;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            direction: ltr;
-            input {
-                width: 100%;
-            }
-        }
-
-        p-sorticon {
-            // float: right;
-        }
-
-        .ui-table-tbody {
-
-            >tr {
-                color: $cor-cinza-escuro-padrao-alt;
-                font-size: 13px;
-                height: 36px;
-
-                &:nth-child(odd) {
-                    background-color: $cor-branco-padrao;
-                }
-
-                &:nth-child(even) {
-                    background-color: #F4F4F4;
-                }
-
-                &:hover {
-                    background-color: $cor-azul-mais-claro-padrao;
-                }
-
-                td {
-                    padding: 0;
-                    padding-left: 10px;
-
-                    &:last-child {
-                        text-align: center;
-                    }
-                }
-            }
-        }
+      &:hover {
+        background-color: $cor-azul-mais-claro-padrao;
+      }
     }
+
+    .p-paginator {
+      .p-paginator-bottom {
+        border: 1px solid #cccccc;
+      }
+
+      .p-disabled {
+        color: #767676 !important;
+      }
+
+      .p-paginator-pages .p-paginator-page.p-highlight {
+        background-color: #2d9cdb;
+        color: white;
+      }
+    }
+  }
 }

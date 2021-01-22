@@ -1,9 +1,12 @@
 @import "dialogs";
 @import "tables";
 @import "buttons";
-@import "reset";
 @import "colors";
 @import "keyframes";
+@import "variables";
+@import "fields";
+@import "functions";
+
 
 :host ::ng-deep {
   .width50 {
@@ -23,11 +26,55 @@
     content: " *";
   }
 
+  .form-label {
+    display: inline-grid;
+    width: 100%;
+    label {
+      @include fontStandard;
+      color: #767676;
+      line-height: 16px;
+      font-weight: 400;
+    }
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
   .info:hover {
     cursor: help;
   }
 
   .clickable:hover {
     cursor: pointer;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .right {
+    float: right;
+    padding-right: 1em;
+  }
+
+  .left {
+    float: left;
+    padding-left: 1em;
+  }
+
+  .strongRight {
+    position: absolute;
+    right: 0;
+  }
+
+  .strongLeft {
+    position: absolute;
+    left: 0;
+  }
+
+  // CORE
+  .uppercase {
+    text-transform: uppercase;
   }
 }
