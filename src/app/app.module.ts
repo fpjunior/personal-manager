@@ -1,3 +1,4 @@
+import { CadastroEventoRoutingModule } from './modules/cadastro-evento/cadastro-evento-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,8 +30,7 @@ import { ExampleComponent } from './modules/example/example/example.component';
     SharedModule,
     HttpClientModule,
     CoreModule,
-    ConfirmDialogModule
-    
+    ConfirmDialogModule,
   ],
   providers: [BreadcrumbService, authInterceptorProvider],
   bootstrap: [AppComponent]
