@@ -9,6 +9,13 @@ const routes: Routes = [
     component: MainPageComponent,
     children: [
         { path: '', redirectTo: 'home'},
+        {
+            path: 'cadastro-evento',
+            loadChildren: () =>
+              import('../cadastro-evento/cadastro-evento.module').then(
+                (m) => m.CadastroEventoModule
+              ),
+          },
     ]
 }
 ];

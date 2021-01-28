@@ -21,6 +21,7 @@ export class ExampleComponent implements OnInit {
     valorAtual: string = '';
     valorSalvo: string = '';
     nomeDoCurso: string = 'Angular';
+    nomeDoProfessor: string = 'Loiane';
     isMouseOver: boolean = false;
     nome: string = 'abc';
     pessoa: any = {

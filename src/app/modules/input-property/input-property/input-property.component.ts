@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-input-property',
   templateUrl: './input-property.component.html',
-  styleUrls: ['./input-property.component.scss']
+  styleUrls: ['./input-property.component.scss'],
+  inputs: ['nomeProfessor', ]
 })
 export class InputPropertyComponent implements OnInit {
 
- nomeDoCurso: string = 'Angular';
+@Input() nome: string = '';
+
+nomeProfessor: string = '';
 
   constructor() { }
 

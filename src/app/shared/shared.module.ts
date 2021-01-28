@@ -1,3 +1,4 @@
+import { EventoDashboardComponent } from './components/layout/cadastro-evento/evento-dashboard/evento-dashboard.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -14,6 +15,12 @@ import { ExamplePipe } from './pipes/example.pipe';
 import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/confirm-dialog.component';
 import { CardServicoAbertoComponent } from './components/widgets/card-servico-aberto/card-servico-aberto.component';
 import { CardVariacaoPrecoComponent } from './components/widgets/card-variacao-preco/card-variacao-preco.component';
+import { ExampleDashboardComponent } from './components/layout/example/example-dashboard/example-dashboard.component';
+import { ExampleFormComponent } from './components/layout/example/example-form/example-form.component';
+import { InputPropertyComponent } from '../modules/input-property/input-property/input-property.component';
+import { OutputPropertyComponent } from '../modules/output-property/output-property.component';
+import {ButtonModule} from 'primeng/button';
+import { EventoFormComponent } from './components/layout/cadastro-evento/evento-form/evento-form.component';
 
 
 @NgModule({
@@ -24,6 +31,13 @@ import { CardVariacaoPrecoComponent } from './components/widgets/card-variacao-p
     SpinnerComponent,
     ExampleDirective,
     ProgressBarComponent,
+    ExampleDashboardComponent,
+    ExampleFormComponent,
+    InputPropertyComponent,
+    OutputPropertyComponent,
+    EventoDashboardComponent,
+    EventoFormComponent,
+    
 
     // DIALOGS
     ConfirmDialogComponent,
@@ -41,7 +55,9 @@ import { CardVariacaoPrecoComponent } from './components/widgets/card-variacao-p
     CommonModule,
     PrimengModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ButtonModule,
+    
   ],
   exports: [
     PrimengModule,
@@ -50,6 +66,11 @@ import { CardVariacaoPrecoComponent } from './components/widgets/card-variacao-p
     FormsModule,
     BreadcrumbsComponent,
     ProgressBarComponent,
+    InputPropertyComponent,
+    OutputPropertyComponent,
+    EventoDashboardComponent,
+    EventoFormComponent,
+
 
     // DIALOGS
     ConfirmDialogComponent,

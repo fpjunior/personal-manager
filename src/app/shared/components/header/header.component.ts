@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
   private initMenu = (): MenuItem[] =>
     (this.items = [
       {
-        label: 'Cadastro de Eventos',
+        label: 'Example',
         icon: 'fas fa-laptop fa-lg:1em',
         command: () => {
           this.visibleSidebar = false;
@@ -56,12 +56,12 @@ export class HeaderComponent implements OnInit {
         },
       },
       {
-        label: 'Associar Eventos',
+        label: 'Chamar Example2',
         icon: 'fas fa-exchange-alt fa-lg:1em',
         items: [
           {
             style: { 'margin-left': '0px' },
-            label: 'Sugestão do Preço de Venda',
+            label: 'Example2',
             icon: 'fas fa-file-invoice-dollar fa-lg:1em',
             command: () => {
               this.visibleSidebar = false;
@@ -72,12 +72,12 @@ export class HeaderComponent implements OnInit {
           },
           {
             style: { 'margin-left': '0px' },
-            label: 'Preço de Lista',
+            label: 'Sem Rota',
             icon: 'fas fa-file-invoice-dollar fa-lg:1em',
             command: () => {
               this.visibleSidebar = false;
               this.route.navigate([
-                '/example3',
+                '',
               ]);
             },
           },
@@ -85,16 +85,16 @@ export class HeaderComponent implements OnInit {
         ],
       },
       {
-        label: 'Manutenção Preço de Lista',
+        label: 'Example3',
         icon: 'fas fa-list-ul fa-lg:1em',
         disabled: false,
         command: () => {
           this.visibleSidebar = false;
-          this.route.navigate(['']);
+          this.route.navigate(['/example3']);
         },
       },
       {
-        label: 'UFs de Atuação e Aliq de IR',
+        label: 'Home',
         icon: 'fas fa-map-marked-alt fa-lg:1em',
         command: () => {
           this.visibleSidebar = false;
@@ -102,13 +102,13 @@ export class HeaderComponent implements OnInit {
         },
       },
       {
-        label: 'Motor de Serviço',
+        label: 'Main Page',
         icon: 'fas fa-cogs fa-lg:1em',
         disabled: false,
         items: [
           {
             style: { 'margin-left': '0px' },
-            label: 'Configurações do Indicador',
+            label: 'Chamar Main Page',
             icon: 'fas fa-file-invoice fa-lg:1em',
             command: () => {
               this.visibleSidebar = false;
@@ -117,94 +117,53 @@ export class HeaderComponent implements OnInit {
           },
           {
             style: { 'margin-left': '0px' },
-            label: 'Acesso ao Indicador',
+            label: 'Sem Rota',
             icon: 'fas fa-calendar-minus fa-lg:1em',
             command: () => {
               this.visibleSidebar = false;
-              this.route.navigate(['input-property']);
+              this.route.navigate(['']);
             },
           },
           {
             style: { 'margin-left': '0px' },
-            label: 'Direcionamento de OS',
+            label: 'Input Property',
             icon: 'fas fa-file-export fa-lg:1em',
             command: () => {
               this.visibleSidebar = false;
-              this.route.navigate(['']);
+              this.route.navigate(['Input-property']);
             },
           },
           {
             style: { 'margin-left': '0px' },
-            label: `OS's Pendentes`,
+            label: `Output Property`,
             icon: 'fas fa-clipboard-list fa-lg:1em',
             command: () => {
               this.visibleSidebar = false;
-              this.route.navigate(['']);
+              this.route.navigate(['output-property']);
             },
           },
           { separator: true },
         ],
       },
+      
       {
-        label: 'Log de Atualização de Preço',
-        icon: 'fas fa-file-invoice fa-lg:1em ',
-        disabled: false,
-        command: () => {
-          this.visibleSidebar = false;
-          this.route.navigate(['']);
-        },
-      },
-      {
-        label: 'Gerenciar Usuários',
-        icon: 'fas fa-users-cog fa-lg:1em',
-        items: [
-          {
-            style: { 'margin-left': '0px' },
-            label: 'Perfil',
-            icon: 'fas fa-users fa-lg:1em',
-            command: () => {
-              this.visibleSidebar = false;
-              this.route.navigate(['/home/gerencia-usuario/perfil/dashboard']);
-            },
-          },
-          {
-            style: { 'margin-left': '0px' },
-            label: 'Usuários',
-            icon: 'fas fa-user fa-lg:1em',
-            command: () => {
-              this.visibleSidebar = false;
-              this.route.navigate(['/home/gerencia-usuario/usuario/dashboard']);
-            },
-          },
-          { separator: true },
-        ],
-      },
-      {
-        label: 'Configurações',
+        label: 'Cadastro de Evento',
         icon: 'fas fa-cogs fa-lg:1em',
         disabled: false,
         items: [
           {
             style: { 'margin-left': '0px' },
-            label: 'Parâmetros Gerais',
+            label: 'Cadastrar Eventos',
             icon: 'fas fa-list-ul fa-lg:1em',
             command: () => {
               this.visibleSidebar = false;
-              this.route.navigate(['/home/configuacoes']);
+              this.route.navigate(['/cadastro-evento']);
             },
           },
           { separator: true },
         ],
       },
-      {
-        label: 'Cadastro do Custo de Partida',
-        icon: 'fas fa-dollar-sign fa-lg:1em ',
-        disabled: false,
-        command: () => {
-          this.visibleSidebar = false;
-          this.route.navigate(['']);
-        },
-      },
+     
     ]);
 
 }

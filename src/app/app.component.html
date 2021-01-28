@@ -1,11 +1,18 @@
 <app-header></app-header>
-<p>Tela Principal</p>
+<p>Rota Principal</p>
 <nav class="nav justify-content-center">
-  <a class="nav-link active" href="example">Example - </a>
-  <a class="nav-link" href="example2"> - Example 2 - </a>
-  <a class="nav-link disabled" href="example3">Example 3 --</a>
-  <a class="nav-link disabled" href="home"> Home -- </a>
-  <a class="nav-link disabled" href="main-page"> Main Page -- </a>
-  <a class="nav-link disabled" href="input-property"> Input Property</a>
+  <button pButton pRipple type="button" label="example" [routerLink]="'/example'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="example2" [routerLink]="'/example2'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="example3" [routerLink]="'/example3'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="home" [routerLink]="'/home'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="main-page" [routerLink]="'/main-page'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="Iutput-property" [routerLink]="'/input-property'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="output-property" [routerLink]="'/output-property'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="Evento" [routerLink]="'/cadastro-evento'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
 </nav>
-<router-outlet></router-outlet>
+
+<div>
+<br>
+  <router-outlet></router-outlet>
+
+</div>
