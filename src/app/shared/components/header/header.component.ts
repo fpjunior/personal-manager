@@ -102,6 +102,14 @@ export class HeaderComponent implements OnInit {
         },
       },
       {
+        label: 'Ciclo',
+        icon: 'fas fa-map-marked-alt fa-lg:1em',
+        command: () => {
+          this.visibleSidebar = false;
+          this.route.navigate(['/ciclo']);
+        },
+      },
+      {
         label: 'Main Page',
         icon: 'fas fa-cogs fa-lg:1em',
         disabled: false,

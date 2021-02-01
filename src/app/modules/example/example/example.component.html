@@ -33,11 +33,18 @@
 
   <router-outlet></router-outlet> -->
 
-  <section class="input-output-properties">
-    <article>
-      <h3>Input/Output Properties - parágrafo do example.html</h3>
-      <app-input-property [nome]="nomeDoCurso" [nomeProfessor]="nomeDoProfessor"></app-input-property>
-      <app-output-property>
-      </app-output-property>
-    </article>
-  </section>
+<section class="input-output-properties">
+  <article>
+    <h3>Input/Output Properties - parágrafo do example.html</h3>
+    <app-input-property [nome]="nomeDoCurso" [nomeProfessor]="nomeDoProfessor"></app-input-property>
+
+    <!-- saída do output-property dentro do example.html -->
+    <app-output-property [valor]="valorInicial" (mudouValor)="onMudouValor($event)"></app-output-property>
+
+    <app-ciclo-dashboard [valorInicialCiclo]="valor" [nomeInicialCiclo]="nomeCiclo"
+    *ngIf="!deletarCiclo" ></app-ciclo-dashboard>
+    <p-button (click)="mudarValor()">Mudar Valor</p-button> <p></p>
+    <!-- o botão abaixo vai destruir o componente que exibe o valor da variável -->
+    <p-button (click)="destruirCiclo()">Deletar</p-button>
+  </article>
+</section>

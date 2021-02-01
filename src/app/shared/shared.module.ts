@@ -21,6 +21,7 @@ import { InputPropertyComponent } from '../modules/input-property/input-property
 import { OutputPropertyComponent } from '../modules/output-property/output-property.component';
 import {ButtonModule} from 'primeng/button';
 import { EventoFormComponent } from './components/layout/cadastro-evento/evento-form/evento-form.component';
+import { CicloDashboardComponent } from './components/layout/ciclo/ciclo-dashboard/ciclo-dashboard.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { EventoFormComponent } from './components/layout/cadastro-evento/evento-
     OutputPropertyComponent,
     EventoDashboardComponent,
     EventoFormComponent,
+    CicloDashboardComponent,
     
 
     // DIALOGS
@@ -70,6 +72,8 @@ import { EventoFormComponent } from './components/layout/cadastro-evento/evento-
     OutputPropertyComponent,
     EventoDashboardComponent,
     EventoFormComponent,
+    CicloDashboardComponent,
+    
 
 
     // DIALOGS

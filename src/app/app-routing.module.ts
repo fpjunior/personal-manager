@@ -37,6 +37,13 @@ const routes: Routes = [
         (m) => m.ExampleModule
       ),
   },
+  {
+    path: 'ciclo',
+    loadChildren: () =>
+      import('./modules/ciclo/ciclo.module').then(
+        (m) => m.CicloModule
+      ),
+  },
 
 ];
 
