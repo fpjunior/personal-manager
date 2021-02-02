@@ -22,7 +22,7 @@ export class AuthComponent implements OnInit {
     private router: Router,
     private activeRoute: ActivatedRoute,
     private authService: AuthService,
-    private UserService: UserService,
+    private userService: UserService,
     private chRef: ChangeDetectorRef
   ) { }
 

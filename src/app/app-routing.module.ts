@@ -1,3 +1,4 @@
+import { OutputPropertyModule } from './modules/output-property/output-property.module';
 import { RoleGuard } from './core/guards/role.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -7,7 +8,6 @@ import { Example2Component } from './modules/example2/example2/example2.componen
 import { HomeComponent } from './modules/home/home/home.component';
 import { MainPageComponent } from './modules/main-page/main-page/main-page.component';
 import { InputPropertyComponent } from './modules/input-property/input-property/input-property.component';
-import { OutputPropertyComponent } from './modules/output-property/output-property.component';
 import { CadastroEventoComponent } from './modules/cadastro-evento/cadastro-evento/cadastro-evento.component';
 
 
@@ -20,7 +20,7 @@ const routes: Routes = [
   // {path: 'output-property', component: OutputPropertyComponent},
   // {path: 'cadastro-evento', component: CadastroEventoComponent},
   {
-    path: '', 
+    path: '',
     loadChildren: () => import('./modules/example/example.module').then(m => m.ExampleModule)
   },
   {
@@ -44,13 +44,20 @@ const routes: Routes = [
         (m) => m.CicloModule
       ),
   },
+  {
+    path: 'output-property',
+    loadChildren: () =>
+      import('./modules/output-property/output-property.module').then(
+        (m) => m.OutputPropertyModule
+      ),
+  },
 
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes)],
-  exports: [RouterModule] 
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
 

@@ -18,10 +18,10 @@ import { CardVariacaoPrecoComponent } from './components/widgets/card-variacao-p
 import { ExampleDashboardComponent } from './components/layout/example/example-dashboard/example-dashboard.component';
 import { ExampleFormComponent } from './components/layout/example/example-form/example-form.component';
 import { InputPropertyComponent } from '../modules/input-property/input-property/input-property.component';
-import { OutputPropertyComponent } from '../modules/output-property/output-property.component';
 import {ButtonModule} from 'primeng/button';
 import { EventoFormComponent } from './components/layout/cadastro-evento/evento-form/evento-form.component';
 import { CicloDashboardComponent } from './components/layout/ciclo/ciclo-dashboard/ciclo-dashboard.component';
+import { OutputPropertyDashboardComponent } from './components/layout/output-property/output-property-dashboard/output-property-dashboard.component';
 
 
 @NgModule({
@@ -35,7 +35,7 @@ import { CicloDashboardComponent } from './components/layout/ciclo/ciclo-dashboa
     ExampleDashboardComponent,
     ExampleFormComponent,
     InputPropertyComponent,
-    OutputPropertyComponent,
+    OutputPropertyDashboardComponent,
     EventoDashboardComponent,
     EventoFormComponent,
     CicloDashboardComponent,
@@ -69,12 +69,10 @@ import { CicloDashboardComponent } from './components/layout/ciclo/ciclo-dashboa
     BreadcrumbsComponent,
     ProgressBarComponent,
     InputPropertyComponent,
-    OutputPropertyComponent,
+    OutputPropertyDashboardComponent,
     EventoDashboardComponent,
     EventoFormComponent,
-    CicloDashboardComponent,
-    
-
+    CicloDashboardComponent,    
 
     // DIALOGS
     ConfirmDialogComponent,
@@ -85,8 +83,6 @@ import { CicloDashboardComponent } from './components/layout/ciclo/ciclo-dashboa
     // TABLES
     TableDashboardComponent,
     TableGerenciaComponent
-
-
   ],
   entryComponents: [
 
