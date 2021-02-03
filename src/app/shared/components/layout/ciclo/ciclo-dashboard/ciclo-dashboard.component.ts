@@ -1,4 +1,6 @@
 import { Component, OnInit, OnDestroy, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewChecked, AfterViewInit, Input } from '@angular/core';
+import { BreadcrumbService } from '../../../breadcrumbs/breadcrumbs.service';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-ciclo-dashboard',
@@ -8,22 +10,26 @@ import { Component, OnInit, OnDestroy, OnChanges, DoCheck, AfterContentInit, Aft
 
 // DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit,
 //   AfterViewChecked, OnDestroy
-export class CicloDashboardComponent implements OnDestroy, AfterContentChecked, OnChanges, OnInit, DoCheck, AfterContentInit, AfterViewInit, AfterViewChecked, AfterViewInit
-   {
+export class CicloDashboardComponent implements OnDestroy, AfterContentChecked, OnChanges, OnInit, DoCheck, AfterContentInit, AfterViewInit, AfterViewChecked, AfterViewInit {
 
-   @Input() valorInicialCiclo: number = 10;
-   @Input() nomeInicialCiclo: string = 'Fernando';
+  @Input() valorInicialCiclo: number = 10;
+  @Input() nomeInicialCiclo: string = 'Fernando';
 
-  constructor() {
-    this.log('constructor');
+  breadcrumbItems: MenuItem[] = [{ label: `Ciclo` }];
+
+  constructor(
+    private breadcrumbService: BreadcrumbService,
+  ) {
+    this.log('constructor'); 
   }
 
   ngOnInit() {
-    this.log('ngOnInit');
+    this.log('ngOnInit'); 
+    this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
   }
 
   ngDoCheck() {
-    this.log('ngDoCheck');
+    this.log('ngDoCheck');     
   }
 
   ngOnChanges() {
@@ -45,7 +51,7 @@ export class CicloDashboardComponent implements OnDestroy, AfterContentChecked, 
   ngAfterViewChecked() {
     this.log('ngAfterViewChecked');
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.log('ngOnDestroy');
   }
 

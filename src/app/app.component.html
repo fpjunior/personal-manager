@@ -1,19 +1,39 @@
-<app-header></app-header>
-<p>Rota Principal</p>
-<nav class="nav justify-content-center">
-  <button pButton pRipple type="button" label="example" [routerLink]="'/example'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
-  <button pButton pRipple type="button" label="example2" [routerLink]="'/example2'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
-  <button pButton pRipple type="button" label="example3" [routerLink]="'/example3'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
-  <button pButton pRipple type="button" label="home" [routerLink]="'/home'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
-  <button pButton pRipple type="button" label="main-page" [routerLink]="'/main-page'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
-  <button pButton pRipple type="button" label="Iutput-property" [routerLink]="'/input-property'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
-  <button pButton pRipple type="button" label="output-property" [routerLink]="'/output-property'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
-  <button pButton pRipple type="button" label="Evento" [routerLink]="'/cadastro-evento'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
-  <button pButton pRipple type="button" label="Ciclo" [routerLink]="'/ciclo'" icon="pi pi-user" class="p-button-rounded p-button-info"></button>
-</nav>
+<body class="body">
+  <app-header></app-header>
+  <!-- BREADCRUMBER -->
+  <section id="main-content">
+    <section class="wrapper">
+      <app-breadcrumbs [hidden]="isLoginRoute"></app-breadcrumbs>
+    </section>
+  </section>
+  <!-- <nav class="nav justify-content-center">
+  <button pButton pRipple type="button" label="example" [routerLink]="'/example'" icon="pi pi-user"
+    class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="example2" [routerLink]="'/example2'" icon="pi pi-user"
+    class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="example3" [routerLink]="'/example3'" icon="pi pi-user"
+    class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="home" [routerLink]="'/home'" icon="pi pi-user"
+    class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="main-page" [routerLink]="'/main-page'" icon="pi pi-user"
+    class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="Iutput-property" [routerLink]="'/input-property'" icon="pi pi-user"
+    class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="output-property" [routerLink]="'/output-property'" icon="pi pi-user"
+    class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="Evento" [routerLink]="'/cadastro-evento'" icon="pi pi-user"
+    class="p-button-rounded p-button-info"></button>
+  <button pButton pRipple type="button" label="Ciclo" [routerLink]="'/ciclo'" icon="pi pi-user"
+    class="p-button-rounded p-button-info"></button>
+</nav> -->
 
-<div>
-<br>
-  <router-outlet></router-outlet>
+  <div>
+    <br>
+    <p-card styleClass="wrapper-card">
+      <router-outlet></router-outlet>
+    </p-card>
+    <!-- <loading [isLoading]="true"></loading> -->
+    <progress-bar></progress-bar>
 
-</div>
+  </div>
+</body>

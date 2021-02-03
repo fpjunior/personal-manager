@@ -1,4 +1,22 @@
-nav.nav.justify-content-center {
+
+
+:host ::ng-deep {
+  .wrapper-card.p-card {
+    margin: 0em 1.7em;
+    min-height: 600px;
+    max-height: 260vh;
+  }
+
+  nav.nav.justify-content-center {
     border-right-width: 15px;
     margin-right: 15px;
+  
+}
+
+.body{
+  // background-color: #8080801a;
+}
+
+
+
 }

@@ -7,7 +7,6 @@
 @import "fields";
 @import "functions";
 
-
 :host ::ng-deep {
   .width50 {
     width: 50%;
@@ -55,12 +54,20 @@
 
   .right {
     float: right;
-    padding-right: 1em;
   }
 
   .left {
     float: left;
-    padding-left: 1em;
+  }
+
+  .p-tooltip-text,
+  .p-tooltip,
+  .p-tooltip-arrow {
+    font-size: 8px !important;
+  }
+
+  .p-inputswitch {
+    height: 1.4rem !important;
   }
 
   .strongRight {
@@ -77,4 +84,9 @@
   .uppercase {
     text-transform: uppercase;
   }
+}
+
+.tooltip-beneficios .p-tooltip-text {
+  width: 516px;
+  height: 216px;
 }

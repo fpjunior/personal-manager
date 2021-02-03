@@ -16,6 +16,13 @@ const routes: Routes = [
                 (m) => m.CadastroEventoModule
               ),
           },
+          {
+            path: 'output-property',
+            loadChildren: () =>
+              import('../output-property/output-property.module').then(
+                (m) => m.OutputPropertyModule
+              ),
+          },
     ]
 }
 ];

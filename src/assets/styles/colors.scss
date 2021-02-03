@@ -1,56 +1,55 @@
 :root {
-    /* --------- P & B --------- */
-  
-    --white-total: #fff;
-  
-    --black-total: #000;
-  
-  }
-  
   /* --------- P & B --------- */
-  // $white-total: #FFF;
-  $cor-cinza-padrao: #f1f2f7;
-  $cor-cinza-claro-padrao: #f2f2f2; //#BDBDBD
-  $breadcrumbs-alt: #e0e1e7;
-  $cor-branco-bg: #eaeaea;
-  $cor-branco-bg-alt: #eaeaec;
-  $border-cinza-claro: #e0e0e0;
-  $cor-abas-inativa-bg: #cccccc;
-  $cor-cinza-escuro-padrao: #767676;
-  $cor-cinza-escuro-padrao-alt: #4f4f4f;
-  $cor-nav-link: #495057;
-  $cor-preto-padrao: #000;
-  
-  /* ----------- STATUS -------------- */
-  $cor-hover-cancelar: #999999;
-  $cor-active-cancelar: #888888;
-  $cor-disabled-cancelar: #bdbdbd;
-  
-  $cor-buttom-dafault: #306889;
-  $cor-button-hover: #3f88b3;
-  $cor-button-active: #2d9cdb;
-  $cor-button-disabled: #799db3;
-  
-  /* ----------- AZUL -------------- */
-  $cor-azul-mais-claro-padrao: #b7d2ea;
-  $cor-azul-claro-padrao: #2d9cdb; //#2A78AD
-  $cor-azul-claro-selecionado: #2196f3;
-  $cor-azul-padrao: #2a78ad; //#297dac;
-  $cor-azul-escuro-padrao: #306889;
-  $cor-azul-medio-escuro-padrao: #476888;
-  $cor-azul-mais-escuro-padrao: #34495e;
-  
-  /* ----------- VERMELHO ----------- */
-  $cor-vermelho-claro-padrao: #a94442;
-  $cor-vermelho-escuro-padrao: #bd555e;
-  $cor-vermelho-alerta: #ffd2d2;
-  $required: #f00;
-  
-  /* ----------- VERDE ------------ */
-  $cor-verde: #1e7e34;
-  $cor-verde-sucesso: #cfe9da;
-  
-  /* ----------- SCROLL BAR ------------ */
-  $scroll-bar: #c4c4c4;
-  $scroll-bar-hover: #a3a3a3;
-  
+
+  --white-total: #fff;
+
+  --black-total: #000;
+
+}
+
+/* --------- P & B --------- */
+// $white-total: #FFF;
+$cor-cinza-padrao: #f1f2f7;
+$cor-cinza-claro-padrao: #f2f2f2; //#BDBDBD
+$breadcrumbs-alt: #e0e1e7;
+$cor-branco-bg: #eaeaea;
+$cor-branco-bg-alt: #eaeaec;
+$border-cinza-claro: #e0e0e0;
+$cor-abas-inativa-bg: #cccccc;
+$cor-cinza-escuro-padrao: #767676;
+$cor-cinza-escuro-padrao-alt: #4f4f4f;
+$cor-nav-link: #495057;
+$cor-preto-padrao: #000;
+
+/* ----------- STATUS -------------- */
+$cor-hover-cancelar: #999999;
+$cor-active-cancelar: #888888;
+$cor-disabled-cancelar: #bdbdbd;
+
+$cor-buttom-dafault: #306889;
+$cor-button-hover: #3f88b3;
+$cor-button-active: #2d9cdb;
+$cor-button-disabled: #799db3;
+
+/* ----------- AZUL -------------- */
+$cor-azul-mais-claro-padrao: #b7d2ea;
+$cor-azul-claro-padrao: #2d9cdb; //#2A78AD
+$cor-azul-claro-selecionado: #2196f3;
+$cor-azul-padrao: #2a78ad; //#297dac;
+$cor-azul-escuro-padrao: #306889;
+$cor-azul-medio-escuro-padrao: #476888;
+$cor-azul-mais-escuro-padrao: #34495e;
+
+/* ----------- VERMELHO ----------- */
+$cor-vermelho-claro-padrao: #a94442;
+$cor-vermelho-escuro-padrao: #bd555e;
+$cor-vermelho-alerta: #ffd2d2;
+$required: #f00;
+
+/* ----------- VERDE ------------ */
+$cor-verde: #1e7e34;
+$cor-verde-sucesso: #cfe9da;
+
+/* ----------- SCROLL BAR ------------ */
+$scroll-bar: #c4c4c4;
+$scroll-bar-hover: #a3a3a3;

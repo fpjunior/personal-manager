@@ -79,10 +79,10 @@ export class ExampleComponent implements OnInit {
     console.log(evento.novoValor);
   }
 
-  mudarValor(){
+  mudarValor() {
     this.valor++;
   }
-  destruirCiclo(){
+  destruirCiclo() {
     this.deletarCiclo = true;
   }
 

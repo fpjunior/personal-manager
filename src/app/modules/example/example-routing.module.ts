@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
-const routes: Routes = [ 
+const routes: Routes = [
   {
-    path: 'example', 
+    path: 'example',
     component: ExampleComponent,
     // children: [
     //   { path: 'childpath', component: ChildComponent }

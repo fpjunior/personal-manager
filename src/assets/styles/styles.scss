@@ -2,7 +2,6 @@
 @import "colors";
 @import "reset";
 
-
 html,
 body {
   height: 100%;
@@ -29,6 +28,6 @@ body {
   background: $scroll-bar;
   border-radius: 4px;
   &:hover {
-      background: $scroll-bar-hover;
+    background: $scroll-bar-hover;
   }
 }

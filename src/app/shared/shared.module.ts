@@ -50,7 +50,10 @@ import { OutputPropertyDashboardComponent } from './components/layout/output-pro
 
     // TABLES
     TableDashboardComponent,
-    TableGerenciaComponent
+    TableGerenciaComponent,
+
+
+    
   ],
 
   imports: [
@@ -82,7 +85,7 @@ import { OutputPropertyDashboardComponent } from './components/layout/output-pro
     CardVariacaoPrecoComponent,
     // TABLES
     TableDashboardComponent,
-    TableGerenciaComponent
+    TableGerenciaComponent,
   ],
   entryComponents: [
 

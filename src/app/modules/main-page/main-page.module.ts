@@ -10,7 +10,7 @@ import { MainPageComponent } from './main-page/main-page.component';
   imports: [
     CommonModule,
     SharedModule,
-    MainPageRoutingModule
+    MainPageRoutingModule,
   ]
 })
 export class MainPageModule { }

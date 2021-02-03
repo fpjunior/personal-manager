@@ -26,6 +26,7 @@
         padding: 0px 0 3px 25px;
         width: auto;
         height: 42px;
+        cursor: pointer;
       }
 
       .sidebar-toggle-box {
@@ -328,6 +329,52 @@
     color: var(--white-total);
     background-color: var(--white-total);
     margin-top: 6px;
+
+    .p-button-label{
+      text-overflow: ellipsis;
+      overflow: hidden;     
+    }
+
+    .p-menu .p-menuitem-link:focus{
+      box-shadow: none;
+    }
+
+    .p-menu{
+      top: 40px !important;
+      padding: 0 !important;
+      height: 35px;
+      ul{
+        height: 100% !important;
+
+        &:hover{
+          background: #b7d2ea;
+        }
+        
+        li{
+          padding-top: 5px;
+        }
+        li:focus{
+          outline: none;
+          a:focus{
+            box-shadow: none;
+          }
+        }
+      }
+      &:after {
+        border-bottom: 0.5em solid rgb(255 255 255 / 97%);
+        border-left: 0.5em solid #55db2d00;
+        border-right: 0.5em solid #0593ca00;
+        border-top: 0.1em solid rgb(232 224 224 / 0%);
+        content: "";
+        margin-top: -1.5em;
+        position: absolute;
+        right: 0.5em;;
+        top: 50%;
+      }
+    }
+    .p-menu-overlay:focus{
+      outline: none;
+    }
 
     > ul {
       border: none !important;

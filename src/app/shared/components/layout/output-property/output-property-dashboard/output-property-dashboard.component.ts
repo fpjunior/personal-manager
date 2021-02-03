@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { MenuItem } from 'primeng/api';
+import { BreadcrumbService } from '../../../breadcrumbs/breadcrumbs.service';
 
 @Component({
   selector: 'app-output-property-dashboard',
@@ -14,9 +16,15 @@ export class OutputPropertyDashboardComponent implements OnInit {
 
   @ViewChild('campoInput') campoValorInput: ElementRef;
 
-  constructor() { }
+  breadcrumbItems: MenuItem[] = [{ label: `OutPut-Property`}]
+
+  constructor(
+    private breadcrumbService: BreadcrumbService,
+
+  ) { }
 
   ngOnInit() {
+    this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
   }
 
   incrementa() {

@@ -15,6 +15,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ExampleModule } from './modules/example/example.module';
 import { InputPropertyComponent } from './modules/input-property/input-property/input-property.component';
 import { ExampleComponent } from './modules/example/example/example.component';
+import { ProgressBarService } from './shared/components/progress-bar/progress-bar.service';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,7 @@ import { ExampleComponent } from './modules/example/example/example.component';
     CoreModule,
     ConfirmDialogModule,
   ],
-  providers: [BreadcrumbService, authInterceptorProvider],
+  providers: [BreadcrumbService, authInterceptorProvider, ProgressBarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
