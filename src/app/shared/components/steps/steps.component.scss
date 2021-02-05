@@ -1,0 +1,93 @@
+// @import "colors.scss";
+
+:host ::ng-deep {
+  .control-steps {
+    .p-steps {
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      margin-top: 20px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &::before {
+        display: none;
+      }
+
+      ul {
+        width: 100%;
+      }
+
+      // DEMAIS STEPS
+      .p-steps-item {
+        margin-left: 7px;
+        margin-right: 7px;
+        width: 160px;
+        height: 34px;
+        font-size: 14px;
+        color: #767676;
+        background: #cccccc;
+        border-radius: 4px;
+
+        &:hover {
+          cursor: pointer;
+          color: #2d9cdb !important;
+
+          > span,
+          > a {
+            color: #2d9cdb !important;
+          }
+        }
+        
+        span:hover,
+        a:hover {
+          color: #2d9cdb !important;
+        }
+
+        &:active {
+          background: #2d9cdb;
+          > span {
+            color: white !important;
+          }
+        }
+
+        &::before {
+          border: none;
+        }
+
+        // ANCORA DO STEP
+        .p-menuitem-link {
+          padding: 0;
+          width: 100%;
+          background: #cccccc;
+
+          .ui-steps-title {
+            margin-top: 9px;
+          }
+
+          &:focus {
+            box-shadow: none;
+          }
+
+          // NUMERO DO STEP, DESNECESSÁRIO
+          .p-steps-number {
+            display: none;
+          }
+        }
+      }
+
+      // O STEP QUE ESTA ATIVO
+      .p-steps-current {
+        background: #2d9cdb;
+        .p-menuitem-link {
+          background: #2d9cdb;
+          span {
+            color: white !important;
+            font-weight: 500 !important;
+          }
+        }
+      }
+    }
+  }
+}

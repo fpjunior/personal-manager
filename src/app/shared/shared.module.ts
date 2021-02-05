@@ -23,6 +23,7 @@ import { EventoFormComponent } from './components/layout/cadastro-evento/evento-
 import { CicloDashboardComponent } from './components/layout/ciclo/ciclo-dashboard/ciclo-dashboard.component';
 import { OutputPropertyDashboardComponent } from './components/layout/output-property/output-property-dashboard/output-property-dashboard.component';
 import { Example2FormComponent } from './components/example2/example2-form/example2-form.component';
+import { StepsComponent } from './components/steps/steps.component';
 
 
 @NgModule({
@@ -36,6 +37,9 @@ import { Example2FormComponent } from './components/example2/example2-form/examp
     ExampleDashboardComponent,
     ExampleFormComponent,
     Example2FormComponent,
+
+    // CORE
+    StepsComponent,
 
     InputPropertyComponent,
     OutputPropertyDashboardComponent,
@@ -78,7 +82,10 @@ import { Example2FormComponent } from './components/example2/example2-form/examp
     OutputPropertyDashboardComponent,
     EventoDashboardComponent,
     EventoFormComponent,
-    CicloDashboardComponent,    
+    CicloDashboardComponent, 
+    
+    // CORE
+    StepsComponent,
 
     // DIALOGS
     ConfirmDialogComponent,

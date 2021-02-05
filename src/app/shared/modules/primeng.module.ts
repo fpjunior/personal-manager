@@ -16,6 +16,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SidebarModule } from 'primeng/sidebar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { TableModule } from 'primeng/table';
+import { StepsModule } from 'primeng/steps';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { TableModule } from 'primeng/table';
     DialogModule,
     ChartModule,
     CheckboxModule,
-    InputTextModule
+    InputTextModule,
+    StepsModule,
   ]
 })
 export class PrimengModule { }

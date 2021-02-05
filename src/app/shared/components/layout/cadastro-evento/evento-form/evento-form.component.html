@@ -1,3 +1,11 @@
 <p>
   evento-form works!
 </p>
+<app-steps></app-steps>
+
+<app-steps [model]="modelSteps" [activeIndex]="activeIndex"></app-steps>
+<ng-container *ngIf="activeIndex == 0" [ngTemplateOutlet]="eventoDashboard"></ng-container>
+<ng-container *ngIf="activeIndex == 1" [ngTemplateOutlet]="eventoForm"></ng-container>
+
+<ng-template #eventoDashboard>Testando Evento Dashboard</ng-template>
+<ng-template #eventoForm>Testando Evento Form</ng-template>
