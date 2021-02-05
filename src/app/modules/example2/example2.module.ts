@@ -1,16 +1,16 @@
 import { NgModule } from "@angular/core";
-import { ExampleComponent } from '../example/example/example.component';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ExampleRoutingModule } from '../example/example-routing.module';
+import { Example2RoutingModule } from './example2-routing.module';
+import { Example2Component } from './example2/example2.component';
 
 @NgModule({
-    declarations: [ExampleComponent],
+    declarations: [Example2Component],
     imports: [
         CommonModule,
         SharedModule,
-        ExampleRoutingModule,
+        Example2RoutingModule,
     ]
 })
 
-export class ExampleModule {}
+export class Example2Module {}

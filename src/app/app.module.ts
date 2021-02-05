@@ -12,9 +12,6 @@ import { SharedModule } from './shared/shared.module';
 import { authInterceptorProvider } from './core/interceptors/auth.interceptor';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ExampleModule } from './modules/example/example.module';
-import { InputPropertyComponent } from './modules/input-property/input-property/input-property.component';
-import { ExampleComponent } from './modules/example/example/example.component';
 import { ProgressBarService } from './shared/components/progress-bar/progress-bar.service';
 
 
@@ -28,7 +25,6 @@ import { ProgressBarService } from './shared/components/progress-bar/progress-ba
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    ExampleModule,
     SharedModule,
     HttpClientModule,
     CoreModule,

@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
         icon: 'fas fa-laptop fa-lg:1em',
         command: () => {
           this.visibleSidebar = false;
-          this.route.navigate(['/example']);
+          this.route.navigate(['example']);
         },
       },
       {

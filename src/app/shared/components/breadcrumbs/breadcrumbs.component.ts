@@ -10,7 +10,7 @@ import { BreadcrumbService } from './breadcrumbs.service';
 })
 export class BreadcrumbsComponent {
 
-  home: MenuItem = { label: 'Preço', routerLink: '/home' };
+  home: MenuItem = { label: 'Home', routerLink: '/home' };
   breadcrumb: MenuItem[];
 
   constructor(

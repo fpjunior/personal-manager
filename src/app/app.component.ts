@@ -27,8 +27,8 @@ export class AppComponent {
   ) {}
 
   ngOnInit() {
-    this.breadcrumbItems.push({ label: `Gerência` });
-    this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
+    // this.breadcrumbItems.push({ label: `Gerência` });
+    // this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
   }
 
   

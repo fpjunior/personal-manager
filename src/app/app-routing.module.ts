@@ -12,17 +12,6 @@ import { CadastroEventoComponent } from './modules/cadastro-evento/cadastro-even
 
 
 const routes: Routes = [
-  // {path: 'example2', component: Example2Component},
-  // {path: 'example3', component: Example2Component},
-  // {path: 'home', component: HomeComponent},
-  // {path: 'main-page', component: MainPageComponent},
-  // {path: 'input-property', component: InputPropertyComponent},
-  // {path: 'output-property', component: OutputPropertyComponent},
-  // {path: 'cadastro-evento', component: CadastroEventoComponent},
-  {
-    path: '',
-    loadChildren: () => import('./modules/example/example.module').then(m => m.ExampleModule)
-  },
   {
     path: 'cadastro-evento',
     loadChildren: () =>
@@ -45,10 +34,24 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'example2',
+    loadChildren: () =>
+      import('./modules/example2/example2.module').then(
+        (m) => m.Example2Module
+      ),
+  },
+  {
     path: 'output-property',
     loadChildren: () =>
       import('./modules/output-property/output-property.module').then(
         (m) => m.OutputPropertyModule
+      ),
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./modules/home/home.module').then(
+        (m) => m.HomeModule
       ),
   },
 

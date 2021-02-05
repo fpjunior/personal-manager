@@ -22,6 +22,7 @@ import {ButtonModule} from 'primeng/button';
 import { EventoFormComponent } from './components/layout/cadastro-evento/evento-form/evento-form.component';
 import { CicloDashboardComponent } from './components/layout/ciclo/ciclo-dashboard/ciclo-dashboard.component';
 import { OutputPropertyDashboardComponent } from './components/layout/output-property/output-property-dashboard/output-property-dashboard.component';
+import { Example2FormComponent } from './components/example2/example2-form/example2-form.component';
 
 
 @NgModule({
@@ -34,6 +35,8 @@ import { OutputPropertyDashboardComponent } from './components/layout/output-pro
     ProgressBarComponent,
     ExampleDashboardComponent,
     ExampleFormComponent,
+    Example2FormComponent,
+
     InputPropertyComponent,
     OutputPropertyDashboardComponent,
     EventoDashboardComponent,
