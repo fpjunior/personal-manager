@@ -1,0 +1,61 @@
+// @import "generalStyle.scss";
+
+:host ::ng-deep {
+  #wrapper-dialog {
+    .p-dialog-content {
+      width: 798px;
+      padding-top: 25px;
+    }
+
+    label {
+      padding-right: 15px;
+      margin-top: 10px;
+    }
+  }
+
+  .btn-salvar {
+    padding-right: 30px;
+  }
+
+  .codigo-unidade {
+    border-color: red;
+    width: 300px;
+    margin-left: 160px;
+    height: 90px;
+    flex-wrap: nowrap;
+    white-space: pre;
+    padding-top: 20px;
+    margin-right: 20px;
+  }
+  .p-grid.p-jc-center.codigo-unidade.ng-tns-c34-5 {
+    margin-left: 160px;
+  }
+
+  input.p-codigo-unidade.p-inputtext.p-component.ng-untouched.ng-pristine.p-filled {
+    min-width: fit-content;
+  }
+
+  .label-unidade,
+  .p-picklist .p-picklist-list .p-picklist-item,
+  .p-inputtext.p-component.ng-untouched.ng-pristine.p-filled,
+  .p-picklist-filter-container .p-picklist-filter-icon,
+  .p-picklist .p-picklist-header .p-picklist-title,
+  .p-picklist-filter-input.p-inputtext.p-component {
+    font-size: 13px;
+  }
+
+  .p-dialog .p-dialog-header .p-dialog-title {
+    font-size: 16px;
+  }
+
+  .p-picklist-filter-container{
+    padding-top: 10px !important;
+  }
+
+  .p-picklist-list-wrapper{
+    width: 278px !important;
+  }
+  .p-picklist .p-picklist-buttons{
+    margin-top: 50px;
+  }
+}

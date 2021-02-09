@@ -1,0 +1,45 @@
+// @import "colors.scss";
+
+:host ::ng-deep {
+  .p-picklist {
+    .p-picklist-filter-container .p-picklist-filter-icon {
+      left: 0.5rem;
+      color: #6c757d;
+    }
+
+    input.p-picklist-filter-input.p-inputtext.p-component {
+      padding-left: 30px;
+    }
+
+    .p-picklist-filter-container,
+    .p-picklist-header {
+      background-color: transparent;
+      border: none;
+      padding: 1em 0;
+      .p-picklist-title {
+        font-weight: unset;
+      }
+    }
+
+    .p-picklist-header {
+      padding-bottom: 0;
+      color: #767676;
+    }
+
+    .p-picklist-list {
+      border-radius: 4px;
+    }
+
+    .p-picklist-source-controls,
+    .p-picklist-target-controls {
+      display: none;
+    }
+
+    .p-picklist-buttons {
+      > button {
+        background-color: white;
+        border: 1px solid white;
+      }
+    }
+  }
+}
