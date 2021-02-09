@@ -1,3 +1,5 @@
+import { GenericResponseDialogComponent } from './components/dialogs/generic-response-dialog/generic-response-dialog.component';
+import { InputPropertyDashboardComponent } from './components/layout/input-property/input-property-dashboard/input-property-dashboard.component';
 import { EventoDashboardComponent } from './components/layout/cadastro-evento/evento-dashboard/evento-dashboard.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -17,13 +19,15 @@ import { CardServicoAbertoComponent } from './components/widgets/card-servico-ab
 import { CardVariacaoPrecoComponent } from './components/widgets/card-variacao-preco/card-variacao-preco.component';
 import { ExampleDashboardComponent } from './components/layout/example/example-dashboard/example-dashboard.component';
 import { ExampleFormComponent } from './components/layout/example/example-form/example-form.component';
-import { InputPropertyComponent } from '../modules/input-property/input-property/input-property.component';
 import {ButtonModule} from 'primeng/button';
 import { EventoFormComponent } from './components/layout/cadastro-evento/evento-form/evento-form.component';
 import { CicloDashboardComponent } from './components/layout/ciclo/ciclo-dashboard/ciclo-dashboard.component';
 import { OutputPropertyDashboardComponent } from './components/layout/output-property/output-property-dashboard/output-property-dashboard.component';
 import { Example2FormComponent } from './components/example2/example2-form/example2-form.component';
 import { StepsComponent } from './components/steps/steps.component';
+import { InputPropertyFormComponent } from './components/layout/input-property/input-property-form/input-property-form.component';
+import { PicklistComponent } from './components/fields/picklist/picklist.component';
+import { DialogPicklistComponent } from './components/dialogs/dialog-picklist/dialog-picklist.component';
 
 
 @NgModule({
@@ -37,11 +41,12 @@ import { StepsComponent } from './components/steps/steps.component';
     ExampleDashboardComponent,
     ExampleFormComponent,
     Example2FormComponent,
+    InputPropertyDashboardComponent,
+    InputPropertyFormComponent,
 
     // CORE
     StepsComponent,
 
-    InputPropertyComponent,
     OutputPropertyDashboardComponent,
     EventoDashboardComponent,
     EventoFormComponent,
@@ -50,6 +55,8 @@ import { StepsComponent } from './components/steps/steps.component';
 
     // DIALOGS
     ConfirmDialogComponent,
+    DialogPicklistComponent,
+    GenericResponseDialogComponent,
 
     // CARDS
     CardServicoAbertoComponent,
@@ -58,6 +65,9 @@ import { StepsComponent } from './components/steps/steps.component';
     // TABLES
     TableDashboardComponent,
     TableGerenciaComponent,
+
+    //FIELDS
+    PicklistComponent,
 
 
     
@@ -78,17 +88,18 @@ import { StepsComponent } from './components/steps/steps.component';
     FormsModule,
     BreadcrumbsComponent,
     ProgressBarComponent,
-    InputPropertyComponent,
     OutputPropertyDashboardComponent,
     EventoDashboardComponent,
     EventoFormComponent,
     CicloDashboardComponent, 
+    PicklistComponent,
     
     // CORE
     StepsComponent,
 
     // DIALOGS
     ConfirmDialogComponent,
+    GenericResponseDialogComponent,
 
     // CARDS
     CardServicoAbertoComponent,

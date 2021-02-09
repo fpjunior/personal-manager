@@ -138,7 +138,7 @@ export class HeaderComponent implements OnInit {
             icon: 'fas fa-file-export fa-lg:1em',
             command: () => {
               this.visibleSidebar = false;
-              this.route.navigate(['Input-property']);
+              this.route.navigate(['input-property']);
             },
           },
           {

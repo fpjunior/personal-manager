@@ -1,0 +1,35 @@
+<div>
+  <!-- SOURCE: LEFT SIDE |  TARGET: RIGHT SIDE -->
+  <p-pickList
+  [source]="sourceList"
+  [target]="targetList"
+  [sourceHeader]="sourceHeader"
+  [targetHeader]="targetHeader"
+  [sourceStyle]="{'height': '' + height , 'width': '' + width}"
+  [targetStyle]="{'height': '' + height , 'width': '' + width}"
+
+  [filterBy]="page == 'replicar-unidade' ? 'label' : 'codigoComDescricao'"
+
+  filterMatchMode="contains"
+  [dragdrop]="true"
+  [responsive]="true"
+  sourceFilterPlaceholder="PESQUISAR"
+  targetFilterPlaceholder="PESQUISAR"
+  (onMoveToTarget)="onMoveToTarget.emit($event)"
+  (onMoveToSource)="onMoveToSource.emit($event)"
+  (onMoveAllToTarget)="onMoveAllToTarget.emit($event)"
+  (onMoveAllToSource)="onMoveAllToSource.emit($event)">
+
+    <ng-template pTemplate="item" let-item>
+      <div [ngSwitch]="page" class="ui-helper-clearfix">
+        <div class="pick" *ngSwitchCase="'perfil'">{{ item.codigoComDescricao }}</div>
+        <div class="pick" *ngSwitchCase="'usuario'">{{ item.codigoComDescricao }}</div>
+        <div class="pick" *ngSwitchCase="'replicar-unidade'"> {{ item.label }}</div>
+        <div class="pick" *ngSwitchCase="'alteracao-unidade-negocio'">{{ item.codigoComDescricao }}</div>
+        <div class="pick" *ngSwitchCase="'custo-partida'">{{ item.codigoComDescricao }}</div>
+        <div class="pick" *ngSwitchCase="'associacao-eventos'">{{ item.codigoComDescricao }}</div>
+        <div class="pick" *ngSwitchCase="'input-property'">{{ item.codigoComDescricao }}</div>
+      </div>
+    </ng-template>
+  </p-pickList>
+</div>

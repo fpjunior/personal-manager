@@ -1,14 +1,6 @@
-import { OutputPropertyModule } from './modules/output-property/output-property.module';
-import { RoleGuard } from './core/guards/role.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AccessDeniedComponent } from './error/access-denied/access-denied.component';
-import { AuthGuard } from './core/guards/auth.guard';
-import { Example2Component } from './modules/example2/example2/example2.component';
-import { HomeComponent } from './modules/home/home/home.component';
-import { MainPageComponent } from './modules/main-page/main-page/main-page.component';
-import { InputPropertyComponent } from './modules/input-property/input-property/input-property.component';
-import { CadastroEventoComponent } from './modules/cadastro-evento/cadastro-evento/cadastro-evento.component';
+
 
 
 const routes: Routes = [
@@ -54,6 +46,13 @@ const routes: Routes = [
         (m) => m.HomeModule
       ),
   },
+
+  { path: 'input-property',
+  loadChildren: () =>
+  import('./modules/input-property/input-property.module').then(
+    (m) => m.InputPropertyModule
+  ),
+  }
 
 ];
 
