@@ -1,3 +1,91 @@
-<p>
-  table-gerencia works!
-</p>
+<div id="table-gerencia">
+<div class="p-d-flex p-ai-center" [ngClass]="{
+  'gerencia-perfil':' p-jc-end',
+  'gerencia-usuario':'p-jc-end',
+  'ciclo':'p-jc-start',
+  'ufs-atuacao':'p-jc-center'
+}[page]">
+<div class="input-search" class="p-col-4"
+  *ngIf="page == 'ciclo' || page == 'ufs-atuacao'">
+  <input pInputText  class="uppercase" type="text"
+  (input)="ciclo.filterGlobal($event.target.value, 'contains')"
+  [placeholder]="(page == 'ufs-atuacao') ? 'Digite o CÓDIGO, NOME ou CNPJ' :  'Digite código ou descrição' " />
+</div>
+<p-button type="button" *ngIf="page !== 'ufs-atuacao' && page !== 'gerencia-usuario'"
+      class="standard newRegisterButton" icon="fas fa-plus" (click)="newRegister(page)" label="Cadastrar"></p-button>
+</div>
+
+<div #wrapperTable style="overflow-x: auto; overflow-y: hidden;" class="m-t-1em">
+  <p-table #ciclo
+  [paginatorDropdownAppendTo]="wrapperTable"
+  currentPageReportTemplate="Mostrado {first} a {last} de {totalRecords} registros"
+  [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[10,25,50]"
+  [columns]="cols"
+  [value]="dataToFillTable"
+  [reorderableColumns]="true"
+  [rows]="numberDataPerPage"
+  [paginator]="true"
+  [resizableColumns]="true"
+  [dataKey]="dataKey"
+  [lazy]="isLazyTable"
+  [loading]="loading"
+  [totalRecords]="totalRecords"
+  (onLazyLoad)="loadLazyTable($event)"
+  (onColReorder)="colReorderEvent($event)"
+  (onColResize)="colResizeEvent($event)"
+  (onPage)="changeRows($event)"
+  [autoLayout]="true">
+
+  <!-- <ng-template pTemplate="caption" *ngIf="page == 'ufs-atuacao'">
+    UNIDADE DE NEGÓCIO
+  </ng-template> -->
+
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th id="operationColumn-gerencia">
+        <button pButton type="button" class="tableButton" icon="fas fa-cog " pTooltip="Configurações"
+          (click)="showModalSelectColumns()">
+        </button>
+      </th>
+
+      <th columnResizeMode="expand" *ngFor="let col of columns; let i = index" pTooltip="col.hintName" [pSortableColumn]="col.field == 'nomeResponsavel' ? 'codigo' : col.field"
+        pResizableColumn pReorderableColumn [id]="col.field + '-' + page">
+        {{col.header}}
+        <p-sortIcon *ngIf="col.field !== 'operation'" [field]="col.field"></p-sortIcon>
+        <p-columnFilter *ngIf="col.field !== 'operation'" class="filtros-colunas" matchMode="contains" type="text" [field]="col.field" display="menu">
+        </p-columnFilter>
+      </th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-dataToFillTable let-columns="columns">
+    <tr>
+      <td> </td>
+      <td *ngFor="let col of columns; let i = index" [ngSwitch]="col.field"
+        [class]="col.field + '-' + page" [pContextMenuRow]="columns">
+        <!-- TELA REFERENCIA - CICLO -->
+        <span *ngSwitchCase="'codigo'">{{dataToFillTable.codigo}} </span>
+        <span *ngSwitchCase="'descricao'">{{dataToFillTable.descricao}}</span>
+
+        <!-- TELA REFERENCIA - UFS ATUACAO -->
+        <span *ngSwitchCase="'codigoUnidade'">{{dataToFillTable.codigoUnidade}}</span>
+
+        <div *ngSwitchCase="'operation'">
+          <button
+            pTooltip="teste"
+            icon="'fas fa-pencil-alt'"
+            [routerLink]="editRegister(page)"
+            [queryParams]="page == 'ufs-atuacao' ? {id: dataToFillTable.codigoUnidade } : { id: dataToFillTable.codigo}"></button>
+
+          <button pButton type="button" *ngIf="page !== 'ufs-atuacao'" (click)="delete.emit(dataToFillTable.codigo)"
+            pTooltip="page == 'ciclo' ? 'Associação do Perfil' : 'Excluir'" class="tableButton"
+            [icon]="page == 'ciclo' ? 'fas fa-users' : 'fas fa-trash-alt'"></button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+</div>
+
+</div>

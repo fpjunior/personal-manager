@@ -1,3 +1,20 @@
-<h3>Componente Ciclo - parágrafo do ciclo.html</h3>
-<p>Valor: {{valorInicialCiclo}}</p>
-<p>Nome: {{nomeInicialCiclo}}</p>
+<div class="p-grid p-jc-center">
+    <app-table-gerencia
+    [loading]="tableLoading"
+    page="ufs-atuacao"
+    [showModalDelete]="showModalDelete"
+    [cols]="tableColumns"
+    [dataToFillTable]="ufsAtuacaoResults"
+    (updateColumn)="saveTableConfig($event)"
+    [fullCols]="allColumns"
+    [rowsToShow]="rows"
+    [immutableCols]="['codigoUnidade','nomeUnidade','operation']">
+    </app-table-gerencia>
+  </div>
+  
+  <!-- <generic-response-dialog [content]="contentResponse" [showModal]="showModalResponse"></generic-response-dialog> -->
+  
+
+<p-button routerLink="/ciclo/cadastrar">
+    Testando
+</p-button>

@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewChecked, AfterViewInit, Input } from '@angular/core';
 import { BreadcrumbService } from '../../../breadcrumbs/breadcrumbs.service';
 import { MenuItem } from 'primeng/api';
+import { tableArr } from '../../ufs-atuacao/ufs-atuacao-dashboard/model/table.model';
+import { UnidadeParametro } from '../model/unidade-parametro.model';
+import { ProgressBarService } from '../../../progress-bar/progress-bar.service';
 
 @Component({
   selector: 'app-ciclo-dashboard',
@@ -12,6 +15,15 @@ import { MenuItem } from 'primeng/api';
 //   AfterViewChecked, OnDestroy
 export class CicloDashboardComponent implements OnDestroy, AfterContentChecked, OnChanges, OnInit, DoCheck, AfterContentInit, AfterViewInit, AfterViewChecked, AfterViewInit {
 
+  showModalDelete = false;
+  tableLoading: boolean;
+  showModalResponse: boolean;
+
+  tableColumns = tableArr;
+  allColumns = tableArr;
+  ufsAtuacaoResults: UnidadeParametro[] = [];
+  tableName = "ufsAtuacaoTable";
+
   @Input() valorInicialCiclo: number = 10;
   @Input() nomeInicialCiclo: string = 'Fernando';
 
@@ -19,6 +31,7 @@ export class CicloDashboardComponent implements OnDestroy, AfterContentChecked, 
 
   constructor(
     private breadcrumbService: BreadcrumbService,
+    private progressBarService: ProgressBarService,
   ) {
     this.log('constructor'); 
   }
@@ -26,6 +39,15 @@ export class CicloDashboardComponent implements OnDestroy, AfterContentChecked, 
   ngOnInit() {
     this.log('ngOnInit'); 
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
+  }
+
+  saveTableConfig(obj: any):void {
+    this.progressBarService.changeProgressBar(true);
+    this.tableLoading = true;
+    const ObjToSend = {
+      ufsAtuacaoTable: obj.$event,
+      rowsPerPage: obj.rowsPerPage
+    }
   }
 
   ngDoCheck() {

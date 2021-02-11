@@ -28,6 +28,7 @@ import { StepsComponent } from './components/steps/steps.component';
 import { InputPropertyFormComponent } from './components/layout/input-property/input-property-form/input-property-form.component';
 import { PicklistComponent } from './components/fields/picklist/picklist.component';
 import { DialogPicklistComponent } from './components/dialogs/dialog-picklist/dialog-picklist.component';
+import { CicloFormComponent } from './components/layout/ciclo/ciclo-form/ciclo-form.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { DialogPicklistComponent } from './components/dialogs/dialog-picklist/di
     EventoDashboardComponent,
     EventoFormComponent,
     CicloDashboardComponent,
+    CicloFormComponent,
     
 
     // DIALOGS
@@ -92,6 +94,7 @@ import { DialogPicklistComponent } from './components/dialogs/dialog-picklist/di
     EventoDashboardComponent,
     EventoFormComponent,
     CicloDashboardComponent, 
+    CicloFormComponent,
     PicklistComponent,
     
     // CORE
