@@ -18,6 +18,8 @@ export class CicloDashboardComponent implements OnDestroy, AfterContentChecked, 
   showModalDelete = false;
   tableLoading: boolean;
   showModalResponse: boolean;
+  rows = 10;
+
 
   tableColumns = tableArr;
   allColumns = tableArr;
