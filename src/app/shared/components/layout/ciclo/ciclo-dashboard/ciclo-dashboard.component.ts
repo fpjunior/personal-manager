@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, OnChanges, DoCheck, AfterContentInit, Aft
 import { BreadcrumbService } from '../../../breadcrumbs/breadcrumbs.service';
 import { MenuItem } from 'primeng/api';
 import { tableArr } from '../../ufs-atuacao/ufs-atuacao-dashboard/model/table.model';
-import { UnidadeParametro } from '../model/unidade-parametro.model';
+import { Ciclo } from '../model/ciclo.model';
 import { ProgressBarService } from '../../../progress-bar/progress-bar.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class CicloDashboardComponent implements OnDestroy, AfterContentChecked, 
 
   tableColumns = tableArr;
   allColumns = tableArr;
-  ufsAtuacaoResults: UnidadeParametro[] = [];
+  ufsAtuacaoResults: Ciclo[] = [];
   tableName = "ufsAtuacaoTable";
 
   @Input() valorInicialCiclo: number = 10;

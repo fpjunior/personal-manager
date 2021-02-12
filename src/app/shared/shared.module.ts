@@ -29,6 +29,8 @@ import { InputPropertyFormComponent } from './components/layout/input-property/i
 import { PicklistComponent } from './components/fields/picklist/picklist.component';
 import { DialogPicklistComponent } from './components/dialogs/dialog-picklist/dialog-picklist.component';
 import { CicloFormComponent } from './components/layout/ciclo/ciclo-form/ciclo-form.component';
+import { GenericButtonsComponent } from './components/buttons/generic-buttons/generic-buttons.component';
+import { InputTextComponent } from './components/fields/input-text/input-text.component';
 
 
 @NgModule({
@@ -70,6 +72,10 @@ import { CicloFormComponent } from './components/layout/ciclo/ciclo-form/ciclo-f
 
     //FIELDS
     PicklistComponent,
+    InputTextComponent,
+
+    // BUTTONS
+    GenericButtonsComponent,
 
 
     
@@ -110,6 +116,12 @@ import { CicloFormComponent } from './components/layout/ciclo/ciclo-form/ciclo-f
     // TABLES
     TableDashboardComponent,
     TableGerenciaComponent,
+
+    // BUTTONS
+    GenericButtonsComponent,
+
+    // FIELDS
+    InputTextComponent
   ],
   entryComponents: [
 

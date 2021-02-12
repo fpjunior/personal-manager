@@ -1,0 +1,70 @@
+:host ::ng-deep {
+    .p-col-modified-center {
+      width: 16.6667%;
+      padding: 0.5rem;
+      flex: 0 0 auto;
+    }
+  
+    @media (min-width: 1600px) {
+      .p-col-modified-center {
+        width: 16.6667%;
+      }
+    }
+  
+    @media (min-width: 1800px) {
+      .p-col-modified-center {
+        width: 12%;
+      }
+    }
+  
+    @media (min-width: 2000px) {
+      .p-col-modified-center {
+        width: 14%;
+      }
+    }
+  
+    @media (max-width: 1580px) {
+      .p-col-modified-center {
+        // width: 25%;
+        width: 12%;
+      }
+    }
+  
+    @media (max-width: 1460px) {
+      .p-col-modified-center {
+        // width: 25%;
+        width: 18%;
+      }
+    }
+  
+    @media (max-width: 1300px) {
+      .p-col-modified-center {
+        width: 20%;
+      }
+    }
+  
+    @media (max-width: 1100px) {
+      .p-col-modified-center {
+        width: 24%;
+      }
+    }
+  
+    .p-col-modified {
+      width: 33.33333333333333%;
+      padding: 0.5rem;
+      flex: 0 0 auto;
+    }
+  
+    // @media (max-width: 1300px) {
+    //   .p-col-modified {
+    //     width: 25%;
+    //   }
+    // }
+  
+    @media (max-width: 1400px) {
+      .p-col-modified {
+        width: 25%;
+      }
+    }
+  }
+  

@@ -1,0 +1,45 @@
+<section class="p-grid" [ngClass]="{
+  'standard':'p-jc-center',
+  'three-center':'p-jc-center',
+  'cancel':'p-jc-center'
+}[model]">
+
+<div [ngClass]="(model=='three-left')?'p-col-5':'hidden'" *ngIf="model == 'three-left'">
+  <p-button type="button" [icon]="iconLeft" (click)="leftEvent.emit()" [class.left]="model == 'three-left'"
+    class="standard" [label]="labelLeft">
+  </p-button>
+</div>
+
+<div [ngClass]="{
+  'standard':'p-col-1',
+  'steps':'p-col-6',
+  'three-center':'p-col-1',
+  'three-left':'p-col-1',
+  'cancel':'hidden'
+}[model]" *ngIf="model !== 'cancel'">
+  <p-button type="submit" [disabled]="formGroup?.invalid || disableSubmit" class="" class="standard submitButton right"
+    icon="fas fa-save" label="Salvar">
+  </p-button>
+</div>
+
+<div [ngClass]="(model=='three-center')?'p-col-modified-center':'hidden'" *ngIf="model == 'three-center'">
+  <p-button type="button" (click)="middleEvent.emit()" class="standard" [icon]="iconMiddle" [label]="labelMiddle">
+  </p-button>
+</div>
+
+<div class="p-col-1">
+  <p-button type="button" (click)="cancelEvent.emit()" class="dismiss"
+    [icon]="canceled ? 'fa fa-times-circle':  'fas fa-sign-out-alt fa-lg'" [label]="canceled ? 'Cancelar' : 'Sair'">
+  </p-button>
+</div>
+
+<div [ngClass]="(model=='steps')?'p-col-modified':'hidden'" *ngIf="model == 'steps'">
+  <p-button type="button" [disabled]="activeIndex == 0" (click)="previousEvent.emit()" icon="fas fa-arrow-left"
+    [ngClass]="{'steps':'right'}[model]" class="standard" label="Anterior"></p-button>
+</div>
+
+<div [ngClass]="(model=='steps')?'p-col-1':'hidden'" *ngIf="model == 'steps'">
+  <p-button type="button" [disabled]="disableNext" (click)="nextEvent.emit()" icon="fas fa-arrow-right"
+    class="standard" iconPos="right" [label]="nextButtonLabel"></p-button>
+</div>
+</section>

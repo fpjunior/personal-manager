@@ -1,3 +1,116 @@
-<p>
-  ciclo-form works!
-</p>
+<div #divCalendar>
+  <app-steps #testeThiago [model]="modelSteps" [activeIndex]="activeIndex" style="display: inline-flex;"></app-steps>
+  <ng-container *ngIf="activeIndex == 0" [ngTemplateOutlet]="semaforos"></ng-container>
+  <ng-container *ngIf="activeIndex == 1" [ngTemplateOutlet]="frequencia"></ng-container>
+  <!-- STEP SEMÁFOROS -->
+  <ng-template #semaforos>
+    <div>
+      <div class="p-grid p-jc-center">
+        <div class="p-col-12">
+          <h3 style="text-align: center">Configurações dos Semáforos</h3>
+        </div>
+      </div>
+
+      <form [formGroup]="cicloForm" (ngSubmit)="submitCicloForm()">
+        <div class="p-d-flex p-jc-center rows div-input-group">
+          <div class="p-mr-2 description">
+            <span class="fa fa-circle fa-2x p-circle" style="color: #219653;"></span>
+            <span>No prazo</span>
+          </div>
+          <div class="p-inputgroup input-text">
+            <p-inputMask class="input" (onBlur)="maskOut($event.target.value, 'confNivel1')"
+            (onInput)="maskRecieve($event.target.value, 'confNivel1')"
+            pTooltip="O indicador No Prazo não pode receber uma carga horária maior que 997:00" mask="99?9:99" slotChar=" "
+            formControlName="confNivel1"></p-inputMask>
+            <small *ngIf="cicloForm.controls['confNivel1'].value > '997:00'"
+              class="p-invalid required-center">
+              Preenchimento inválido
+            </small>
+          </div>
+        </div>
+
+        <div class="p-d-flex p-jc-center rows div-input-group">
+          <div class="p-mr-2 description">
+            <span class="fa fa-circle fa-2x p-circle" style="color: #F2C94C; "></span>
+            <span>Aceitável</span>
+          </div>
+          <div class="p-inputgroup input-text">
+            <p-inputMask 
+            (onBlur)="maskOut($event.target.value, 'confNivel2')" pTooltip="O valor Aceitável não pode ser menor que o valor No Prazo"
+            (onInput)="maskRecieve($event.target.value, 'confNivel2')" mask="99?9:99" slotChar=" " formControlName="confNivel2">
+          </p-inputMask>
+            <small class="p-invalid required-center">
+              <!-- Valor Informado não é aceitável -->
+            </small>
+          </div>
+        </div>
+
+        <div class="p-d-flex p-jc-center rows div-input-group">
+          <div class="p-mr-2 description">
+            <span class="fa fa-circle fa-2x p-circle" style="color: #EB5757; margin-right: 34.5px; "></span>
+            <span>Crítico</span>
+          </div>
+          <div class="p-inputgroup input-text input-text-critico" >
+            <input-text [formGroup]="cicloForm" controlName="critico">
+            </input-text>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+  <ng-template #frequencia>
+    <div class="p-grid p-jc-center">
+      <div class="p-col-12">
+        <h3 style="text-align: center">Configurações dos Semáforos</h3>
+      </div>
+    </div>
+
+    <form [formGroup]="cicloForm" style=" min-height: 173px !important;" (ngSubmit)="submitConfigCiclo()">
+      <div class="p-d-flex p-jc-center rows div-input-group">
+        <div class="p-mr-2 description input-frequencia">
+          <span>A cada</span>
+        </div>
+        <div class="p-inputgroup input-text">
+          <p-inputMask class="input" mask="9?9:99" slotChar=" " [formGroup]="cicloForm" 
+          formControlName="confFrequencia"></p-inputMask>
+        </div>
+      </div>
+
+      <div class="p-d-flex p-jc-center rows div-input-group">
+        <div class="p-mr-2 description input-frequencia">
+          <span>Próxima Atualização</span>
+        </div>
+        <div class="p-inputgroup input-text">
+          <!-- <p-calendar></p-calendar> -->
+            <button type="button" pButton pRipple icon="fa fa-pencil-alt" styleClass="p-button-warn" (click)="editCalendar()"></button>      
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</div>
+
+<div class="group-button">
+  <form [formGroup]="cicloForm" (ngSubmit)="submitCicloForm()">
+    <div class="button-restoreDefault">
+      <p-button [disabled]="activeRestoreDefault" type="button" class="standard" (onClick)="restoreDefault()"
+        icon="fa fa-undo" label="Restaurar Padrão">
+      </p-button>
+    </div>
+    <div class="generic-button p-next-preview" >
+      <generic-buttons hiddenMiddle model="steps" [disableNext]="disableNext" [formGroup]="cicloForm" 
+      (cancelEvent)="cancelForm()" [activeIndex]="activeIndex"
+        [canceled]="true" (previousEvent)="previousEvent()" (nextEvent)="nextEvent()">
+      </generic-buttons>
+    </div>
+  </form>
+</div>
+
+<app-confirm-dialog (onClose)="onHideDialogConfirm()" (confirmEvent)="confirmExit()"
+  (cancelEvent)="showModalConfirm = false" [showModal]="showModalConfirm" header="Confirmação"
+  content="Qualquer alteração realizada será perdida. Tem certeza que deseja cancelar?">
+</app-confirm-dialog>
+
+<app-confirm-dialog (onClose)="onHideDialogConfirmRestoreDefault()" (confirmEvent)="restoreValueDefault()"
+  (cancelEvent)="showModalRestoreDefault = false" [showModal]="showModalRestoreDefault" header="Confirmação"
+  content="Existem alterações realizadas e não efetivadas. Deseja salvá-las?">
+</app-confirm-dialog>

@@ -17,6 +17,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { TableModule } from 'primeng/table';
 import { StepsModule } from 'primeng/steps';
+import { InputMaskModule } from 'primeng/inputmask';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { StepsModule } from 'primeng/steps';
     CheckboxModule,
     InputTextModule,
     StepsModule,
+    InputMaskModule,
   ]
 })
 export class PrimengModule { }

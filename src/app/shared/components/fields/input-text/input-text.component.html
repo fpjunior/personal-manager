@@ -1,0 +1,30 @@
+<div [formGroup]="formGroup" class="form-label">
+  <label [ngClass]="{'required': required}" [for]="label">{{label}}
+  </label>
+
+  <input
+  [name]="label"
+  [placeholder]="placeholder"
+  [formControlName]="controlName"
+  [required]="required"
+  type="text"
+  class="uppercase"
+  [maxlength]="maxlength"
+  pInputText
+  (onChange)="change.emit($event)"
+  [ngClass]="validator.validateHasError(formControl, 'required') ? uppercase ? ' ng-invalid ng-dirty uppercase' : 'uppercase' : uppercase ? 'uppercase' : ''">
+
+  <small *ngIf="validator.validateHasError(formControl, 'required')" class="p-invalid">
+    Campo obrigatório.
+  </small>
+
+  <small *ngIf="validator.validateHasError(formControl, 'minlength')" class="p-invalid">
+    Campo precisa ter no mínimo {{validator.validateLength(formControl, 'minlength')}} caracteres
+  </small>
+
+  <small *ngIf="validator.validateHasError(formControl, 'maxlength')" class="p-invalid">
+    Campo pode ter no máximo {{validator.validateLength(formControl, 'maxlength')}} caracteres
+  </small>
+</div>
+
+
