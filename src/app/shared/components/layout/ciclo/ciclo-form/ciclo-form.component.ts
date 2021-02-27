@@ -8,11 +8,13 @@ import { BreadcrumbService } from '../../../breadcrumbs/breadcrumbs.service';
 import { CicloService } from '../service/ciclo.service';
 import { ProgressBarService } from '../../../progress-bar/progress-bar.service';
 import { tryCatchError } from 'src/app/shared/utils/erro-handler.util';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-ciclo-form',
   templateUrl: './ciclo-form.component.html',
-  styleUrls: ['./ciclo-form.component.scss']
+  styleUrls: ['./ciclo-form.component.scss'],
+  providers: [DatePipe]
 })
 export class CicloFormComponent implements OnInit {
 
@@ -34,6 +36,9 @@ export class CicloFormComponent implements OnInit {
   contentResponse: string;
   minDate = new Date();
   maxDate = new Date();
+  descricaoMaxLength = 6;
+  br: any;
+  valuePlaceHolder: string;
 
   breadcrumbItems: MenuItem[] = [
     { label: `Ciclo`, command: () => this.cancelForm() },
@@ -56,14 +61,14 @@ export class CicloFormComponent implements OnInit {
 
    get f(): { [key: string]: AbstractControl; } { return this.cicloForm.controls;}
 
-  ngOnInit() {
+   ngOnInit() {
     this.initSteps();
     this.setValueForm();
     this.disableCalendar();
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
     setTimeout(() => {
       this.progressBarService.changeProgressBar(true);
-      this.incrementValue(this.f['confNivel2'].value, 'confNivel2');
+      // this.incrementValue(this.f['confNivel2'].value, 'confNivel2');
       this.progressBarService.changeProgressBar(false);
     }, 1500)
   }
@@ -74,124 +79,6 @@ export class CicloFormComponent implements OnInit {
       confNivel2: null,
       confFrequencia: null,
     } as Ciclo
-  }
-
-  initForm(ciclo: Ciclo): void {
-    this.cicloForm = this.formBuilder.group({
-      codigo: this.codigoDivergenciaPreco,
-      confNivel1: [ciclo.confNivel1, Validators.compose([Validators.required, Validators.pattern(
-        /[0-9]{1}[0-9]{1}[0-7]{1}:[0-5]{1}[0-9]{1}/)])],
-      confNivel2: [ciclo.confNivel2, Validators.compose([Validators.required, Validators.pattern(
-        /[0-9]{1}[0-9]{1}[0-7]{1}:[0-5]{1}[0-9]{1}/)])],
-      critico: [{ value: this.critico, disabled: true }, Validators.compose([Validators.required, Validators.pattern(
-        /[0-9]{1}[0-9]{1}[0-9]{1}:[0-5]{1}[0-9]{1}/)])],
-      confFrequencia: [ciclo.confFrequencia, [Validators.required, Validators.pattern(/[0-9]{1}[0-9]{1}:[0-5]{1}[0-9]{1}/)]],
-      confDataProximaAtualizacao: [{ value: ciclo.confDataProximaAtualizacao, disabled: true }, [Validators.required]],
-      descricao: '',
-    })
-  }
-
-  setValueForm(): void {
-    this.progressBarService.changeProgressBar(true);
-    this.cicloService.getConfigCiclo().subscribe(ciclo => {
-      console.log('console', ciclo)
-      if (ciclo !== null) {
-        this.initForm(ciclo)
-      }
-      this.detectInputChanges()
-      this.progressBarService.changeProgressBar(false);
-      this.showModalRestoreDefault = false;
-    }, err => {
-      this.exit = false;
-      this.isErrorResponse = true;
-      this.showModalResponse = true;
-      this.contentResponse = tryCatchError(err);
-      this.progressBarService.changeProgressBar(false);
-    });
-  }
-
-  detectInputChanges(){
-    this.f['confNivel1'].valueChanges.subscribe(change => {
-      change !== '024:00' ? this.activeRestoreDefault = false : this.activeRestoreDefault = true;
-    });
-    this.f['confNivel2'].valueChanges.subscribe(change => {
-      change !== '048:00' ? this.activeRestoreDefault = false : this.activeRestoreDefault = true;
-    });
-    this.f['confFrequencia'].valueChanges.subscribe(change => {
-      change !== '23:59' ? this.activeRestoreDefault = false : this.activeRestoreDefault = true;
-    })
-  }
-
-  onHide = (): Promise<boolean> => this.exit && this.confirmExit();
-
-  onShow = () => setTimeout(() => { if (!this.isErrorResponse) { this.showModalResponse = false; } }, 1500);
-
-  confirmExit = (): Promise<boolean> => this.route.navigate(['/home/dashboard']);
-
-  cancelForm = (): boolean => this.showModalConfirm = true;
-
-  onHideDialogConfirm = (): boolean => this.showModalConfirm = false;
-
-  onHideDialogConfirmRestoreDefault = (): boolean => this.showModalRestoreDefault = false;
-
-  submitForm(): void {
-
-  }
-
-  previousEvent() {
-    this.activeIndex--;
-    this.disableNext = false;
-  }
-
-  nextEvent() {
-    this.activeIndex++;
-    this.disableNext = true;
-  }
-
-  private initSteps = (): MenuItem[] => (
-    this.modelSteps = [
-      {
-        label: 'SEMÁFOROS', command: () => {
-          this.activeIndex = 0;
-          this.disableNext = false;
-        }
-      },
-      {
-        label: 'FREQUÊNCIA', command: () => {
-          this.activeIndex = 1;
-          this.disableNext = true;
-        }
-      }
-    ]
-  )
-
-  submitCicloForm(){
-    
-  }
-
-  restoreDefault(){
-
-  }
-
-  restoreValueDefault(){
-
-  }
-
-  editCalendar(){
-    if(this.cicloForm.controls.confDataProximaAtualizacao.status === 'DISABLED'){
-      this.cicloForm.controls.confDataProximaAtualizacao.enable();
-      setTimeout(() =>{ 
-        this.calendarInput.inputfieldViewChild.nativeElement.dispatchEvent(new Event('click'))
-      }, 10);
-    }
-  }
-
-  disableCalendar() {
-    this.cicloForm.controls.confDataProximaAtualizacao.disable();
-  }
-
-  submitConfigCiclo(){
-
   }
 
   maskRecieve(value: string, controlName: string): void {
@@ -225,7 +112,6 @@ export class CicloFormComponent implements OnInit {
       }
     }
   }
-
   maskOut(value: string, controlName: string): void {
     let [hour, min] = value.split(':');
 
@@ -325,5 +211,144 @@ export class CicloFormComponent implements OnInit {
       this.f['critico'].setValue(critHourFinal);
     }
   }
+
+
+  initForm(ciclo: Ciclo): void {
+    this.cicloForm = this.formBuilder.group({
+      codigo: this.codigoDivergenciaPreco,
+      confNivel1: [ciclo.confNivel1, Validators.compose([Validators.required, Validators.pattern(
+        /[0-9]{1}[0-9]{1}[0-7]{1}:[0-5]{1}[0-9]{1}/)])],
+      confNivel2: [ciclo.confNivel2, Validators.compose([Validators.required, Validators.pattern(
+        /[0-9]{1}[0-9]{1}[0-9]{1}:[0-5]{1}[0-9]{1}/)])],
+      critico: [{ value: this.critico, disabled: true }, Validators.compose([Validators.required, Validators.pattern(
+        /[0-9]{1}[0-9]{1}[0-9]{1}:[0-5]{1}[0-9]{1}/)])],
+      confFrequencia: [ciclo.confFrequencia, Validators.compose([Validators.pattern(
+        /^(24:00)|((0[1-9]|1\d|2[0-3]):([0-5]\d))|(00:(0[1-5]|[1-9]0|[1-5][1-9]))$/)])],
+      confDataProximaAtualizacao: [{ value: ciclo.confDataProximaAtualizacao, disabled: true }, [Validators.required]],
+      descricao: '',
+    })
+  }
+
+  restoreValueDefault(): void {
+    this.progressBarService.changeProgressBar(true);
+    this.cicloService.getRestoreCiclo().subscribe(configIndicador => {
+      if (configIndicador !== null) {
+        this.initForm(configIndicador)
+      }
+      this.detectInputChanges();
+      this.progressBarService.changeProgressBar(false);
+      this.showModalRestoreDefault = false;
+    }, err => {
+      this.exit = false;
+      this.isErrorResponse = true;
+      this.showModalResponse = true;
+      this.contentResponse = tryCatchError(err);
+      this.progressBarService.changeProgressBar(false);
+    })
+  }
+
+  setValueForm(): void {
+    this.progressBarService.changeProgressBar(true);
+    this.cicloService.getConfigCiclo().subscribe(ciclo => {
+      console.log('console', ciclo)
+      if (ciclo !== null) {
+        this.initForm(ciclo)
+      }
+      this.detectInputChanges()
+      this.progressBarService.changeProgressBar(false);
+      this.showModalRestoreDefault = false;
+    }, err => {
+      this.exit = false;
+      this.isErrorResponse = true;
+      this.showModalResponse = true;
+      this.contentResponse = tryCatchError(err);
+      this.progressBarService.changeProgressBar(false);
+    });
+  }
+
+  detectInputChanges(){
+    this.f['confNivel1'].valueChanges.subscribe(change => {
+      change !== '024:00' ? this.activeRestoreDefault = false : this.activeRestoreDefault = true;
+    });
+    this.f['confNivel2'].valueChanges.subscribe(change => {
+      change !== '048:00' ? this.activeRestoreDefault = false : this.activeRestoreDefault = true;
+    });
+    this.f['confFrequencia'].valueChanges.subscribe(change => {
+      change !== '23:59' ? this.activeRestoreDefault = false : this.activeRestoreDefault = true;
+    })
+  }
+
+  onHide = (): Promise<boolean> => this.exit && this.confirmExit();
+
+  onShow = () => setTimeout(() => { if (!this.isErrorResponse) { this.showModalResponse = false; } }, 1500);
+
+  confirmExit = (): Promise<boolean> => this.route.navigate(['/home/dashboard']);
+
+  cancelForm = (): boolean => this.showModalConfirm = true;
+
+  onHideDialogConfirm = (): boolean => this.showModalConfirm = false;
+
+  onHideDialogConfirmRestoreDefault = (): boolean => this.showModalRestoreDefault = false;
+
+  submitForm(): void {
+
+  }
+
+  previousEvent() {
+    this.activeIndex--;
+    this.disableNext = false;
+  }
+
+  nextEvent() {
+    this.activeIndex++;
+    this.disableNext = true;
+  }
+
+  private initSteps = (): MenuItem[] => (
+    this.modelSteps = [
+      {
+        label: 'SEMÁFOROS', command: () => {
+          this.activeIndex = 0;
+          this.disableNext = false;
+        }
+      },
+      {
+        label: 'FREQUÊNCIA', command: () => {
+          this.activeIndex = 1;
+          this.disableNext = true;
+        }
+      }
+    ]
+  )
+
+  submitCicloForm(){
+    
+  }
+
+  restoreDefault(){
+
+  }
+
+  editCalendar(){
+    if(this.cicloForm.controls.confDataProximaAtualizacao.status === 'DISABLED'){
+      this.cicloForm.controls.confDataProximaAtualizacao.enable();
+      setTimeout(() =>{ 
+        this.calendarInput.inputfieldViewChild.nativeElement.dispatchEvent(new Event('click'))
+      }, 10);
+    }
+  }
+
+  disableCalendar() {
+    this.cicloForm.controls.confDataProximaAtualizacao.disable();
+  }
+
+  submitConfigCiclo(){
+
+  }
+
+
+
+
+
 
 }

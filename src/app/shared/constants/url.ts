@@ -17,4 +17,5 @@ export const URL_USER_TO_CPF = URL_USER + 'buscar-por-cpf';
 export const URL_EVENTS = URL_API + VERSION_API + 'evento';
 export const URL_UFS_ATUACAO = URL_API + VERSION_API + 'ufs-atuacao';
 export const USER_PERMISSION = URL_USER + 'permissao/';
-export const URL_GET_CICLO = JSON_SERVER + '/filmes';
+export const URL_GET_CICLO = JSON_SERVER + '/data';
+export const URL_RESTORE_CONFIG_CICLO = JSON_SERVER + '/restore'
