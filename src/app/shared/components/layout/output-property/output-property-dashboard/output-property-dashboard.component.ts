@@ -12,6 +12,8 @@ export class OutputPropertyDashboardComponent implements OnInit {
   @Input() valor: number = 10;
   @Input() valorInicial: number = 10;
 
+  valorAux: number = 0;
+
   @Output() mudouValor = new EventEmitter();
 
   @ViewChild('campoInput') campoValorInput: ElementRef;
@@ -28,10 +30,7 @@ export class OutputPropertyDashboardComponent implements OnInit {
   }
 
   incrementa() {
-    // console.log(this.campoValorInput.nativeElement.value);
-    // this.valor++
-    this.campoValorInput.nativeElement.value++;
-    this.mudouValor.emit({ novoValor: this.valor })
+    this.valorAux = this.valorAux + 2
   }
 
   decrementa() {

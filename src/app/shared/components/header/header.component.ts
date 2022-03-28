@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
     (this.items = [
       {
         label: 'Example',
-        icon: 'fas fa-laptop fa-lg:1em',
+        icon: 'fa fa-address-book',
         command: () => {
           this.visibleSidebar = false;
           this.route.navigate(['example']);
@@ -153,7 +153,7 @@ export class HeaderComponent implements OnInit {
           { separator: true },
         ],
       },
-      
+
       {
         label: 'Cadastro de Evento',
         icon: 'fas fa-cogs fa-lg:1em',
@@ -171,7 +171,7 @@ export class HeaderComponent implements OnInit {
           { separator: true },
         ],
       },
-     
+
     ]);
 
 }
