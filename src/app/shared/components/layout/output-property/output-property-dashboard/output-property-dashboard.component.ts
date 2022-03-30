@@ -30,13 +30,11 @@ export class OutputPropertyDashboardComponent implements OnInit {
   }
 
   incrementa() {
-    this.valorAux = this.valorAux + 2
+    this.valorAux = this.valorAux + 1
   }
 
   decrementa() {
-    this.campoValorInput.nativeElement.value--; //aqui foi realizado um decremento através do element DOM pegando através da variável que foi declarada no html
-    // this.valor--
-    this.mudouValor.emit({ novoValor: this.valor })
+    this.valorAux = this.valorAux -1
 
   }
 
