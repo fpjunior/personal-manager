@@ -12,7 +12,13 @@ export class OutputPropertyDashboardComponent implements OnInit {
   @Input() valor: number = 10;
   @Input() valorInicial: number = 10;
 
-  valorAux: number = 0;
+  valorMaisUm: number = 0;
+  valorMaisDois: number = 0;
+  valorMaisQuatro: number = 0;
+  valorMaisDez: number = 0;
+
+
+
 
   @Output() mudouValor = new EventEmitter();
 
@@ -29,12 +35,39 @@ export class OutputPropertyDashboardComponent implements OnInit {
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
   }
 
-  incrementa() {
-    this.valorAux = this.valorAux + 1
+  incrementaMais1() {
+    this.valorMaisUm = this.valorMaisUm + 1
   }
 
-  decrementa() {
-    this.valorAux = this.valorAux -1
+  decrementaMais1() {
+    this.valorMaisUm = this.valorMaisUm -1
+
+  }
+
+  incrementaMais2() {
+    this.valorMaisDois = this.valorMaisDois + 2
+  }
+
+  decrementaMais2() {
+    this.valorMaisDois = this.valorMaisDois -2
+
+  }
+
+  incrementaMais4() {
+    this.valorMaisQuatro = this.valorMaisQuatro + 4
+  }
+
+  decrementaMais4() {
+    this.valorMaisQuatro = this.valorMaisQuatro - 4
+
+  }
+
+  incrementaMais10() {
+    this.valorMaisDez = this.valorMaisDez + 10
+  }
+
+  decrementaMais10() {
+    this.valorMaisDez = this.valorMaisDez -10
 
   }
 

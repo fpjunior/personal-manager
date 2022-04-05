@@ -7,9 +7,22 @@
 <p>'-output-property->'</p> -->
 
 <div>
-  <button pButton type="button" label="Click" (click)="decrementa()">-</button>
-  <input type="text" [value]="valorAux" readonly #campoInput>
-  <button pButton type="button" label="Click" (click)="incrementa()">+</button>
+  <button pButton type="button" label="Click" (click)="decrementaMais1()">-1</button>
+  <input type="text" [value]="valorMaisUm" readonly #campoInput>
+  <button pButton type="button" label="Click" (click)="incrementaMais1()">+1</button><br>
+
+  <button pButton type="button" label="Click" (click)="decrementaMais2()">-2</button>
+  <input type="text" [value]="valorMaisDois" readonly #campoInput>
+  <button pButton type="button" label="Click" (click)="incrementaMais2()">+2</button><br>
+
+  <button pButton type="button" label="Click" (click)="decrementaMais4()">-4</button>
+  <input type="text" [value]="valorMaisQuatro" readonly #campoInput>
+  <button pButton type="button" label="Click" (click)="incrementaMais4()">+4</button><br>
+
+  <button pButton type="button" label="Click" (click)="decrementaMais10()">-10</button>
+  <input type="text" [value]="valorMaisDez" readonly #campoInput>
+  <button pButton type="button" label="Click" (click)="incrementaMais10()">+10</button><br>
+
 </div>
 
 
