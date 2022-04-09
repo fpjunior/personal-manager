@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { BreadcrumbService } from '../../../breadcrumbs/breadcrumbs.service';
+import { BreadcrumbService } from '../../breadcrumbs/breadcrumbs.service';
 
 @Component({
-  selector: 'app-output-property-dashboard',
-  templateUrl: './output-property-dashboard.component.html',
-  styleUrls: ['./output-property-dashboard.component.scss']
+  selector: 'app-contato',
+  templateUrl: './contato.component.html',
+  styleUrls: ['./contato.component.scss']
 })
-export class OutputPropertyDashboardComponent implements OnInit {
+export class ContatoComponent implements OnInit {
 
   @Input() valor: number = 10;
   @Input() valorInicial: number = 10;
@@ -24,7 +24,7 @@ export class OutputPropertyDashboardComponent implements OnInit {
 
   @ViewChild('campoInput') campoValorInput: ElementRef;
 
-  breadcrumbItems: MenuItem[] = [{ label: `OutPut-Property`}]
+  breadcrumbItems: MenuItem[] = [{ label: `Contato`}]
 
   constructor(
     private breadcrumbService: BreadcrumbService,
