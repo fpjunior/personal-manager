@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
   private initMenu = (): MenuItem[] =>
     (this.items = [
       {
-        label: 'Example',
+        label: 'Contatos',
         icon: 'fa fa-address-book',
         command: () => {
           this.visibleSidebar = false;
