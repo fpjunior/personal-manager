@@ -31,7 +31,7 @@ export class ContatoComponent implements OnInit {
 
   @ViewChild('campoInput') campoValorInput: ElementRef;
 
-  breadcrumbItems: MenuItem[] = [{ label: `Contato`}]
+  breadcrumbItems: MenuItem[] = [{ label: `Contatos`}]
 
   constructor(
     private breadcrumbService: BreadcrumbService,
