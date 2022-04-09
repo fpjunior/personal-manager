@@ -6,26 +6,26 @@
 <p>do input, tudo isso está dentro do html do output-property.html, e sendo chamado lá no example.html pela rota</p>
 <p>'-output-property->'</p> -->
 
-<!--
 <div>
-  <button pButton type="button" label="-1" (click)="decrementaMais1()"></button>
-  <input type="text" [value]="valorMaisUm" readonly #campoInput>
-  <button pButton type="button" label="+1" (click)="incrementaMais1()"></button><br>
+  <button pButton type="button" label="-01" (click)="changeValue(1, '-')"></button>
+  <input type="text" [value]="valueInput1" readonly #campoInput>
+  <button pButton type="button" label="+01" (click)="changeValue(1, '+')"></button><br><br>
 
-  <button pButton type="button" label="-2" (click)="decrementaMais2()"></button>
-  <input type="text" [value]="valorMaisDois" readonly #campoInput>
-  <button pButton type="button" label="+2" (click)="incrementaMais2()"></button><br>
+  <button pButton type="button" label="-02" (click)="changeValue(2, '-')"></button>
+  <input type="text" [value]="valueInput2" readonly #campoInput>
+  <button pButton type="button" label="+02" (click)="changeValue(2, '+')"></button><br><br>
 
-  <button pButton type="button" label="-4" (click)="decrementaMais4()"></button>
-  <input type="text" [value]="valorMaisQuatro" readonly #campoInput>
-  <button pButton type="button" label="+4" (click)="incrementaMais4()"></button><br>
+  <button pButton type="button" label="-04" (click)="changeValue(4, '-')"></button>
+  <input type="text" [value]="valueInput3" readonly #campoInput>
+  <button pButton type="button" label="+04" (click)="changeValue(4, '+')"></button><br><br>
 
-  <button pButton type="button" label="-10" (click)="decrementaMais10()"></button>
-  <input type="text" [value]="valorMaisDez" readonly #campoInput>
-  <button pButton type="button" label="+10" (click)="incrementaMais10()"></button><br>
+  <button pButton type="button" label="-10" (click)="changeValue(10, '-')"></button>
+  <input type="text" [value]="valueInput4" readonly #campoInput>
+  <button pButton type="button" label="+10" (click)="changeValue(10, '+')"></button><br><br>
 
-</div>-->
-<div>
+</div>
+
+<!--<div>
   <p-table [value]="contacts">
     <ng-template pTemplate="header">
         <tr>
@@ -46,6 +46,6 @@
 </p-table>
 
 
-</div>
+</div>-->
 
 

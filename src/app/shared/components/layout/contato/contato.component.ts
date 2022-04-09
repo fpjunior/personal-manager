@@ -12,10 +12,11 @@ export class ContatoComponent implements OnInit {
   @Input() valor: number = 10;
   @Input() valorInicial: number = 10;
 
-  valorMaisUm: number = 0;
-  valorMaisDois: number = 0;
-  valorMaisQuatro: number = 0;
-  valorMaisDez: number = 0;
+  valueInput1: number = 0;
+  valueInput2: number = 0;
+  valueInput3: number = 0;
+  valueInput4: number = 0;
+
 
   contacts = [
     {name:'Breno', idade: '19', cpf:'12345678901', email:'breno@gmail.com'},
@@ -41,40 +42,39 @@ export class ContatoComponent implements OnInit {
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
   }
 
-  incrementaMais1() {
-    this.valorMaisUm = this.valorMaisUm + 1
+  changeValue(valueToChange: number, operator:string) {
+  //bloco dos botões de incremento
+    if(operator === '+'){
+      if(valueToChange === 1){
+        this.valueInput1 = this.valueInput1 + valueToChange;
+      }
+      if(valueToChange === 2){
+        this.valueInput2 = this.valueInput2 + valueToChange;
+      }
+      if(valueToChange === 4){
+        this.valueInput3 = this.valueInput3 + valueToChange;
+      }
+      if(valueToChange === 10){
+        this.valueInput4 = this.valueInput4 + valueToChange;
+      }
+    }
+    //bloco dos botões de decremento
+    if(operator === '-'){
+      if(valueToChange === 1){
+          this.valueInput1 = this.valueInput1 - valueToChange;
+      }
+      if(valueToChange === 2){
+        this.valueInput2 = this.valueInput2 - valueToChange;
+      }
+      if(valueToChange === 4){
+        this.valueInput3 = this.valueInput3 - valueToChange;
+      }
+      if(valueToChange === 10){
+        this.valueInput4 = this.valueInput4 - valueToChange;
+      }
+      }
+
+    }
   }
 
-  decrementaMais1() {
-    this.valorMaisUm = this.valorMaisUm -1
 
-  }
-
-  incrementaMais2() {
-    this.valorMaisDois = this.valorMaisDois + 2
-  }
-
-  decrementaMais2() {
-    this.valorMaisDois = this.valorMaisDois -2
-
-  }
-
-  incrementaMais4() {
-    this.valorMaisQuatro = this.valorMaisQuatro + 4
-  }
-
-  decrementaMais4() {
-    this.valorMaisQuatro = this.valorMaisQuatro - 4
-
-  }
-
-  incrementaMais10() {
-    this.valorMaisDez = this.valorMaisDez + 10
-  }
-
-  decrementaMais10() {
-    this.valorMaisDez = this.valorMaisDez -10
-
-  }
-
-}
