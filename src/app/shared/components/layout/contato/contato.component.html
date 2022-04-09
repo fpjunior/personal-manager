@@ -9,19 +9,23 @@
 <div>
   <button pButton type="button" label="-01" (click)="changeValue(1, '-')"></button>
   <input type="text" [value]="valueInput1" readonly #campoInput>
-  <button pButton type="button" label="+01" (click)="changeValue(1, '+')"></button><br><br>
+  <button pButton type="button" label="+01" (click)="changeValue(1, '+')"></button>
+  <button pButton type="button" label="Zerar" (click)="zeroValue('input1')"></button><br><br>
 
   <button pButton type="button" label="-02" (click)="changeValue(2, '-')"></button>
   <input type="text" [value]="valueInput2" readonly #campoInput>
-  <button pButton type="button" label="+02" (click)="changeValue(2, '+')"></button><br><br>
+  <button pButton type="button" label="+02" (click)="changeValue(2, '+')"></button>
+  <button pButton type="button" label="Zerar" (click)="zeroValue('input2')"></button><br><br>
 
   <button pButton type="button" label="-04" (click)="changeValue(4, '-')"></button>
   <input type="text" [value]="valueInput3" readonly #campoInput>
-  <button pButton type="button" label="+04" (click)="changeValue(4, '+')"></button><br><br>
+  <button pButton type="button" label="+04" (click)="changeValue(4, '+')"></button>
+  <button pButton type="button" label="Zerar" (click)="zeroValue('input3')"></button><br><br>
 
   <button pButton type="button" label="-10" (click)="changeValue(10, '-')"></button>
   <input type="text" [value]="valueInput4" readonly #campoInput>
-  <button pButton type="button" label="+10" (click)="changeValue(10, '+')"></button><br><br>
+  <button pButton type="button" label="+10" (click)="changeValue(10, '+')"></button>
+  <button pButton type="button" label="Zerar" (click)="zeroValue('input4')"></button><br><br>
 
 </div>
 

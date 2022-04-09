@@ -75,6 +75,20 @@ export class ContatoComponent implements OnInit {
       }
 
     }
+    zeroValue(input:string){
+      if(input === 'input1'){
+        this.valueInput1 = 0;
+      }
+      if(input === 'input2'){
+        this.valueInput2 = 0;
+      }
+      if(input === 'input3'){
+        this.valueInput3 = 0;
+      }
+      if(input === 'input4'){
+        this.valueInput4 = 0;
+      }
+    }
   }
 
 
