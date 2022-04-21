@@ -5,31 +5,32 @@
 </p>
 <p>do input, tudo isso está dentro do html do output-property.html, e sendo chamado lá no example.html pela rota</p>
 <p>'-output-property->'</p> -->
-
 <div>
-  <button pButton type="button" label="-01" (click)="changeValue(1, '-')"></button>
-  <input type="text" [value]="valueInput1" readonly #campoInput>
-  <button pButton type="button" label="+01" (click)="changeValue(1, '+')"></button>
-  <button pButton type="button" label="Zerar" (click)="zeroValue('input1')"></button><br><br>
+  <p-dialog header="Contador" [(visible)]="display" [style]="{width: '50vw'}">
+        <button pButton type="button" label="-01" (click)="changeValue(1, '-')"></button>
+        <input type="text" [value]="valueInput1" readonly #campoInput>
+        <button pButton type="button" label="+01" (click)="changeValue(1, '+')"></button>
+        <button pButton type="button" label="Zerar" (click)="zeroValue('input1')"></button><br><br>
 
-  <button pButton type="button" label="-02" (click)="changeValue(2, '-')"></button>
-  <input type="text" [value]="valueInput2" readonly #campoInput>
-  <button pButton type="button" label="+02" (click)="changeValue(2, '+')"></button>
-  <button pButton type="button" label="Zerar" (click)="zeroValue('input2')"></button><br><br>
+        <button pButton type="button" label="-02" (click)="changeValue(2, '-')"></button>
+        <input type="text" [value]="valueInput2" readonly #campoInput>
+        <button pButton type="button" label="+02" (click)="changeValue(2, '+')"></button>
+        <button pButton type="button" label="Zerar" (click)="zeroValue('input2')"></button><br><br>
 
-  <button pButton type="button" label="-04" (click)="changeValue(4, '-')"></button>
-  <input type="text" [value]="valueInput3" readonly #campoInput>
-  <button pButton type="button" label="+04" (click)="changeValue(4, '+')"></button>
-  <button pButton type="button" label="Zerar" (click)="zeroValue('input3')"></button><br><br>
+        <button pButton type="button" label="-04" (click)="changeValue(4, '-')"></button>
+        <input type="text" [value]="valueInput3" readonly #campoInput>
+        <button pButton type="button" label="+04" (click)="changeValue(4, '+')"></button>
+        <button pButton type="button" label="Zerar" (click)="zeroValue('input3')"></button><br><br>
 
-  <button pButton type="button" label="-10" (click)="changeValue(10, '-')"></button>
-  <input type="text" [value]="valueInput4" readonly #campoInput>
-  <button pButton type="button" label="+10" (click)="changeValue(10, '+')"></button>
-  <button pButton type="button" label="Zerar" (click)="zeroValue('input4')"></button><br><br>
-
+        <button pButton type="button" label="-10" (click)="changeValue(10, '-')"></button>
+        <input type="text" [value]="valueInput4" readonly #campoInput>
+        <button pButton type="button" label="+10" (click)="changeValue(10, '+')"></button>
+        <button pButton type="button" label="Zerar" (click)="zeroValue('input4')"></button><br><br>
+  </p-dialog>
 </div>
 
 <div>
+  <button pButton type="button" label="Dialog" (click)="dialog(display)"></button><br><br>
   <p-table [value]="contacts">
     <ng-template pTemplate="header">
         <tr>

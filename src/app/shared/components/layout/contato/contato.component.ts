@@ -16,6 +16,7 @@ export class ContatoComponent implements OnInit {
   valueInput2: number = 0;
   valueInput3: number = 0;
   valueInput4: number = 0;
+  display: boolean = false;
 
 
   contacts = [
@@ -89,6 +90,17 @@ export class ContatoComponent implements OnInit {
         this.valueInput4 = 0;
       }
     }
+
+    dialog(display){
+      if(display === false){
+        this.display = true;
+      }
+      if(display === true){
+        this.display = false
+      }
+
+    }
+
   }
 
 
