@@ -31,14 +31,14 @@
 
 <div>
   <button pButton type="button" label="Dialog" (click)="dialog(display)"></button><br><br>
-  <p-table #dt [value]="contacts" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
-  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
+  <p-table #dt [value]="dataToFillTable" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+  currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[10,25,50]"
 	[globalFilterFields]="['name','idade','cpf','email']">
     <ng-template pTemplate="caption">
 		<div class="p-d-flex">
 			<span class="p-input-icon-left p-ml-auto">
                 <i class="pi pi-search"></i>
-                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Palavra-chave de pesquisa" />
             </span>
 		</div>
 	</ng-template>
@@ -50,12 +50,12 @@
             <th>Email</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-contact>
+    <ng-template pTemplate="body" let-dataToFillTable>
         <tr>
-            <td>{{contact.name}}</td>
-            <td>{{contact.idade}}</td>
-            <td>{{contact.cpf}}</td>
-            <td>{{contact.email}}</td>
+            <td>{{dataToFillTable.name}}</td>
+            <td>{{dataToFillTable.idade}}</td>
+            <td>{{dataToFillTable.cpf}}</td>
+            <td>{{dataToFillTable.email}}</td>
         </tr>
     </ng-template>
     <ng-template pTemplate="paginatorleft">

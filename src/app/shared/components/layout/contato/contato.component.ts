@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { BreadcrumbService } from '../../breadcrumbs/breadcrumbs.service';
+import { contactsMock } from './mock/contato.mock';
+import { ContactsModel } from './model/contact.model';
 
 @Component({
   selector: 'app-contato',
@@ -18,15 +20,7 @@ export class ContatoComponent implements OnInit {
   valueInput4: number = 0;
   display: boolean = false;
 
-
-  contacts = [
-    {name:'Breno', idade: '19', cpf:'12345678901', email:'breno@gmail.com'},
-    {name:'Fernando', idade: '20', cpf:'12345678902', email:'fernando@gmail.com' },
-    {name:'Ivson', idade: '21', cpf:'12345678903', email:'ivson@gmail.com'},
-    {name:'Thiago', idade: '22', cpf:'12345678904', email:'thiago@gmail.com'},
-
-  ]
-
+  dataToFillTable : ContactsModel[]= contactsMock;
 
   @Output() mudouValor = new EventEmitter();
 
