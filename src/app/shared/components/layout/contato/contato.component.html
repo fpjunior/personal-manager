@@ -31,9 +31,19 @@
 
 <div>
   <button pButton type="button" label="Dialog" (click)="dialog(display)"></button><br><br>
-  <p-table [value]="contacts"[paginator]="true" [rows]="10" [showCurrentPageReport]="true"
-  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
-    <ng-template pTemplate="header">
+  <p-table #dt [value]="contacts"[paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+  currentPageReportTemplate="Mostando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['name','idade']">
+
+  <ng-template pTemplate="caption">
+		<div class="p-d-flex">
+			<span class="p-input-icon-left p-ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+            </span>
+		</div>
+	</ng-template>
+
+  <ng-template pTemplate="header">
         <tr>
             <th>Nome</th>
             <th>Idade</th>
