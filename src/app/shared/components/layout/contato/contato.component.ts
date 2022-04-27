@@ -3,6 +3,7 @@ import { MenuItem } from 'primeng/api';
 import { BreadcrumbService } from '../../breadcrumbs/breadcrumbs.service';
 import { contactsMock } from './mock/contato.mock';
 import { ContactsModel } from './model/contact.model';
+import { ContactService } from './service/contact.service';
 
 @Component({
   selector: 'app-contato',
@@ -20,7 +21,7 @@ export class ContatoComponent implements OnInit {
   valueInput4: number = 0;
   display: boolean = false;
 
-  dataToFillTable : ContactsModel[]= contactsMock;
+  dataToFillTable : ContactsModel[];
 
   @Output() mudouValor = new EventEmitter();
 
@@ -30,11 +31,24 @@ export class ContatoComponent implements OnInit {
 
   constructor(
     private breadcrumbService: BreadcrumbService,
-
+    private contactService: ContactService,
   ) { }
 
   ngOnInit() {
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
+    this.getAllContacts();
+  }
+
+  getAllContacts(){
+    this.contactService.getAllContacts().subscribe(
+      (contact)=>{
+        console.log(contact)
+        this.dataToFillTable = contact;
+      },
+      (error)=>{
+
+      }
+    )
   }
 
   changeValue(valueToChange: number, operator:string) {
