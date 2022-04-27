@@ -39,3 +39,19 @@ json-server --watch db.json
 
 mais informações sobre a api json-server
 https://www.fabricadecodigo.com/json-server/
+
+
+# Editor Online Markdonw
+https://dillinger.io/
+
+# Site do GitMoji
+https://gitmoji.dev/
+
+# Repositório GitHub 
+https://github.com/fpjunior/personal-manager
+
+# Board Trello
+https://trello.com/b/CPNewiHz/personal-manager
+
+Site do PrimeNg(Biblioteca de Componentes)
+https://www.primefaces.org/primeng/setup
