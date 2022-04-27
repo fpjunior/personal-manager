@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { BreadcrumbService } from '../../breadcrumbs/breadcrumbs.service';
+import { contactsMock } from './mock/contato.mock';
+import { ContactsModel } from './model/contact.model';
+import { ContactService } from './service/contact.service';
 
 @Component({
   selector: 'app-contato',
@@ -18,15 +21,7 @@ export class ContatoComponent implements OnInit {
   valueInput4: number = 0;
   display: boolean = false;
 
-
-  contacts = [
-    {name:'Breno', idade: '19', cpf:'12345678901', email:'breno@gmail.com'},
-    {name:'Fernando', idade: '20', cpf:'12345678902', email:'fernando@gmail.com' },
-    {name:'Ivson', idade: '21', cpf:'12345678903', email:'ivson@gmail.com'},
-    {name:'Thiago', idade: '22', cpf:'12345678904', email:'thiago@gmail.com'},
-
-  ]
-
+  dataToFillTable : ContactsModel[];
 
   @Output() mudouValor = new EventEmitter();
 
@@ -36,11 +31,24 @@ export class ContatoComponent implements OnInit {
 
   constructor(
     private breadcrumbService: BreadcrumbService,
-
+    private contactService: ContactService,
   ) { }
 
   ngOnInit() {
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
+    this.getAllContacts();
+  }
+
+  getAllContacts(){
+    this.contactService.getAllContacts().subscribe(
+      (contact)=>{
+        console.log(contact)
+        this.dataToFillTable = contact;
+      },
+      (error)=>{
+
+      }
+    )
   }
 
   changeValue(valueToChange: number, operator:string) {
