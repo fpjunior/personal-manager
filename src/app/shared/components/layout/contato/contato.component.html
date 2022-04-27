@@ -33,12 +33,12 @@
   <button pButton type="button" label="Dialog" (click)="dialog(display)"></button><br><br>
   <p-table #dt [value]="dataToFillTable" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
   currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,15]"
-	[globalFilterFields]="['name','idade','cpf','email']">
+	[globalFilterFields]="['name','idade']">
     <ng-template pTemplate="caption">
 		<div class="p-d-flex">
 			<span class="p-input-icon-left p-ml-auto">
                 <i class="pi pi-search"></i>
-                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Palavra-chave de pesquisa" />
+                <input class= "input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Digite o nome ou a idade do contato" />
             </span>
 
 		</div>
