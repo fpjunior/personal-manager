@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
+import { BreadcrumbService } from '../../breadcrumbs/breadcrumbs.service';
+
 
 @Component({
   selector: 'app-despesas',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DespesasComponent implements OnInit {
 
-  constructor() { }
+  breadcrumbItems: MenuItem[] = [{ label: `Despesas`}]
+
+  constructor(
+    private breadcrumbService: BreadcrumbService,
+    ) { }
 
   ngOnInit() {
+    this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
+
   }
 
 }
