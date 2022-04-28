@@ -1,4 +1,4 @@
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   Component,
   OnInit,
@@ -14,6 +14,7 @@ import { BreadcrumbService } from "../../breadcrumbs/breadcrumbs.service";
 import { contactsMock } from "./mock/contato.mock";
 import { ContactsModel } from "./model/contact.model";
 import { ContactService } from "./service/contact.service";
+import { ProgressBarService } from '../../progress-bar/progress-bar.service';
 
 @Component({
   selector: "app-contato",
@@ -34,30 +35,64 @@ export class ContatoComponent implements OnInit {
   contacts: Array<any>
   contact: any
 
+  contactsForm!: FormGroup;
+
   @Output() mudouValor = new EventEmitter();
 
   @ViewChild("campoInput") campoValorInput: ElementRef;
 
   breadcrumbItems: MenuItem[] = [{ label: `Contatos` }];
-  showModalLiberar = false;
+  showDialogContact = false;
   valueName;
   valueIdade;
   valueCpf;
   valueEmail;
 
+  isSaveOrUpdate = "Cadastrar Contato"
+
   constructor(
     private breadcrumbService: BreadcrumbService,
     private contactService: ContactService,
-    private router: Router
+    private router: Router,
+    private progressBarService: ProgressBarService,
+    private formBuilder: FormBuilder,
   ) {}
 
   ngOnInit() {
+    this.form()
     this.contact = {}
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
     this.getAllContacts();
   }
 
+  form(): void {
+    this.contactsForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      idade: ['', [Validators.required]],
+      cpf: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+    });
+  }
+
   onHideLiberacao() {}
+
+  connect(): void {
+    // this.progressBarService.changeProgressBar(true);
+    // const ocurrenceObj = this.contactsForm.getRawValue();
+    // delete(ocurrenceObj.client)
+
+    // this.applicationUser = {
+    //   ...ocurrenceObj
+    // }
+    // if (this.editMode) {
+    //   this.editUser();
+    //   this.resetForm();
+    //   return;
+    // }
+
+    // // this.createUser();
+    // // this.resetForm();
+  }
 
   saveContact(frm: any): void {
     this.contactService.saveContact(this.contact).subscribe(

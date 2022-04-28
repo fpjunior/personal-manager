@@ -2,25 +2,54 @@
 @import "variables";
 
 :host ::ng-deep {
+  .p-datatable.p-datatable-hoverable-rows
+    .p-datatable-tbody
+    > tr:not(.p-highlight):hover {
+    background-color: $cor-azul-mais-claro-padrao;
+  }
+
+  .invisible {
+    color: transparent;
+  }
+
   .p-datatable {
     @include fontStandard;
     .p-datatable-thead > tr > th {
       padding: 0 0 0 0.5em;
       text-transform: uppercase;
-      background-color: $border-cinza-claro;
+      background-color: #ccc;
       color: $cor-cinza-escuro-padrao;
       height: 36px;
       text-overflow: ellipsis;
       white-space: nowrap;
       direction: ltr;
-      border: 1px solid $border-cinza-claro;
+      border: 1px solid #ccc;
+      min-width: 4em !important;
 
       &:first-child {
-        width: 4em;
+        padding: 0;
       }
 
       &:last-child {
+        padding: 0 1em;
+        padding-left: 1em !important;
         text-align: center;
+        width: 15em;
+      }
+
+      p-sorticon {
+        .p-sortable-column-icon {
+          margin-bottom: 0.5vh;
+          font-size: 14px;
+        }
+      }
+
+      .fas .fa-cog {
+        font-size: 14px;
+      }
+
+      .pi-filter-icon {
+        font-size: 14px;
       }
     }
 
@@ -31,9 +60,30 @@
       > td {
         padding: 0;
         border: 1px solid #cccccc;
+        padding-left: 1em;
+        padding-right: 0.5em;
+
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+
+        &:first-child {
+          padding-left: 0.5em;
+        }
+
+        &:focus {
+          border: none;
+          outline: none;
+        }
         &:last-child {
           text-align: center;
+          padding-left: 0;
+          padding-top: 0.5em;
+          padding-bottom: 0.5em;
         }
+
+        // .fa-lg {
+        //   font-size: 14px !important;
+        // }
       }
 
       &:nth-child(odd) {
@@ -62,6 +112,66 @@
         background-color: #2d9cdb;
         color: white;
       }
+
+      .p-paginator-current,
+      .p-paginator-icon,
+      .p-link,
+      .p-dropdown-trigger-icon {
+        font-size: 13px;
+      }
     }
   }
+
+  .sub-grid {
+    background-color: #f4f4f4 !important;
+
+    &:hover {
+      background-color: #f4f4f4 !important;
+    }
+
+    .sub-grid-td {
+      padding: 1em !important;
+    }
+
+    .p-datatable.p-datatable-hoverable-rows
+      .p-datatable-tbody
+      > tr:not(.p-highlight):hover {
+      background-color: $cor-azul-mais-claro-padrao;
+    }
+
+    .sub-grid-third {
+      background-color: #f4f4f4 !important;
+
+      &:hover {
+        background-color: #f4f4f4 !important;
+      }
+    }
+
+    tr {
+      &:hover {
+        background-color: $cor-azul-mais-claro-padrao !important;
+      }
+    }
+
+    tfoot {
+      tr {
+        &:hover {
+          background-color: transparent !important;
+        }
+      }
+    }
+  }
+}
+
+.p-column-filter-overlay-menu {
+  span,
+  .p-dropdown-label,
+  .p-column-filter-add-rule .p-button-text .p-button-label,
+  .p-column-filter-buttonbar .p-button .p-button-label {
+    font-size: 13px;
+  }
+}
+
+.p-tooltip {
+  z-index: 99999 !important;
 }

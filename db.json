@@ -167,6 +167,16 @@
       "cpf": "50403930494",
       "email": "joao.goular@gmail.cm",
       "id": 24
+    },
+    {
+      "name": "Freitas André",
+      "idade": "45",
+      "cpf": "09403930293",
+      "email": "freitas@gmail.com",
+      "id": 25
+    },
+    {
+      "id": 26
     }
   ]
 }
