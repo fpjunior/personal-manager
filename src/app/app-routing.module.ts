@@ -46,7 +46,6 @@ const routes: Routes = [
         (m) => m.HomeModule
       ),
   },
-
   { path: 'input-property',
   loadChildren: () =>
   import('./modules/input-property/input-property.module').then(

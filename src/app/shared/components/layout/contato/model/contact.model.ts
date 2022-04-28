@@ -1,5 +1,5 @@
 export interface ContactsModel{
-  id?:number;
+  id:number;
   name:string;
   idade: string;
   cpf: string;

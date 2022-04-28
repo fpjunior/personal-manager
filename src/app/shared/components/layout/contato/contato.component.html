@@ -1,15 +1,68 @@
 <div>
-  <button pButton type="button" label="Dialog" (click)="dialog(display)"></button><br><br>
+
+
+  <p-dialog #dialogDrop (onHide)="onHideLiberacao()" [draggable]="false" closeIcon="fa fa-times"
+					[modal]="true" [baseZIndex]="10000" [(visible)]="showModalLiberar" header="Cadastrar Novo Contato">
+
+<form method="post" #frm="ngForm" (ngSubmit)="saveContact(frm)">
+
+  <div class="p-grid">
+    <div class="p-col-8 form-group">
+        <label for="name">Nome</label>
+        <input id="name"  name="name" class="form-control" pInputText
+          [(ngModel)]="contact.name" required>
+    </div>
+
+    <div class="p-col-4 form-group">
+      <div class="form-label">
+        <label id="idade" for="idade">Idade</label>
+        <input  name="idade" class="form-control" pInputText
+          [(ngModel)]="contact.idade" required>
+      </div>
+    </div>
+
+    <div class="p-col-4 form-group">
+      <div class="form-label">
+        <label id="cpf" for="cpf">CPF</label>
+        <input  name="cpf" class="form-control" pInputText
+          [(ngModel)]="contact.cpf" required>
+      </div>
+    </div>
+
+
+    <div class="p-col-4 form-group">
+      <div class="form-label">
+        <label id="email" for="email">Email</label>
+        <input  name="email" class="form-control" pInputText
+          [(ngModel)]="contact.email" required>
+      </div>
+    </div>
+  </div>
+
+
+
+    <p-button type="submit" icon="fa fa-check" [disabled]="frm.invalid" class="standard" label="Salvar">
+    </p-button>
+    <p-button type="button" icon="fa fa-times" (onClick)="showModalLiberar = false" class="dismiss"
+      label="Cancelar">
+    </p-button>
+
+</form>
+				</p-dialog>
+
+  <!-- <button pButton type="button" label="Dialog" (click)="dialog(display)"></button><br><br> -->
   <p-table #dt [value]="dataToFillTable" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
   currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,15]"
 	[globalFilterFields]="['name','idade','cpf','email']">
     <ng-template pTemplate="caption">
 		<div class="p-d-flex">
-			<span class="p-input-icon-left p-ml-auto">
-                <i class="pi pi-search"></i>
-                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Palavra-chave de pesquisa" />
-            </span>
 
+      <span class="p-input-icon-left p-ml-auto">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Palavra-chave de pesquisa" />
+        <p-button pRipple label="Criar Contato" class="standard" type="button" (click)="showModalLiberar = true">
+        </p-button>
+      </span>
 		</div>
 	</ng-template>
     <ng-template pTemplate="header">
