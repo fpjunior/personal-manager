@@ -31,6 +31,7 @@ import { CicloFormComponent } from "./components/layout/ciclo/ciclo-form/ciclo-f
 import { GenericButtonsComponent } from "./components/buttons/generic-buttons/generic-buttons.component";
 import { InputTextComponent } from "./components/fields/input-text/input-text.component";
 import { ContatoComponent } from "./components/layout/contato/contato.component";
+import { DespesasComponent } from "./components/layout/despesas/despesas.component";
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ContatoComponent } from "./components/layout/contato/contato.component"
     EventoFormComponent,
     CicloDashboardComponent,
     CicloFormComponent,
+    DespesasComponent,
 
     // DIALOGS
     ConfirmDialogComponent,

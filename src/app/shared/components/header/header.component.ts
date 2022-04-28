@@ -90,7 +90,7 @@ export class HeaderComponent implements OnInit {
         disabled: false,
         command: () => {
           this.visibleSidebar = false;
-          this.route.navigate(['/example3']);
+          this.route.navigate(['despesas']);
         },
       },
       {
