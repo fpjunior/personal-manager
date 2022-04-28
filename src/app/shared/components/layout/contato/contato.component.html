@@ -32,8 +32,8 @@
 <div>
   <button pButton type="button" label="Dialog" (click)="dialog(display)"></button><br><br>
   <p-table #dt [value]="dataToFillTable" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
-  currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,15]"
-	[globalFilterFields]="['name','idade']">
+  currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
+	[globalFilterFields]="['name','idade']" [scrollable]="true" scrollHeight="400px">
     <ng-template pTemplate="caption">
 		<div class="p-d-flex">
 			<span class="p-input-icon-left p-ml-auto">
