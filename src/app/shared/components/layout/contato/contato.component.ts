@@ -47,6 +47,7 @@ export class ContatoComponent implements OnInit {
   valueIdade;
   valueCpf;
   valueEmail;
+  loading = false;
 
   isSaveOrUpdate = "Cadastrar Contato"
 
@@ -95,10 +96,13 @@ export class ContatoComponent implements OnInit {
   }
 
   saveContact(frm: any): void {
-    this.contactService.saveContact(this.contact).subscribe(
+   frm = this.contactsForm.getRawValue();
+    this.contactService.saveContact(frm).subscribe(
       (response) => {
         // this.contact.push(response)
-        frm.reset();
+        this.contactsForm.reset();
+        this.showDialogContact = false;
+        this.getAllContacts()
         alert("contato criado com sucesso");
       },
       (error) => {
@@ -110,11 +114,15 @@ export class ContatoComponent implements OnInit {
   goToTheContactForm = () => this.router.navigate(["/contato-form"]);
 
   getAllContacts() {
+    this.loading = true;
     this.contactService.getAllContacts().subscribe(
       (contact) => {
         this.dataToFillTable = contact;
+        this.loading = false;
       },
-      (error) => {}
+      (error) => {
+        this.loading = false;
+      }
     );
   }
 

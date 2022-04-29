@@ -73,7 +73,7 @@
   <!-- <button pButton type="button" label="Dialog" (click)="dialog(display)"></button><br><br> -->
   <p-table #dt [value]="dataToFillTable" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
   currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,15]"
-	[globalFilterFields]="['name','idade','cpf','email']">
+	[globalFilterFields]="['name','idade','cpf','email']" sortField="id" [sortOrder]="-1" [loading]="loading">
     <ng-template pTemplate="caption">
 		<div class="p-d-flex">
 
@@ -87,6 +87,7 @@
 	</ng-template>
     <ng-template pTemplate="header">
         <tr>
+            <th>Id</th>
             <th>Nome</th>
             <th>Idade</th>
             <th>CPF</th>
@@ -95,6 +96,7 @@
     </ng-template>
     <ng-template pTemplate="body" let-dataToFillTable>
         <tr>
+            <td>{{dataToFillTable.id}}</td>
             <td>{{dataToFillTable.name}}</td>
             <td>{{dataToFillTable.idade}}</td>
             <td>{{dataToFillTable.cpf}}</td>
