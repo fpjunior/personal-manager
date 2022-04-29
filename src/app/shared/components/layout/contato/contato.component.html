@@ -79,14 +79,9 @@
 			<span class="p-input-icon-left p-ml-auto">
                 <i class="pi pi-search"></i>
                 <input class= "input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Digite o nome ou a idade do contato" />
-            </span>
-
-      <span class="p-input-icon-left p-ml-auto">
-        <i class="pi pi-search"></i>
-        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Palavra-chave de pesquisa" />
-        <p-button pRipple label="Criar Contato" class="standard" type="button" (click)="showDialogContact = true">
-        </p-button>
-      </span>
+                <p-button pRipple label="Criar Contato" class="standard" type="button" (click)="showDialogContact = true">
+                </p-button>
+              </span>
 		</div>
 	</ng-template>
     <ng-template pTemplate="header">
