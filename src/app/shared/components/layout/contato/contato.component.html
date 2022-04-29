@@ -1,13 +1,33 @@
 <div>
-
-
   <p-dialog #dialogDrop (onHide)="onHideLiberacao()" [draggable]="false" closeIcon="fa fa-times"
-					[modal]="true" [baseZIndex]="10000" [(visible)]="showModalLiberar" header="Cadastrar Novo Contato">
-
-<form method="post" #frm="ngForm" (ngSubmit)="saveContact(frm)">
-
+					[modal]="true" [baseZIndex]="10000" [(visible)]="showDialogContact" header="Cadastrar Novo Contato">
+<form method="post" [formGroup]="contactsForm" (ngSubmit)="saveContact(contactsForm)">
   <div class="p-grid">
-    <div class="p-col-8 form-group">
+
+    <div class="field col-3 form-applications">
+      <input-text label="Nome" formControlName="name" id="name" [type]="'text'">
+      </input-text>
+    </div>
+
+    <div class="field col-3 form-applications">
+      <input-text label="Idade" [control]="contactsForm.get('idade')" [requiredLabel]="true" formControlName="idade" id="idade"
+        [type]="'text'">
+      </input-text>
+    </div>
+
+    <div class="field col-3 form-applications">
+      <input-text label="CPF" [control]="contactsForm.get('cpf')" [requiredLabel]="true" formControlName="cpf" id="cpf"
+        [type]="'text'">
+      </input-text>
+    </div>
+
+    <div class="field col-3 form-applications">
+      <input-text label="Email" [control]="contactsForm.get('email')" [requiredLabel]="true" formControlName="email" id="email"
+        [type]="'text'">
+      </input-text>
+    </div>
+
+    <!-- <div class="p-col-8 form-group">
         <label for="name">Nome</label>
         <input id="name"  name="name" class="form-control" pInputText
           [(ngModel)]="contact.name" required>
@@ -36,14 +56,14 @@
         <input  name="email" class="form-control" pInputText
           [(ngModel)]="contact.email" required>
       </div>
-    </div>
+    </div> -->
   </div>
 
 
 
-    <p-button type="submit" icon="fa fa-check" [disabled]="frm.invalid" class="standard" label="Salvar">
+    <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid" class="standard" label="Salvar">
     </p-button>
-    <p-button type="button" icon="fa fa-times" (onClick)="showModalLiberar = false" class="dismiss"
+    <p-button type="button" icon="fa fa-times" (onClick)="showDialogContact = false" class="dismiss"
       label="Cancelar">
     </p-button>
 
@@ -56,18 +76,15 @@
 	[globalFilterFields]="['name','idade']" [scrollable]="true" scrollHeight="400px">
     <ng-template pTemplate="caption">
 		<div class="p-d-flex">
-<<<<<<< HEAD
 			<span class="p-input-icon-left p-ml-auto">
                 <i class="pi pi-search"></i>
                 <input class= "input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Digite o nome ou a idade do contato" />
             </span>
-=======
->>>>>>> 5291d3d4369acc14f0351c83546890f228651724
 
       <span class="p-input-icon-left p-ml-auto">
         <i class="pi pi-search"></i>
         <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Palavra-chave de pesquisa" />
-        <p-button pRipple label="Criar Contato" class="standard" type="button" (click)="showModalLiberar = true">
+        <p-button pRipple label="Criar Contato" class="standard" type="button" (click)="showDialogContact = true">
         </p-button>
       </span>
 		</div>

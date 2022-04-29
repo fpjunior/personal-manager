@@ -9,6 +9,7 @@
 
 @mixin fontStandard {
   font-size: 13px;
+  // color: red !important;
 }
 
 $position: (
@@ -30,3 +31,5 @@ $text-position: (
   right: "r",
   left: "l",
 );
+
+$spaceamounts: (1, 5, 10, 15, 25);

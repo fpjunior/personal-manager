@@ -1,0 +1,10 @@
+export const EMAIL_REGEX_UTIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g;
+export const SYMBOLS_REGEX_UTIL = /^[^`~!@#$%\^&*()_+={}|[\]\\:';"<>?,./]*$/g;
+export const DIGIT_REGEX_UTIL = /^[\d\,]+$/g;
+export const EMPTY_VALUE: string = "";
+export const NOT_NUMBER: RegExp = /[^\d]/g;
+export const NOT_ALPHANUMERIC: RegExp = /[^\w]/g;
+export const CPF_REGEX: RegExp = /(\d{3})(\d{3})(\d{3})(\d{2})/g;
+export const CPF_REPLACE_VALUE: string = "$1.$2.$3-$4";
+export const CNPJ_REGEX: RegExp = /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g;
+export const CNPJ_REPLACE_VALUE: string = "\$1.\$2.\$3\/\$4\-\$5";
