@@ -95,10 +95,13 @@ export class ContatoComponent implements OnInit {
   }
 
   saveContact(frm: any): void {
-    this.contactService.saveContact(this.contact).subscribe(
+  frm= this.contactsForm.getRawValue();
+    this.contactService.saveContact(frm).subscribe(
       (response) => {
         // this.contact.push(response)
-        frm.reset();
+        this.contactsForm.reset();
+        this.showDialogContact = false;
+        this.getAllContacts()
         alert("contato criado com sucesso");
       },
       (error) => {
