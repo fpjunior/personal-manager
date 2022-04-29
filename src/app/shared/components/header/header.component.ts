@@ -85,12 +85,12 @@ export class HeaderComponent implements OnInit {
         ],
       },
       {
-        label: 'Example3',
+        label: 'Despesas',
         icon: 'fas fa-list-ul fa-lg:1em',
         disabled: false,
         command: () => {
           this.visibleSidebar = false;
-          this.route.navigate(['/example3']);
+          this.route.navigate(['despesas']);
         },
       },
       {

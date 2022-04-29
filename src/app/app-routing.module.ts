@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DespesasComponent } from './shared/components/layout/despesas/despesas.component';
 
 
 
@@ -46,6 +47,12 @@ const routes: Routes = [
         (m) => m.HomeModule
       ),
   },
+
+  {
+    path: "despesas",
+    component: DespesasComponent,
+  },
+
   { path: 'input-property',
   loadChildren: () =>
   import('./modules/input-property/input-property.module').then(

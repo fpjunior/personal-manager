@@ -1,33 +1,33 @@
 <div>
-  <p-dialog #dialogDrop (onHide)="onHideLiberacao()" [draggable]="false" closeIcon="fa fa-times"
-					[modal]="true" [baseZIndex]="10000" [(visible)]="showDialogContact" header="Cadastrar Novo Contato">
-<form method="post" [formGroup]="contactsForm" (ngSubmit)="saveContact(contactsForm)">
-  <div class="p-grid">
+  <p-dialog #dialogDrop (onHide)="onHideLiberacao()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
+    [baseZIndex]="10000" [(visible)]="showDialogContact" header="Cadastrar Novo Contato">
+    <form method="post" [formGroup]="contactsForm" (ngSubmit)="saveContact(contactsForm)">
+      <div class="p-grid">
 
-    <div class="field col-3 form-applications">
-      <input-text label="Nome" formControlName="name" id="name" [type]="'text'">
-      </input-text>
-    </div>
+        <div class="field col-3 form-applications">
+          <input-text label="Nome" formControlName="name" id="name" [type]="'text'">
+          </input-text>
+        </div>
 
-    <div class="field col-3 form-applications">
-      <input-text label="Idade" [control]="contactsForm.get('idade')" [requiredLabel]="true" formControlName="idade" id="idade"
-        [type]="'text'">
-      </input-text>
-    </div>
+        <div class="field col-3 form-applications">
+          <input-text label="Idade" [control]="contactsForm.get('idade')" [requiredLabel]="true" formControlName="idade"
+            id="idade" [type]="'text'">
+          </input-text>
+        </div>
 
-    <div class="field col-3 form-applications">
-      <input-text label="CPF" [control]="contactsForm.get('cpf')" [requiredLabel]="true" formControlName="cpf" id="cpf"
-        [type]="'text'">
-      </input-text>
-    </div>
+        <div class="field col-3 form-applications">
+          <input-text label="CPF" [control]="contactsForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
+            id="cpf" [type]="'text'">
+          </input-text>
+        </div>
 
-    <div class="field col-3 form-applications">
-      <input-text label="Email" [control]="contactsForm.get('email')" [requiredLabel]="true" formControlName="email" id="email"
-        [type]="'text'">
-      </input-text>
-    </div>
+        <div class="field col-3 form-applications">
+          <input-text label="Email" [control]="contactsForm.get('email')" [requiredLabel]="true" formControlName="email"
+            id="email" [type]="'text'">
+          </input-text>
+        </div>
 
-    <!-- <div class="p-col-8 form-group">
+        <!-- <div class="p-col-8 form-group">
         <label for="name">Nome</label>
         <input id="name"  name="name" class="form-control" pInputText
           [(ngModel)]="contact.name" required>
@@ -57,55 +57,53 @@
           [(ngModel)]="contact.email" required>
       </div>
     </div> -->
-  </div>
+      </div>
 
 
 
-    <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid" class="standard" label="Salvar">
-    </p-button>
-    <p-button type="button" icon="fa fa-times" (onClick)="showDialogContact = false" class="dismiss"
-      label="Cancelar">
-    </p-button>
+      <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid" class="standard" label="Salvar">
+      </p-button>
+      <p-button type="button" icon="fa fa-times" (onClick)="showDialogContact = false" class="dismiss" label="Cancelar">
+      </p-button>
 
-</form>
-				</p-dialog>
+    </form>
+  </p-dialog>
 
   <!-- <button pButton type="button" label="Dialog" (click)="dialog(display)"></button><br><br> -->
   <p-table #dt [value]="dataToFillTable" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
-  currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,15]"
-	[globalFilterFields]="['name','idade','cpf','email']" sortField="id" [sortOrder]="-1" [loading]="loading">
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
+    [globalFilterFields]="['name','idade']" [globalFilterFields]="['name','idade','cpf','email']" sortField="id"
+    [sortOrder]="-1" [loading]="loading" [scrollable]="true" scrollHeight="400px">
     <ng-template pTemplate="caption">
-		<div class="p-d-flex">
-
-      <span class="p-input-icon-left p-ml-auto">
-        <i class="pi pi-search"></i>
-        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Palavra-chave de pesquisa" />
-        <p-button pRipple label="Criar Contato" class="standard" type="button" (click)="showDialogContact = true">
-        </p-button>
-      </span>
-		</div>
-	</ng-template>
+      <div class="p-d-flex">
+        <span class="p-input-icon-left p-ml-auto">
+          <i class="pi pi-search"></i>
+          <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+            placeholder="Digite o nome ou a idade do contato" />
+          <p-button pRipple label="Criar Contato" class="standard" type="button" (click)="showDialogContact = true">
+          </p-button>
+        </span>
+      </div>
+    </ng-template>
     <ng-template pTemplate="header">
-        <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th>CPF</th>
-            <th>Email</th>
-        </tr>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>CPF</th>
+        <th>Email</th>
+      </tr>
     </ng-template>
     <ng-template pTemplate="body" let-dataToFillTable>
-        <tr>
-            <td>{{dataToFillTable.id}}</td>
-            <td>{{dataToFillTable.name}}</td>
-            <td>{{dataToFillTable.idade}}</td>
-            <td>{{dataToFillTable.cpf}}</td>
-            <td>{{dataToFillTable.email}}</td>
-        </tr>
+      <tr>
+        <td>{{dataToFillTable.id}}</td>
+        <td>{{dataToFillTable.name}}</td>
+        <td>{{dataToFillTable.idade}}</td>
+        <td>{{dataToFillTable.cpf}}</td>
+        <td>{{dataToFillTable.email}}</td>
+      </tr>
     </ng-template>
-</p-table>
+  </p-table>
 
 
 </div>
-
-
