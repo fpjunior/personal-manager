@@ -15,6 +15,8 @@ import { contactsMock } from "./mock/contato.mock";
 import { ContactsModel } from "./model/contact.model";
 import { ContactService } from "./service/contact.service";
 import { ProgressBarService } from '../../progress-bar/progress-bar.service';
+import { TableStandard } from 'src/app/shared/models/table.model';
+import { tableArr } from './model/table.model';
 
 @Component({
   selector: "app-contato",
@@ -30,6 +32,12 @@ export class ContatoComponent implements OnInit {
   valueInput3: number = 0;
   valueInput4: number = 0;
   display: boolean = false;
+
+  // config Table
+  cols = tableArr;
+  fullCols = tableArr;
+  immutableCols: string[] = [];
+  showModalColumn = false;
 
   dataToFillTable: ContactsModel[];
   contacts: Array<any>
@@ -49,6 +57,7 @@ export class ContatoComponent implements OnInit {
   valueEmail;
   loading = false;
 
+
   isSaveOrUpdate = "Cadastrar Contato"
 
   constructor(
@@ -64,6 +73,16 @@ export class ContatoComponent implements OnInit {
     this.contact = {}
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
     this.getAllContacts();
+  }
+
+  showModalSelectColumns() {
+    this.showModalColumn = true;
+  }
+  onHideDialogTable = (): void => {
+    this.showModalColumn = false;
+  };
+  editColumns(cols: TableStandard[]) {
+    this.cols = cols;
   }
 
   form(): void {

@@ -1,3 +1,4 @@
+import { DialogTableColumnComponent } from './components/dialogs/dialog-table-column/dialog-table-column.component';
 import { GenericResponseDialogComponent } from "./components/dialogs/generic-response-dialog/generic-response-dialog.component";
 import { InputPropertyDashboardComponent } from "./components/layout/input-property/input-property-dashboard/input-property-dashboard.component";
 import { EventoDashboardComponent } from "./components/layout/cadastro-evento/evento-dashboard/evento-dashboard.component";
@@ -59,6 +60,7 @@ import { InputTextComponent } from "./components/fields/input-text/input-text.co
     DespesasComponent,
 
     // DIALOGS
+    DialogTableColumnComponent,
     ConfirmDialogComponent,
     DialogPicklistComponent,
     GenericResponseDialogComponent,
@@ -105,6 +107,7 @@ import { InputTextComponent } from "./components/fields/input-text/input-text.co
     StepsComponent,
 
     // DIALOGS
+    DialogTableColumnComponent,
     ConfirmDialogComponent,
     GenericResponseDialogComponent,
 
@@ -120,6 +123,9 @@ import { InputTextComponent } from "./components/fields/input-text/input-text.co
 
     // FIELDS
     InputTextComponent,
+
+    DespesasComponent,
+
   ],
   entryComponents: [],
   providers: [PrimengModule, ReactiveFormsModule],

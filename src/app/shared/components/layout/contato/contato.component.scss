@@ -1,3 +1,5 @@
+ @import "src/assets/styles/generalStyle";
+
 .p-button {
   color: #ffffff;
   background: #4682B4;
@@ -7,6 +9,15 @@
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
   border-radius: 3px;
 }
+
+th#email {
+  width: 228px;
+}
+th#operation {
+  width: 360px;
+}
+
+
 
 .p-button:enabled:hover {
     background: #0d89ec;
@@ -20,12 +31,18 @@
 }
 
 .input-search{
-  width: 310px;
+  // width: 40%;
+  width: 327px;
+  margin-right: 20px;
 }
 
-// @import "src/assets/styles/colors.scss";
-// @import "src/assets/styles/buttons.scss";
-// @import "src/assets/styles/generalStyle";
+
+.input-button-search {
+  margin-bottom: 25px;
+
+}
+
+
 
 .p-button {
   color: #ffffff;
@@ -46,7 +63,30 @@
   height: 29px;
 }
 
+.btn-criar-contato {
+  height: 37px !important;
+}
 :host ::ng-deep {
+
+  .size-first-column{
+    width: 77px;
+  }
+  .tableButton{
+
+    &:hover {
+      background-color: transparent !important;
+      border: 1px solid transparent !important;
+      color: #767676 !important;
+    }
+    &:focus {
+      box-shadow: 0 0 0 0.2rem transparent !important;
+    }
+
+    color: #495057;
+    background: transparent;
+    border: 1px solid transparent;
+
+  }
   &.p-fieldset .p-fieldset-legend {
     color: #495057;
     background: transparent;

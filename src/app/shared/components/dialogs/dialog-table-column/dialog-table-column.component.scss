@@ -1,0 +1,43 @@
+@import "src/assets/styles/variables.scss";
+
+
+:host ::ng-deep {
+  .p-dialog {
+    width: 800px;
+    height: 320;
+    background: white;
+
+    .p-button:enabled:hover {
+      border: 1px solid #306889;
+    }
+
+    .mr {
+      margin-right: 1.5em;
+    }
+
+    .check-box-list .p-col-3:nth-child(-n + 3) {
+      display: none !important;
+    }
+
+    .p-dialog-content {
+      color: #495057;
+      padding-top: 1em;
+      @include fontStandard;
+    }
+
+    .p-dialog-header {
+      background: #eaeaea;
+      // width: 600px;
+      height: 40px;
+
+      .p-dialog-title {
+        color: #767676;
+        font-size: 16px;
+      }
+    }
+
+    .p-dialog-footer {
+      text-align: center;
+    }
+  }
+}
