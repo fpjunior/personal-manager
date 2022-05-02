@@ -94,7 +94,12 @@ export class ContatoComponent implements OnInit {
     });
   }
 
-  onHideLiberacao() {}
+  onHideDialog() {}
+
+  openDialogAddContact(){
+    this.contactsForm.reset()
+    this.showDialogContact = true
+  }
 
   connect(): void {
     // this.progressBarService.changeProgressBar(true);

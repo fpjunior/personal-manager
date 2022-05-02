@@ -1,11 +1,11 @@
 <div>
-  <p-dialog #dialogDrop (onHide)="onHideLiberacao()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
+  <p-dialog #dialogDrop (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
     [baseZIndex]="10000" [(visible)]="showDialogContact" header="Cadastrar Novo Contato">
     <form method="post" [formGroup]="contactsForm" (ngSubmit)="saveContact(contactsForm)">
       <div class="p-grid">
 
         <div class="field col-3 form-applications">
-          <input-text label="Nome" formControlName="name" id="name" [type]="'text'">
+          <input-text  label="Nome" formControlName="name" id="name" [type]="'text'">
           </input-text>
         </div>
 
@@ -28,10 +28,12 @@
         </div>
       </div>
 
-      <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid" class="standard" label="Salvar">
-      </p-button>
-      <p-button type="button" icon="fa fa-times" (onClick)="showDialogContact = false" class="dismiss" label="Cancelar">
-      </p-button>
+      <div class="buttons-actions">
+        <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid" class="standard" label="Salvar">
+        </p-button>
+        <p-button type="button" icon="fa fa-times" (onClick)="showDialogContact = false" class="dismiss" label="Cancelar">
+        </p-button>
+      </div>
 
     </form>
   </p-dialog>
@@ -41,7 +43,7 @@
         <i class="pi pi-search"></i>
         <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
           placeholder="Digite o nome ou a idade do contato" />
-        <p-button pRipple label="Criar Contato" class="standard btn-criar-contato" type="button" (click)="showDialogContact = true">
+        <p-button pRipple label="Criar Contato" class="standard btn-criar-contato" type="button" (click)="openDialogAddContact()">
         </p-button>
       </span>
     </div>

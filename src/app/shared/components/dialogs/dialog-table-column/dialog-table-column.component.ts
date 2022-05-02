@@ -35,6 +35,7 @@ export class DialogTableColumnComponent implements OnInit {
 
   returnColumns = (): void => {
     this.saveColumn.emit(this.fullCols);
+    this.selectedCols = this.fullCols;
     this.onCloseParent();
   }
 
