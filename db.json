@@ -238,5 +238,17 @@
       "email": "acelio@gmail.com",
       "id": 38
     }
+  ],
+  "despesas":[
+    {
+      "code": 1,
+      "description": "Uber para ida ao trabalho",
+      "type": "Transporte",
+      "value": "R$ 20,00",
+      "typePayment": "Pix",
+      "localEstablishment": "Recife-PE",
+      "expenseDate": "20/05/2022",
+      "status": true
+    }
   ]
 }

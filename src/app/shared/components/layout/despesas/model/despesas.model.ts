@@ -1,5 +1,5 @@
 export interface DespesasModel{
-    code: string;
+    code: number;
     description: string;
     type: string;
     value: string;
