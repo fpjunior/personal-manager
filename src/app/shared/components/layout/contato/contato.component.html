@@ -5,7 +5,7 @@
       <div class="p-grid">
 
         <div class="field col-3 form-applications">
-          <input-text  label="Nome" formControlName="name" id="name" [type]="'text'">
+          <input-text label="Nome" formControlName="name" id="name" [type]="'text'">
           </input-text>
         </div>
 
@@ -29,68 +29,67 @@
       </div>
 
       <div class="buttons-actions">
-        <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid" class="standard" label="Salvar">
+        <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid" class="standard"
+          label="Salvar">
         </p-button>
-        <p-button type="button" icon="fa fa-times" (onClick)="showDialogContact = false" class="dismiss" label="Cancelar">
+        <p-button type="button" icon="fa fa-times" (onClick)="showDialogContact = false" class="dismiss"
+          label="Cancelar">
         </p-button>
       </div>
 
     </form>
   </p-dialog>
 
-    <div class="grid input-button-search">
-      <span class="p-input-icon-left p-ml-auto">
-        <i class="pi pi-search"></i>
-        <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-          placeholder="Digite o nome ou a idade do contato" />
-        <p-button pRipple label="Criar Contato" class="standard btn-criar-contato" type="button" (click)="openDialogAddContact()">
-        </p-button>
-      </span>
-    </div>
+  <div class="grid input-button-search">
+    <span class="p-input-icon-left p-ml-auto">
+      <i class="pi pi-search"></i>
+      <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+        placeholder="Digite o nome ou a idade do contato" />
+      <p-button pRipple label="Criar Contato" class="standard btn-criar-contato" type="button"
+        (click)="openDialogAddContact()">
+      </p-button>
+    </span>
+  </div>
   <!-- <button pButton type="button" label="Dialog" (click)="dialog(display)"></button><br><br> -->
-  <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+  <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
-    [globalFilterFields]="['name','idade']" [globalFilterFields]="['name','idade','cpf','email']" sortField="id" [reorderableColumns]="true"
-    [sortOrder]="-1"  responsiveLayout="scroll" [loading]="loading" [scrollable]="true" scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
+    [globalFilterFields]="['name','idade']" [globalFilterFields]="['name','idade','cpf','email']" sortField="id"
+    [reorderableColumns]="true" [sortOrder]="-1" responsiveLayout="scroll" [loading]="loading" [scrollable]="true"
+    scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
 
     <ng-template pTemplate="header" let-columns>
       <tr>
-							<th class="size-first-column">
-								<button pButton type="button" class="tableButton" icon="fas fa-cog "
-									(click)="showModalSelectColumns()" pTooltip="Configurações"></button>
-							</th>
+        <th class="size-first-column">
+          <button pButton type="button" class="tableButton" icon="fas fa-cog " (click)="showModalSelectColumns()"
+            pTooltip="Configurações"></button>
+        </th>
 
-              <th columnResizeMode="expand" *ngFor="let col of columns; let i = index"
-              [pTooltip]="col.hintName" tooltipPosition="top" [pSortableColumn]="col.field"
-              pResizableColumn pReorderableColumn [id]="col.field">
-              {{col.header}}
-              <p-sortIcon *ngIf="col.field !== 'operation'" [field]="col.field"></p-sortIcon>
+        <th columnResizeMode="expand" *ngFor="let col of columns; let i = index" [pTooltip]="col.hintName"
+          tooltipPosition="top" [pSortableColumn]="col.field" pResizableColumn pReorderableColumn [id]="col.field">
+          {{col.header}}
+          <p-sortIcon *ngIf="col.field !== 'operation'" [field]="col.field"></p-sortIcon>
 
-              <p-columnFilter  *ngIf="col.field !== 'operation'" styleClass="button-operation"
-              [type]="'text'" [field]="col.field"
-              [matchMode]="'contains'" display="menu" #filterTable>
-              </p-columnFilter>
+          <p-columnFilter *ngIf="col.field !== 'operation'" styleClass="button-operation" [type]="'text'"
+            [field]="col.field" [matchMode]="'contains'" display="menu" #filterTable>
+          </p-columnFilter>
 
-              </th>
+        </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-dataToFillTable let-rowData let-rowIndex="rowIndex" let-columns="columns">
       <tr>
 
         <td class="size-first-column"></td>
-        <td *ngFor="let col of columns; let i = index">
-          <span
-          [pTooltip]="rowData[col.field]">
-          {{rowData[col.field]}}
-        </span>
+        <td *ngFor="let col of columns; let i = index" [id]="col.field">
+          <span [pTooltip]="rowData[col.field]">
+            {{rowData[col.field]}}
+          </span>
         </td>
       </tr>
     </ng-template>
   </p-table>
 </div>
 
-<app-dialog-table-column (onClose)="onHideDialogTable()" [showModal]="showModalColumn"
-[fullCols]="fullCols" [colsModified]="cols" [immutables]="immutableCols"
-(saveColumn)="editColumns($event)">
+<app-dialog-table-column (onClose)="onHideDialogTable()" [showModal]="showModalColumn" [fullCols]="fullCols"
+  [colsModified]="cols" [immutables]="immutableCols" (saveColumn)="editColumns($event)">
 </app-dialog-table-column>
-

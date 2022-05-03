@@ -11,11 +11,25 @@
   border-radius: 3px;
 }
 
-th#email {
-  width: 228px;
+th#email, td#email {
+  width: 15%;
 }
-th#operation {
-  width: 360px;
+
+th#cpf,
+td#cpf,
+th#name,
+td#name,
+th#idade,
+td#idade,
+th#operation,
+td#operation,
+th#id,
+td#id {
+  width: 15%;
+}
+
+th.size-first-column, td.size-first-column {
+  width: 4%;
 }
 
 .p-button:enabled:hover {
@@ -42,8 +56,6 @@ th#operation {
 .form-applications {
   padding-bottom: 17px;
 }
-
-
 
 .buttons-actions {
   display: flex;
@@ -78,8 +90,6 @@ th#operation {
   .size-first-column {
     width: 77px;
   }
-
-
 
   .tableButton {
     &:hover {
@@ -130,7 +140,3 @@ th#operation {
     margin: 10px;
   }
 }
-
-// .form-label{
-//   padding-bottom: 20px;
-// }
