@@ -29,10 +29,10 @@
       </div>
 
       <div class="buttons-actions">
-        <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid" class="standard"
+        <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid" class="standard tableButton-def"
           label="Salvar">
         </p-button>
-        <p-button type="button" icon="fa fa-times" (onClick)="showDialogContact = false" class="dismiss"
+        <p-button type="button" icon="fa fa-times" (onClick)="showDialogContact = false" class="dismiss tableButton"
           label="Cancelar">
         </p-button>
       </div>
@@ -59,8 +59,8 @@
 
     <ng-template pTemplate="header" let-columns>
       <tr>
-        <th class="size-first-column">
-          <button pButton type="button" class="tableButton" icon="fas fa-cog " (click)="showModalSelectColumns()"
+        <th id="config" class="size-first-column">
+          <button pButton type="button" class="tableButton-def" icon="fas fa-cog " (click)="showModalSelectColumns()"
             pTooltip="Configurações"></button>
         </th>
 
@@ -79,7 +79,7 @@
     <ng-template pTemplate="body" let-dataToFillTable let-rowData let-rowIndex="rowIndex" let-columns="columns">
       <tr>
 
-        <td class="size-first-column"></td>
+        <td class="size-first-column" id="config"></td>
         <td *ngFor="let col of columns; let i = index" [id]="col.field">
           <span [pTooltip]="rowData[col.field]">
             {{rowData[col.field]}}

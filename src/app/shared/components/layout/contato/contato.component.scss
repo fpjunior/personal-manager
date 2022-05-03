@@ -1,4 +1,4 @@
-@import "src/assets/styles/generalStyle";
+@import "src/assets/styles/generalStyle.scss";
 
 .p-button {
   color: #ffffff;
@@ -11,25 +11,21 @@
   border-radius: 3px;
 }
 
-th#email, td#email {
-  width: 15%;
-}
 
-th#cpf,
-td#cpf,
-th#name,
-td#name,
-th#idade,
-td#idade,
 th#operation,
-td#operation,
-th#id,
-td#id {
-  width: 15%;
+td#operation {
+  width: 6%;
+}
+th#idade,
+td#idade {
+  width: 8%;
 }
 
-th.size-first-column, td.size-first-column {
-  width: 4%;
+th#id,
+td#id,
+th#config,
+td#config {
+  width: 5%;
 }
 
 .p-button:enabled:hover {
@@ -91,7 +87,8 @@ th.size-first-column, td.size-first-column {
     width: 77px;
   }
 
-  .tableButton {
+  .tableButton-def,
+  button.p-button.p-component.p-button-icon-only.p-ripple {
     &:hover {
       background-color: transparent !important;
       border: 1px solid transparent !important;
