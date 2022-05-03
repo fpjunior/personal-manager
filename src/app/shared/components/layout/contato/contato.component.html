@@ -84,6 +84,13 @@
           <span [pTooltip]="rowData[col.field]">
             {{rowData[col.field]}}
           </span>
+
+          <div *ngIf="col.field=='operation'" class="justify-content-center" style="font-size: 16px">
+            <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
+                (click)="editContact(rowData)"></p-button>
+            <p-button pRipple type="button" class="tableButton-def" icon="fas fa-trash"
+                (click)="editContact(rowData.id)"></p-button>
+        </div>
         </td>
       </tr>
     </ng-template>

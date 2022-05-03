@@ -75,6 +75,7 @@ export class ContatoComponent implements OnInit {
     this.getAllContacts();
   }
 
+
   showModalSelectColumns() {
     this.showModalColumn = true;
   }
@@ -119,9 +120,24 @@ export class ContatoComponent implements OnInit {
     // // this.resetForm();
   }
 
+  rowData
+
+  editContact(event){
+    this.rowData = event
+    let fb = this.contactsForm.controls
+    this.showDialogContact = true;
+    this.contactsForm.controls['name'].setValue(event.name)
+    fb['idade'].setValue(event.idade)
+    fb['cpf'].setValue(event.cpf)
+    fb['email'].setValue(event.email)
+  }
+
   saveContact(frm: any): void {
    frm = this.contactsForm.getRawValue();
-    this.contactService.saveContact(frm).subscribe(
+  this.rowData
+  ? frm.id = this.rowData.id
+  : frm
+    this.contactService.saveOrUpdate(frm).subscribe(
       (response) => {
         // this.contact.push(response)
         this.contactsForm.reset();
@@ -148,53 +164,6 @@ export class ContatoComponent implements OnInit {
         this.loading = false;
       }
     );
-  }
-
-  changeValue(valueToChange: number, operator: string) {
-    //bloco dos botões de incremento
-    if (operator === "+") {
-      if (valueToChange === 1) {
-        this.valueInput1 = this.valueInput1 + valueToChange;
-      }
-      if (valueToChange === 2) {
-        this.valueInput2 = this.valueInput2 + valueToChange;
-      }
-      if (valueToChange === 4) {
-        this.valueInput3 = this.valueInput3 + valueToChange;
-      }
-      if (valueToChange === 10) {
-        this.valueInput4 = this.valueInput4 + valueToChange;
-      }
-    }
-    //bloco dos botões de decremento
-    if (operator === "-") {
-      if (valueToChange === 1) {
-        this.valueInput1 = this.valueInput1 - valueToChange;
-      }
-      if (valueToChange === 2) {
-        this.valueInput2 = this.valueInput2 - valueToChange;
-      }
-      if (valueToChange === 4) {
-        this.valueInput3 = this.valueInput3 - valueToChange;
-      }
-      if (valueToChange === 10) {
-        this.valueInput4 = this.valueInput4 - valueToChange;
-      }
-    }
-  }
-  zeroValue(input: string) {
-    if (input === "input1") {
-      this.valueInput1 = 0;
-    }
-    if (input === "input2") {
-      this.valueInput2 = 0;
-    }
-    if (input === "input3") {
-      this.valueInput3 = 0;
-    }
-    if (input === "input4") {
-      this.valueInput4 = 0;
-    }
   }
 
   dialog(display) {
