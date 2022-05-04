@@ -96,6 +96,7 @@ import { InputTextComponent } from "./components/fields/input-text/input-text.co
     BreadcrumbsComponent,
     ProgressBarComponent,
     ContatoComponent,
+    DespesasComponent,
     EventoDashboardComponent,
     EventoFormComponent,
     CicloDashboardComponent,
