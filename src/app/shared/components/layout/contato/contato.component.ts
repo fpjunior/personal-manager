@@ -25,25 +25,17 @@ import { tryCatchError } from 'src/app/shared/utils/erro-handler.util';
   styleUrls: ["./contato.component.scss"],
 })
 export class ContatoComponent implements OnInit {
-  @Input() valor: number = 10;
-  @Input() valorInicial: number = 10;
-
-  valueInput1: number = 0;
-  valueInput2: number = 0;
-  valueInput3: number = 0;
-  valueInput4: number = 0;
-  display: boolean = false;
 
   // config Table
   cols = tableArr;
   fullCols = tableArr;
   immutableCols: string[] = [];
   showModalColumn = false;
-
   dataToFillTable: ContactsModel[];
-  contacts: Array<any>
   contact: any
+  loading = false;
 
+  // config dialogs
   showModalResponse = false;
   isErrorResponse: boolean;
   contentResponse: string;
@@ -52,21 +44,12 @@ export class ContatoComponent implements OnInit {
   contactsForm!: FormGroup;
 
   @Output() mudouValor = new EventEmitter();
-
   @ViewChild("campoInput") campoValorInput: ElementRef;
 
   breadcrumbItems: MenuItem[] = [{ label: `Contatos` }];
   showDialogContact = false;
-  valueName;
-  valueIdade;
-  valueCpf;
-  valueEmail;
-  loading = false;
   rowData;
   idContactToDelete: number;
-
-
-  isSaveOrUpdate = "Cadastrar Contato"
 
   constructor(
     private breadcrumbService: BreadcrumbService,
@@ -153,20 +136,24 @@ export class ContatoComponent implements OnInit {
   }
 
   confirmDelete(){
+    this.progressBarService.changeProgressBar(true);
     this.contactService.deleteById(this.idContactToDelete).subscribe(
       ()=>{
         this.getAllContacts();
         this.showModalDelete = false;
         this.showModalResponse = true;
         this.contentResponse = 'Contato deletado com sucesso!';
+        this.progressBarService.changeProgressBar(false);
       },
       (err) =>{
-        this.handleError(err)
+        this.handleError(err);
+        this.progressBarService.changeProgressBar(false);
       }
     )
   }
 
   saveContact(frm: any): void {
+    this.progressBarService.changeProgressBar(true);
     this.loading = true;
    frm = this.contactsForm.getRawValue();
   this.rowData
@@ -180,24 +167,29 @@ export class ContatoComponent implements OnInit {
         this.contentResponse = 'Contato criado com sucesso!';
         this.getAllContacts();
         this.loading = false;
+        this.progressBarService.changeProgressBar(false);
       },
       (err) => {
         this.handleError(err);
         this.loading = false;
+        this.progressBarService.changeProgressBar(false);
       }
     );
   }
 
   getAllContacts() {
+    this.progressBarService.changeProgressBar(true);
     this.loading = true;
     this.contactService.getAllContacts().subscribe(
       (contact) => {
         this.dataToFillTable = contact;
         this.loading = false;
+        this.progressBarService.changeProgressBar(false);
       },
       (err) => {
         this.loading = false;
         this.handleError(err);
+        this.progressBarService.changeProgressBar(false);
       }
     );
   }
