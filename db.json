@@ -225,60 +225,18 @@
       "id": 36
     },
     {
-      "name": "Dom Pedro",
-      "idade": "56",
-      "cpf": "054654898865",
-      "email": "dompedro@gmail.com",
+      "name": "Angelita Arruda",
+      "idade": "21",
+      "cpf": "0293093092039",
+      "email": "angelita@gmail.com",
       "id": 37
     },
     {
-      "name": "Acelino Manoel",
+      "name": "Alehandro Sas",
       "idade": "34",
-      "cpf": "068485789879",
-      "email": "acelio@gmail.com",
+      "cpf": "0202939302934",
+      "email": "alehando@gmail.com",
       "id": 38
-    },
-    {
-      "name": "Dom Pedro II",
-      "idade": "56",
-      "cpf": "054654898865",
-      "email": "dompedro@gmail.com",
-      "id": 39
-    },
-    {
-      "name": "Aline",
-      "idade": "34",
-      "cpf": "02093092039",
-      "email": "aline@gmail.com",
-      "id": 40
-    },
-    {
-      "name": "Aline2",
-      "idade": "34",
-      "cpf": "02093092039",
-      "email": "aline@gmail.com",
-      "id": 41
-    },
-    {
-      "name": "leandro22",
-      "idade": "44",
-      "cpf": "3003300290293",
-      "email": "leandro@gmail.com",
-      "id": 42
-    },
-    {
-      "name": "texeira modificado",
-      "idade": "34",
-      "cpf": "399298398",
-      "email": "texeira@gmail.com",
-      "id": 43
-    },
-    {
-      "name": "Carlos",
-      "idade": "46",
-      "cpf": "030290202932",
-      "email": "carlos@gmail.com",
-      "id": 44
     }
   ]
 }

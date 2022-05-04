@@ -50,7 +50,6 @@
       </p-button>
     </span>
   </div>
-  <!-- <button pButton type="button" label="Dialog" (click)="dialog(display)"></button><br><br> -->
   <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
     [globalFilterFields]="['name','idade']" [globalFilterFields]="['name','idade','cpf','email']" sortField="id"
@@ -89,13 +88,22 @@
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
                 (click)="editContact(rowData)"></p-button>
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-trash"
-                (click)="editContact(rowData.id)"></p-button>
+                (click)="openDialogDelete(rowData.id)"></p-button>
         </div>
         </td>
       </tr>
     </ng-template>
   </p-table>
 </div>
+
+<app-confirm-dialog (onClose)="showModalDelete = false" (confirmEvent)="confirmDelete()"
+(cancelEvent)="showModalDelete = false" [showModal]="showModalDelete" header="Confirmação"
+content="Tem certeza que deseja excluir o contato selecionado?">
+</app-confirm-dialog>
+
+
+<generic-response-dialog [showModal]="showModalResponse" [isError]="isErrorResponse" [content]="contentResponse">
+</generic-response-dialog>
 
 <app-dialog-table-column (onClose)="onHideDialogTable()" [showModal]="showModalColumn" [fullCols]="fullCols"
   [colsModified]="cols" [immutables]="immutableCols" (saveColumn)="editColumns($event)">

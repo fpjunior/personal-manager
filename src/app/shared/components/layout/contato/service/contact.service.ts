@@ -11,26 +11,19 @@ import { URL_CONTACTS } from 'src/app/shared/constants/url';
 })
 export class ContactService extends RepositoryService<ContactsModel> {
 
-  constructor(public http: HttpClient) { super(http, URL_CONTACTS)}
+  constructor(public http: HttpClient) { super(http, URL_CONTACTS) }
 
-  getAllContacts(): Observable<any>{
+  getAllContacts(): Observable<any> {
     return this.http.get(URL_CONTACTS)
   }
 
-  // saveContact(contactObj: ContactsModel ): Observable<any> {
-  //   return this.http.post(URL_CONTACTS, contactObj).pipe(
-  //     map((responseApi: any) => responseApi),
-  //     take(1)
-  //   )
-  // }
-
-  saveOrUpdate(contactObj: ContactsModel ): Observable<any> {
+  saveOrUpdate(contactObj: ContactsModel): Observable<any> {
     if (contactObj.id) {
       return this.http
-      .put<any>(`${URL_CONTACTS}/${contactObj.id}`, contactObj)
-      .pipe(
-        timeout(20000000),
-        take(1));
+        .put<any>(`${URL_CONTACTS}/${contactObj.id}`, contactObj)
+        .pipe(
+          timeout(20000000),
+          take(1));
     } else {
       return this.http.post(URL_CONTACTS, contactObj).pipe(
         map((responseApi: any) => responseApi),

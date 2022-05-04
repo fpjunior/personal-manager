@@ -17,6 +17,7 @@ import { ContactService } from "./service/contact.service";
 import { ProgressBarService } from '../../progress-bar/progress-bar.service';
 import { TableStandard } from 'src/app/shared/models/table.model';
 import { tableArr } from './model/table.model';
+import { tryCatchError } from 'src/app/shared/utils/erro-handler.util';
 
 @Component({
   selector: "app-contato",
@@ -43,6 +44,11 @@ export class ContatoComponent implements OnInit {
   contacts: Array<any>
   contact: any
 
+  showModalResponse = false;
+  isErrorResponse: boolean;
+  contentResponse: string;
+  showModalDelete = false;
+
   contactsForm!: FormGroup;
 
   @Output() mudouValor = new EventEmitter();
@@ -56,6 +62,8 @@ export class ContatoComponent implements OnInit {
   valueCpf;
   valueEmail;
   loading = false;
+  rowData;
+  idContactToDelete: number;
 
 
   isSaveOrUpdate = "Cadastrar Contato"
@@ -63,7 +71,6 @@ export class ContatoComponent implements OnInit {
   constructor(
     private breadcrumbService: BreadcrumbService,
     private contactService: ContactService,
-    private router: Router,
     private progressBarService: ProgressBarService,
     private formBuilder: FormBuilder,
   ) {}
@@ -75,7 +82,6 @@ export class ContatoComponent implements OnInit {
     this.getAllContacts();
   }
 
-
   showModalSelectColumns() {
     this.showModalColumn = true;
   }
@@ -85,6 +91,8 @@ export class ContatoComponent implements OnInit {
   editColumns(cols: TableStandard[]) {
     this.cols = cols;
   }
+
+
 
   form(): void {
     this.contactsForm = this.formBuilder.group({
@@ -120,7 +128,7 @@ export class ContatoComponent implements OnInit {
     // // this.resetForm();
   }
 
-  rowData
+
 
   editContact(event){
     this.rowData = event
@@ -132,26 +140,53 @@ export class ContatoComponent implements OnInit {
     fb['email'].setValue(event.email)
   }
 
+
+  openDialogDelete(id){
+    this.showModalDelete = true;
+    this.idContactToDelete = id
+  }
+
+  handleError(err: any){
+    this.isErrorResponse = true;
+    this.showModalResponse = true;
+    this.contentResponse = tryCatchError(err);
+  }
+
+  confirmDelete(){
+    this.contactService.deleteById(this.idContactToDelete).subscribe(
+      ()=>{
+        this.getAllContacts();
+        this.showModalDelete = false;
+        this.showModalResponse = true;
+        this.contentResponse = 'Contato deletado com sucesso!';
+      },
+      (err) =>{
+        this.handleError(err)
+      }
+    )
+  }
+
   saveContact(frm: any): void {
+    this.loading = true;
    frm = this.contactsForm.getRawValue();
   this.rowData
   ? frm.id = this.rowData.id
   : frm
     this.contactService.saveOrUpdate(frm).subscribe(
-      (response) => {
-        // this.contact.push(response)
+      () => {
         this.contactsForm.reset();
         this.showDialogContact = false;
-        this.getAllContacts()
-        alert("contato criado com sucesso");
+        this.showModalResponse = true;
+        this.contentResponse = 'Contato criado com sucesso!';
+        this.getAllContacts();
+        this.loading = false;
       },
-      (error) => {
-        alert("erro ao criar um novo contato");
+      (err) => {
+        this.handleError(err);
+        this.loading = false;
       }
     );
   }
-
-  goToTheContactForm = () => this.router.navigate(["/contato-form"]);
 
   getAllContacts() {
     this.loading = true;
@@ -160,18 +195,10 @@ export class ContatoComponent implements OnInit {
         this.dataToFillTable = contact;
         this.loading = false;
       },
-      (error) => {
+      (err) => {
         this.loading = false;
+        this.handleError(err);
       }
     );
-  }
-
-  dialog(display) {
-    if (display === false) {
-      this.display = true;
-    }
-    if (display === true) {
-      this.display = false;
-    }
   }
 }
