@@ -1,20 +1,27 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { delay, map, take, timeout } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { Inject, Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { delay, map, take, timeout } from "rxjs/operators";
+import { ApiResponseWrapper } from "../models/response-api-wrapper.model";
 
-import { ApiResponseWrapper } from '../models/response-api-wrapper.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RepositoryService<T> {
-  constructor(protected http: HttpClient, private URL: string) {}
+  constructor(protected http: HttpClient,@Inject(String) private URL: string) {
+
+  }
 
   listAll(): Observable<T[]> {
-    return this.http.get<ApiResponseWrapper<T[]>>(this.URL).pipe(
+
+    const headers = {
+      Authorization: localStorage.getItem('infoAuthToken'),
+    }
+
+    return this.http.get<ApiResponseWrapper<T[]>>(this.URL, { headers: new HttpHeaders({'Content-Type': 'application/json'}),  }).pipe(
       delay(1000),
-      timeout(20000),
+      timeout(2000000),
       map((responseApi) => responseApi.data),
       take(1)
     );
@@ -23,7 +30,7 @@ export class RepositoryService<T> {
   list(): Observable<T> {
     return this.http.get<ApiResponseWrapper<T>>(this.URL).pipe(
       delay(1000),
-      timeout(20000),
+      timeout(2000000),
       map((responseApi) => responseApi.data),
       take(1)
     );
@@ -31,21 +38,21 @@ export class RepositoryService<T> {
 
   loadById(id: number): Observable<T> {
     return this.http.get<T>(`${this.URL}/${id}`).pipe(
-      timeout(20000),
+      timeout(2000000),
       take(1));
   }
 
   loadWithFilter(filter: string): Observable<T[]> {
     const params = new HttpParams().set('filtro', filter)
-    return this.http.get<ApiResponseWrapper<T[]>>(this.URL, {params}).pipe(
+    return this.http.get<ApiResponseWrapper<T[]>>(this.URL, { params }).pipe(
       delay(1000),
-      timeout(20000),
+      timeout(2000000),
       map((responseApi) => responseApi.data),
       take(1)
     );
   }
 
-  saveOrUpdate(record: T): Observable<T> {
+  saveOrUpdate(record: any ): Observable<T> {
     if (record['codigo']) {
       return this.update(record);
     }
@@ -54,21 +61,21 @@ export class RepositoryService<T> {
 
   deleteById(id: number): Observable<T> {
     return this.http.delete<T>(`${this.URL}/${id}`).pipe(
-      timeout(20000),
+      timeout(2000000),
       take(1));
   }
 
   private save(record: T): Observable<T> {
     return this.http.post<T>(this.URL, record).pipe(
-      timeout(20000),
+      timeout(20000000),
       take(1));
   }
 
-  private update(record: T): Observable<T> {
+  private update(record: any): Observable<T> {
     return this.http
       .post<T>(`${this.URL}/${record['codigo']}`, record)
       .pipe(
-        timeout(20000),
+        timeout(20000000),
         take(1));
   }
 }

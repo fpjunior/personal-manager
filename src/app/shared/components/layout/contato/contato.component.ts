@@ -17,6 +17,7 @@ import { ContactService } from "./service/contact.service";
 import { ProgressBarService } from '../../progress-bar/progress-bar.service';
 import { TableStandard } from 'src/app/shared/models/table.model';
 import { tableArr } from './model/table.model';
+import { tryCatchError } from 'src/app/shared/utils/erro-handler.util';
 
 @Component({
   selector: "app-contato",
@@ -24,46 +25,35 @@ import { tableArr } from './model/table.model';
   styleUrls: ["./contato.component.scss"],
 })
 export class ContatoComponent implements OnInit {
-  @Input() valor: number = 10;
-  @Input() valorInicial: number = 10;
-
-  valueInput1: number = 0;
-  valueInput2: number = 0;
-  valueInput3: number = 0;
-  valueInput4: number = 0;
-  display: boolean = false;
 
   // config Table
   cols = tableArr;
   fullCols = tableArr;
   immutableCols: string[] = [];
   showModalColumn = false;
-
   dataToFillTable: ContactsModel[];
-  contacts: Array<any>
   contact: any
+  loading = false;
+
+  // config dialogs
+  showModalResponse = false;
+  isErrorResponse: boolean;
+  contentResponse: string;
+  showModalDelete = false;
 
   contactsForm!: FormGroup;
 
   @Output() mudouValor = new EventEmitter();
-
   @ViewChild("campoInput") campoValorInput: ElementRef;
 
   breadcrumbItems: MenuItem[] = [{ label: `Contatos` }];
   showDialogContact = false;
-  valueName;
-  valueIdade;
-  valueCpf;
-  valueEmail;
-  loading = false;
-
-
-  isSaveOrUpdate = "Cadastrar Contato"
+  rowData;
+  idContactToDelete: number;
 
   constructor(
     private breadcrumbService: BreadcrumbService,
     private contactService: ContactService,
-    private router: Router,
     private progressBarService: ProgressBarService,
     private formBuilder: FormBuilder,
   ) {}
@@ -84,6 +74,8 @@ export class ContatoComponent implements OnInit {
   editColumns(cols: TableStandard[]) {
     this.cols = cols;
   }
+
+
 
   form(): void {
     this.contactsForm = this.formBuilder.group({
@@ -119,90 +111,86 @@ export class ContatoComponent implements OnInit {
     // // this.resetForm();
   }
 
+
+
+  editContact(event){
+    this.rowData = event
+    let fb = this.contactsForm.controls
+    this.showDialogContact = true;
+    this.contactsForm.controls['name'].setValue(event.name)
+    fb['idade'].setValue(event.idade)
+    fb['cpf'].setValue(event.cpf)
+    fb['email'].setValue(event.email)
+  }
+
+
+  openDialogDelete(id){
+    this.showModalDelete = true;
+    this.idContactToDelete = id
+  }
+
+  handleError(err: any){
+    this.isErrorResponse = true;
+    this.showModalResponse = true;
+    this.contentResponse = tryCatchError(err);
+  }
+
+  confirmDelete(){
+    this.progressBarService.changeProgressBar(true);
+    this.contactService.deleteById(this.idContactToDelete).subscribe(
+      ()=>{
+        this.getAllContacts();
+        this.showModalDelete = false;
+        this.showModalResponse = true;
+        this.contentResponse = 'Contato deletado com sucesso!';
+        this.progressBarService.changeProgressBar(false);
+      },
+      (err) =>{
+        this.handleError(err);
+        this.progressBarService.changeProgressBar(false);
+      }
+    )
+  }
+
   saveContact(frm: any): void {
+    this.progressBarService.changeProgressBar(true);
+    this.loading = true;
    frm = this.contactsForm.getRawValue();
-    this.contactService.saveContact(frm).subscribe(
-      (response) => {
-        // this.contact.push(response)
+  this.rowData
+  ? frm.id = this.rowData.id
+  : frm
+    this.contactService.saveOrUpdate(frm).subscribe(
+      () => {
         this.contactsForm.reset();
         this.showDialogContact = false;
-        this.getAllContacts()
-        alert("contato criado com sucesso");
+        this.showModalResponse = true;
+        this.contentResponse = 'Contato criado com sucesso!';
+        this.getAllContacts();
+        this.loading = false;
+        this.progressBarService.changeProgressBar(false);
       },
-      (error) => {
-        alert("erro ao criar um novo contato");
+      (err) => {
+        this.handleError(err);
+        this.loading = false;
+        this.progressBarService.changeProgressBar(false);
       }
     );
   }
 
-  goToTheContactForm = () => this.router.navigate(["/contato-form"]);
-
   getAllContacts() {
+    this.progressBarService.changeProgressBar(true);
     this.loading = true;
     this.contactService.getAllContacts().subscribe(
       (contact) => {
         this.dataToFillTable = contact;
         this.loading = false;
+        this.progressBarService.changeProgressBar(false);
       },
-      (error) => {
+      (err) => {
         this.loading = false;
+        this.handleError(err);
+        this.progressBarService.changeProgressBar(false);
       }
     );
-  }
-
-  changeValue(valueToChange: number, operator: string) {
-    //bloco dos botões de incremento
-    if (operator === "+") {
-      if (valueToChange === 1) {
-        this.valueInput1 = this.valueInput1 + valueToChange;
-      }
-      if (valueToChange === 2) {
-        this.valueInput2 = this.valueInput2 + valueToChange;
-      }
-      if (valueToChange === 4) {
-        this.valueInput3 = this.valueInput3 + valueToChange;
-      }
-      if (valueToChange === 10) {
-        this.valueInput4 = this.valueInput4 + valueToChange;
-      }
-    }
-    //bloco dos botões de decremento
-    if (operator === "-") {
-      if (valueToChange === 1) {
-        this.valueInput1 = this.valueInput1 - valueToChange;
-      }
-      if (valueToChange === 2) {
-        this.valueInput2 = this.valueInput2 - valueToChange;
-      }
-      if (valueToChange === 4) {
-        this.valueInput3 = this.valueInput3 - valueToChange;
-      }
-      if (valueToChange === 10) {
-        this.valueInput4 = this.valueInput4 - valueToChange;
-      }
-    }
-  }
-  zeroValue(input: string) {
-    if (input === "input1") {
-      this.valueInput1 = 0;
-    }
-    if (input === "input2") {
-      this.valueInput2 = 0;
-    }
-    if (input === "input3") {
-      this.valueInput3 = 0;
-    }
-    if (input === "input4") {
-      this.valueInput4 = 0;
-    }
-  }
-
-  dialog(display) {
-    if (display === false) {
-      this.display = true;
-    }
-    if (display === true) {
-      this.display = false;
-    }
   }
 }

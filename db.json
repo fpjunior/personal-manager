@@ -225,18 +225,11 @@
       "id": 36
     },
     {
-      "name": "Dom Pedro",
-      "idade": "56",
-      "cpf": "054654898865",
-      "email": "dompedro@gmail.com",
+      "name": "Angelita Arruda",
+      "idade": "21",
+      "cpf": "0293093092039",
+      "email": "angelita@gmail.com",
       "id": 37
-    },
-    {
-      "name": "Acelino Manoel",
-      "idade": "34",
-      "cpf": "068485789879",
-      "email": "acelio@gmail.com",
-      "id": 38
     }
   ],
   "despesas":[

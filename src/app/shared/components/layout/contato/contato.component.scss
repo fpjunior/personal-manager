@@ -1,4 +1,4 @@
-@import "src/assets/styles/generalStyle";
+@import "src/assets/styles/generalStyle.scss";
 
 .p-button {
   color: #ffffff;
@@ -11,11 +11,21 @@
   border-radius: 3px;
 }
 
-th#email {
-  width: 228px;
+
+th#operation,
+td#operation {
+  width: 6%;
 }
-th#operation {
-  width: 360px;
+th#idade,
+td#idade {
+  width: 8%;
+}
+
+th#id,
+td#id,
+th#config,
+td#config {
+  width: 5%;
 }
 
 .p-button:enabled:hover {
@@ -42,8 +52,6 @@ th#operation {
 .form-applications {
   padding-bottom: 17px;
 }
-
-
 
 .buttons-actions {
   display: flex;
@@ -79,9 +87,8 @@ th#operation {
     width: 77px;
   }
 
-
-
-  .tableButton {
+  .tableButton-def,
+  button.p-button.p-component.p-button-icon-only.p-ripple {
     &:hover {
       background-color: transparent !important;
       border: 1px solid transparent !important;
@@ -130,7 +137,3 @@ th#operation {
     margin: 10px;
   }
 }
-
-// .form-label{
-//   padding-bottom: 20px;
-// }

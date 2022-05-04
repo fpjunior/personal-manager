@@ -1,15 +1,11 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ProgressBarService {
+  public progressBarChanged = new EventEmitter<boolean>(false);
 
-isActive: boolean;
-public progressBarChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-changeProgressBar(isActive: boolean): void {
-  this.isActive = isActive;
-  this.progressBarChanged.next(this.isActive);
-}
+  changeProgressBar(isActive: boolean): void {
+    this.progressBarChanged.next(isActive);
+  }
 }
