@@ -1,3 +1,31 @@
 <p>
 
 </p>
+<p-table [value]="">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>
+      <div class="p-d-flex p-jc-between p-ai-center" pSortableColumn="id">Id<p-sortIcon field="id"></p-sortIcon><p-columnFilter type="text"  display="menu"></p-columnFilter >
+      </div>
+    </th>
+
+    <th>
+      <div class="p-d-flex p-jc-between p-ai-center" pSortableColumn="tipos despesas">Tipos Despesas<p-sortIcon field="tipos despesas"></p-sortIcon><p-columnFilter type="text" field="name" display="menu"></p-columnFilter >
+      </div>
+    </th>
+    </tr>
+
+    <tr>
+      <td>002</td>
+      <td>Lapís</td>
+    </tr>
+
+    <tr>
+      <td>001</td>
+      <td>Caneta</td>
+    </tr>
+
+    <tr>
+      <td>003</td>
+      <td>Bloco de notas</td>
+    </tr>
