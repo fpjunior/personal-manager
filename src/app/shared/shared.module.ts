@@ -34,6 +34,7 @@ import { ContatoComponent } from "./components/layout/contato/contato.component"
 import { DespesasComponent } from "./components/layout/despesas/despesas.component";
 import { InfoFieldErrorMessageComponent } from "./components/fields/info-field-error-message/info-field-error-message.component";
 import { InputTextComponent } from "./components/fields/input-text/input-text.component";
+import { TiposdespesasComponent } from './components/layout/tiposdespesas/tiposdespesas.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,8 @@ import { InputTextComponent } from "./components/fields/input-text/input-text.co
 
     // BUTTONS
     GenericButtonsComponent,
+
+    TiposdespesasComponent,
   ],
 
   imports: [
@@ -125,6 +128,8 @@ import { InputTextComponent } from "./components/fields/input-text/input-text.co
     InputTextComponent,
 
     DespesasComponent,
+
+    TiposdespesasComponent,
 
   ],
   entryComponents: [],
