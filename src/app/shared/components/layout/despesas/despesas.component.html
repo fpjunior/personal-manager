@@ -1,7 +1,7 @@
 <div>
-  <!--<p-dialog #dialogDrop (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
+  <p-dialog #dialogDrop (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
     [baseZIndex]="10000" [(visible)]="showDialogDespesa" header="Cadastrar Nova Despesa">
-    <form method="post" [formGroup]="despesasForm" (ngSubmit)="saveDespesa(despesasForm)">
+    <form method="post" [formGroup]="despesasForm" (ngSubmit)="saveDespesa(despesasForm)"><!--
       <div class="p-grid">
 
         <div class="field col-3 form-applications">
@@ -26,7 +26,7 @@
             id="email" [type]="'text'">
           </input-text>
         </div>
-      </div>
+      </div>-->
 
       <div class="buttons-actions">
         <p-button type="submit" icon="fa fa-check" [disabled]="this.despesasForm.invalid" class="standard" label="Salvar">
@@ -36,7 +36,7 @@
       </div>
 
     </form>
-  </p-dialog>-->
+  </p-dialog>
 
     <div class="grid input-button-search">
       <span class="p-input-icon-left p-ml-auto">
