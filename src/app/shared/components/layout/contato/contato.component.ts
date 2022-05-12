@@ -25,14 +25,6 @@ import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.uti
   styleUrls: ["./contato.component.scss"],
 })
 export class ContatoComponent implements OnInit {
-  @Input() valor: number = 10;
-  @Input() valorInicial: number = 10;
-
-  valueInput1: number = 0;
-  valueInput2: number = 0;
-  valueInput3: number = 0;
-  valueInput4: number = 0;
-  display: boolean = false;
 
   // config Table
   cols = tableArr;
@@ -47,7 +39,6 @@ export class ContatoComponent implements OnInit {
   contactsForm!: FormGroup;
 
   @Output() mudouValor = new EventEmitter();
-
   @ViewChild("campoInput") campoValorInput: ElementRef;
 
   breadcrumbItems: MenuItem[] = [{ label: `Contatos` }];
@@ -69,7 +60,6 @@ export class ContatoComponent implements OnInit {
   constructor(
     private breadcrumbService: BreadcrumbService,
     private contactService: ContactService,
-    private router: Router,
     private progressBarService: ProgressBarService,
     private formBuilder: FormBuilder
   ) {}
@@ -204,9 +194,10 @@ export class ContatoComponent implements OnInit {
     this.contactsForm.setValue(event);
   }
 
-  goToTheContactForm = () => this.router.navigate(["/contato-form"]);
+  // goToTheContactForm = () => this.router.navigate(["/contato-form"]);
 
   getAllContacts() {
+    this.progressBarService.changeProgressBar(true);
     this.loading = true;
     this.contactService.getAllContacts().subscribe(
       (contact: any) => {
@@ -216,10 +207,13 @@ export class ContatoComponent implements OnInit {
           return e[1];
         });
         this.loading = false;
+        this.progressBarService.changeProgressBar(false);
       },
       (error) => {
         this.handleError(error);
         this.loading = false;
+        this.handleError(error);
+        this.progressBarService.changeProgressBar(false);
       }
     );
   }
