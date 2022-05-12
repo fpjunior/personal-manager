@@ -8,30 +8,6 @@
     background-color: $cor-azul-mais-claro-padrao;
   }
 
-  .iconeEmAtraso {
-    color: #ff9933;
-  }
-
-  .iconeCritico {
-    color: #ff1800;
-  }
-
-  .iconeInvisible {
-    color: transparent;
-  }
-
-  .semaforoNoPrazo {
-    color: #219653;
-  }
-
-  .semaforoEmAtraso {
-    color: #f2c94c;
-  }
-
-  .semaforoCritico {
-    color: #eb5757;
-  }
-
   .invisible {
     color: transparent;
   }
@@ -51,13 +27,14 @@
       min-width: 4em !important;
 
       &:first-child {
-        width: 4em;
+        padding: 0;
       }
 
       &:last-child {
-        // padding-left: 0;
-        // text-align: center;
-        // width: 7em;
+        padding: 0 1em;
+        padding-left: 1em !important;
+        text-align: center;
+        width: 15em;
       }
 
       p-sorticon {
@@ -88,13 +65,20 @@
 
         text-overflow: ellipsis;
         text-transform: uppercase;
+
+        &:first-child {
+          padding-left: 0.5em;
+        }
+
         &:focus {
           border: none;
           outline: none;
         }
         &:last-child {
-          // text-align: center;
-          // padding-left: 0;
+          text-align: center;
+          padding-left: 0;
+          padding-top: 0.5em;
+          padding-bottom: 0.5em;
         }
 
         // .fa-lg {
@@ -127,6 +111,13 @@
       .p-paginator-pages .p-paginator-page.p-highlight {
         background-color: #2d9cdb;
         color: white;
+      }
+
+      .p-paginator-current,
+      .p-paginator-icon,
+      .p-link,
+      .p-dropdown-trigger-icon {
+        font-size: 13px;
       }
     }
   }
@@ -173,9 +164,6 @@
 }
 
 .p-column-filter-overlay-menu {
-  border: solid red;
-  max-width: 15.9rem;
-  min-width: 15.9rem;
   span,
   .p-dropdown-label,
   .p-column-filter-add-rule .p-button-text .p-button-label,
@@ -183,38 +171,6 @@
     font-size: 13px;
   }
 }
-
-.p-column-filter-overlay-menu.remove-matchnode-drop {
-  .iconeEmAtraso {
-    color: #ff9933;
-  }
-
-  .iconeCritico {
-    color: #ff1800;
-  }
-
-  .ampulheta {
-    color: $cor-cinza-escuro-padrao;
-  }
-
-  .iconeInvisible {
-    color: transparent;
-  }
-
-  .ampulheta {
-    color: $cor-cinza-escuro-padrao;
-  }
-
-  .p-dropdown-item {
-    text-align: center !important;
-  }
-
-  .p-column-filter-matchmode-dropdown  {
-    display: none !important;
-  }
-}
-
-
 
 .p-tooltip {
   z-index: 99999 !important;

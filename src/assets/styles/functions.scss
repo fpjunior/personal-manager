@@ -1,6 +1,5 @@
 @import "variables";
 
-$spaceamounts: (1, 25);
 
 @each $size, $sz in $spaceamounts {
   @each $unit, $ut in $unit {

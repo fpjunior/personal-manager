@@ -7,7 +7,10 @@
 @import "fields";
 @import "functions";
 
-:host ::ng-deep {
+
+  .pointer {
+    cursor: pointer !important;
+  }
   .width50 {
     width: 50%;
   }
@@ -52,22 +55,16 @@
     display: none;
   }
 
+  .no-hidden {
+    display: block;
+  }
+
   .right {
     float: right;
   }
 
   .left {
     float: left;
-  }
-
-  .p-tooltip-text,
-  .p-tooltip,
-  .p-tooltip-arrow {
-    font-size: 8px !important;
-  }
-
-  .p-inputswitch {
-    height: 1.4rem !important;
   }
 
   .strongRight {
@@ -84,9 +81,27 @@
   .uppercase {
     text-transform: uppercase;
   }
-}
 
-.tooltip-beneficios .p-tooltip-text {
-  width: 516px;
-  height: 216px;
+  .p-component {
+    @include fontStandard;
+    font-weight: unset;
+  }
+
+  // p-chart {
+  //   border: solid red;
+  //   @include fontStandard;
+
+  // }
+
+  .p-component {
+    .p-dropdown-label,
+    .p-dropdown .p-dropdown-label.p-placeholder,
+    .p-checkbox-label {
+      color: #767676 !important;
+      font-size: 13px !important;
+    }
+  }
+
+label {
+  color: #767676;
 }

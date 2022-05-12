@@ -11,11 +11,25 @@
   border-radius: 3px;
 }
 
+.input-filterGlobal {
+  width: 98%;
+}
 
+.group-inputFilter-btnCreate {
+  display: flex;
+}
+
+.div-group-nputFilter-btnCreate {
+  width: 40%;
+}
+
+
+// essa parte ajusta a largura das colunas da tabela
 th#operation,
 td#operation {
   width: 6%;
 }
+
 th#idade,
 td#idade {
   width: 8%;
@@ -28,25 +42,11 @@ td#config {
   width: 5%;
 }
 
+// esse código altera a cor do botão quando ele recebe foco com mouse
 .p-button:enabled:hover {
   background: #0d89ec;
   color: #ffffff;
   border-color: #0d89ec;
-}
-
-.input-increment {
-  width: 80px;
-  height: 29px;
-}
-
-.input-search {
-  // width: 40%;
-  width: 327px;
-  margin-right: 20px;
-}
-
-.input-button-search {
-  margin-bottom: 25px;
 }
 
 .form-applications {
@@ -55,8 +55,9 @@ td#config {
 
 .buttons-actions {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding-top: 30px;
+  width: 230px;
 }
 
 .p-button {
@@ -69,11 +70,13 @@ td#config {
     box-shadow 0.2s;
   border-radius: 3px;
 }
+
 .p-button:enabled:hover {
   background: #0d89ec;
   color: #ffffff;
   border-color: #0d89ec;
 }
+
 .input-increment {
   width: 80px;
   height: 29px;

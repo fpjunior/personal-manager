@@ -1,7 +1,6 @@
-<p-dialog [draggable]="false" [closable]="false" [modal]="true" [baseZIndex]="10000" [(visible)]="isLoading"
-header="Aguarde">
-<p-progressBar *ngIf="isLoading" mode="indeterminate" styleClass="custom-progress" animationDuration=".5s">
-
-</p-progressBar> 
-
-</p-dialog>
+<div class="wrapper-bar" *ngIf="isLoading" (scroll)="onScroll()" #progressbarContainer id="progressbar">
+  <div class="position-bar">
+    <p-progressBar *ngIf="isLoading" mode="indeterminate" styleClass="custom-progress" animationDuration=".5s">
+    </p-progressBar>
+  </div>
+</div>

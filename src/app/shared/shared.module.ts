@@ -34,6 +34,7 @@ import { ContatoComponent } from "./components/layout/contato/contato.component"
 import { DespesasComponent } from "./components/layout/despesas/despesas.component";
 import { InfoFieldErrorMessageComponent } from "./components/fields/info-field-error-message/info-field-error-message.component";
 import { InputTextComponent } from "./components/fields/input-text/input-text.component";
+import { TesteComponent } from './components/layout/teste/teste.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { InputTextComponent } from "./components/fields/input-text/input-text.co
     CicloDashboardComponent,
     CicloFormComponent,
     DespesasComponent,
+    TesteComponent,
 
     // DIALOGS
     DialogTableColumnComponent,
@@ -125,6 +127,7 @@ import { InputTextComponent } from "./components/fields/input-text/input-text.co
     InputTextComponent,
 
     DespesasComponent,
+    TesteComponent
 
   ],
   entryComponents: [],
