@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
   private initMenu = (): MenuItem[] =>
     (this.items = [
       {
-        label: 'Example',
+        label: 'Contatos',
         icon: 'fa fa-address-book',
         command: () => {
           this.visibleSidebar = false;
@@ -85,12 +85,12 @@ export class HeaderComponent implements OnInit {
         ],
       },
       {
-        label: 'Example3',
+        label: 'Despesas',
         icon: 'fas fa-list-ul fa-lg:1em',
         disabled: false,
         command: () => {
           this.visibleSidebar = false;
-          this.route.navigate(['/example3']);
+          this.route.navigate(['despesas']);
         },
       },
       {
@@ -107,6 +107,14 @@ export class HeaderComponent implements OnInit {
         command: () => {
           this.visibleSidebar = false;
           this.route.navigate(['/ciclo']);
+        },
+      },
+      {
+        label: 'Teste',
+        icon: 'fas fa-map-marked-alt fa-lg:1em',
+        command: () => {
+          this.visibleSidebar = false;
+          this.route.navigate(['/teste']);
         },
       },
       {

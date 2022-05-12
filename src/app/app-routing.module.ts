@@ -1,5 +1,7 @@
+import { TesteComponent } from './shared/components/layout/teste/teste.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DespesasComponent } from './shared/components/layout/despesas/despesas.component';
 
 
 
@@ -45,6 +47,15 @@ const routes: Routes = [
       import('./modules/home/home.module').then(
         (m) => m.HomeModule
       ),
+  },
+
+  {
+    path: "despesas",
+    component: DespesasComponent,
+  },
+  {
+    path: "teste",
+    component: TesteComponent,
   },
 
   { path: 'input-property',

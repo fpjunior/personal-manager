@@ -1,0 +1,27 @@
+:host ::ng-deep {
+  .wrapper-bar {
+    background-color: transparent;
+
+    // Z-INDEX SUPORTA NO MAXIMO 32BITS, OU SEJA, UM INTEIRO MAXIMO:
+    z-index: 2147483646 !important;
+    // position: fixed;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    .position-bar {
+      top: 51px;
+      position: absolute;
+      width: 100%;
+      .custom-progress {
+        height: 4px;
+      }
+    }
+  }
+
+  .sticky-loading{
+    position: fixed;
+    margin-top: -51px;
+  }
+}

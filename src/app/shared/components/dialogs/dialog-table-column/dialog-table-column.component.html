@@ -1,0 +1,28 @@
+
+<div class="g-dialog">
+
+  <p-dialog closeIcon="fa fa-times" [draggable]="false" [modal]="true" [baseZIndex]="10000" [(visible)]="showModal"
+    (onHide)="onCloseParent()" (onShow)="onShowParent()" header="Configurações">
+    <div class="grid justify-content-start check-box-list">
+      <div class="col-12 label-custom">
+        <span> {{fullCols.length == immutables.length ? "Não há colunas para seleção!" : "Selecione as colunas que ficarão visíveis" }} </span>
+      </div>
+      <div class="col-3 div-checks" *ngFor="let col of fullCols; let i = index">
+        <p-checkbox value="col" [value]="col" [pTooltip]="col.hintName" [inputId]="'columnCheck' + col.field " [label]="col.header"
+          [(ngModel)]="selectedCols">
+        </p-checkbox>
+      </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+      <p-button type="button" icon="fa fa-undo" class="standard" (onClick)="returnColumns()"
+        label="Restaurar Padrão">
+      </p-button>
+      <p-button type="button" icon="fa fa-check-square" [disabled]="fullCols.length == selectedCols.length|| fullCols.length == immutables.length" (onClick)="checkAllColumns()"
+        class="standard" label="Marcar Todos"></p-button>
+      <p-button type="button" icon="fa fa-save" class="standard" [disabled]="fullCols.length == immutables.length"
+        (click)="saveColumn.emit(selectedCols); onCloseParent()" label="Salvar">
+      </p-button>
+    </ng-template>
+  </p-dialog>
+</div>

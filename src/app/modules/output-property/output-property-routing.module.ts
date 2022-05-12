@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { OutputPropertyComponent } from './output-property/output-property.component';
-import { OutputPropertyDashboardComponent } from 'src/app/shared/components/layout/output-property/output-property-dashboard/output-property-dashboard.component';
+import { ContatoComponent } from 'src/app/shared/components/layout/contato/contato.component';
 
 const routes: Routes = [
     {
@@ -9,7 +9,7 @@ const routes: Routes = [
         component: OutputPropertyComponent,
         children: [
             { path: '', redirectTo: 'dashboard' },
-            { path: 'dashboard', component: OutputPropertyDashboardComponent },
+            { path: 'dashboard', component: ContatoComponent },
             // { path: 'cadastrar', component: EventoFormComponent },
             { path: '**', redirectTo: 'home' }
           ]
