@@ -1,11 +1,12 @@
-@import "generalStyle";
+// @import "generalStyle";
 @import "colors";
-@import "reset";
+// @import "reset";
 
 html,
 body {
   height: 100%;
   background-color: $cor-cinza-padrao;
+  font-family: Roboto;
 }
 
 * {
@@ -14,6 +15,14 @@ body {
 
 body {
   margin: 0;
+}
+
+.button-operation {
+  > ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -29,5 +38,171 @@ body {
   border-radius: 4px;
   &:hover {
     background: $scroll-bar-hover;
+  }
+}
+
+.p-column-filter-overlay {
+
+  .p-inputtext,
+  .p-button-label{
+    font-size: 13px;
+    font-family: 'Roboto';
+  }
+
+
+  .p-column-filter-operator,
+  .p-column-filter-matchmode-dropdown,
+  .p-column-filter-add-rule {
+    display: none !important;
+  }
+
+  .p-column-filter-constraint::before {
+    // color: red;
+    // content: "CONTÉM";
+  }
+
+  p-tristatecheckbox {
+    .p-checkbox-icon {
+      position: absolute;
+      width: 100%;
+    }
+
+    .pi-check {
+      &::before {
+        content: "\e909";
+        margin-left: 2px;
+      }
+
+      &::after {
+        content: "SIM";
+        font-size: 16px;
+        font-family: Roboto;
+        color: #2a78ad;
+        margin-left: 7em;
+      }
+    }
+
+    .pi-times {
+      &::before {
+        content: "\e90b";
+        margin-left: 2px;
+      }
+
+      &::after {
+        content: "NÃO";
+        font-size: 16px;
+        font-family: Roboto;
+        color: #2a78ad;
+        margin-left: 7em;
+      }
+    }
+  }
+}
+
+@media screen {
+  #printSection {
+    display: none;
+  }
+}
+
+@media print {
+  body * {
+    padding: 0;
+  }
+
+  @page { margin-top: 0; }
+
+  @page:footer {
+    display: none;
+  }
+
+  @page:header {
+    display: none;
+  }
+
+  p-card,
+  .p-card {
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0%;
+  }
+
+  .p-card .p-card-body {
+    padding: 0 !important;
+  }
+
+  .wrap {
+    padding: 0 !important;
+  }
+
+  p-button,
+  .top-header,
+  p-breadcrumb {
+    display: none;
+  }
+
+  p {
+    margin: 0 !important;
+  }
+
+  .tittle-laudo {
+    margin-top: 0 !important;
+  }
+
+  img {
+    width: 100px !important;
+  }
+}
+
+.p-tooltip {
+  max-width: 22rem !important;
+  word-break: break-word;
+  font-size: 12px !important;
+}
+
+.rounded-button {
+}
+
+.button-operation,
+.p-overlaypanel {
+  border-radius: 8px !important;
+
+  .p-overlaypanel-content {
+    padding: 0 1em !important;
+
+    .p-button,
+    button {
+      color: $cor-azul-escuro-padrao;
+      background-color: transparent !important;
+      border: 1px solid transparent !important;
+      font-size: 1.33333333em;
+      &:hover {
+        // background-color: #3f88b2;
+        // border: 1px solid #3f88b2;
+        color: $cor-azul-escuro-padrao;
+      }
+
+      &:active {
+        background-color: #2d9cdb;
+        border: 1px solid #2d9cdb;
+      }
+
+      &:disabled {
+        color: #799db3;
+        border: 1px solid #799db3;
+      }
+    }
+    ul {
+      display: flex;
+      flex-direction: row;
+      list-style-type: none;
+      padding-inline-start: 0;
+      margin: 8px 0;
+
+      li {
+        margin: 0 3px;
+      }
+    }
   }
 }

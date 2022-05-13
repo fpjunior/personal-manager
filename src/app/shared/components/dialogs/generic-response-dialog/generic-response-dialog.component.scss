@@ -1,4 +1,4 @@
-// @import "colors.scss";
+@import "src/assets/styles/colors.scss";
 
 :host ::ng-deep {
   .g-dialog {
@@ -12,20 +12,13 @@
         font-size: 16px;
         font-style: normal;
         font-weight: normal;
-        color: white;
+        color: $cor-cinza-escuro-padrao;
         height: 1em;
+        padding: 0em;
       }
 
       .p-dialog-title {
-        margin-left: 20px !important;
-      }
-
-      p-header {
-        // margin-left: -105px;
-        padding: 20px;
-        left: 0.4em;
-        top: 0.6em;
-        position: absolute;
+        font-size: 16px;
       }
 
       .p-dialog-content {
@@ -34,7 +27,7 @@
         font-style: normal;
         font-weight: normal;
         font-size: 14px;
-        color: white;
+        color: $cor-cinza-escuro-padrao;
         padding: 2em;
       }
     }
@@ -43,11 +36,12 @@
       .p-dialog,
       .p-dialog-header,
       .p-dialog-content {
-        background-color: white;
+        background-color: $cor-vermelho-alerta;
       }
 
-      p-header {
+      icon {
         color: red;
+        margin-right: 0.5em;
       }
     }
 
@@ -55,10 +49,11 @@
       .p-dialog,
       .p-dialog-header,
       .p-dialog-content {
-        background-color: white;
+        background-color: $cor-verde-sucesso;
       }
-      p-header {
+      icon {
         color: green;
+        margin-right: 0.5em;
       }
     }
   }

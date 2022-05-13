@@ -1,64 +1,83 @@
- @import "src/assets/styles/generalStyle";
+@import "src/assets/styles/generalStyle.scss";
 
 .p-button {
   color: #ffffff;
-  background: #4682B4;
-  border: 1px solid #4682B4;
+  background: #4682b4;
+  border: 1px solid #4682b4;
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
   border-radius: 3px;
 }
 
-th#email {
-  width: 228px;
-}
-th#operation {
-  width: 360px;
+.input-filterGlobal {
+  width: 98%;
 }
 
+.group-inputFilter-btnCreate {
+  display: flex;
+}
+
+.div-group-nputFilter-btnCreate {
+  width: 40%;
+}
 
 
+// essa parte ajusta a largura das colunas da tabela
+th#operation,
+td#operation {
+  width: 6%;
+}
+
+th#idade,
+td#idade {
+  width: 8%;
+}
+
+th#id,
+td#id,
+th#config,
+td#config {
+  width: 5%;
+}
+
+// esse código altera a cor do botão quando ele recebe foco com mouse
 .p-button:enabled:hover {
-    background: #0d89ec;
-    color: #ffffff;
-    border-color: #0d89ec;
+  background: #0d89ec;
+  color: #ffffff;
+  border-color: #0d89ec;
 }
 
-.input-increment{
-  width: 80px;
-  height: 29px;
+.form-applications {
+  padding-bottom: 17px;
 }
 
-.input-search{
-  // width: 40%;
-  width: 327px;
-  margin-right: 20px;
+.buttons-actions {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  width: 230px;
 }
-
-
-.input-button-search {
-  margin-bottom: 25px;
-
-}
-
-
 
 .p-button {
   color: #ffffff;
-  background: #4682B4;
-  border: 1px solid #4682B4;
+  background: #4682b4;
+  border: 1px solid #4682b4;
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
   border-radius: 3px;
 }
+
 .p-button:enabled:hover {
-    background: #0d89ec;
-    color: #ffffff;
-    border-color: #0d89ec;
+  background: #0d89ec;
+  color: #ffffff;
+  border-color: #0d89ec;
 }
-.input-increment{
+
+.input-increment {
   width: 80px;
   height: 29px;
 }
@@ -67,12 +86,12 @@ th#operation {
   height: 37px !important;
 }
 :host ::ng-deep {
-
-  .size-first-column{
+  .size-first-column {
     width: 77px;
   }
-  .tableButton{
 
+  .tableButton-def,
+  button.p-button.p-component.p-button-icon-only.p-ripple {
     &:hover {
       background-color: transparent !important;
       border: 1px solid transparent !important;
@@ -85,7 +104,6 @@ th#operation {
     color: #495057;
     background: transparent;
     border: 1px solid transparent;
-
   }
   &.p-fieldset .p-fieldset-legend {
     color: #495057;
@@ -122,7 +140,3 @@ th#operation {
     margin: 10px;
   }
 }
-
-// .form-label{
-//   padding-bottom: 20px;
-// }

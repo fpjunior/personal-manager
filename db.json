@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Breno",
-      "idade": "19",
+      "age": "19",
       "cpf": "12345678901",
       "email": "breno@gmail.com"
     },
@@ -202,6 +202,34 @@
       "cpf": "06548987",
       "email": "06868joaquim@gmil.com",
       "id": 33
+    },
+    {
+      "name": "Alessandro",
+      "idade": "23",
+      "cpf": "0684854898789",
+      "email": "asdfds@gmail.com",
+      "id": 34
+    },
+    {
+      "name": "Pedrito",
+      "idade": "56",
+      "cpf": "0654898765498",
+      "email": "pedrito@gmail.com",
+      "id": 35
+    },
+    {
+      "name": "Cristiano Ronaldo",
+      "idade": "35",
+      "cpf": "065468748955",
+      "email": "cr7@gmail.com",
+      "id": 36
+    },
+    {
+      "name": "Angelita Arruda",
+      "idade": "21",
+      "cpf": "0293093092039",
+      "email": "angelita@gmail.com",
+      "id": 37
     }
   ]
 }

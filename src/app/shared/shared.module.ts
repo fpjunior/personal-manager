@@ -35,6 +35,7 @@ import { DespesasComponent } from "./components/layout/despesas/despesas.compone
 import { InfoFieldErrorMessageComponent } from "./components/fields/info-field-error-message/info-field-error-message.component";
 import { InputTextComponent } from "./components/fields/input-text/input-text.component";
 import { TiposdespesasComponent } from './components/layout/tiposdespesas/tiposdespesas.component';
+import { TesteComponent } from './components/layout/teste/teste.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { TiposdespesasComponent } from './components/layout/tiposdespesas/tiposd
     CicloDashboardComponent,
     CicloFormComponent,
     DespesasComponent,
+    TesteComponent,
 
     // DIALOGS
     DialogTableColumnComponent,
@@ -128,6 +130,7 @@ import { TiposdespesasComponent } from './components/layout/tiposdespesas/tiposd
     InputTextComponent,
 
     DespesasComponent,
+    TesteComponent,
 
     TiposdespesasComponent,
 

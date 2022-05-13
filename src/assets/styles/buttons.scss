@@ -5,7 +5,11 @@
     height: 32px;
     padding: 0rem 1rem;
     font-size: 14px !important;
+    font-family: Roboto;
 
+    .p-button-label {
+      font-weight: normal;
+    }
   }
 
   .icon-right {
@@ -15,18 +19,45 @@
   }
 
   .standard {
-    .p-button {
-      background-color: $cor-azul-escuro-padrao;
+    .p-button,
+    button {
+      background-color: $cor-azul-escuro-padrao !important;
       border: 1px solid $cor-azul-escuro-padrao;
+      &:hover {
+        background-color: #3f88b2;
+        border: 1px solid #3f88b2;
+      }
 
+      &:active {
+        background-color: #2d9cdb;
+        border: 1px solid #2d9cdb;
+      }
+
+      &:disabled {
+        background-color: #799db3;
+        border: 1px solid #799db3;
+      }
     }
   }
 
   .dismiss {
     .p-button {
-      background-color: $cor-cinza-escuro-padrao !important;
-      border: 1px solid $cor-cinza-escuro-padrao !important;
+      background-color: $cor-cinza-escuro-padrao;
+      border: 1px solid $cor-cinza-escuro-padrao;
+      &:hover {
+        background-color: #8f8f8f;
+        border: 1px solid #8f8f8f;
+      }
 
+      &:active {
+        background-color: #a8a8a8;
+        border: 1px solid #a8a8a8;
+      }
+
+      &:disabled {
+        background-color: #bdbdbd;
+        border: 1px solid #bdbdbd;
+      }
     }
   }
 
@@ -38,7 +69,8 @@
 
   .newRegisterButton {
     > button {
-      height: calc(1.5em + 0.75rem + 2px) !important;
+      // height: calc(1.5em + 0.75rem + 2px) !important;
+      height: 32px !important;
     }
   }
 
@@ -46,10 +78,16 @@
     background-color: transparent;
     border: 1px solid transparent;
     color: #767676;
-    &:hover {
+    font-size: 16px !important;
+    margin-bottom: 0 !important;
+    margin: 0 15%;
+    &:hover,
+    &:active,
+    &:focus {
       background-color: transparent;
       border: 1px solid transparent;
       color: #767676;
+      box-shadow: none;
     }
   }
 
@@ -62,6 +100,24 @@
       border: 1px solid $cor-azul-escuro-padrao;
       width: 32px;
       height: 32px;
+
+      &:hover {
+        color: #3f88b2;
+        border: 1px solid #3f88b2;
+        background-color: transparent;
+      }
+
+      &:active {
+        color: #2d9cdb;
+        border: 1px solid #2d9cdb;
+        background-color: transparent;
+      }
+
+      &:disabled {
+        color: #799db3;
+        border: 1px solid #799db3;
+        background-color: transparent;
+      }
     }
   }
 }

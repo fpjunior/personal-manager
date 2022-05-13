@@ -1,3 +1,23 @@
-<p>
-  generic-response-dialog works!
-</p>
+<div class="g-dialog">
+
+  <p-dialog  closeIcon="fa fa-times"
+  [draggable]="false"
+  [modal]="true"
+  [baseZIndex]="10000"
+  [(visible)]="showModal"
+  [ngClass]="isError ? 'error' : 'success'"
+  (onHide)="onCloseParent()"
+  (onShow)="onShowParent()"
+  >
+
+  <p-header>
+    <span>
+      <icon [ngClass]="isError ? 'far fa-times-circle' : 'fas fa-check' "></icon>
+      {{ isError ? 'Erro' : 'Sucesso' }}
+    </span>
+  </p-header>
+
+    <span>{{content}}</span>
+  </p-dialog>
+
+</div>

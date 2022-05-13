@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {
   Component,
   OnInit,
@@ -14,9 +14,10 @@ import { BreadcrumbService } from "../../breadcrumbs/breadcrumbs.service";
 import { contactsMock } from "./mock/contato.mock";
 import { ContactsModel } from "./model/contact.model";
 import { ContactService } from "./service/contact.service";
-import { ProgressBarService } from '../../progress-bar/progress-bar.service';
-import { TableStandard } from 'src/app/shared/models/table.model';
-import { tableArr } from './model/table.model';
+import { ProgressBarService } from "../../progress-bar/progress-bar.service";
+import { TableStandard } from "src/app/shared/models/table.model";
+import { tableArr } from "./model/table.model";
+import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 
 @Component({
   selector: "app-contato",
@@ -24,14 +25,6 @@ import { tableArr } from './model/table.model';
   styleUrls: ["./contato.component.scss"],
 })
 export class ContatoComponent implements OnInit {
-  @Input() valor: number = 10;
-  @Input() valorInicial: number = 10;
-
-  valueInput1: number = 0;
-  valueInput2: number = 0;
-  valueInput3: number = 0;
-  valueInput4: number = 0;
-  display: boolean = false;
 
   // config Table
   cols = tableArr;
@@ -39,41 +32,53 @@ export class ContatoComponent implements OnInit {
   immutableCols: string[] = [];
   showModalColumn = false;
 
-  dataToFillTable: ContactsModel[];
-  contacts: Array<any>
-  contact: any
+  dataToFillTable: any;
+  contacts: Array<any>;
+  contact: any;
 
   contactsForm!: FormGroup;
 
   @Output() mudouValor = new EventEmitter();
-
   @ViewChild("campoInput") campoValorInput: ElementRef;
 
   breadcrumbItems: MenuItem[] = [{ label: `Contatos` }];
   showDialogContact = false;
   valueName;
-  valueIdade;
+  valueage;
   valueCpf;
   valueEmail;
   loading = false;
-
-
-  isSaveOrUpdate = "Cadastrar Contato"
+  showModalResponse = false;
+  contentResponse!: string;
+  isErrorResponse!: boolean;
+  rowData;
+  idContact;
+  showCorfirmDialog: boolean = false;
+  msgModalConfirm: string = "";
+  isEdit: boolean;
 
   constructor(
     private breadcrumbService: BreadcrumbService,
     private contactService: ContactService,
-    private router: Router,
     private progressBarService: ProgressBarService,
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {
-    this.form()
-    this.contact = {}
+    this.initForm();
+    this.contact = {};
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
     this.getAllContacts();
   }
+
+  closeConfirmDialog() {
+    this.showCorfirmDialog = false;
+  }
+
+  // confirmExit() {
+  //   this.showCorfirmDialog = false;
+  //   this.showDialogContact = false;
+  // }
 
   showModalSelectColumns() {
     this.showModalColumn = true;
@@ -85,119 +90,140 @@ export class ContatoComponent implements OnInit {
     this.cols = cols;
   }
 
-  form(): void {
+  onHide = () => {
+    this.showModalResponse = false;
+  };
+
+  onShow(): boolean {
+    return (this.showModalResponse = true);
+  }
+
+  private sucessResponse(
+    msgResponse: string
+  ): void {
+    this.isErrorResponse = false;
+    this.showModalResponse = true;
+    this.contentResponse = msgResponse;
+    this.progressBarService.changeProgressBar(false);
+    setTimeout(() => {
+      this.showModalResponse = false;
+    }, 2000);
+  }
+
+  private handleError(err: any): void {
+    this.isErrorResponse = true;
+    this.showModalResponse = true;
+    this.contentResponse = tryCatchErrorFunc(err);
+    this.progressBarService.changeProgressBar(false);
+    setTimeout(() => {
+      this.showModalResponse = false;
+    }, 2000);
+  }
+
+  initForm(): void {
     this.contactsForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      idade: ['', [Validators.required]],
-      cpf: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      id: [""],
+      name: ["", [Validators.required]],
+      age: ["", [Validators.required]],
+      cpf: ["", [Validators.required]],
+      phone: ["", [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
     });
   }
 
-  onHideLiberacao() {}
+  onHideDialog() {}
 
-  connect(): void {
-    // this.progressBarService.changeProgressBar(true);
-    // const ocurrenceObj = this.contactsForm.getRawValue();
-    // delete(ocurrenceObj.client)
-
-    // this.applicationUser = {
-    //   ...ocurrenceObj
-    // }
-    // if (this.editMode) {
-    //   this.editUser();
-    //   this.resetForm();
-    //   return;
-    // }
-
-    // // this.createUser();
-    // // this.resetForm();
+  openDialogAddContact() {
+    this.contactsForm.reset();
+    this.showDialogContact = true;
   }
 
-  saveContact(frm: any): void {
-   frm = this.contactsForm.getRawValue();
-    this.contactService.saveContact(frm).subscribe(
+  openConfirmDelete(idToDelete: string) {
+    this.msgModalConfirm = "Tem certeza que deseja excluir este registro?";
+    this.idContact = idToDelete;
+    this.showCorfirmDialog = true;
+  }
+
+  confirmAction(){
+    if(this.isEdit){
+      this.showDialogContact = false;
+      this.showCorfirmDialog = false;
+    } else {
+      this.deleteContact();
+      this.showCorfirmDialog = false;
+    }
+  }
+
+  deleteContact() {
+    this.progressBarService.changeProgressBar(true);
+    this.contactService.deleteContact(this.idContact).subscribe(
       (response) => {
-        // this.contact.push(response)
+        this.sucessResponse("Contato deletado com sucesso");
+        setTimeout(() => {
+          this.getAllContacts();
+        }, 2500);
+      },
+      (error) => {
+        this.handleError(error);
+      }
+    );
+  }
+
+  saveContact(contactsForm: any): void {
+    contactsForm = this.contactsForm.getRawValue();
+    this.contactService.saveOrUpdateContact(contactsForm).subscribe(
+      (response) => {
         this.contactsForm.reset();
         this.showDialogContact = false;
-        this.getAllContacts()
-        alert("contato criado com sucesso");
+        this.sucessResponse("Contato salvo com sucesso");
+        setTimeout(() => {
+          this.getAllContacts();
+        }, 2000);
       },
       (error) => {
-        alert("erro ao criar um novo contato");
+        this.handleError(error);
       }
     );
   }
 
-  goToTheContactForm = () => this.router.navigate(["/contato-form"]);
+  editContact(event) {
+    this.isEdit = true;
+    this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
+    this.rowData = event;
+    this.showDialogContact = true;
+    this.contactsForm.setValue(event);
+  }
+
+  // goToTheContactForm = () => this.router.navigate(["/contato-form"]);
 
   getAllContacts() {
+    this.progressBarService.changeProgressBar(true);
     this.loading = true;
     this.contactService.getAllContacts().subscribe(
-      (contact) => {
-        this.dataToFillTable = contact;
+      (contact: any) => {
+        // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
+        this.dataToFillTable = Object.entries(contact).map((e: any) => {
+          e[1].id = e[0];
+          return e[1];
+        });
         this.loading = false;
+        this.progressBarService.changeProgressBar(false);
       },
       (error) => {
+        this.handleError(error);
         this.loading = false;
+        this.handleError(error);
+        this.progressBarService.changeProgressBar(false);
       }
     );
   }
 
-  changeValue(valueToChange: number, operator: string) {
-    //bloco dos botões de incremento
-    if (operator === "+") {
-      if (valueToChange === 1) {
-        this.valueInput1 = this.valueInput1 + valueToChange;
-      }
-      if (valueToChange === 2) {
-        this.valueInput2 = this.valueInput2 + valueToChange;
-      }
-      if (valueToChange === 4) {
-        this.valueInput3 = this.valueInput3 + valueToChange;
-      }
-      if (valueToChange === 10) {
-        this.valueInput4 = this.valueInput4 + valueToChange;
-      }
-    }
-    //bloco dos botões de decremento
-    if (operator === "-") {
-      if (valueToChange === 1) {
-        this.valueInput1 = this.valueInput1 - valueToChange;
-      }
-      if (valueToChange === 2) {
-        this.valueInput2 = this.valueInput2 - valueToChange;
-      }
-      if (valueToChange === 4) {
-        this.valueInput3 = this.valueInput3 - valueToChange;
-      }
-      if (valueToChange === 10) {
-        this.valueInput4 = this.valueInput4 - valueToChange;
-      }
-    }
-  }
-  zeroValue(input: string) {
-    if (input === "input1") {
-      this.valueInput1 = 0;
-    }
-    if (input === "input2") {
-      this.valueInput2 = 0;
-    }
-    if (input === "input3") {
-      this.valueInput3 = 0;
-    }
-    if (input === "input4") {
-      this.valueInput4 = 0;
-    }
-  }
-
-  dialog(display) {
-    if (display === false) {
-      this.display = true;
-    }
-    if (display === true) {
-      this.display = false;
-    }
-  }
+  // dialog(display) {
+  //   if (display === false) {
+  //     this.display = true;
+  //   }
+  //   if (display === true) {
+  //     this.display = false;
+  //   }
+  // }
 }

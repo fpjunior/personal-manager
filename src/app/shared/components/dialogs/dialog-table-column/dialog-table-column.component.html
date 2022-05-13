@@ -4,10 +4,10 @@
   <p-dialog closeIcon="fa fa-times" [draggable]="false" [modal]="true" [baseZIndex]="10000" [(visible)]="showModal"
     (onHide)="onCloseParent()" (onShow)="onShowParent()" header="Configurações">
     <div class="grid justify-content-start check-box-list">
-      <div class="col-12 check-custom">
+      <div class="col-12 label-custom">
         <span> {{fullCols.length == immutables.length ? "Não há colunas para seleção!" : "Selecione as colunas que ficarão visíveis" }} </span>
       </div>
-      <div class="col-3" *ngFor="let col of fullCols; let i = index">
+      <div class="col-3 div-checks" *ngFor="let col of fullCols; let i = index">
         <p-checkbox value="col" [value]="col" [pTooltip]="col.hintName" [inputId]="'columnCheck' + col.field " [label]="col.header"
           [(ngModel)]="selectedCols">
         </p-checkbox>
