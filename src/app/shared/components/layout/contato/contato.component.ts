@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {
   Component,
   OnInit,
@@ -14,10 +14,10 @@ import { BreadcrumbService } from "../../breadcrumbs/breadcrumbs.service";
 import { contactsMock } from "./mock/contato.mock";
 import { ContactsModel } from "./model/contact.model";
 import { ContactService } from "./service/contact.service";
-import { ProgressBarService } from '../../progress-bar/progress-bar.service';
-import { TableStandard } from 'src/app/shared/models/table.model';
-import { tableArr } from './model/table.model';
-import { tryCatchError } from 'src/app/shared/utils/erro-handler.util';
+import { ProgressBarService } from "../../progress-bar/progress-bar.service";
+import { TableStandard } from "src/app/shared/models/table.model";
+import { tableArr } from "./model/table.model";
+import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 
 @Component({
   selector: "app-contato",
@@ -31,15 +31,10 @@ export class ContatoComponent implements OnInit {
   fullCols = tableArr;
   immutableCols: string[] = [];
   showModalColumn = false;
-  dataToFillTable: ContactsModel[];
-  contact: any
-  loading = false;
 
-  // config dialogs
-  showModalResponse = false;
-  isErrorResponse: boolean;
-  contentResponse: string;
-  showModalDelete = false;
+  dataToFillTable: any;
+  contacts: Array<any>;
+  contact: any;
 
   contactsForm!: FormGroup;
 
@@ -48,22 +43,42 @@ export class ContatoComponent implements OnInit {
 
   breadcrumbItems: MenuItem[] = [{ label: `Contatos` }];
   showDialogContact = false;
+  valueName;
+  valueage;
+  valueCpf;
+  valueEmail;
+  loading = false;
+  showModalResponse = false;
+  contentResponse!: string;
+  isErrorResponse!: boolean;
   rowData;
-  idContactToDelete: number;
+  idContact;
+  showCorfirmDialog: boolean = false;
+  msgModalConfirm: string = "";
+  isEdit: boolean;
 
   constructor(
     private breadcrumbService: BreadcrumbService,
     private contactService: ContactService,
     private progressBarService: ProgressBarService,
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {
-    this.form()
-    this.contact = {}
+    this.initForm();
+    this.contact = {};
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
     this.getAllContacts();
   }
+
+  closeConfirmDialog() {
+    this.showCorfirmDialog = false;
+  }
+
+  // confirmExit() {
+  //   this.showCorfirmDialog = false;
+  //   this.showDialogContact = false;
+  // }
 
   showModalSelectColumns() {
     this.showModalColumn = true;
@@ -75,122 +90,140 @@ export class ContatoComponent implements OnInit {
     this.cols = cols;
   }
 
+  onHide = () => {
+    this.showModalResponse = false;
+  };
 
+  onShow(): boolean {
+    return (this.showModalResponse = true);
+  }
 
-  form(): void {
+  private sucessResponse(
+    msgResponse: string
+  ): void {
+    this.isErrorResponse = false;
+    this.showModalResponse = true;
+    this.contentResponse = msgResponse;
+    this.progressBarService.changeProgressBar(false);
+    setTimeout(() => {
+      this.showModalResponse = false;
+    }, 2000);
+  }
+
+  private handleError(err: any): void {
+    this.isErrorResponse = true;
+    this.showModalResponse = true;
+    this.contentResponse = tryCatchErrorFunc(err);
+    this.progressBarService.changeProgressBar(false);
+    setTimeout(() => {
+      this.showModalResponse = false;
+    }, 2000);
+  }
+
+  initForm(): void {
     this.contactsForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      idade: ['', [Validators.required]],
-      cpf: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      id: [""],
+      name: ["", [Validators.required]],
+      age: ["", [Validators.required]],
+      cpf: ["", [Validators.required]],
+      phone: ["", [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
     });
   }
 
   onHideDialog() {}
 
-  openDialogAddContact(){
-    this.contactsForm.reset()
-    this.showDialogContact = true
-  }
-
-  connect(): void {
-    // this.progressBarService.changeProgressBar(true);
-    // const ocurrenceObj = this.contactsForm.getRawValue();
-    // delete(ocurrenceObj.client)
-
-    // this.applicationUser = {
-    //   ...ocurrenceObj
-    // }
-    // if (this.editMode) {
-    //   this.editUser();
-    //   this.resetForm();
-    //   return;
-    // }
-
-    // // this.createUser();
-    // // this.resetForm();
-  }
-
-
-
-  editContact(event){
-    this.rowData = event
-    let fb = this.contactsForm.controls
+  openDialogAddContact() {
+    this.contactsForm.reset();
     this.showDialogContact = true;
-    this.contactsForm.controls['name'].setValue(event.name)
-    fb['idade'].setValue(event.idade)
-    fb['cpf'].setValue(event.cpf)
-    fb['email'].setValue(event.email)
   }
 
-
-  openDialogDelete(id){
-    this.showModalDelete = true;
-    this.idContactToDelete = id
+  openConfirmDelete(idToDelete: string) {
+    this.msgModalConfirm = "Tem certeza que deseja excluir este registro?";
+    this.idContact = idToDelete;
+    this.showCorfirmDialog = true;
   }
 
-  handleError(err: any){
-    this.isErrorResponse = true;
-    this.showModalResponse = true;
-    this.contentResponse = tryCatchError(err);
+  confirmAction(){
+    if(this.isEdit){
+      this.showDialogContact = false;
+      this.showCorfirmDialog = false;
+    } else {
+      this.deleteContact();
+      this.showCorfirmDialog = false;
+    }
   }
 
-  confirmDelete(){
+  deleteContact() {
     this.progressBarService.changeProgressBar(true);
-    this.contactService.deleteById(this.idContactToDelete).subscribe(
-      ()=>{
-        this.getAllContacts();
-        this.showModalDelete = false;
-        this.showModalResponse = true;
-        this.contentResponse = 'Contato deletado com sucesso!';
-        this.progressBarService.changeProgressBar(false);
+    this.contactService.deleteContact(this.idContact).subscribe(
+      (response) => {
+        this.sucessResponse("Contato deletado com sucesso");
+        setTimeout(() => {
+          this.getAllContacts();
+        }, 2500);
       },
-      (err) =>{
-        this.handleError(err);
-        this.progressBarService.changeProgressBar(false);
-      }
-    )
-  }
-
-  saveContact(frm: any): void {
-    this.progressBarService.changeProgressBar(true);
-    this.loading = true;
-   frm = this.contactsForm.getRawValue();
-  this.rowData
-  ? frm.id = this.rowData.id
-  : frm
-    this.contactService.saveOrUpdate(frm).subscribe(
-      () => {
-        this.contactsForm.reset();
-        this.showDialogContact = false;
-        this.showModalResponse = true;
-        this.contentResponse = 'Contato criado com sucesso!';
-        this.getAllContacts();
-        this.loading = false;
-        this.progressBarService.changeProgressBar(false);
-      },
-      (err) => {
-        this.handleError(err);
-        this.loading = false;
-        this.progressBarService.changeProgressBar(false);
+      (error) => {
+        this.handleError(error);
       }
     );
   }
+
+  saveContact(contactsForm: any): void {
+    contactsForm = this.contactsForm.getRawValue();
+    this.contactService.saveOrUpdateContact(contactsForm).subscribe(
+      (response) => {
+        this.contactsForm.reset();
+        this.showDialogContact = false;
+        this.sucessResponse("Contato salvo com sucesso");
+        setTimeout(() => {
+          this.getAllContacts();
+        }, 2000);
+      },
+      (error) => {
+        this.handleError(error);
+      }
+    );
+  }
+
+  editContact(event) {
+    this.isEdit = true;
+    this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
+    this.rowData = event;
+    this.showDialogContact = true;
+    this.contactsForm.setValue(event);
+  }
+
+  // goToTheContactForm = () => this.router.navigate(["/contato-form"]);
 
   getAllContacts() {
     this.progressBarService.changeProgressBar(true);
     this.loading = true;
     this.contactService.getAllContacts().subscribe(
-      (contact) => {
-        this.dataToFillTable = contact;
+      (contact: any) => {
+        // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
+        this.dataToFillTable = Object.entries(contact).map((e: any) => {
+          e[1].id = e[0];
+          return e[1];
+        });
         this.loading = false;
         this.progressBarService.changeProgressBar(false);
       },
-      (err) => {
+      (error) => {
+        this.handleError(error);
         this.loading = false;
-        this.handleError(err);
+        this.handleError(error);
         this.progressBarService.changeProgressBar(false);
       }
     );
   }
+
+  // dialog(display) {
+  //   if (display === false) {
+  //     this.display = true;
+  //   }
+  //   if (display === true) {
+  //     this.display = false;
+  //   }
+  // }
 }

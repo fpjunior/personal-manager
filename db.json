@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Breno",
-      "idade": "19",
+      "age": "19",
       "cpf": "12345678901",
       "email": "breno@gmail.com"
     },

@@ -5,15 +5,17 @@
   [modal]="true"
   [baseZIndex]="10000"
   [(visible)]="showModal"
-  [header]="isError ? 'Erro' : 'Sucesso'"
-  [ngClass]="isError  ? 'error' : 'success'"
+  [ngClass]="isError ? 'error' : 'success'"
   (onHide)="onCloseParent()"
   (onShow)="onShowParent()"
   >
 
-    <p-header>
-      <em [ngClass]="isError ? 'far fa-times-circle' : 'fas fa-check' "></em>
-    </p-header>
+  <p-header>
+    <span>
+      <icon [ngClass]="isError ? 'far fa-times-circle' : 'fas fa-check' "></icon>
+      {{ isError ? 'Erro' : 'Sucesso' }}
+    </span>
+  </p-header>
 
     <span>{{content}}</span>
   </p-dialog>
