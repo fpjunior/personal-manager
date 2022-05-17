@@ -242,6 +242,16 @@
       "localEstablishment": "Recife-PE",
       "expenseDate": "20/05/2022",
       "status": true
+    },
+    {
+      "code": 2,
+      "description": "Almoço",
+      "type": "Alimentção",
+      "value": "R$ 10,00",
+      "typePayment": "À vista",
+      "localEstablishment": "Recife-PE",
+      "expenseDate": "17/05/2022",
+      "status": true
     }
   ]
 }

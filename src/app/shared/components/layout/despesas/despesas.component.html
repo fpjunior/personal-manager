@@ -38,7 +38,7 @@
     </form>
   </p-dialog>
 
-    <div class="grid input-button-search">
+    <!--<div class="grid input-button-search">
       <span class="p-input-icon-left p-ml-auto">
         <i class="pi pi-search"></i>
         <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
@@ -46,19 +46,35 @@
         <p-button pRipple label="Criar Despesa" class="standard btn-criar-despesa" type="button" (click)="openDialogAddDespesa()">
         </p-button>
       </span>
+    </div>-->
+
+    <div class="grid group-inputFilter-btnCreate">
+
+      <!-- esse trecho é um grupo, onde fica juntos o botão de criar contato juntamente com o input de filtro global -->
+      <div class="col-12 div-group-nputFilter-btnCreate">
+      <span class="p-input-icon-left p-ml-auto input-filterGlobal">
+        <!-- essa tag abaixo apenas coloca um ícone dentro do input, o ícone da lupa -->
+        <i class="pi pi-search"></i>
+          <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+            placeholder="Digite o tipo ou valor da despesa" />
+          </span>
+        </div>
+        <!-- aqui é o botão de criar contato -->
+        <p-button pRipple label="Cadastrar Despesa" class="standard btn-criar-despesa" type="button"(click)="openDialogAddDespesa()">
+        </p-button>
     </div>
-  <!-- <button pButton type="button" label="Dialog" (click)="dialog(display)"></button><br><br> -->
+
   <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
-    [globalFilterFields]="['type','value']" [globalFilterFields]="['code','description','type','value']" sortField="code" [reorderableColumns]="true"
+    [globalFilterFields]="['type','value']" sortField="code" [reorderableColumns]="true"
     [sortOrder]="-1"  responsiveLayout="scroll" [loading]="loading" [scrollable]="true" scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
 
     <ng-template pTemplate="header" let-columns>
       <tr>
-							<!--<th class="size-first-column">
+							<th id="config" class="size-first-column">
 								<button pButton type="button" class="tableButton" icon="fas fa-cog "
 									(click)="showModalSelectColumns()" pTooltip="Configurações"></button>
-							</th>-->
+							</th>
 
               <th columnResizeMode="expand" *ngFor="let col of columns; let i = index"
               [pTooltip]="col.hintName" tooltipPosition="top" [pSortableColumn]="col.field"
@@ -89,9 +105,9 @@
   </p-table>
 </div>
 
-<!--<app-dialog-table-column (onClose)="onHideDialogTable()" [showModal]="showModalColumn"
+
+<app-dialog-table-column (onClose)="onHideDialogTable()" [showModal]="showModalColumn"
 [fullCols]="fullCols" [colsModified]="cols" [immutables]="immutableCols"
 (saveColumn)="editColumns($event)">
-</app-dialog-table-column>-->
-
+</app-dialog-table-column>
 

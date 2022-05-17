@@ -1,12 +1,12 @@
 import { TableStandard } from "src/app/shared/models/table.model";
 
 export const tableArr: TableStandard[] = [
-  {hintName: 'Código da unidade de negócio', field: 'code', header: 'CODE', showCol: true },
-  {hintName: 'Nome da unidade de negócio', field: 'type', header: 'TYPE', showCol: true },
-  {hintName: 'Município da unidade de negócio', field: 'description', header: 'DESCRIPTION', showCol: true },
-  {hintName: 'UF da unidade de negócio', field: 'value', header: 'VALUE', showCol: true },
-  {hintName: 'UF da unidade de negócio', field: 'typePayment', header: 'TIPO PAGAMENTO', showCol: true },
-  {hintName: 'UF da unidade de negócio', field: 'localEstablishment', header: 'ESTABELECIMENTO', showCol: true },
-  {hintName: 'UF da unidade de negócio', field: 'expenseDate', header: 'DATA', showCol: true },
+  {hintName: 'Código da despesa', field: 'code', header: 'CODE', showCol: true },
+  {hintName: 'Tipo de despesa', field: 'type', header: 'TYPE', showCol: true },
+  {hintName: 'Descrição', field: 'description', header: 'DESCRIÇÃO', showCol: true },
+  {hintName: 'Valor', field: 'value', header: 'VALOR', showCol: true },
+  {hintName: 'Tipo de pagamento', field: 'typePayment', header: 'TIPO PAGAMENTO', showCol: true },
+  {hintName: 'Estabelicimento onde foi gasto', field: 'localEstablishment', header: 'ESTABELECIMENTO', showCol: true },
+  {hintName: 'Data de expedição', field: 'expenseDate', header: 'DATA', showCol: true },
   {hintName: 'Operações Disponíveis', field: 'operation', header: 'OPERAÇÕES', showCol: true }
 ];
