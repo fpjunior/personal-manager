@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TableStandard } from 'src/app/shared/models/table.model';
 import { ProgressBarService } from '../../progress-bar/progress-bar.service';
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
-import { TiposDespesasService } from './service/contact.service';
+import { TiposDespesasService } from './service/tiposdespesas.service';
 import { tableTipoDespesaModel } from './model/table.model';
 
 

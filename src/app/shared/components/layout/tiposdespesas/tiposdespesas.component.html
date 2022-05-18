@@ -1,7 +1,7 @@
 <!-- aqui abaixo inicia o dialog de contato, é nele que foi injetado os campos do formulário, ele é exibido quando a variável showDialogContact recebe
   o valor true -->
   <p-dialog #dialogDrop (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
-    [baseZIndex]="10000" [(visible)]="showDialogtiposdespesas" header="Cadastrar Novo Contato">
+    [baseZIndex]="10000" [(visible)]="showDialogtiposdespesas" header="Cadastrar Novo Tipo de Despesa">
 
     <!-- aqui começa a tag form, dentro dela fica todos os inputs, com isso, é possível pegar o valor de cada campo para salvar, editar ou deletar -->
     <form method="post" [formGroup]="tiposdespesasForm" (ngSubmit)="saveContact(tiposdespesasForm)">
@@ -54,7 +54,7 @@
           </span>
         </div>
         <!-- aqui é o botão de criar contato -->
-        <p-button pRipple label="Criar Tipos Despesas" class="standard btn-criar-contato" type="button"
+        <p-button pRipple label="Criar Tipo Despesa" class="standard btn-criar-contato" type="button"
           (click)="openDialogAddContact()">
         </p-button>
     </div>
