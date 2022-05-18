@@ -1,32 +1,46 @@
 <div>
   <p-dialog #dialogDrop (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
     [baseZIndex]="10000" [(visible)]="showDialogDespesa" header="Cadastrar Nova Despesa">
-    <form method="post" [formGroup]="despesasForm" (ngSubmit)="saveDespesa(despesasForm)"><!--
+    <form method="post" [formGroup]="despesasForm" (ngSubmit)="saveDespesa(despesasForm)">
       <div class="p-grid">
 
         <div class="field col-3 form-applications">
-          <input-text  label="Nome" formControlName="name" id="name" [type]="'text'">
+          <input-text  label="Tipo de despesas" formControlName="type" id="type" [type]="'text'">
           </input-text>
         </div>
 
         <div class="field col-3 form-applications">
-          <input-text label="Idade" [control]="despesasForm.get('idade')" [requiredLabel]="true" formControlName="idade"
-            id="idade" [type]="'text'">
+          <input-text label="Descrição" [control]="despesasForm.get('description')" [requiredLabel]="true" formControlName="description"
+            id="description" [type]="'text'">
           </input-text>
         </div>
 
         <div class="field col-3 form-applications">
-          <input-text label="CPF" [control]="despesasForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
-            id="cpf" [type]="'text'">
+          <input-text label="Valor" [control]="despesasForm.get('value')" [requiredLabel]="true" formControlName="value"
+            id="value" [type]="'text'">
           </input-text>
         </div>
 
         <div class="field col-3 form-applications">
-          <input-text label="Email" [control]="despesasForm.get('email')" [requiredLabel]="true" formControlName="email"
-            id="email" [type]="'text'">
+          <input-text label="Tipo de pagamento" [control]="despesasForm.get('typePayment')" [requiredLabel]="true" formControlName="typePayment"
+            id="typePayment" [type]="'text'">
           </input-text>
         </div>
-      </div>-->
+
+        <div class="field col-3 form-applications">
+          <input-text label="Estabelecimento" [control]="despesasForm.get('localEstablishment')" [requiredLabel]="true" formControlName="localEstablishment"
+            id="typePayment" [type]="'text'">
+          </input-text>
+        </div>
+
+        <div class="field col-3 form-applications">
+          <input-text label="Data de expedição" [control]="despesasForm.get('expenseDate')" [requiredLabel]="true" formControlName="expenseDate"
+            id="expenseDate" [type]="'text'">
+          </input-text>
+        </div>
+
+
+      </div>
 
       <div class="buttons-actions">
         <p-button type="submit" icon="fa fa-check" [disabled]="this.despesasForm.invalid" class="standard" label="Salvar">

@@ -83,14 +83,12 @@ export class DespesasComponent implements OnInit {
 
   form(): void {
     this.despesasForm = this.formBuilder.group({
-      code: ['', [Validators.required]],
       description: ['', [Validators.required]],
       type: ['', [Validators.required]],
       value: ['', [Validators.required]],
       typePayment: ['', [Validators.required]],
       localEstablishment: ['', [Validators.required]],
       expenseDate: ['', [Validators.required]],
-      status: ['', [Validators.required]],
     });
   }
 
