@@ -1,7 +1,144 @@
-.p-table {
-  width: 300px;
-  table-layout: left;
-  height: 40px;
-  vertical-align: text-bottom;
+@import "src/assets/styles/generalStyle.scss";
+
+.p-button {
+  color: #ffffff;
+  background: #4682b4;
+  border: 1px solid #4682b4;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 3px;
 }
+
+.input-filterGlobal {
+  width: 98%;
+}
+
+.group-inputFilter-btnCreate {
+  display: flex;
+}
+
+.div-group-nputFilter-btnCreate {
+  width: 40%;
+}
+
+
+// essa parte ajusta a largura das colunas da tabela
+th#operation,
+td#operation {
+  width: 6%;
+}
+
+th#idade,
+td#idade {
+  width: 8%;
+}
+
+th#id,
+td#id,
+th#config,
+td#config {
+  width: 5%;
+}
+
+// esse código altera a cor do botão quando ele recebe foco com mouse
+.p-button:enabled:hover {
+  background: #0d89ec;
+  color: #ffffff;
+  border-color: #0d89ec;
+}
+
+.form-applications {
+  padding-bottom: 17px;
+}
+
+.buttons-actions {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  width: 230px;
+}
+
+.p-button {
+  color: #ffffff;
+  background: #4682b4;
+  border: 1px solid #4682b4;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 3px;
+}
+
+.p-button:enabled:hover {
+  background: #0d89ec;
+  color: #ffffff;
+  border-color: #0d89ec;
+}
+
+.input-increment {
+  width: 80px;
+  height: 29px;
+}
+
+.btn-criar-contato {
+  height: 37px !important;
+}
+:host ::ng-deep {
+  .size-first-column {
+    width: 77px;
+  }
+
+  .tableButton-def,
+  button.p-button.p-component.p-button-icon-only.p-ripple {
+    &:hover {
+      background-color: transparent !important;
+      border: 1px solid transparent !important;
+      color: #767676 !important;
+    }
+    &:focus {
+      box-shadow: 0 0 0 0.2rem transparent !important;
+    }
+
+    color: #495057;
+    background: transparent;
+    border: 1px solid transparent;
+  }
+  &.p-fieldset .p-fieldset-legend {
+    color: #495057;
+    background: transparent;
+    border: none;
+    font-weight: normal;
+    margin-left: 5px;
+    padding: 0.6rem;
+  }
+  .label {
+    font-size: 13px;
+  }
+
+  .p-card {
+    margin: auto;
+    margin-top: 0.1%;
+    min-height: 83vh;
+    max-width: 95vw;
+  }
+
+  textarea.text-area {
+    padding: 12px 16px;
+    color: #000 !important;
+    font-size: 13px;
+    text-transform: none;
+  }
+
+  .footer {
+    text-align-last: center;
+    // padding-top: 187px;
+  }
+
+  .margin-ten {
+    margin: 10px;
+  }
+}
+
 
