@@ -16,7 +16,8 @@
 
         <!-- observar que cada input foi envolvido em uma div pra que possa ser fácil na hora de aplicar estilos -->
         <div class="field col-3 form-applications">
-          <input-text label="Nome" formControlName="name" id="name" [type]="'text'">
+          <input-text label="Nome" [control]="contactsForm.get('name')" [requiredLabel]="true" formControlName="name"
+            id="name" [type]="'text'">
           </input-text>
         </div>
 
