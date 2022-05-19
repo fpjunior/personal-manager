@@ -19,6 +19,7 @@ import { TableModule } from 'primeng/table';
 import { StepsModule } from 'primeng/steps';
 import { InputMaskModule } from 'primeng/inputmask';
 import {TooltipModule} from 'primeng/tooltip';
+import {ColorPickerModule} from 'primeng/colorpicker';
 
 @NgModule({
   exports: [
@@ -42,7 +43,9 @@ import {TooltipModule} from 'primeng/tooltip';
     InputTextModule,
     StepsModule,
     InputMaskModule,
-    TooltipModule
+    TooltipModule,
+    ColorPickerModule
+
   ]
 })
 export class PrimengModule { }

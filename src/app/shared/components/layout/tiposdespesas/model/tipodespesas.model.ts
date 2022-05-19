@@ -1,8 +1,7 @@
 export interface TiposdespesasModel{
   id: any;
   code:number;
-  type:string;
-  description: string;
-
-
+  icon:string;
+  name: string;
+  cor: string;
 }

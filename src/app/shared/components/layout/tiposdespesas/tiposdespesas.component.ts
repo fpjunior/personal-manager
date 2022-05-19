@@ -31,6 +31,7 @@ export class TiposdespesasComponent implements OnInit {
   msgModalConfirm: string = "";
   rowData;
   fullCols = tableTipoDespesaModel;
+  cor
 
 
   constructor(
@@ -47,13 +48,19 @@ export class TiposdespesasComponent implements OnInit {
     this.getAllTiposDespesas();
   }
 
+
+
   initForm(): void {
     this.tiposdespesasForm = this.formBuilder.group({
       code: [""],
-      type: ["", [Validators.required]],
-      description: ["", [Validators.required]],
-
+      icon: ["", [Validators.required]],
+      name: ["", [Validators.required]],
+      cor: ["",  [Validators.required]],
     });
+  }
+
+  teste(event){
+    console.log(event)
   }
 
   onHideDialog() {}
@@ -108,7 +115,7 @@ deleteTiposDespesas() {
 }
 
 getAllTiposDespesas() {
-  this.progressBarService.changeProgressBar(true);
+  // this.progressBarService.changeProgressBar(true);
   this.loading = true;
   this.tiposDespesasService.getAllTiposDespesas().subscribe(
     (tiposdespesas: any) => {
