@@ -58,7 +58,7 @@ export class TiposdespesasComponent implements OnInit {
 
   onHideDialog() {}
 
-  openDialogAddContact() {
+  openDialogAddTiposdespesas() {
     this.tiposdespesasForm.reset();
     this.showDialogtiposdespesas = true;
   }
@@ -96,7 +96,7 @@ deleteTiposDespesas() {
   this.progressBarService.changeProgressBar(true);
   this.tiposdespesasService.deleteTiposDespesas(this.idContact).subscribe(
     (response) => {
-      this.sucessResponse("Contato deletado com sucesso");
+      this.sucessResponse("Tipo despesa deletado com sucesso");
       setTimeout(() => {
         this.getAllTiposDespesas();
       }, 2500);
@@ -112,7 +112,6 @@ getAllTiposDespesas() {
   this.loading = true;
   this.tiposDespesasService.getAllTiposDespesas().subscribe(
     (tiposdespesas: any) => {
-      // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
       this.dataToFillTable = Object.entries(tiposdespesas).map((e: any) => {
         e[1].id = e[0];
         return e[1];
@@ -169,13 +168,13 @@ openConfirmDelete(idToDelete: string) {
   this.showCorfirmDialog = true;
 }
 
-saveContact(tiposdespesasForm: any): void {
+saveTiposdespesas(tiposdespesasForm: any): void {
   tiposdespesasForm = this.tiposdespesasForm.getRawValue();
   this.tiposdespesasService.saveOrUpdateTiposDespesas(tiposdespesasForm).subscribe(
     (response) => {
       this.tiposdespesasForm.reset();
       this.showDialogtiposdespesas = false;
-      this.sucessResponse("Contato salvo com sucesso");
+      this.sucessResponse("Tipo despesa salvo com sucesso");
       setTimeout(() => {
         this.getAllTiposDespesas();
       }, 2000);

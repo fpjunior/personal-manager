@@ -1,7 +1,7 @@
 import { TableStandard } from "src/app/shared/models/table.model";
 
 export const tableTipoDespesaModel: TableStandard[] = [
-  {hintName: 'Código do tipos despesas', field: 'code', header: 'CODE', showCol: true },
+  {hintName: 'Código do tipos despesas', field: 'ID', header: 'Código', showCol: true },
   {hintName: 'Tipos despesas', field: 'type', header: 'Tipo', showCol: true },
   {hintName: 'Descrição do tipos despesas', field: 'description', header: 'Descrição', showCol: true },
   //{hintName: 'UF da unidade de negócio', field: 'cpf', header: 'CPF', showCol: true },
