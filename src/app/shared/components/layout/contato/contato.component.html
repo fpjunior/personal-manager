@@ -23,7 +23,7 @@
 
         <div class="field col-3 form-applications">
           <input-text label="Idade" [control]="contactsForm.get('age')" [requiredLabel]="true" formControlName="age"
-            id="age" [type]="'text'">
+            id="age" [type]="'number'" [maxlength]="3" max="130">
           </input-text>
         </div>
 
