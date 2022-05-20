@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {
   Component,
   OnInit,
@@ -11,17 +11,17 @@ import {
 import { Router } from "@angular/router";
 import { MenuItem } from "primeng/api";
 import { BreadcrumbService } from "../../breadcrumbs/breadcrumbs.service";
-import { ProgressBarService } from '../../progress-bar/progress-bar.service';
-import { TableStandard } from 'src/app/shared/models/table.model';
-import { tableArr } from './model/tabela.model';
-import { DespesasModel } from './model/despesas.model';
-import { DespesasService } from './service/despesas.service';
-
+import { DespesasModel } from "./model/despesas.model";
+import { ProgressBarService } from "../../progress-bar/progress-bar.service";
+import { TableStandard } from "src/app/shared/models/table.model"
+import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
+import { tableArr } from "./model/tabela.model";
+import { DespesaService } from "./service/despesas.service";
 
 @Component({
-  selector: 'app-despesas',
-  templateUrl: './despesas.component.html',
-  styleUrls: ['./despesas.component.scss']
+  selector: "app-despesas",
+  templateUrl: "./despesas.component.html",
+  styleUrls: ["./despesas.component.scss"],
 })
 export class DespesasComponent implements OnInit {
 
@@ -31,46 +31,56 @@ export class DespesasComponent implements OnInit {
   immutableCols: string[] = [];
   showModalColumn = false;
 
-  dataToFillTable: DespesasModel[];
-  despesas: Array<any>
-  despesa: any
+  dataToFillTable: any;
+  despesas: Array<any>;
+  despesa: any;
 
   despesasForm!: FormGroup;
 
   @Output() mudouValor = new EventEmitter();
-
   @ViewChild("campoInput") campoValorInput: ElementRef;
 
   breadcrumbItems: MenuItem[] = [{ label: `Despesas` }];
   showDialogDespesa = false;
-  valueCode;
-  valueDescription;
-  valueType;
-  valueValue;
-  valueTypePayment;
-  valueLocalEstablishment;
-  valueExpenseDate;
-  valueStatus;
+  valuetype;
+  valuedescription;
+  valuevalue;
+  valuetypePayment;
+  valuelocalEstablishment;
+  valueexpenseDate;
   loading = false;
-
-
-  isSaveOrUpdate = "Cadastrar Despesa"
+  showModalResponse = false;
+  contentResponse!: string;
+  isErrorResponse!: boolean;
+  rowData;
+  codeDespesa;
+  showCorfirmDialog: boolean = false;
+  msgModalConfirm: string = "";
+  isEdit: boolean;
 
   constructor(
     private breadcrumbService: BreadcrumbService,
-    private despesasService: DespesasService,
-    private router: Router,
+    private despesaService: DespesaService,
     private progressBarService: ProgressBarService,
-    private formBuilder: FormBuilder,
-    ) { }
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit() {
+    this.initForm();
+    this.despesa = {};
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
-    this.form()
-    this.despesa = {}
-    this.getAllDespesas();
-
+    //this.getAllDespesas();
   }
+
+  closeConfirmDialog() {
+    this.showCorfirmDialog = false;
+  }
+
+  // confirmExit() {
+  //   this.showCorfirmDialog = false;
+  //   this.showDialogContact = false;
+  // }
+
   showModalSelectColumns() {
     this.showModalColumn = true;
   }
@@ -81,71 +91,141 @@ export class DespesasComponent implements OnInit {
     this.cols = cols;
   }
 
-  form(): void {
+  onHide = () => {
+    this.showModalResponse = false;
+  };
+
+  onShow(): boolean {
+    return (this.showModalResponse = true);
+  }
+
+  private sucessResponse(
+    msgResponse: string
+  ): void {
+    this.isErrorResponse = false;
+    this.showModalResponse = true;
+    this.contentResponse = msgResponse;
+    this.progressBarService.changeProgressBar(false);
+    setTimeout(() => {
+      this.showModalResponse = false;
+    }, 2000);
+  }
+
+  private handleError(err: any): void {
+    this.isErrorResponse = true;
+    this.showModalResponse = true;
+    this.contentResponse = tryCatchErrorFunc(err);
+    this.progressBarService.changeProgressBar(false);
+    setTimeout(() => {
+      this.showModalResponse = false;
+    }, 2000);
+  }
+
+  initForm(): void {
     this.despesasForm = this.formBuilder.group({
-      description: ['', [Validators.required]],
-      type: ['', [Validators.required]],
-      value: ['', [Validators.required]],
-      typePayment: ['', [Validators.required]],
-      localEstablishment: ['', [Validators.required]],
-      expenseDate: ['', [Validators.required]],
+      code: [""],
+      type: ["", [Validators.required]],
+      description: ["", [Validators.required]],
+      value: ["", [Validators.required]],
+      typePayment: ["", [Validators.required]],
+      localEstablishment: ["", [Validators.required]],
+      expenseDate: ["", [Validators.required]],
     });
   }
 
   onHideDialog() {}
 
-  openDialogAddDespesa(){
-    this.despesasForm.reset()
-    this.showDialogDespesa = true
+  openDialogAddContact() {
+    this.despesasForm.reset();
+    this.showDialogDespesa = true;
   }
 
-  connect(): void {
-    // this.progressBarService.changeProgressBar(true);
-    // const ocurrenceObj = this.contactsForm.getRawValue();
-    // delete(ocurrenceObj.client)
-
-    // this.applicationUser = {
-    //   ...ocurrenceObj
-    // }
-    // if (this.editMode) {
-    //   this.editUser();
-    //   this.resetForm();
-    //   return;
-    // }
-
-    // // this.createUser();
-    // // this.resetForm();
+  openConfirmDelete(idToDelete: string) {
+    this.msgModalConfirm = "Tem certeza que deseja excluir esta Despesa?";
+    this.codeDespesa = idToDelete;
+    this.showCorfirmDialog = true;
   }
 
-  saveDespesa(frm: any): void {
-   frm = this.despesasForm.getRawValue();
-    this.despesasService.saveDespesa(frm).subscribe(
+  confirmAction(){
+    if(this.isEdit){
+      this.showDialogDespesa = false;
+      this.showCorfirmDialog = false;
+    } else {
+      this.deleteDespesa();
+      this.showCorfirmDialog = false;
+    }
+  }
+
+  deleteDespesa() {
+    this.progressBarService.changeProgressBar(true);
+    this.despesaService.deleteContact(this.codeDespesa).subscribe(
+      (response) => {
+        this.sucessResponse("Despesa deletado com sucesso");
+        setTimeout(() => {
+          this.getAllDespesas();
+        }, 2500);
+      },
+      (error) => {
+        this.handleError(error);
+      }
+    );
+  }
+
+  saveDespesa(despesasForm: any): void {
+    despesasForm = this.despesasForm.getRawValue();
+    this.despesaService.saveOrUpdateContact(despesasForm).subscribe(
       (response) => {
         this.despesasForm.reset();
         this.showDialogDespesa = false;
-        this.getAllDespesas()
-        alert("contato criado com sucesso");
+        this.sucessResponse("Despesa salva com sucesso");
+        setTimeout(() => {
+          this.getAllDespesas();
+        }, 2000);
       },
       (error) => {
-        alert("erro ao criar um novo contato");
+        this.handleError(error);
       }
     );
   }
 
-  goToTheDespesaForm = () => this.router.navigate(["/despesa-form"]);
+  editContact(event) {
+    this.isEdit = true;
+    this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
+    this.rowData = event;
+    this.showDialogDespesa = true;
+    this.despesasForm.setValue(event);
+  }
+
+  // goToTheContactForm = () => this.router.navigate(["/contato-form"]);
 
   getAllDespesas() {
+    this.progressBarService.changeProgressBar(true);
     this.loading = true;
-    this.despesasService.getAllDespesas().subscribe(
-      (despesa) => {
-        this.dataToFillTable = despesa;
+    this.despesaService.getAllDespesas().subscribe(
+      (despesa: any) => {
+        // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
+        this.dataToFillTable = Object.entries(despesa).map((e: any) => {
+          e[1].id = e[0];
+          return e[1];
+        });
         this.loading = false;
+        this.progressBarService.changeProgressBar(false);
       },
       (error) => {
+        this.handleError(error);
         this.loading = false;
+        this.handleError(error);
+        this.progressBarService.changeProgressBar(false);
       }
     );
   }
 
-
+  // dialog(display) {
+  //   if (display === false) {
+  //     this.display = true;
+  //   }
+  //   if (display === true) {
+  //     this.display = false;
+  //   }
+  // }
 }

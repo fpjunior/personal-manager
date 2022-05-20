@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { DespesasComponent } from './shared/components/layout/despesas/despesas.component';
 
 
-
 const routes: Routes = [
   {
     path: 'cadastro-evento',
