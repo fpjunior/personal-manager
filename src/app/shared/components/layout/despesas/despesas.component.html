@@ -1,6 +1,73 @@
 <div>
   <!-- aqui abaixo inicia o dialog de contato, é nele que foi injetado os campos do formulário, ele é exibido quando a variável showDialogContact recebe
   o valor true -->
+  <p-dialog #dialogDrop (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
+     [(visible)]="showDialogDespesa" header="Cadastrar uma nova Despesa">
+
+    <!-- aqui começa a tag form, dentro dela fica todos os inputs, com isso, é possível pegar o valor de cada campo para salvar, editar ou deletar -->
+    <form method="post" [formGroup]="despesasForm" (ngSubmit)="saveDespesa(despesasForm)">
+
+      <!-- essa div envolve todos os campos do form, ela é essencial para ajustar a posição de todos os campos ao mesmo tempo -->
+      <div class="p-grid">
+        <div class="field col-3 form-applications">
+          <input-text label="Code" formControlName="code" [disabled]="true" id="code" [type]="'text'">
+          </input-text>
+        </div>
+
+        <!-- observar que cada input foi envolvido em uma div pra que possa ser fácil na hora de aplicar estilos -->
+        <div class="field col-3 form-applications">
+          <input-text label="Tipo" [control]="despesasForm.get('type')" [requiredLabel]="true" formControlName="type"
+            id="type" [type]="'text'" pTooltip="Digite o tipo da despesa">
+          </input-text>
+        </div>
+
+        <div class="field col-3 form-applications">
+          <input-text label="Descrição" [control]="despesasForm.get('description')" formControlName="description"
+            id="description" [type]="'text'" pTooltip="Digite a descrição da despesa">
+          </input-text>
+        </div>
+
+        <div class="field col-3 form-applications">
+          <input-text label="Valor" [control]="despesasForm.get('value')" [requiredLabel]="true" formControlName="value"
+            id="value" [type]="'text'" pTooltip="Digite o valor gasto">
+          </input-text>
+        </div>
+
+        <!-- cada div recebe uma tag class, e dentro dessa tag, pode ser chamado várias classes, por ex. uma class é essa form-applications
+        e no arquivo .scss tá sendo passado um estilo pra ela-->
+        <div class="field col-3 form-applications">
+          <input-text label="Tipo de pagamento" [control]="despesasForm.get('typePayment')" [requiredLabel]="true" formControlName="typePayment"
+            id="typePayment" [type]="'text'"  pTooltip="Digite o tipo de pagamento">
+          </input-text>
+        </div>
+
+        <div class="field col-3 form-applications">
+          <input-text label="Local do estabelicimento" [control]="despesasForm.get('localEstablishment')" [requiredLabel]="true" formControlName="localEstablishment"
+            id="localEstablishment" [type]="'text'"  pTooltip="Digite o local do estabelicimento">
+          </input-text>
+        </div>
+
+        <div class="field col-3 form-applications">
+          <input-text label="Data" [control]="despesasForm.get('expenseDate')" [requiredLabel]="true" formControlName="expenseDate"
+            id="expenseDate" [type]="'text'"  pTooltip="Digite a data">
+          </input-text>
+        </div>
+
+
+        <!-- aqui são os dois botões no rodapé do dialog, o de SALVA e CANCELAR -->
+        <div class="buttons-actions">
+          <p-button type="submit" icon="fa fa-check" [disabled]="this.despesasForm.invalid" class="standard tableButton-def"
+            label="Salvar">
+          </p-button>
+          <p-button type="button" icon="fa fa-times" (onClick)="showCorfirmDialog = true" class="dismiss tableButton"
+            label="Cancelar">
+          </p-button>
+        </div>
+      </div>
+
+      <!-- aqui encerra o form e o dialog -->
+    </form>
+  </p-dialog>
 
   <!-- Aqui começa a tela de exibição de contatos, onde tem um input de filtro global e o botão de criar contato -->
   <div class="grid group-inputFilter-btnCreate">
@@ -11,18 +78,18 @@
       <!-- essa tag abaixo apenas coloca um ícone dentro do input, o ícone da lupa -->
       <i class="pi pi-search"></i>
         <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-          placeholder="Digite o nome ou a idade do contato" />
+          placeholder="Digite o tipo ou valor da despesa" />
         </span>
       </div>
       <!-- aqui é o botão de criar contato -->
-      <p-button pRipple label="Cadastrar Despesa" class="standard btn-criar-despesa" type="button">
+      <p-button pRipple label="Cadastrar Despesa" class="standard btn-criar-despesa" type="button"  (click)="openDialogAddDespesa()">
       </p-button>
   </div>
 
   <!-- aqui começa a tabela, tudo que é exibido dentro dela estão dentro das tag <table></table> -->
   <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
-     [globalFilterFields]="['type','description','value','typePayment','localEstablishment','expenseDate']"
+     [globalFilterFields]="['type','value']"
     [reorderableColumns]="true"  responsiveLayout="scroll" [loading]="loading" [scrollable]="true"
     scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
 
@@ -76,9 +143,9 @@
           <!-- aqui é exibido os botões de operações (editar - excluir) ele é exibido na última coluna, cada linha da tabela é exibido esse par de ícones-->
           <div *ngIf="col.field=='operation'" class="justify-content-center" style="font-size: 16px">
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
-                (click)="editContact(rowData)"></p-button>
+                (click)="editDespesa(rowData)"></p-button>
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-trash"
-                (click)="openConfirmDelete(rowData.id)"></p-button>
+                (click)="openConfirmDelete(rowData.code)"></p-button>
         </div>
         </td>
       </tr>

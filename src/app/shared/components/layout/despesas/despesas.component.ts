@@ -69,7 +69,7 @@ export class DespesasComponent implements OnInit {
     this.initForm();
     this.despesa = {};
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
-    //this.getAllDespesas();
+    this.getAllDespesas();
   }
 
   closeConfirmDialog() {
@@ -125,7 +125,7 @@ export class DespesasComponent implements OnInit {
     this.despesasForm = this.formBuilder.group({
       code: [""],
       type: ["", [Validators.required]],
-      description: ["", [Validators.required]],
+      description: [""],
       value: ["", [Validators.required]],
       typePayment: ["", [Validators.required]],
       localEstablishment: ["", [Validators.required]],
@@ -135,14 +135,14 @@ export class DespesasComponent implements OnInit {
 
   onHideDialog() {}
 
-  openDialogAddContact() {
+  openDialogAddDespesa() {
     this.despesasForm.reset();
     this.showDialogDespesa = true;
   }
 
-  openConfirmDelete(idToDelete: string) {
+  openConfirmDelete(codeToDelete: string) {
     this.msgModalConfirm = "Tem certeza que deseja excluir esta Despesa?";
-    this.codeDespesa = idToDelete;
+    this.codeDespesa = codeToDelete;
     this.showCorfirmDialog = true;
   }
 
@@ -158,7 +158,7 @@ export class DespesasComponent implements OnInit {
 
   deleteDespesa() {
     this.progressBarService.changeProgressBar(true);
-    this.despesaService.deleteContact(this.codeDespesa).subscribe(
+    this.despesaService.deleteDespesa(this.codeDespesa).subscribe(
       (response) => {
         this.sucessResponse("Despesa deletado com sucesso");
         setTimeout(() => {
@@ -173,7 +173,7 @@ export class DespesasComponent implements OnInit {
 
   saveDespesa(despesasForm: any): void {
     despesasForm = this.despesasForm.getRawValue();
-    this.despesaService.saveOrUpdateContact(despesasForm).subscribe(
+    this.despesaService.saveOrUpdateDespesa(despesasForm).subscribe(
       (response) => {
         this.despesasForm.reset();
         this.showDialogDespesa = false;
@@ -188,7 +188,7 @@ export class DespesasComponent implements OnInit {
     );
   }
 
-  editContact(event) {
+  editDespesa(event) {
     this.isEdit = true;
     this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
     this.rowData = event;
@@ -205,7 +205,7 @@ export class DespesasComponent implements OnInit {
       (despesa: any) => {
         // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
         this.dataToFillTable = Object.entries(despesa).map((e: any) => {
-          e[1].id = e[0];
+          e[1].code = e[0];
           return e[1];
         });
         this.loading = false;

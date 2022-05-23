@@ -11,9 +11,6 @@ import { FormGroup } from "@angular/forms";
   providedIn: "root",
 })
 export class DespesaService extends RepositoryService<DespesasModel> {
-  saveOrUpdateDespesa(despesasForm: FormGroup) {
-    throw new Error("Method not implemented.");
-  }
   constructor(public http: HttpClient) {
     super(http, URL_DESPESAS);
   }
@@ -22,19 +19,19 @@ export class DespesaService extends RepositoryService<DespesasModel> {
     return this.http.get(`${URL_DESPESAS}.json`);
   }
 
-  deleteContact(codeDespesa) {
+  deleteDespesa(codeDespesa) {
     return this.http
       .delete(`${URL_DESPESAS}/${codeDespesa}.json`)
       .pipe(map((responseApi: any) => responseApi));
   }
 
-  saveOrUpdateContact(despesaObj: DespesasModel): Observable<any> {
+  saveOrUpdateDespesa(despesaObj: DespesasModel): Observable<any> {
     if (despesaObj.code) {
       return this.http
         .put<any>(`${URL_DESPESAS}/${despesaObj.code}.json`, despesaObj)
         .pipe(timeout(20000000), take(1));
     } else {
-      return this.http.post(URL_CONTACTS + ".json", despesaObj).pipe(
+      return this.http.post(URL_DESPESAS + ".json", despesaObj).pipe(
         map((responseApi: any) => responseApi),
         take(1)
       );
