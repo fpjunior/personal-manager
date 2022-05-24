@@ -1,109 +1,120 @@
+<p-dialog #dialogDrop (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
+[baseZIndex]="10000" [(visible)]="showDialogtiposdespesas" header="Cadastrar Novo Tipo de Despesa">
 
-  <p-dialog #dialogDrop (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
-    [baseZIndex]="10000" [(visible)]="showDialogtiposdespesas" header="Cadastrar Novo Tipo de Despesa">
+<form method="post" [formGroup]="tiposdespesasForm" (ngSubmit)="saveContact(tiposdespesasForm)">
 
-       <form method="post" [formGroup]="tiposdespesasForm" (ngSubmit)="saveTiposdespesas(tiposdespesasForm)">
-
-         <div class="p-grid">
-        <div class="field col-3 form-applications">
-          <input-text label="ID" formControlName="ID" [disabled]="true" id="ID" [type]="'text'">
-          </input-text>
-        </div>
-
-        <div class="field col-3 form-applications">
-          <input-text label="type" formControlName="type" id="type" [type]="'text'">
-          </input-text>
-        </div>
-
-        <div class="field col-3 form-applications">
-          <input-text label="description" [control]="tiposdespesasForm.get('description')" [requiredLabel]="true" formControlName="description"
-            id="description" [type]="'text'">
-          </input-text>
-        </div>
-
-        <div class="buttons-actions">
-          <p-button type="submit" icon="fa fa-check" [disabled]="this.tiposdespesasForm.invalid" class="standard tableButton-def"
-            label="Salvar">
-          </p-button>
-          <p-button type="button" icon="fa fa-times" (onClick)="showCorfirmDialog = true" class="dismiss tableButton"
-            label="Cancelar">
-          </p-button>
-        </div>
-      </div>
-
-    </form>
-  </p-dialog>
-
-
-    <div class="grid group-inputFilter-btnCreate">
-
-      <div class="col-12 div-group-nputFilter-btnCreate">
-      <span class="p-input-icon-left p-ml-auto input-filterGlobal">
-        <i class="pi pi-search"></i>
-          <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-            placeholder="Digite o Tipo da Despesa" />
-          </span>
-        </div>
-        <p-button pRipple label="Criar Tipo Despesa" class="standard btn-criar-tipos-despesas" type="button"
-          (click)="openDialogAddTiposdespesas()">
-        </p-button>
+  <div class="p-grid">
+    <div class="field col-3 form-applications">
+      <input-text label="code" formControlName="code" [disabled]="true" id="code" [type]="'text'">
+      </input-text>
     </div>
-    <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
-    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
-     [globalFilterFields]="['code','tipo','Descrição']"
-    [reorderableColumns]="true"  responsiveLayout="scroll" [loading]="loading" [scrollable]="true"
-    scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
 
-    <ng-template pTemplate="header" let-columns>
+    <div class="field col-3 form-applications">
+      <input-text label="icon" formControlName="icon" id="icon" [type]="'text'">
+      </input-text>
+    </div>
 
-      <tr>
-        <th id="config" class="size-first-column">
-          <button pButton type="button" class="tableButton-def" icon="fas fa-cog " (click)="showModalSelectColumns()"
-            pTooltip="Configurações"></button>
-        </th>
+    <div class="field col-3 form-applications">
+      <input-text label="name" [control]="tiposdespesasForm.get('name')" [requiredLabel]="true" formControlName="name"
+        id="name" [type]="'text'">
+      </input-text>
+    </div>
 
-        <th columnResizeMode="expand" *ngFor="let col of columns; let i = index" [pTooltip]="col.hintName"
-          tooltipPosition="top" [pSortableColumn]="col.field" pResizableColumn pReorderableColumn [id]="col.field">
-          {{col.header}}
+    <div class="field col-3 form-applications">
+      <!-- <input-text label="cor" [control]="tiposdespesasForm.get('cor')" [requiredLabel]="true" formControlName="cor"
+        id="cor" [type]="'text'">
+      </input-text> -->
+      <label [ngClass]="{ required: true }">Cor</label>
+      <p-colorPicker id="cor" label="cor"  (onChange)="teste($event.value)" formControlName="cor"></p-colorPicker>
+    </div>
 
-          <p-sortIcon *ngIf="col.field !== 'operation'" [field]="col.field"></p-sortIcon>
+    <div class="buttons-actions">
+      <p-button type="submit" icon="fa fa-check" [disabled]="this.tiposdespesasForm.invalid" class="standard tableButton-def"
+        label="Salvar">
+      </p-button>
+      <p-button type="button" icon="fa fa-times" (onClick)="showCorfirmDialog = true" class="dismiss tableButton"
+        label="Cancelar">
+      </p-button>
+    </div>
+  </div>
 
-          <p-columnFilter *ngIf="col.field !== 'operation'" styleClass="button-operation" [type]="'text'"
-            [field]="col.field" [matchMode]="'contains'" display="menu" #filterTable>
-          </p-columnFilter>
-
-        </th>
-      </tr>
-    </ng-template>
-
-    <ng-template pTemplate="body" let-dataToFillTable let-rowData let-rowIndex="rowIndex" let-columns="columns">
-      <tr>
-
-        <td class="size-first-column" id="config"></td>
+</form>
+</p-dialog>
 
 
-        <td *ngFor="let col of columns; let i = index" [id]="col.field">
-          <span [pTooltip]="rowData[col.field]">
-            {{rowData[col.field]}}
-          </span>
+<div class="grid group-inputFilter-btnCreate">
 
-          <div *ngIf="col.field=='operation'" class="justify-content-center" style="font-size: 16px">
-            <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
-                (click)="editContact(rowData)"></p-button>
-            <p-button pRipple type="button" class="tableButton-def" icon="fas fa-trash"
-                (click)="openConfirmDelete(rowData.id)"></p-button>
-        </div>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+  <div class="col-12 div-group-nputFilter-btnCreate">
+  <span class="p-input-icon-left p-ml-auto input-filterGlobal">
+    <i class="pi pi-search"></i>
+      <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+        placeholder="Digite o Tipo da Despesa" />
+      </span>
+    </div>
+    <p-button pRipple label="Criar Tipo Despesa" class="standard btn-criar-contato" type="button"
+      (click)="openDialogAddContact()">
+    </p-button>
+</div>
+<p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
+ [globalFilterFields]="['name','idade','cpf','email']"
+[reorderableColumns]="true"  responsiveLayout="scroll" [loading]="loading" [scrollable]="true"
+scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
+
+<ng-template pTemplate="header" let-columns>
+
+  <tr>
+    <th id="config" class="size-first-column">
+      <button pButton type="button" class="tableButton-def" icon="fas fa-cog " (click)="showModalSelectColumns()"
+        pTooltip="Configurações"></button>
+    </th>
+
+    <th columnResizeMode="expand" *ngFor="let col of columns; let i = index" [pTooltip]="col.hintName"
+      tooltipPosition="top" [pSortableColumn]="col.field" pResizableColumn pReorderableColumn [id]="col.field">
+      {{col.header}}
+
+      <p-sortIcon *ngIf="col.field !== 'operation'" [field]="col.field"></p-sortIcon>
+
+      <p-columnFilter *ngIf="col.field !== 'operation'" styleClass="button-operation" [type]="'text'"
+        [field]="col.field" [matchMode]="'contains'" display="menu" #filterTable>
+      </p-columnFilter>
+
+    </th>
+  </tr>
+</ng-template>
+
+<ng-template pTemplate="body" let-dataToFillTable let-rowData let-rowIndex="rowIndex" let-columns="columns">
+  <tr>
+    <td class="size-first-column" id="config"></td>
+    <td *ngFor="let col of columns; let i = index" [id]="col.field">
+      <span *ngIf="col.field !== 'cor'" [pTooltip]="rowData[col.field]">
+        {{rowData[col.field]}}
+      </span>
+
+      <!-- <span *ngIf="col.field === 'cor'" [class]="'product-badge status-'">{{dataToFillTable.cor}}</span> -->
+      <span *ngIf="col.field == 'cor'">
+        <!-- [ngClass]="returnSMFLojas(rowData.batteryAddress)" -->
+        <i class="fa fa-circle" [style]="{color: rowData.cor}">
+        </i>
+    </span>
+
+      <div *ngIf="col.field=='operation'" class="justify-content-center" style="font-size: 16px">
+        <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
+            (click)="editContact(rowData)"></p-button>
+        <p-button pRipple type="button" class="tableButton-def" icon="fas fa-trash"
+            (click)="openConfirmDelete(rowData.id)"></p-button>
+    </div>
+    </td>
+  </tr>
+</ng-template>
+</p-table>
 
 <generic-response-dialog (onClose)="onHide()" (onShow)="onShow()" [showModal]="showModalResponse"
 [isError]="isErrorResponse" [content]="contentResponse">
 </generic-response-dialog>
 
 <app-dialog-table-column (onClose)="onHideDialogTable()" [showModal]="showModalColumn" [fullCols]="fullCols"
-  [colsModified]="cols" [immutables]="immutableCols" (saveColumn)="editColumns($event)">
+[colsModified]="cols" [immutables]="immutableCols" (saveColumn)="editColumns($event)">
 </app-dialog-table-column>
 
 <app-confirm-dialog class="confirmacao" header="Confirmação" (cancelEvent)="showCorfirmDialog = false"

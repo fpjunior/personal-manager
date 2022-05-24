@@ -30,9 +30,23 @@ td#operation {
   width: 6%;
 }
 
-th#idade,
-td#idade {
-  width: 8%;
+th#icon,
+td#icon {
+  width: 35%;
+}
+
+th#name,
+td#name {
+  width: 35%;
+}
+
+.semaforoVerde{
+  color: red;
+}
+
+th#cor,
+td#cor {
+  width: 25%;
 }
 
 th#id,
@@ -140,5 +154,4 @@ td#config {
     margin: 10px;
   }
 }
-
 

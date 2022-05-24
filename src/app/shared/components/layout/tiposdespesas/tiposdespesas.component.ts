@@ -31,6 +31,7 @@ export class TiposdespesasComponent implements OnInit {
   msgModalConfirm: string = "";
   rowData;
   fullCols = tableTipoDespesaModel;
+  cor
 
 
   constructor(
@@ -47,18 +48,24 @@ export class TiposdespesasComponent implements OnInit {
     this.getAllTiposDespesas();
   }
 
+
+
   initForm(): void {
     this.tiposdespesasForm = this.formBuilder.group({
       code: [""],
-      type: ["", [Validators.required]],
-      description: ["", [Validators.required]],
-
+      icon: ["", [Validators.required]],
+      name: ["", [Validators.required]],
+      cor: ["",  [Validators.required]],
     });
+  }
+
+  teste(event){
+    console.log(event)
   }
 
   onHideDialog() {}
 
-  openDialogAddTiposdespesas() {
+  openDialogAddContact() {
     this.tiposdespesasForm.reset();
     this.showDialogtiposdespesas = true;
   }
@@ -96,7 +103,7 @@ deleteTiposDespesas() {
   this.progressBarService.changeProgressBar(true);
   this.tiposdespesasService.deleteTiposDespesas(this.idContact).subscribe(
     (response) => {
-      this.sucessResponse("Tipo despesa deletado com sucesso");
+      this.sucessResponse("Contato deletado com sucesso");
       setTimeout(() => {
         this.getAllTiposDespesas();
       }, 2500);
@@ -108,10 +115,11 @@ deleteTiposDespesas() {
 }
 
 getAllTiposDespesas() {
-  this.progressBarService.changeProgressBar(true);
+  // this.progressBarService.changeProgressBar(true);
   this.loading = true;
   this.tiposDespesasService.getAllTiposDespesas().subscribe(
     (tiposdespesas: any) => {
+      // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
       this.dataToFillTable = Object.entries(tiposdespesas).map((e: any) => {
         e[1].id = e[0];
         return e[1];
@@ -168,13 +176,13 @@ openConfirmDelete(idToDelete: string) {
   this.showCorfirmDialog = true;
 }
 
-saveTiposdespesas(tiposdespesasForm: any): void {
+saveContact(tiposdespesasForm: any): void {
   tiposdespesasForm = this.tiposdespesasForm.getRawValue();
   this.tiposdespesasService.saveOrUpdateTiposDespesas(tiposdespesasForm).subscribe(
     (response) => {
       this.tiposdespesasForm.reset();
       this.showDialogtiposdespesas = false;
-      this.sucessResponse("Tipo despesa salvo com sucesso");
+      this.sucessResponse("Contato salvo com sucesso");
       setTimeout(() => {
         this.getAllTiposDespesas();
       }, 2000);

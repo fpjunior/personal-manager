@@ -40,4 +40,3 @@ export class TiposDespesasService extends RepositoryService<TiposdespesasModel> 
 function tipostespesasObj<T>(arg0: string, tipostespesasObj: any) {
   throw new Error('Function not implemented.');
 }
-
