@@ -33,6 +33,7 @@ import { GenericButtonsComponent } from "./components/buttons/generic-buttons/ge
 import { ContatoComponent } from "./components/layout/contato/contato.component";
 import { InfoFieldErrorMessageComponent } from "./components/fields/info-field-error-message/info-field-error-message.component";
 import { InputTextComponent } from "./components/fields/input-text/input-text.component";
+import { TiposdespesasComponent } from './components/layout/tiposdespesas/tiposdespesas.component';
 import { TesteComponent } from './components/layout/teste/teste.component';
 import { DespesasComponent } from './components/layout/despesas/despesas.component';
 
@@ -81,6 +82,8 @@ import { DespesasComponent } from './components/layout/despesas/despesas.compone
 
     // BUTTONS
     GenericButtonsComponent,
+
+    TiposdespesasComponent,
   ],
 
   imports: [
@@ -127,7 +130,9 @@ import { DespesasComponent } from './components/layout/despesas/despesas.compone
     // FIELDS
     InputTextComponent,
 
-    TesteComponent
+    TesteComponent,
+
+    TiposdespesasComponent,
 
   ],
   entryComponents: [],

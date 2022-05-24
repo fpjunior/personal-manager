@@ -2,6 +2,7 @@ import { TesteComponent } from './shared/components/layout/teste/teste.component
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DespesasComponent } from './shared/components/layout/despesas/despesas.component';
+import { TiposdespesasComponent } from './shared/components/layout/tiposdespesas/tiposdespesas.component';
 
 
 const routes: Routes = [
@@ -55,6 +56,11 @@ const routes: Routes = [
   {
     path: "teste",
     component: TesteComponent,
+  },
+
+  {
+    path: "tiposdespesas",
+    component: TiposdespesasComponent,
   },
 
   { path: 'input-property',

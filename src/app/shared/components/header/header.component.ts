@@ -93,6 +93,17 @@ export class HeaderComponent implements OnInit {
           this.route.navigate(['despesas']);
         },
       },
+
+      {
+        label: 'Tipos Despesas',
+        icon: 'fas fa-list-ul fa-lg:1em',
+        disabled: false,
+        command: () => {
+          this.visibleSidebar = false;
+          this.route.navigate(['tiposdespesas']);
+        },
+      },
+
       {
         label: 'Home',
         icon: 'fas fa-map-marked-alt fa-lg:1em',
