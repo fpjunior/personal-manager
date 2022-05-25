@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DespesasComponent } from './shared/components/layout/despesas/despesas.component';
 import { TiposdespesasComponent } from './shared/components/layout/tiposdespesas/tiposdespesas.component';
+import { CalculadoraComponent } from './shared/components/layout/calculadora/calculadora.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: "despesas",
     component: DespesasComponent,
+  },
+  {
+    path: "calculadora",
+    component: CalculadoraComponent,
   },
   {
     path: "teste",

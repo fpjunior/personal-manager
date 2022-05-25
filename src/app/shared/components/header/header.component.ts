@@ -103,6 +103,15 @@ export class HeaderComponent implements OnInit {
           this.route.navigate(['tiposdespesas']);
         },
       },
+      {
+        label: 'Calculadora',
+        icon: 'fas fa-list-ul fa-lg:1em',
+        disabled: false,
+        command: () => {
+          this.visibleSidebar = false;
+          this.route.navigate(['calculadora']);
+        },
+      },
 
       {
         label: 'Home',

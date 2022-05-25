@@ -36,6 +36,7 @@ import { InputTextComponent } from "./components/fields/input-text/input-text.co
 import { TiposdespesasComponent } from './components/layout/tiposdespesas/tiposdespesas.component';
 import { TesteComponent } from './components/layout/teste/teste.component';
 import { DespesasComponent } from './components/layout/despesas/despesas.component';
+import { CalculadoraComponent } from './components/layout/calculadora/calculadora.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { DespesasComponent } from './components/layout/despesas/despesas.compone
 
     ContatoComponent,
     DespesasComponent,
+    CalculadoraComponent,
     EventoDashboardComponent,
     EventoFormComponent,
     CicloDashboardComponent,
@@ -84,6 +86,8 @@ import { DespesasComponent } from './components/layout/despesas/despesas.compone
     GenericButtonsComponent,
 
     TiposdespesasComponent,
+
+    CalculadoraComponent,
   ],
 
   imports: [
@@ -102,6 +106,7 @@ import { DespesasComponent } from './components/layout/despesas/despesas.compone
     ProgressBarComponent,
     ContatoComponent,
     DespesasComponent,
+    CalculadoraComponent,
     EventoDashboardComponent,
     EventoFormComponent,
     CicloDashboardComponent,
