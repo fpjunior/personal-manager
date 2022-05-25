@@ -87,7 +87,6 @@ import { CalculadoraComponent } from './components/layout/calculadora/calculador
 
     TiposdespesasComponent,
 
-    CalculadoraComponent,
   ],
 
   imports: [
@@ -106,7 +105,7 @@ import { CalculadoraComponent } from './components/layout/calculadora/calculador
     ProgressBarComponent,
     ContatoComponent,
     DespesasComponent,
-    CalculadoraComponent,
+
     EventoDashboardComponent,
     EventoFormComponent,
     CicloDashboardComponent,
@@ -138,6 +137,8 @@ import { CalculadoraComponent } from './components/layout/calculadora/calculador
     TesteComponent,
 
     TiposdespesasComponent,
+    CalculadoraComponent,
+
 
   ],
   entryComponents: [],
