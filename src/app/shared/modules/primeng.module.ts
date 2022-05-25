@@ -20,7 +20,7 @@ import { StepsModule } from 'primeng/steps';
 import { InputMaskModule } from 'primeng/inputmask';
 import {TooltipModule} from 'primeng/tooltip';
 import {ColorPickerModule} from 'primeng/colorpicker';
-
+import {MultiSelectModule} from 'primeng/multiselect';
 @NgModule({
   exports: [
     CardModule,
@@ -44,7 +44,8 @@ import {ColorPickerModule} from 'primeng/colorpicker';
     StepsModule,
     InputMaskModule,
     TooltipModule,
-    ColorPickerModule
+    ColorPickerModule,
+    MultiSelectModule
 
   ]
 })

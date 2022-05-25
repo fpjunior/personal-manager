@@ -36,6 +36,7 @@ import { InfoFieldErrorMessageComponent } from "./components/fields/info-field-e
 import { InputTextComponent } from "./components/fields/input-text/input-text.component";
 import { TiposdespesasComponent } from './components/layout/tiposdespesas/tiposdespesas.component';
 import { TesteComponent } from './components/layout/teste/teste.component';
+import { CalculadoraComponent } from './components/layout/calculadora/calculadora.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,8 @@ import { TesteComponent } from './components/layout/teste/teste.component';
     GenericButtonsComponent,
 
     TiposdespesasComponent,
+
+    CalculadoraComponent,
   ],
 
   imports: [

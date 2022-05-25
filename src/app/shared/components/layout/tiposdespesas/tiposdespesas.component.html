@@ -9,6 +9,16 @@
           </input-text>
         </div>
 
+        <p-dropdown [options]="iconsOptions" formControlName="icon" optionLabel="name"  placeholder="Selecione um ícone">
+          <ng-template let-icon pTemplate="item">
+              <div class="icon-item">
+                <i [class]="icon.codeIcon">    {{icon.name}}</i>
+              </div>
+          </ng-template>
+      </p-dropdown>
+
+
+
         <div class="field col-3 form-applications">
           <input-text label="icon" formControlName="icon" id="icon" [type]="'text'">
           </input-text>

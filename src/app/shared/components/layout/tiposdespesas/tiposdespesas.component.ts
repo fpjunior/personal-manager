@@ -6,6 +6,10 @@ import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.uti
 import { TiposDespesasService } from './service/tiposdespesas.service';
 import { tableTipoDespesaModel } from './model/table.model';
 
+interface Country {
+  name: string,
+  code: string
+}
 
 @Component({
   selector: 'app-tiposdespesas',
@@ -32,6 +36,13 @@ export class TiposdespesasComponent implements OnInit {
   rowData;
   fullCols = tableTipoDespesaModel;
   cor
+  iconsOptions: any[] = [
+    {codeIcon: 'fas fa-bars', name: 'Barras'},
+    {codeIcon: 'pi pi-search', name: 'Lupa'},
+    {codeIcon: 'fa fa-circle', name: 'Circulos'},
+  ]
+
+  selectedCountries1: Country[];
 
 
   constructor(
@@ -47,6 +58,7 @@ export class TiposdespesasComponent implements OnInit {
     this.initForm();
     this.getAllTiposDespesas();
   }
+
 
 
 
