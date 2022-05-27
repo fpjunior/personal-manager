@@ -1,4 +1,3 @@
-import { AngularFireModule } from "@angular/fire";
 import { CadastroEventoRoutingModule } from "./modules/cadastro-evento/cadastro-evento-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
