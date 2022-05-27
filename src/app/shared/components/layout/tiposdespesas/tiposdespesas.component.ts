@@ -5,6 +5,8 @@ import { ProgressBarService } from '../../progress-bar/progress-bar.service';
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 import { TiposDespesasService } from './service/tiposdespesas.service';
 import { tableTipoDespesaModel } from './model/table.model';
+import { MenuItem } from 'primeng/api';
+import { BreadcrumbService } from '../../breadcrumbs/breadcrumbs.service';
 
 interface Country {
   name: string,
@@ -18,6 +20,7 @@ interface Country {
 })
 export class TiposdespesasComponent implements OnInit {
 
+  breadcrumbItems: MenuItem[] = [{ label: `Tipo de Despesas` }];
   showDialogtiposdespesas = false;
   tiposdespesasForm!: FormGroup;
   showModalColumn = false;
@@ -48,6 +51,7 @@ export class TiposdespesasComponent implements OnInit {
   constructor(
     private progressBarService: ProgressBarService,
     private tiposdespesasService: TiposDespesasService,
+    private breadcrumbService: BreadcrumbService,
     private formBuilder: FormBuilder,
     private tiposDespesasService: TiposDespesasService,
   ) {
@@ -57,6 +61,7 @@ export class TiposdespesasComponent implements OnInit {
   ngOnInit() {
     this.initForm();
     this.getAllTiposDespesas();
+    this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
   }
 
 

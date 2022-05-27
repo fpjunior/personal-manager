@@ -31,11 +31,11 @@ import { DialogPicklistComponent } from "./components/dialogs/dialog-picklist/di
 import { CicloFormComponent } from "./components/layout/ciclo/ciclo-form/ciclo-form.component";
 import { GenericButtonsComponent } from "./components/buttons/generic-buttons/generic-buttons.component";
 import { ContatoComponent } from "./components/layout/contato/contato.component";
-import { DespesasComponent } from "./components/layout/despesas/despesas.component";
 import { InfoFieldErrorMessageComponent } from "./components/fields/info-field-error-message/info-field-error-message.component";
 import { InputTextComponent } from "./components/fields/input-text/input-text.component";
 import { TiposdespesasComponent } from './components/layout/tiposdespesas/tiposdespesas.component';
 import { TesteComponent } from './components/layout/teste/teste.component';
+import { DespesasComponent } from './components/layout/despesas/despesas.component';
 import { CalculadoraComponent } from './components/layout/calculadora/calculadora.component';
 
 @NgModule({
@@ -56,11 +56,12 @@ import { CalculadoraComponent } from './components/layout/calculadora/calculador
     StepsComponent,
 
     ContatoComponent,
+    DespesasComponent,
+    CalculadoraComponent,
     EventoDashboardComponent,
     EventoFormComponent,
     CicloDashboardComponent,
     CicloFormComponent,
-    DespesasComponent,
     TesteComponent,
 
     // DIALOGS
@@ -86,7 +87,6 @@ import { CalculadoraComponent } from './components/layout/calculadora/calculador
 
     TiposdespesasComponent,
 
-    CalculadoraComponent,
   ],
 
   imports: [
@@ -104,6 +104,8 @@ import { CalculadoraComponent } from './components/layout/calculadora/calculador
     BreadcrumbsComponent,
     ProgressBarComponent,
     ContatoComponent,
+    DespesasComponent,
+
     EventoDashboardComponent,
     EventoFormComponent,
     CicloDashboardComponent,
@@ -132,10 +134,11 @@ import { CalculadoraComponent } from './components/layout/calculadora/calculador
     // FIELDS
     InputTextComponent,
 
-    DespesasComponent,
     TesteComponent,
 
     TiposdespesasComponent,
+    CalculadoraComponent,
+
 
   ],
   entryComponents: [],
