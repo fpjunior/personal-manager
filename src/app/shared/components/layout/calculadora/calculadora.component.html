@@ -1,6 +1,7 @@
 <div class="form-group">
   <label for="">Valor 1</label><br>
   <input [disabled]="false" pInputText label="Valor 1"
+<<<<<<< HEAD
   type="number" class="form-control" placeholder="0" id="value1" name="value1" [(ngModel)]="value1" ><br>
 
   <label for="">Operação</label><br>
@@ -17,3 +18,24 @@
   <button pButton type="button" label="x" (click)="changeValue('*')"></button>
   <button pButton type="button" label="/" (click)="changeValue('/')"></button>
   <button pButton type="button" label="Zerar" (click)="zeroValue('limpar')"></button><br><br>
+=======
+  type="number" class="form-control" placeholder="0" id="value1" name="value1" [(ngModel)]="value1" ><br><br>
+
+  <button pButton type="button" label="+" (click)="changeValue('+')"></button>
+  <button pButton type="button" label="-" (click)="changeValue('-')"></button>
+  <button pButton type="button" label="x" (click)="changeValue('*')"></button>
+  <button pButton type="button" label="/" (click)="changeValue('/')"></button><br><br>
+
+  <label for="">Valor 2</label><br>
+  <input [disabled]="false" pInputText label="Valor 2"
+  type="number" class="form-control" placeholder="0" id="value2" name="value2" [(ngModel)]="value2" ><br><br>
+
+  <input pInputText type="text" [value]="operacao" readonly #campoInput [disabled]="true"><br><br>
+
+  <button pButton type="button" id= "zero" label="Zerar" (click)="zeroValue('limpar')"></button>
+  <button pButton type="button" label="=" (click)="resultado('=')"></button><br><br>
+
+  <label for="teste">Resultado</label><br>
+  <input pInputText type="text" [value]="ResultValue" readonly #campoInput [disabled]="true"><br><br>
+</div>
+>>>>>>> feature/breno

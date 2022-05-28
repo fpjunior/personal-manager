@@ -9,7 +9,7 @@ export class CalculadoraComponent implements OnInit {
    value1: number;
    value2: number;
   operacao: string = "";
-  valueInput1: number = 0;
+  ResultValue: number = 0;
   constructor() { }
 
   ngOnInit(): void {
@@ -18,20 +18,16 @@ export class CalculadoraComponent implements OnInit {
   changeValue(operator: string) {
     switch (operator) {
       case '+':
-        this.valueInput1 = this.value1 + this.value2;
-        this.operacao = "Soma";
+        this.operacao = "Somando...";
         break;
       case '-':
-        this.valueInput1 = this.value1 - this.value2;
-        this.operacao = "Subtração";
+        this.operacao = "Subtraindo...";
         break;
       case '*':
-        this.valueInput1 = this.value1 * this.value2;
-        this.operacao = "Multiplicação";
+        this.operacao = "Multiplicando...";
         break;
       case '/':
-        this.valueInput1 = this.value1 / this.value2;
-        this.operacao = "Divisão";
+        this.operacao = "Dividindo...";
         break;
       default:
         break;
@@ -40,9 +36,30 @@ export class CalculadoraComponent implements OnInit {
 
   zeroValue(input: string) {
     if (input == "limpar") {
-      this.valueInput1 = 0;
       this.value1 = 0;
       this.value2 = 0;
+      this.ResultValue = 0;
     }
   }
+  resultado(result: string) {
+    if (result == "=") {
+      switch (this.operacao) {
+        case 'Somando...':
+          this.ResultValue = this.value1 + this.value2;
+          break;
+        case 'Subtraindo...':
+          this.ResultValue = this.value1 - this.value2;
+          break;
+        case 'Multiplicando...':
+          this.ResultValue = this.value1 * this.value2;
+          break;
+        case 'Dividindo...':
+          this.ResultValue = this.value1 / this.value2;
+          break;
+        default:
+          break;
+      }
+  }
 }
+}
+
