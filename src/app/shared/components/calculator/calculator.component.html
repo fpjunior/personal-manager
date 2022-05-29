@@ -1,0 +1,51 @@
+<p-dialog  [closable]="true" [closeOnEscape]="true" [(visible)]="showModalCalc" (onHide)="onCloseParent()" >
+  <body >
+
+    <section  class="container">
+      <div class="calculator dark">
+        <div class="theme-toggler active">
+          <i class="toggler-icon"></i>
+        </div>
+        <div class="display-screen">
+          <div class="display">{{valueDisplay}}</div>
+        </div>
+        <div class="buttons"  id="myDiv">
+          <table>
+            <tr>
+              <td><button class="btn btn-oparator btnClear" (click)="clearDisplay()">C</button></td>
+              <td><button class="btn btn-oparator">/</button></td>
+              <td><button class="btn btn-oparator">*</button></td>
+              <td>
+                <button class="btn btn-oparator backspace">&laquo;</button>
+              </td>
+            </tr>
+            <tr>
+              <td><button class="btn btn-number" (click)="sendValue('7')">7</button></td>
+              <td><button class="btn btn-number" (click)="sendValue('8')">8</button></td>
+              <td><button class="btn btn-number" (click)="sendValue('9')">9</button></td>
+              <td><button class="btn btn-oparator">-</button></td>
+            </tr>
+            <tr>
+              <td><button class="btn btn-number">4</button></td>
+              <td><button class="btn btn-number">5</button></td>
+              <td><button class="btn btn-number">6</button></td>
+              <td><button class="btn btn-oparator"(click)="addOperator('+')">+</button></td>
+            </tr>
+            <tr>
+              <td><button class="btn btn-number">1</button></td>
+              <td><button class="btn btn-number">2</button></td>
+              <td><button class="btn btn-number">3</button></td>
+              <td><button class="btn btn-oparator">.</button></td>
+            </tr>
+            <tr>
+              <td><button class="btn btn-oparator">(</button></td>
+              <td><button class="btn btn-number">0</button></td>
+              <td><button class="btn btn-oparator">)</button></td>
+              <td><button class="btn btn-equal" (click)="calculate()">=</button></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+  </body>
+</p-dialog>

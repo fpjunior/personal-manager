@@ -37,9 +37,11 @@ import { TiposdespesasComponent } from './components/layout/tiposdespesas/tiposd
 import { TesteComponent } from './components/layout/teste/teste.component';
 import { DespesasComponent } from './components/layout/despesas/despesas.component';
 import { CalculadoraComponent } from './components/layout/calculadora/calculadora.component';
+import { CalculatorComponent } from './components/calculator/calculator.component';
 
 @NgModule({
   declarations: [
+    CalculatorComponent,
     ExamplePipe,
     HeaderComponent,
     BreadcrumbsComponent,

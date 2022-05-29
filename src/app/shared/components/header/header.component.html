@@ -8,7 +8,7 @@
     </div>
   </div>
 
-  <div class= "router-diverg" routerLink= "./" >
+  <div (click)="showModalCalc = true" class= "router-diverg">
     <i class="fas fa-calculator fa-2x" aria-hidden="true" ></i>
     <!-- <img class="ico" src="./assets/svg/ico_dvg_preco.svg" alt="IcoDvgPreco"  /> -->
   </div>
@@ -22,4 +22,6 @@
 		[model]="user">
 	</p-splitButton>
 </div>
+
+<app-calculator (onClose)=" this.showModalCalc = false;"  [showModalCalc]="showModalCalc"></app-calculator>
 

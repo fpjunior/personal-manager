@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   user: MenuItem[];
   visibleSidebar = false;
   portalUser: PortalUser;
+  showModalCalc: boolean = false;
 
   constructor(private route: Router, private authService: AuthService) {
     this.user = [
@@ -41,6 +42,14 @@ export class HeaderComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem(USER));
     this.portalUser = user;
     this.initMenu();
+  }
+
+  showModalSelectColumns() {
+    this.showModalCalc = true;
+  }
+
+  onHideDialogTable(): void {
+
   }
 
   usuario(): void {}
