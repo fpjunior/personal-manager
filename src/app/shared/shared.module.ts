@@ -38,6 +38,7 @@ import { TesteComponent } from './components/layout/teste/teste.component';
 import { DespesasComponent } from './components/layout/despesas/despesas.component';
 import { CalculadoraComponent } from './components/layout/calculadora/calculadora.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
+import { InputDropdownComponent } from './components/fields/input-dropdown/input-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
     //FIELDS
     PicklistComponent,
     InputTextComponent,
+    InputDropdownComponent,
 
     // BUTTONS
     GenericButtonsComponent,
@@ -135,7 +137,7 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
 
     // FIELDS
     InputTextComponent,
-
+    InputDropdownComponent,
     TesteComponent,
 
     TiposdespesasComponent,

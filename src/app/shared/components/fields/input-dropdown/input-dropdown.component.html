@@ -1,0 +1,9 @@
+<div class="form-label">
+  <label [ngClass]="{ 'required': requiredLabel }" [for]="label">{{ label }}</label>
+  <p-dropdown [options]="options || ['']" [placeholder]="placeholder ? placeholder : 'SELECIONE'" [(ngModel)]="value"
+    [optionLabel]="optionLabel" [name]="label" (onChange)="change.emit($event)" [filter]="filter || false"
+    [ngClass]="applyErrorCSS() || {}" [disabled]="!!disabled">
+  </p-dropdown>
+
+  <info-field-error-message [control]="control" [label]="label"></info-field-error-message>
+</div>

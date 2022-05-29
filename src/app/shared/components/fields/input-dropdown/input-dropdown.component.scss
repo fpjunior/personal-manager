@@ -1,0 +1,18 @@
+@import "src/assets/styles/generalStyle.scss";
+
+.p-invalid {
+  font-size: 12px;
+  color: red;
+  margin-bottom: 0.5rem;
+}
+
+::ng-deep{
+  .p-dropdown-item {
+    font-size: 13px;
+    color: red;
+  }
+
+  .p-dropdown-filter, .p-dropdown-empty-message{
+  font-size: 13px;
+  }
+}

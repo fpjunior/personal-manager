@@ -147,7 +147,6 @@ getAllTiposDespesas() {
     (error) => {
       this.handleError(error);
       this.loading = false;
-      this.handleError(error);
       this.progressBarService.changeProgressBar(false);
     }
   );

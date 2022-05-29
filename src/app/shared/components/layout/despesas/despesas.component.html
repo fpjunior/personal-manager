@@ -1,24 +1,27 @@
 <div>
-  <!-- aqui abaixo inicia o dialog de contato, é nele que foi injetado os campos do formulário, ele é exibido quando a variável showDialogContact recebe
-  o valor true -->
   <p-dialog #dialogDrop (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
      [(visible)]="showDialogDespesa" header="Cadastrar uma nova Despesa">
-
-    <!-- aqui começa a tag form, dentro dela fica todos os inputs, com isso, é possível pegar o valor de cada campo para salvar, editar ou deletar -->
     <form method="post" [formGroup]="despesasForm" (ngSubmit)="saveDespesa(despesasForm)">
 
-      <!-- essa div envolve todos os campos do form, ela é essencial para ajustar a posição de todos os campos ao mesmo tempo -->
       <div class="p-grid">
-        <div class="field col-3 form-applications">
-          <input-text label="Code" formControlName="code" [disabled]="true" id="code" [type]="'text'">
+        <!-- <div class="field col-3 form-applications">
+          <input-text label="" formControlName="code" [disabled]="true" id="code" [type]="'text'">
           </input-text>
-        </div>
+        </div> -->
 
-        <!-- observar que cada input foi envolvido em uma div pra que possa ser fácil na hora de aplicar estilos -->
         <div class="field col-3 form-applications">
-          <input-text label="Tipo" [control]="despesasForm.get('type')" [requiredLabel]="true" formControlName="type"
+          <!-- <input-text label="Tipo" [control]="despesasForm.get('type')" [requiredLabel]="true" formControlName="type"
             id="type" [type]="'text'" pTooltip="Digite o tipo da despesa">
-          </input-text>
+          </input-text> -->
+
+          <!-- <info-dropdown [requiredLabel]="true" class="tipo-dropdown"
+          [control]="ocorrenciaForm.get('clientAttendance')" label="Tipo de Atendimento" [options]="attendanceTypes"
+          optionLabel="name" placeholder="Selecione" (change)="selectedAttendance($event)"
+          formControlName="clientAttendance" id="clientAttendance">
+        </info-dropdown> -->
+
+          <input-dropdown [control]="despesasForm.get('type')" class="tipo-dropdown" placeholder="SELECIONE"
+          [options]="typeOptions" optionLabel="name" formControlName="type"  [requiredLabel]="true" [label]="'Tipo'" ></input-dropdown>
         </div>
 
         <div class="field col-3 form-applications">
@@ -33,8 +36,6 @@
           </input-text>
         </div>
 
-        <!-- cada div recebe uma tag class, e dentro dessa tag, pode ser chamado várias classes, por ex. uma class é essa form-applications
-        e no arquivo .scss tá sendo passado um estilo pra ela-->
         <div class="field col-3 form-applications">
           <input-text label="Tipo de pagamento" [control]="despesasForm.get('typePayment')" [requiredLabel]="true" formControlName="typePayment"
             id="typePayment" [type]="'text'"  pTooltip="Digite o tipo de pagamento">
@@ -53,8 +54,6 @@
           </input-text>
         </div>
 
-
-        <!-- aqui são os dois botões no rodapé do dialog, o de SALVA e CANCELAR -->
         <div class="buttons-actions">
           <p-button type="submit" icon="fa fa-check" [disabled]="this.despesasForm.invalid" class="standard tableButton-def"
             label="Salvar">
@@ -64,83 +63,59 @@
           </p-button>
         </div>
       </div>
-
-      <!-- aqui encerra o form e o dialog -->
     </form>
   </p-dialog>
 
-  <!-- Aqui começa a tela de exibição de contatos, onde tem um input de filtro global e o botão de criar contato -->
   <div class="grid group-inputFilter-btnCreate">
 
-    <!-- esse trecho é um grupo, onde fica juntos o botão de criar contato juntamente com o input de filtro global -->
     <div class="col-12 div-group-nputFilter-btnCreate">
     <span class="p-input-icon-left p-ml-auto input-filterGlobal">
-      <!-- essa tag abaixo apenas coloca um ícone dentro do input, o ícone da lupa -->
       <i class="pi pi-search"></i>
         <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
           placeholder="Digite o tipo ou valor da despesa" />
         </span>
       </div>
-      <!-- aqui é o botão de criar contato -->
       <p-button pRipple label="Cadastrar Despesa" class="standard btn-criar-despesa" type="button"  (click)="openDialogAddDespesa()">
       </p-button>
   </div>
 
-  <!-- aqui começa a tabela, tudo que é exibido dentro dela estão dentro das tag <table></table> -->
   <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
      [globalFilterFields]="['type','value']"
     [reorderableColumns]="true"  responsiveLayout="scroll" [loading]="loading" [scrollable]="true"
     scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
 
-    <!-- aqui inicia a construção do header da tabela, os títulos das colunas, junto com filter e sort -->
     <ng-template pTemplate="header" let-columns>
 
-      <!-- a tag tr significa table row, é uma linha da tabela, onde dentro dessa linha existe as tag th que são as table headers -->
       <tr>
-        <!-- aqui é o botão de engrenagem que chama um dialog de configuração das colunas -->
         <th id="config" class="size-first-column">
           <button pButton type="button" class="tableButton-def" icon="fas fa-cog " (click)="showModalSelectColumns()"
             pTooltip="Configurações"></button>
         </th>
 
-        <!-- aqui inicia a exibição do nome das colunas, foi feito um loop for "ngFor" pra percorrer um array com todos os nomes que foi necessário-->
         <th columnResizeMode="expand" *ngFor="let col of columns; let i = index" [pTooltip]="col.hintName"
           tooltipPosition="top" [pSortableColumn]="col.field" pResizableColumn pReorderableColumn [id]="col.field">
           {{col.header}}
 
-          <!-- aqui é o ícone do sort de cada coluna, observe que esse ícone foi injetado dentro do for, logo ele é injetado apenas uma vez, mas o for
-          se encarrega de exibir ele pra cada coluna -->
           <p-sortIcon *ngIf="col.field !== 'operation'" [field]="col.field"></p-sortIcon>
 
-          <!-- aqui é o ícone do filter, segue a mesma lógica do sort, sendo adicionado dentro do for -->
           <p-columnFilter *ngIf="col.field !== 'operation'" styleClass="button-operation" [type]="'text'"
             [field]="col.field" [matchMode]="'contains'" display="menu" #filterTable>
           </p-columnFilter>
-
-          <!-- aqui finaliza a tag th da exibição de todas as hearders da tabela -->
         </th>
       </tr>
     </ng-template>
 
-    <!-- aqui inicia o corpo da tabela(body) -->
     <ng-template pTemplate="body" let-dataToFillTable let-rowData let-rowIndex="rowIndex" let-columns="columns">
-      <!-- da mesma form, uma tag abaixo inicia uma nova linha (tr - table row) -->
       <tr>
 
-        <!-- aqui foi adicionado uma td (table data), mas essa está limpa, sem nada, é pra ser exibida abaixo do botão de engrenagem que chama
-        o dialog de configuração das colunas, essa primeira coluna não tem nenhum valor, então ele vai ficar vazia -->
         <td class="size-first-column" id="config"></td>
 
-        <!-- aqui inicia a td com valores, o exemplo segue a mesma ideia lá cima com as th, onde foi feito um looper, a outra forma de injetar
-        os dados na tabela sem utilizar o loop é chamando cada nome da coluna, mas em casos onde existe muitas colunas, isso não é melhor a fazer
-      então passamos a utilizar o for pra percorrer um array com todos os dados necessário -->
         <td *ngFor="let col of columns; let i = index" [id]="col.field">
           <span [pTooltip]="rowData[col.field]">
             {{rowData[col.field]}}
           </span>
 
-          <!-- aqui é exibido os botões de operações (editar - excluir) ele é exibido na última coluna, cada linha da tabela é exibido esse par de ícones-->
           <div *ngIf="col.field=='operation'" class="justify-content-center" style="font-size: 16px">
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
                 (click)="editDespesa(rowData)"></p-button>
@@ -150,21 +125,17 @@
         </td>
       </tr>
     </ng-template>
-    <!-- aqui finaliza a tag da tabela -->
   </p-table>
 </div>
 
-<!-- modal generico para sucesso ou erro a cada operação no servidor ex. salvar, deletar, editar, buscar -->
 <generic-response-dialog (onClose)="onHide()" (onShow)="onShow()" [showModal]="showModalResponse"
 [isError]="isErrorResponse" [content]="contentResponse">
 </generic-response-dialog>
 
-<!-- Modal de configuração das colunas da tabela -->
 <app-dialog-table-column (onClose)="onHideDialogTable()" [showModal]="showModalColumn" [fullCols]="fullCols"
   [colsModified]="cols" [immutables]="immutableCols" (saveColumn)="editColumns($event)">
 </app-dialog-table-column>
 
-<!-- modal de confirmação que é exibido sempre que deleta um cadastro -->
 <app-confirm-dialog class="confirmacao" header="Confirmação" (cancelEvent)="showCorfirmDialog = false"
 [showModal]="showCorfirmDialog" (confirmEvent)="confirmAction()"
 [content]="msgModalConfirm" (onClose)="closeConfirmDialog()">

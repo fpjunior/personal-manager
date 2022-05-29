@@ -17,6 +17,7 @@ import { TableStandard } from "src/app/shared/models/table.model"
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 import { tableArr } from "./model/tabela.model";
 import { DespesaService } from "./service/despesas.service";
+import { TiposDespesasService } from "../tiposdespesas/service/tiposdespesas.service";
 
 @Component({
   selector: "app-despesas",
@@ -32,6 +33,7 @@ export class DespesasComponent implements OnInit {
   showModalColumn = false;
 
   dataToFillTable: any;
+  typeOptions: any;
   despesas: Array<any>;
   despesa: any;
 
@@ -62,7 +64,8 @@ export class DespesasComponent implements OnInit {
     private breadcrumbService: BreadcrumbService,
     private despesaService: DespesaService,
     private progressBarService: ProgressBarService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private tiposDespesasService: TiposDespesasService,
   ) {}
 
   ngOnInit() {
@@ -70,6 +73,26 @@ export class DespesasComponent implements OnInit {
     this.despesa = {};
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
     this.getAllDespesas();
+this.getAllTiposDespesas()
+
+  }
+
+  getAllTiposDespesas() {
+    // this.progressBarService.changeProgressBar(true);
+    this.loading = true;
+    this.tiposDespesasService.getAllTiposDespesas().subscribe(
+      (tiposdespesas: any) => {
+        // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
+        this.typeOptions = Object.entries(tiposdespesas).map((e: any) => {
+          e[1].id = e[0];
+          return e[1];
+        });
+      },
+      (error) => {
+        this.handleError(error);
+        this.progressBarService.changeProgressBar(false);
+      }
+    );
   }
 
   closeConfirmDialog() {
