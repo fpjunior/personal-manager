@@ -62,7 +62,7 @@ export class CalculatorComponent implements OnInit {
     // ESC key
     if (event.key === "Enter") {
       this.calculate();
-      this.valueDisplay = this.valueDisplay.substr(0, this.valueDisplay.length - 1);
+      this.deletaUltimo();
     }
     if (event.key === "7") {
       console.log("7");
