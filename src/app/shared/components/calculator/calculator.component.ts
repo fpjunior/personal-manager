@@ -61,7 +61,7 @@ export class CalculatorComponent implements OnInit {
     // {{showModalCalc}}
     // ESC key
 
-    switch (event.key) {
+    /*switch (event.key) {
       case "9":
         this.valueDisplay += "9";
         break;
@@ -92,6 +92,12 @@ export class CalculatorComponent implements OnInit {
       case "0":
         this.valueDisplay += "0";
         break;
+      case "+":
+        this.valueDisplay += "+";
+        break;
+      case "+":
+        this.valueDisplay += "+";
+        break;
       case "Enter":
         this.calculate();
         this.deleteLast();
@@ -101,14 +107,22 @@ export class CalculatorComponent implements OnInit {
         break;
       default:
         break;
-    }
+    }*/
 
-    /*if (event.key === "Enter") {
+    if (event.key === "Enter"|| event.key === "=") {
       this.calculate();
       this.deleteLast();
+    }else
+    //Esse if pega qual tecla foi digitada no teclado e mostra na tela
+    if (event.key === "9" || event.key === "8" || event.key === "7" || event.key === "6" || event.key === "5"
+    || event.key === "4" || event.key === "3" || event.key === "2" || event.key === "1" || event.key === "0"
+    || event.key === "+" || event.key === "-" || event.key === "*" || event.key === "/") {
+      this.valueDisplay += event.key;
+    }else
+    //Esse if é para apagar o ultimo ultimo item digitado ao clicar no botao de apagar do teclado
+    if(event.key === "Backspace"){
+      this.deleteLast();
     }
-    if (event.key === "7") {
-      this.valueDisplay += "7";
-    }*/
+
   }
 }
