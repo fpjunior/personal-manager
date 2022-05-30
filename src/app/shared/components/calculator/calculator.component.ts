@@ -36,7 +36,7 @@ export class CalculatorComponent implements OnInit {
     this.valueDisplay += value;
   }
 
-  deletaUltimo(){
+  deleteLast(){
     //this.teste= this.valueDisplay;
     this.valueDisplay = this.valueDisplay.substr(0, this.valueDisplay.length - 1);
     return this.valueDisplay;
@@ -94,7 +94,10 @@ export class CalculatorComponent implements OnInit {
         break;
       case "Enter":
         this.calculate();
-        this.deletaUltimo();
+        this.deleteLast();
+        break;
+      case "Backspace":
+        this.deleteLast();
         break;
       default:
         break;
@@ -102,7 +105,7 @@ export class CalculatorComponent implements OnInit {
 
     /*if (event.key === "Enter") {
       this.calculate();
-      this.deletaUltimo();
+      this.deleteLast();
     }
     if (event.key === "7") {
       this.valueDisplay += "7";
