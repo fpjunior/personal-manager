@@ -36,13 +36,19 @@ export class CalculatorComponent implements OnInit {
     this.valueDisplay += value;
   }
 
+  deletaUltimo(){
+    //this.teste= this.valueDisplay;
+    this.valueDisplay = this.valueDisplay.substr(0, this.valueDisplay.length - 1);
+    return this.valueDisplay;
+    }
+
   calculate() {
     // let result =
     //   Number(this.valueDisplay.split("+")[0]) +
     //   Number(this.valueDisplay.split("+")[1])
     // this.valueDisplay = result.toString();
     this.valueDisplay =  eval(this.valueDisplay);  //essa linha faz o que as linhas acima estava fazendo por conta dessa função eval
-    return this.valueDisplay.toString().slice(0, -1);
+    return this.valueDisplay;
   }
 
   clearDisplay(){
@@ -56,6 +62,7 @@ export class CalculatorComponent implements OnInit {
     // ESC key
     if (event.key === "Enter") {
       this.calculate();
+      this.valueDisplay = this.valueDisplay.substr(0, this.valueDisplay.length - 1);
     }
     if (event.key === "7") {
       console.log("7");
