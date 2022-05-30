@@ -60,12 +60,52 @@ export class CalculatorComponent implements OnInit {
     console.log(this.showModalCalc);
     // {{showModalCalc}}
     // ESC key
-    if (event.key === "Enter") {
+
+    switch (event.key) {
+      case "9":
+        this.valueDisplay += "9";
+        break;
+      case "8":
+        this.valueDisplay += "8";
+        break;
+      case "7":
+        this.valueDisplay += "7";
+        break;
+      case "6":
+        this.valueDisplay += "6";
+        break;
+      case "5":
+        this.valueDisplay += "5";
+        break;
+      case "4":
+        this.valueDisplay += "4";
+        break;
+      case "3":
+        this.valueDisplay += "3";
+        break;
+      case "2":
+        this.valueDisplay += "2";
+        break;
+      case "1":
+        this.valueDisplay += "1";
+        break;
+      case "0":
+        this.valueDisplay += "0";
+        break;
+      case "Enter":
+        this.calculate();
+        this.deletaUltimo();
+        break;
+      default:
+        break;
+    }
+
+    /*if (event.key === "Enter") {
       this.calculate();
       this.deletaUltimo();
     }
     if (event.key === "7") {
-      console.log("7");
-    }
+      this.valueDisplay += "7";
+    }*/
   }
 }
