@@ -137,9 +137,9 @@
           <!-- aqui é exibido os botões de operações (editar - excluir) ele é exibido na última coluna, cada linha da tabela é exibido esse par de ícones-->
           <div *ngIf="col.field=='operation'" class="justify-content-center" style="font-size: 16px">
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
-                (click)="editContact(rowData)"></p-button>
+                (click)="editContact(rowData)" pTooltip="Editar contato"></p-button>
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-trash"
-                (click)="openConfirmDelete(rowData.id)"></p-button>
+                (click)="openConfirmDelete(rowData.id)" pTooltip="Deleter contato"></p-button>
         </div>
         </td>
       </tr>

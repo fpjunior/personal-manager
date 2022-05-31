@@ -110,9 +110,9 @@
 
           <div *ngIf="col.field=='operation'" class="justify-content-center" style="font-size: 16px">
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
-                (click)="editContact(rowData)"></p-button>
+                (click)="editContact(rowData)" pTooltip="Editar tipo de despesa"></p-button>
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-trash"
-                (click)="openConfirmDelete(rowData.id)"></p-button>
+                (click)="openConfirmDelete(rowData.id)" pTooltip="Deletar tipo de despesa"></p-button>
         </div>
         </td>
       </tr>
