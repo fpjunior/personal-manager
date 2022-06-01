@@ -31,13 +31,14 @@
           <input-text label="CPF" [control]="contactsForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
             id="cpf" [type]="'text'" pTooltip="Digite o CPF do contato">
           </input-text>
+          <small></small>
         </div>
-
+        <label id="cpf">{{labelError}}</label>
         <!-- cada div recebe uma tag class, e dentro dessa tag, pode ser chamado várias classes, por ex. uma class é essa form-applications
         e no arquivo .scss tá sendo passado um estilo pra ela-->
         <div class="field col-3 form-applications">
           <input-text label="Telefone" [control]="contactsForm.get('phone')" [requiredLabel]="true" formControlName="phone"
-            id="phone" [type]="'text'"  pTooltip="Digite o telefone do contato">
+            id="phone" [type]="'text'"  pTooltip="Digite o telefone do contato" (click)="ValidatorCpf()">
           </input-text>
         </div>
 
@@ -137,9 +138,9 @@
           <!-- aqui é exibido os botões de operações (editar - excluir) ele é exibido na última coluna, cada linha da tabela é exibido esse par de ícones-->
           <div *ngIf="col.field=='operation'" class="justify-content-center" style="font-size: 16px">
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
-                (click)="editContact(rowData)" pTooltip="Editar contato"></p-button>
+                (click)="editContact(rowData)"></p-button>
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-trash"
-                (click)="openConfirmDelete(rowData.id)" pTooltip="Deleter contato"></p-button>
+                (click)="openConfirmDelete(rowData.id)"></p-button>
         </div>
         </td>
       </tr>
