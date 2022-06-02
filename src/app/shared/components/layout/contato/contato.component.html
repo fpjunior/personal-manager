@@ -29,7 +29,7 @@
 
         <div class="field col-3 form-applications">
           <input-text label="CPF" [control]="contactsForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
-            id="cpf" [type]="'text'" pTooltip="Digite o CPF do contato">
+            id="cpf" [type]="'text'" pTooltip="Digite o CPF do contato"(keyup)="Length11()">
           </input-text>
           <small></small>
         </div>
@@ -38,7 +38,7 @@
         e no arquivo .scss tá sendo passado um estilo pra ela-->
         <div class="field col-3 form-applications">
           <input-text label="Telefone" [control]="contactsForm.get('phone')" [requiredLabel]="true" formControlName="phone"
-            id="phone" [type]="'text'"  pTooltip="Digite o telefone do contato" (click)="ValidatorCpf()">
+            id="phone" [type]="'text'"  pTooltip="Digite o telefone do contato">
           </input-text>
         </div>
 

@@ -67,6 +67,18 @@ export class ContatoComponent implements OnInit {
 
   labelError: string;
 
+  Length11(){
+    if(this.contactsForm.controls['cpf'].value.length === 0){
+      this.labelError="";
+    }else
+    if(this.contactsForm.controls['cpf'].value.length < 11){
+      this.labelError="O CPF digitado não possui 11 caracteres";
+    }else
+    if(this.contactsForm.controls['cpf'].value.length === 11){
+      this.ValidatorCpf();
+    }
+  }
+
   ValidatorCpf(): boolean {
       //cpf= this.valido;
       let cpf= this.contactsForm.controls['cpf'].value;
@@ -74,10 +86,10 @@ export class ContatoComponent implements OnInit {
         //this.labelError="O CPF nao pode ser nulo";
         //  return false;
       //}
-      if (cpf.length != 11) {
-        this.labelError="O CPF digitado não possui 11 caracteres";
-          return false;
-      }
+      //if (cpf.length != 11) {
+       //this.labelError="O CPF digitado não possui 11 caracteres";
+          //return false;
+      //}
       if ((cpf == '00000000000') || (cpf == '11111111111') || (cpf == '22222222222') || (cpf == '33333333333') || (cpf == '44444444444') || (cpf == '55555555555') || (cpf == '66666666666') || (cpf == '77777777777') || (cpf == '88888888888') || (cpf == '99999999999')) {
         this.labelError="O CPF não é válido";
           return false;
