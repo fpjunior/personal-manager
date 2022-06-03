@@ -29,7 +29,7 @@
 
         <div class="field col-3 form-applications">
           <input-text label="CPF" [control]="contactsForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
-            id="cpf" [type]="'text'" pTooltip="Digite o CPF do contato"(keyup)="Length11()">
+            id="cpf" [type]="'text'" pTooltip="Digite o CPF do contato"(keyup)="LengthCpf()">
           </input-text>
           <small></small>
         </div>
@@ -50,7 +50,7 @@
 
         <!-- aqui são os dois botões no rodapé do dialog, o de SALVA e CANCELAR -->
         <div class="buttons-actions">
-          <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid" class="standard tableButton-def"
+          <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid || enablebtnsave == true" class="standard tableButton-def"
             label="Salvar">
           </p-button>
           <p-button type="button" icon="fa fa-times" (onClick)="showCorfirmDialog = true" class="dismiss tableButton"

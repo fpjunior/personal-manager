@@ -53,6 +53,8 @@ export class ContatoComponent implements OnInit {
   isErrorResponse!: boolean;
   rowData;
   idContact;
+  enablebtnsave: boolean;
+
   showCorfirmDialog: boolean = false;
   msgModalConfirm: string = "";
   isEdit: boolean;
@@ -67,12 +69,13 @@ export class ContatoComponent implements OnInit {
 
   labelError: string;
 
-  Length11(){
-    if(this.contactsForm.controls['cpf'].value.length === 0){
+  LengthCpf(){
+    if(this.contactsForm.controls['cpf'].value == null){
       this.labelError="";
     }else
-    if(this.contactsForm.controls['cpf'].value.length < 11){
+    if(this.contactsForm.controls['cpf'].value.length != 11){
       this.labelError="O CPF digitado não possui 11 caracteres";
+      this.enablebtnsave= true;
     }else
     if(this.contactsForm.controls['cpf'].value.length === 11){
       this.ValidatorCpf();
@@ -92,6 +95,7 @@ export class ContatoComponent implements OnInit {
       //}
       if ((cpf == '00000000000') || (cpf == '11111111111') || (cpf == '22222222222') || (cpf == '33333333333') || (cpf == '44444444444') || (cpf == '55555555555') || (cpf == '66666666666') || (cpf == '77777777777') || (cpf == '88888888888') || (cpf == '99999999999')) {
         this.labelError="O CPF não é válido";
+        this.enablebtnsave= true;
           return false;
       }
       let numero: number = 0;
@@ -135,10 +139,12 @@ export class ContatoComponent implements OnInit {
       cpfAux = cpfAux + digito2;
       if (cpf != cpfAux) {
         this.labelError="O CPF não é válido";
+        this.enablebtnsave= true;
           return false;
       }
       else {
         this.labelError="";
+        this.enablebtnsave= false;
           return true;
       }
 }
@@ -216,6 +222,7 @@ export class ContatoComponent implements OnInit {
   openDialogAddContact() {
     this.contactsForm.reset();
     this.showDialogContact = true;
+    this.labelError="";
   }
 
   openConfirmDelete(idToDelete: string) {
