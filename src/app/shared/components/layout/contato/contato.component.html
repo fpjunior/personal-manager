@@ -72,7 +72,7 @@
       <!-- essa tag abaixo apenas coloca um ícone dentro do input, o ícone da lupa -->
       <i class="pi pi-search"></i>
         <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-          placeholder="Digite o nome ou a idade do contato" />
+          placeholder="Digite o nome, idade ou cpf do contato" />
         </span>
       </div>
       <!-- aqui é o botão de criar contato -->
@@ -84,7 +84,7 @@
   <!-- aqui começa a tabela, tudo que é exibido dentro dela estão dentro das tag <table></table> -->
   <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
-     [globalFilterFields]="['name','idade','cpf','email']"
+     [globalFilterFields]="['name','age','cpf']"
     [reorderableColumns]="true"  responsiveLayout="scroll" [loading]="loading" [scrollable]="true"
     scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
 
