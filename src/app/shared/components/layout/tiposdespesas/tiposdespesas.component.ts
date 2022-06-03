@@ -82,7 +82,7 @@ export class TiposdespesasComponent implements OnInit {
 
   onHideDialog() {}
 
-  openDialogAddContact() {
+  openDialogAddTipoDespesa() {
     this.tiposdespesasForm.reset();
     this.showDialogtiposdespesas = true;
   }

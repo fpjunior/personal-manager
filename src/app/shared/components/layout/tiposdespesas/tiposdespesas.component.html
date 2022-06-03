@@ -5,27 +5,12 @@
 
       <div class="p-grid">
         <div class="field col-3 form-applications">
-          <input-text label="code" formControlName="code" [disabled]="true" id="code" [type]="'text'">
-          </input-text>
-        </div>
-
-        <p-dropdown [options]="iconsOptions" formControlName="icon" optionLabel="name"  placeholder="Selecione um ícone">
-          <ng-template let-icon pTemplate="item">
-              <div class="icon-item">
-                <i [class]="icon.codeIcon">    {{icon.name}}</i>
-              </div>
-          </ng-template>
-      </p-dropdown>
-
-
-
-        <div class="field col-3 form-applications">
           <input-text label="icon" formControlName="icon" id="icon" [type]="'text'">
           </input-text>
         </div>
 
         <div class="field col-3 form-applications">
-          <input-text label="name" [control]="tiposdespesasForm.get('name')" [requiredLabel]="true" formControlName="name"
+          <input-text label="nome" [control]="tiposdespesasForm.get('name')" [requiredLabel]="true" formControlName="name"
             id="name" [type]="'text'">
           </input-text>
         </div>
@@ -62,7 +47,7 @@
           </span>
         </div>
         <p-button pRipple label="Criar Tipo Despesa" class="standard btn-criar-contato" type="button"
-          (click)="openDialogAddContact()">
+          (click)="openDialogAddTipoDespesa()">
         </p-button>
     </div>
     <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
