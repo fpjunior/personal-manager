@@ -1,5 +1,5 @@
   <p-dialog #dialogDrop (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
-    [baseZIndex]="10000" [(visible)]="showDialogtiposdespesas" header="Cadastrar Novo Tipo de Despesa">
+    [baseZIndex]="10000" [(visible)]="showDialogtiposdespesas" header="Cadastrar Novo Tipo de Despesa" [closable]="false">
 
     <form method="post" [formGroup]="tiposdespesasForm" (ngSubmit)="saveContact(tiposdespesasForm)">
 
