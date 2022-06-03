@@ -69,30 +69,24 @@ export class ContatoComponent implements OnInit {
 
   labelError: string;
 
-  LengthCpf(){
-    if(this.contactsForm.controls['cpf'].value == null){
-      this.labelError="";
-    }else
-    if(this.contactsForm.controls['cpf'].value.length != 11){
-      this.labelError="O CPF digitado não possui 11 caracteres";
-      this.enablebtnsave= true;
-    }else
+  VerifyCpfLength(){
     if(this.contactsForm.controls['cpf'].value.length === 11){
-      this.ValidatorCpf();
+      this.cpfValidator();
     }
   }
 
-  ValidatorCpf(): boolean {
-      //cpf= this.valido;
+
+  LoseFocus(){
+    if(this.contactsForm.controls['cpf'].value.length != 11){
+      this.labelError="O CPF digitado não possui 11 caracteres";
+      this.enablebtnsave= true;
+    }
+  }
+
+  cpfValidator(): boolean {
+
       let cpf= this.contactsForm.controls['cpf'].value;
-      //if (cpf == null) {
-        //this.labelError="O CPF nao pode ser nulo";
-        //  return false;
-      //}
-      //if (cpf.length != 11) {
-       //this.labelError="O CPF digitado não possui 11 caracteres";
-          //return false;
-      //}
+
       if ((cpf == '00000000000') || (cpf == '11111111111') || (cpf == '22222222222') || (cpf == '33333333333') || (cpf == '44444444444') || (cpf == '55555555555') || (cpf == '66666666666') || (cpf == '77777777777') || (cpf == '88888888888') || (cpf == '99999999999')) {
         this.labelError="O CPF não é válido";
         this.enablebtnsave= true;
@@ -225,6 +219,11 @@ export class ContatoComponent implements OnInit {
     this.labelError="";
   }
 
+  openConfirmCancel(){
+    this.showCorfirmDialog = true;
+    this.msgModalConfirm = "Tem certeza que deseja cancelar? Alterações serão descartadas";
+  }
+
   openConfirmDelete(idToDelete: string) {
     this.msgModalConfirm = "Tem certeza que deseja excluir este registro?";
     this.idContact = idToDelete;
@@ -238,6 +237,7 @@ export class ContatoComponent implements OnInit {
     } else {
       this.deleteContact();
       this.showCorfirmDialog = false;
+      this.showDialogContact = false;
     }
   }
 

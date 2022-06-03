@@ -29,7 +29,7 @@
 
         <div class="field col-3 form-applications">
           <input-text label="CPF" [control]="contactsForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
-            id="cpf" [type]="'text'" pTooltip="Digite o CPF do contato"(keyup)="LengthCpf()">
+            id="cpf" [type]="'text'" pTooltip="Digite o CPF do contato"(keyup)="VerifyCpfLength()" (change)="LoseFocus()">
           </input-text>
           <small></small>
         </div>
@@ -53,8 +53,8 @@
           <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid || enablebtnsave == true" class="standard tableButton-def"
             label="Salvar">
           </p-button>
-          <p-button type="button" icon="fa fa-times" (onClick)="showCorfirmDialog = true" class="dismiss tableButton"
-            label="Cancelar">
+          <p-button type="button" icon="fa fa-times" (onClick)="openConfirmCancel()" class="dismiss tableButton"
+            label="Cancelar" >
           </p-button>
         </div>
       </div>
