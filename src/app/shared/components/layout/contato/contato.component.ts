@@ -72,23 +72,24 @@ export class ContatoComponent implements OnInit {
   VerifyCpfLength(){
     if(this.contactsForm.controls['cpf'].value.length === 11){
       this.cpfValidator();
-    }
-  }
-
-
-  LoseFocus(){
-    if(this.contactsForm.controls['cpf'].value.length != 11){
-      this.labelError="O CPF digitado não possui 11 caracteres";
+    }else{
+      this.labelError="";
       this.enablebtnsave= true;
     }
   }
+
+
+  //  LoseFocus(){
+  //    this.labelError="";
+  // }
+
 
   cpfValidator(): boolean {
 
       let cpf= this.contactsForm.controls['cpf'].value;
 
       if ((cpf == '00000000000') || (cpf == '11111111111') || (cpf == '22222222222') || (cpf == '33333333333') || (cpf == '44444444444') || (cpf == '55555555555') || (cpf == '66666666666') || (cpf == '77777777777') || (cpf == '88888888888') || (cpf == '99999999999')) {
-        this.labelError="O CPF não é válido";
+        this.labelError="CPF não válido";
         this.enablebtnsave= true;
           return false;
       }
@@ -132,7 +133,7 @@ export class ContatoComponent implements OnInit {
       }
       cpfAux = cpfAux + digito2;
       if (cpf != cpfAux) {
-        this.labelError="O CPF não é válido";
+        this.labelError="CPF não válido";
         this.enablebtnsave= true;
           return false;
       }

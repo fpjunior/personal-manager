@@ -29,7 +29,7 @@
 
         <div class="field col-3 form-applications">
           <input-text label="CPF" [control]="contactsForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
-            id="cpf" [type]="'text'" pTooltip="Digite o CPF do contato"(keyup)="VerifyCpfLength()" (change)="LoseFocus()">
+            id="cpf" [type]="'number'" [minlength]="11" [maxlength]="11" pTooltip="Digite o CPF do contato"(keyup)="VerifyCpfLength()">
           </input-text>
           <small></small>
         </div>

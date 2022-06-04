@@ -158,6 +158,11 @@ this.getAllTiposDespesas()
 
   onHideDialog() {}
 
+  openConfirmCancel(){
+    this.showCorfirmDialog = true;
+    this.msgModalConfirm = "Tem certeza que deseja cancelar? Alterações serão descartadas";
+  }
+
   openDialogAddDespesa() {
     this.despesasForm.reset();
     this.showDialogDespesa = true;
@@ -176,6 +181,7 @@ this.getAllTiposDespesas()
     } else {
       this.deleteDespesa();
       this.showCorfirmDialog = false;
+      this.showDialogDespesa = false;
     }
   }
 

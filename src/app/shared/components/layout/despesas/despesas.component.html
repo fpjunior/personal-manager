@@ -58,7 +58,7 @@
           <p-button type="submit" icon="fa fa-check" [disabled]="this.despesasForm.invalid" class="standard tableButton-def"
             label="Salvar">
           </p-button>
-          <p-button type="button" icon="fa fa-times" (onClick)="showCorfirmDialog = true" class="dismiss tableButton"
+          <p-button type="button" icon="fa fa-times" (onClick)="openConfirmCancel()" class="dismiss tableButton"
             label="Cancelar">
           </p-button>
         </div>
