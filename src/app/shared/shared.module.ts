@@ -39,6 +39,7 @@ import { DespesasComponent } from './components/layout/despesas/despesas.compone
 import { CalculadoraComponent } from './components/layout/calculadora/calculadora.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
 import { InputDropdownComponent } from './components/fields/input-dropdown/input-dropdown.component';
+import { InputMaskComponent } from './components/fields/input-mask/input-mask.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { InputDropdownComponent } from './components/fields/input-dropdown/input
     PicklistComponent,
     InputTextComponent,
     InputDropdownComponent,
+    InputMaskComponent,
 
     // BUTTONS
     GenericButtonsComponent,
@@ -109,7 +111,7 @@ import { InputDropdownComponent } from './components/fields/input-dropdown/input
     ProgressBarComponent,
     ContatoComponent,
     DespesasComponent,
-
+    InputMaskComponent,
     EventoDashboardComponent,
     EventoFormComponent,
     CicloDashboardComponent,

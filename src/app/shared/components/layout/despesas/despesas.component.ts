@@ -202,6 +202,7 @@ this.getAllTiposDespesas()
 
   saveDespesa(despesasForm: any): void {
     despesasForm = this.despesasForm.getRawValue();
+    despesasForm.type = despesasForm.type.name
     this.despesaService.saveOrUpdateDespesa(despesasForm).subscribe(
       (response) => {
         this.despesasForm.reset();

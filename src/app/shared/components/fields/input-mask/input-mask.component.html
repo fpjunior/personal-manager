@@ -1,0 +1,8 @@
+<div class="form-label">
+  <label [ngClass]="{ required: requiredLabel }">{{ label }}</label>
+  <p-inputMask slotChar=" " class="p-field" (onInput)="input.emit($event)" [ngClass]="applyErrorCSS() || {}"
+    styleClass="input-placeholder" [disabled]="!!disabledInput" [placeholder]="placeholder" [(ngModel)]="value"
+    [mask]="mask" [autoClear]="false"></p-inputMask>
+
+  <info-field-error-message [control]="control" [label]="label"></info-field-error-message>
+</div>

@@ -4,22 +4,7 @@
     <form method="post" [formGroup]="despesasForm" (ngSubmit)="saveDespesa(despesasForm)">
 
       <div class="p-grid">
-        <!-- <div class="field col-3 form-applications">
-          <input-text label="" formControlName="code" [disabled]="true" id="code" [type]="'text'">
-          </input-text>
-        </div> -->
-
         <div class="field col-3 form-applications">
-          <!-- <input-text label="Tipo" [control]="despesasForm.get('type')" [requiredLabel]="true" formControlName="type"
-            id="type" [type]="'text'" pTooltip="Digite o tipo da despesa">
-          </input-text> -->
-
-          <!-- <info-dropdown [requiredLabel]="true" class="tipo-dropdown"
-          [control]="ocorrenciaForm.get('clientAttendance')" label="Tipo de Atendimento" [options]="attendanceTypes"
-          optionLabel="name" placeholder="Selecione" (change)="selectedAttendance($event)"
-          formControlName="clientAttendance" id="clientAttendance">
-        </info-dropdown> -->
-
           <input-dropdown [control]="despesasForm.get('type')" class="tipo-dropdown" placeholder="SELECIONE"
           [options]="typeOptions" optionLabel="name" formControlName="type"  [requiredLabel]="true" [label]="'Tipo'" ></input-dropdown>
         </div>
@@ -31,8 +16,15 @@
         </div>
 
         <div class="field col-3 form-applications">
-          <input-text label="Valor" [control]="despesasForm.get('value')" [requiredLabel]="true" formControlName="value"
-            id="value" [type]="'text'" pTooltip="Digite o valor gasto">
+          <input-mask [label]="'Valor'" [requiredLabel]="true"
+          formControlName="value" id="clientDocument" [type]="'number'"
+          [control]="despesasForm.get('value')" symbol="R$ " id="value">
+      </input-mask>
+      </div>
+
+        <div class="field col-3 form-applications">
+          <input-text label="Local do estabelicimento" [control]="despesasForm.get('localEstablishment')" [requiredLabel]="true" formControlName="localEstablishment"
+            id="localEstablishment" [type]="'text'"  pTooltip="Digite o local do estabelicimento">
           </input-text>
         </div>
 
@@ -42,17 +34,13 @@
           </input-text>
         </div>
 
-        <div class="field col-3 form-applications">
-          <input-text label="Local do estabelicimento" [control]="despesasForm.get('localEstablishment')" [requiredLabel]="true" formControlName="localEstablishment"
-            id="localEstablishment" [type]="'text'"  pTooltip="Digite o local do estabelicimento">
-          </input-text>
-        </div>
 
         <div class="field col-3 form-applications">
-          <input-text label="Data" [control]="despesasForm.get('expenseDate')" [requiredLabel]="true" formControlName="expenseDate"
-            id="expenseDate" [type]="'text'"  pTooltip="Digite a data">
-          </input-text>
-        </div>
+          <input-mask [label]="'Data'" [requiredLabel]="true"
+          formControlName="expenseDate" id="clientDocument" [type]="'number'"
+          [control]="despesasForm.get('expenseDate')" [mask]="'99/99/9999'" id="expenseDate">
+      </input-mask>
+      </div>
 
         <div class="buttons-actions">
           <p-button type="submit" icon="fa fa-check" [disabled]="this.despesasForm.invalid" class="standard tableButton-def"

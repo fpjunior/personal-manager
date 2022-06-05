@@ -37,9 +37,14 @@
         <!-- cada div recebe uma tag class, e dentro dessa tag, pode ser chamado várias classes, por ex. uma class é essa form-applications
         e no arquivo .scss tá sendo passado um estilo pra ela-->
         <div class="field col-3 form-applications">
-          <input-text label="Telefone" [control]="contactsForm.get('phone')" [requiredLabel]="true" formControlName="phone"
+          <!-- <input-text label="Telefone" [control]="contactsForm.get('phone')" [requiredLabel]="true" formControlName="phone"
             id="phone" [type]="'text'"  pTooltip="Digite o telefone do contato">
-          </input-text>
+          </input-text> -->
+
+          <input-mask [requiredLabel]="true" label="Telefone"formControlName="phone"
+          id="clientPhone" [type]="'text'" [mask]="'(99)99999-9999'"
+          [control]="contactsForm.get('phone')">
+      </input-mask>
         </div>
 
         <div class="field col-3 form-applications">

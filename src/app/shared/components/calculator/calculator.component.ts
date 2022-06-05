@@ -57,7 +57,6 @@ export class CalculatorComponent implements OnInit {
 
   @HostListener("window:keydown", ["$event"])
   keyEvent(event: KeyboardEvent) {
-    console.log(this.showModalCalc);
     // {{showModalCalc}}
     // ESC key
 
