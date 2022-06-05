@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {
   Component,
   OnInit,
@@ -18,6 +18,7 @@ import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.uti
 import { tableArr } from "./model/tabela.model";
 import { DespesaService } from "./service/despesas.service";
 import { TiposDespesasService } from "../tiposdespesas/service/tiposdespesas.service";
+import { timingSafeEqual } from "crypto";
 
 @Component({
   selector: "app-despesas",
@@ -27,38 +28,34 @@ import { TiposDespesasService } from "../tiposdespesas/service/tiposdespesas.ser
 export class DespesasComponent implements OnInit {
 
   // config Table
-  cols = tableArr;
-  fullCols = tableArr;
-  immutableCols: string[] = [];
-  showModalColumn = false;
-
-  dataToFillTable: any;
-  typeOptions: any;
-  despesas: Array<any>;
-  despesa: any;
-
-  despesasForm!: FormGroup;
-
   @Output() mudouValor = new EventEmitter();
   @ViewChild("campoInput") campoValorInput: ElementRef;
-
   breadcrumbItems: MenuItem[] = [{ label: `Despesas` }];
+  cols = tableArr;
+  fullCols = tableArr;
+  isLoading = false;
+  showModalColumn = false;
   showDialogDespesa = false;
+  showModalResponse = false;
+  showCorfirmDialog = false;
+  immutableCols: string[] = [];
+  despesas: Array<any>;
+  dataToFillTable: any;
+  typeOptions: any;
+  despesa: any;
+  despesasForm!: FormGroup;
+  isEdit: boolean;
+  contentResponse!: string;
+  msgModalConfirm: string = "";
+  isErrorResponse!: boolean;
   valuetype;
   valuedescription;
   valuevalue;
   valuetypePayment;
   valuelocalEstablishment;
   valueexpenseDate;
-  loading = false;
-  showModalResponse = false;
-  contentResponse!: string;
-  isErrorResponse!: boolean;
-  rowData;
   codeDespesa;
-  showCorfirmDialog: boolean = false;
-  msgModalConfirm: string = "";
-  isEdit: boolean;
+  rowData;
 
   constructor(
     private breadcrumbService: BreadcrumbService,
@@ -66,23 +63,23 @@ export class DespesasComponent implements OnInit {
     private progressBarService: ProgressBarService,
     private formBuilder: FormBuilder,
     private tiposDespesasService: TiposDespesasService,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.initForm();
     this.despesa = {};
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
     this.getAllDespesas();
-this.getAllTiposDespesas()
-
+    this.getAllTiposDespesas()
   }
 
+  // essa funçao do tipo get faz com que a gente permita usar this.f['nomeDoCampo'].value ao invés de usar this.despesasForm.controls['nomeDoCampo'].value
+  get f(): { [key: string]: AbstractControl; } { return this.despesasForm.controls; }
+
   getAllTiposDespesas() {
-    // this.progressBarService.changeProgressBar(true);
-    this.loading = true;
+    this.isLoading = true;
     this.tiposDespesasService.getAllTiposDespesas().subscribe(
       (tiposdespesas: any) => {
-        // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
         this.typeOptions = Object.entries(tiposdespesas).map((e: any) => {
           e[1].id = e[0];
           return e[1];
@@ -147,24 +144,25 @@ this.getAllTiposDespesas()
   initForm(): void {
     this.despesasForm = this.formBuilder.group({
       code: [""],
-      type: ["", [Validators.required]],
-      description: [""],
-      value: ["", [Validators.required]],
-      typePayment: ["", [Validators.required]],
-      localEstablishment: ["", [Validators.required]],
-      expenseDate: ["", [Validators.required]],
+      type: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
+      description: ["",  [Validators.required, Validators.maxLength(100)]],
+      value: ["", [Validators.required, Validators.min(0), Validators.max(999999)]],
+      typePayment: ["", [Validators.required, Validators.min(1), Validators.max(60)]],
+      localEstablishment: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
+      expenseDate: ["", [Validators.required, Validators.maxLength(10), Validators.minLength(10), ]],
     });
   }
 
-  onHideDialog() {}
+  onHideDialog() { }
 
-  openConfirmCancel(){
+  openConfirmCancel() {
     this.showCorfirmDialog = true;
     this.msgModalConfirm = "Tem certeza que deseja cancelar? Alterações serão descartadas";
   }
 
   openDialogAddDespesa() {
     this.despesasForm.reset();
+this.despesasForm.setErrors({});
     this.showDialogDespesa = true;
   }
 
@@ -174,8 +172,8 @@ this.getAllTiposDespesas()
     this.showCorfirmDialog = true;
   }
 
-  confirmAction(){
-    if(this.isEdit){
+  confirmAction() {
+    if (this.isEdit) {
       this.showDialogDespesa = false;
       this.showCorfirmDialog = false;
     } else {
@@ -230,7 +228,7 @@ this.getAllTiposDespesas()
 
   getAllDespesas() {
     this.progressBarService.changeProgressBar(true);
-    this.loading = true;
+    this.isLoading = true;
     this.despesaService.getAllDespesas().subscribe(
       (despesa: any) => {
         // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
@@ -238,12 +236,12 @@ this.getAllTiposDespesas()
           e[1].code = e[0];
           return e[1];
         });
-        this.loading = false;
+        this.isLoading = false;
         this.progressBarService.changeProgressBar(false);
       },
       (error) => {
         this.handleError(error);
-        this.loading = false;
+        this.isLoading = false;
         this.handleError(error);
         this.progressBarService.changeProgressBar(false);
       }

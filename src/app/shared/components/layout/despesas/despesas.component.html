@@ -11,7 +11,7 @@
 
         <div class="field col-3 form-applications">
           <input-text label="Descrição" [control]="despesasForm.get('description')" formControlName="description"
-            id="description" [type]="'text'" pTooltip="Digite a descrição da despesa">
+            id="description" [type]="'text'"  [requiredLabel]="true"  pTooltip="Digite a descrição da despesa">
           </input-text>
         </div>
 
@@ -70,7 +70,7 @@
   <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
      [globalFilterFields]="['type','value']"
-    [reorderableColumns]="true"  responsiveLayout="scroll" [loading]="loading" [scrollable]="true"
+    [reorderableColumns]="true"  responsiveLayout="scroll" [loading]="isLoading" [scrollable]="true"
     scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
 
     <ng-template pTemplate="header" let-columns>
