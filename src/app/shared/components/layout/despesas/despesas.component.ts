@@ -96,28 +96,21 @@ export class DespesasComponent implements OnInit {
     this.showCorfirmDialog = false;
   }
 
-  // confirmExit() {
-  //   this.showCorfirmDialog = false;
-  //   this.showDialogContact = false;
-  // }
-
   showModalSelectColumns() {
     this.showModalColumn = true;
   }
+
   onHideDialogTable = (): void => {
     this.showModalColumn = false;
   };
+
   editColumns(cols: TableStandard[]) {
     this.cols = cols;
   }
 
-  onHide = () => {
-    this.showModalResponse = false;
-  };
+  onHide = () => this.showModalResponse = false;
 
-  onShow(): boolean {
-    return (this.showModalResponse = true);
-  }
+  onShow = () => this.showModalResponse = true;
 
   private sucessResponse(
     msgResponse: string
@@ -141,15 +134,15 @@ export class DespesasComponent implements OnInit {
     }, 2000);
   }
 
-  initForm(): void {
+  private initForm(): void {
     this.despesasForm = this.formBuilder.group({
       code: [""],
       type: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
-      description: ["",  [Validators.required, Validators.maxLength(100)]],
+      description: ["", [Validators.required, Validators.maxLength(100)]],
       value: ["", [Validators.required, Validators.min(0), Validators.max(999999)]],
       typePayment: ["", [Validators.required, Validators.min(1), Validators.max(60)]],
       localEstablishment: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
-      expenseDate: ["", [Validators.required, Validators.maxLength(10), Validators.minLength(10), ]],
+      expenseDate: ["", [Validators.required, Validators.maxLength(10), Validators.minLength(10),]],
     });
   }
 
@@ -162,7 +155,7 @@ export class DespesasComponent implements OnInit {
 
   openDialogAddDespesa() {
     this.despesasForm.reset();
-this.despesasForm.setErrors({});
+    this.despesasForm.setErrors({});
     this.showDialogDespesa = true;
   }
 
@@ -247,13 +240,4 @@ this.despesasForm.setErrors({});
       }
     );
   }
-
-  // dialog(display) {
-  //   if (display === false) {
-  //     this.display = true;
-  //   }
-  //   if (display === true) {
-  //     this.display = false;
-  //   }
-  // }
 }
