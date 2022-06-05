@@ -64,38 +64,11 @@ export class HeaderComponent implements OnInit {
           this.route.navigate(['example']);
         },
       },
-      {
-        label: 'Chamar Example2',
-        icon: 'fas fa-exchange-alt fa-lg:1em',
-        items: [
-          {
-            style: { 'margin-left': '0px' },
-            label: 'Example2',
-            icon: 'fas fa-file-invoice-dollar fa-lg:1em',
-            command: () => {
-              this.visibleSidebar = false;
-              this.route.navigate([
-                '/example2',
-              ]);
-            },
-          },
-          {
-            style: { 'margin-left': '0px' },
-            label: 'Sem Rota',
-            icon: 'fas fa-file-invoice-dollar fa-lg:1em',
-            command: () => {
-              this.visibleSidebar = false;
-              this.route.navigate([
-                '',
-              ]);
-            },
-          },
-          { separator: true },
-        ],
-      },
+
       {
         label: 'Despesas',
-        icon: 'fas fa-list-ul fa-lg:1em',
+
+        icon: 'fas fa-messages-dollar fa-lg:1em',
         disabled: false,
         command: () => {
           this.visibleSidebar = false;
@@ -129,84 +102,6 @@ export class HeaderComponent implements OnInit {
           this.visibleSidebar = false;
           this.route.navigate(['/home']);
         },
-      },
-      {
-        label: 'Ciclo',
-        icon: 'fas fa-map-marked-alt fa-lg:1em',
-        command: () => {
-          this.visibleSidebar = false;
-          this.route.navigate(['/ciclo']);
-        },
-      },
-      {
-        label: 'Teste',
-        icon: 'fas fa-map-marked-alt fa-lg:1em',
-        command: () => {
-          this.visibleSidebar = false;
-          this.route.navigate(['/teste']);
-        },
-      },
-      {
-        label: 'Main Page',
-        icon: 'fas fa-cogs fa-lg:1em',
-        disabled: false,
-        items: [
-          {
-            style: { 'margin-left': '0px' },
-            label: 'Chamar Main Page',
-            icon: 'fas fa-file-invoice fa-lg:1em',
-            command: () => {
-              this.visibleSidebar = false;
-              this.route.navigate(['/main-page']);
-            },
-          },
-          {
-            style: { 'margin-left': '0px' },
-            label: 'Sem Rota',
-            icon: 'fas fa-calendar-minus fa-lg:1em',
-            command: () => {
-              this.visibleSidebar = false;
-              this.route.navigate(['']);
-            },
-          },
-          {
-            style: { 'margin-left': '0px' },
-            label: 'Input Property',
-            icon: 'fas fa-file-export fa-lg:1em',
-            command: () => {
-              this.visibleSidebar = false;
-              this.route.navigate(['input-property']);
-            },
-          },
-          {
-            style: { 'margin-left': '0px' },
-            label: `Output Property`,
-            icon: 'fas fa-clipboard-list fa-lg:1em',
-            command: () => {
-              this.visibleSidebar = false;
-              this.route.navigate(['output-property']);
-            },
-          },
-          { separator: true },
-        ],
-      },
-
-      {
-        label: 'Cadastro de Evento',
-        icon: 'fas fa-cogs fa-lg:1em',
-        disabled: false,
-        items: [
-          {
-            style: { 'margin-left': '0px' },
-            label: 'Cadastrar Eventos',
-            icon: 'fas fa-list-ul fa-lg:1em',
-            command: () => {
-              this.visibleSidebar = false;
-              this.route.navigate(['/cadastro-evento']);
-            },
-          },
-          { separator: true },
-        ],
       },
 
     ]);
