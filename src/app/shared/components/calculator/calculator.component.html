@@ -13,34 +13,34 @@
           <table>
             <tr>
               <td><button class="btn btn-oparator btnClear" (click)="clearDisplay()">C</button></td>
-              <td><button class="btn btn-oparator">/</button></td>
-              <td><button class="btn btn-oparator">*</button></td>
+              <td><button class="btn btn-oparator"(click)="addOperator('/')">/</button></td>
+              <td><button class="btn btn-oparator"(click)="addOperator('*')">*</button></td>
               <td>
-                <button class="btn btn-oparator backspace">&laquo;</button>
+                <button class="btn btn-oparator backspace"(click)="deleteLast()">&laquo;</button>
               </td>
             </tr>
             <tr>
               <td><button class="btn btn-number" (click)="sendValue('7')">7</button></td>
               <td><button class="btn btn-number" (click)="sendValue('8')">8</button></td>
               <td><button class="btn btn-number" (click)="sendValue('9')">9</button></td>
-              <td><button class="btn btn-oparator">-</button></td>
+              <td><button class="btn btn-oparator"(click)="addOperator('-')">-</button></td>
             </tr>
             <tr>
-              <td><button class="btn btn-number">4</button></td>
-              <td><button class="btn btn-number">5</button></td>
-              <td><button class="btn btn-number">6</button></td>
+              <td><button class="btn btn-number"(click)="sendValue('4')">4</button></td>
+              <td><button class="btn btn-number"(click)="sendValue('5')">5</button></td>
+              <td><button class="btn btn-number"(click)="sendValue('6')">6</button></td>
               <td><button class="btn btn-oparator"(click)="addOperator('+')">+</button></td>
             </tr>
             <tr>
-              <td><button class="btn btn-number">1</button></td>
-              <td><button class="btn btn-number">2</button></td>
-              <td><button class="btn btn-number">3</button></td>
-              <td><button class="btn btn-oparator">.</button></td>
+              <td><button class="btn btn-number"(click)="sendValue('1')">1</button></td>
+              <td><button class="btn btn-number"(click)="sendValue('2')">2</button></td>
+              <td><button class="btn btn-number"(click)="sendValue('3')">3</button></td>
+              <td><button class="btn btn-oparator"(click)="sendValue('.')">.</button></td>
             </tr>
             <tr>
-              <td><button class="btn btn-oparator">(</button></td>
-              <td><button class="btn btn-number">0</button></td>
-              <td><button class="btn btn-oparator">)</button></td>
+              <td><button class="btn btn-oparator"(click)="sendValue('(')">(</button></td>
+              <td><button class="btn btn-number"(click)="sendValue('0')">0</button></td>
+              <td><button class="btn btn-oparator"(click)="sendValue(')')">)</button></td>
               <td><button class="btn btn-equal" (click)="calculate()">=</button></td>
             </tr>
           </table>

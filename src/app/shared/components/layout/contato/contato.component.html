@@ -29,10 +29,11 @@
 
         <div class="field col-3 form-applications">
           <input-text label="CPF" [control]="contactsForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
-            id="cpf" [type]="'text'" pTooltip="Digite o CPF do contato">
+            id="cpf" [type]="'number'" [minlength]="11" [maxlength]="11" pTooltip="Digite o CPF do contato"(keyup)="VerifyCpfLength()">
           </input-text>
+          <small></small>
         </div>
-
+        <label id="cpf">{{labelError}}</label>
         <!-- cada div recebe uma tag class, e dentro dessa tag, pode ser chamado várias classes, por ex. uma class é essa form-applications
         e no arquivo .scss tá sendo passado um estilo pra ela-->
         <div class="field col-3 form-applications">
@@ -49,11 +50,11 @@
 
         <!-- aqui são os dois botões no rodapé do dialog, o de SALVA e CANCELAR -->
         <div class="buttons-actions">
-          <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid" class="standard tableButton-def"
+          <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid || enablebtnsave == true" class="standard tableButton-def"
             label="Salvar">
           </p-button>
-          <p-button type="button" icon="fa fa-times" (onClick)="showCorfirmDialog = true" class="dismiss tableButton"
-            label="Cancelar">
+          <p-button type="button" icon="fa fa-times" (onClick)="openConfirmCancel()" class="dismiss tableButton"
+            label="Cancelar" >
           </p-button>
         </div>
       </div>
@@ -71,7 +72,7 @@
       <!-- essa tag abaixo apenas coloca um ícone dentro do input, o ícone da lupa -->
       <i class="pi pi-search"></i>
         <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-          placeholder="Digite o nome ou a idade do contato" />
+          placeholder="Digite o nome, idade ou cpf do contato" />
         </span>
       </div>
       <!-- aqui é o botão de criar contato -->
@@ -83,7 +84,7 @@
   <!-- aqui começa a tabela, tudo que é exibido dentro dela estão dentro das tag <table></table> -->
   <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
-     [globalFilterFields]="['name','idade','cpf','email']"
+     [globalFilterFields]="['name','age','cpf']"
     [reorderableColumns]="true"  responsiveLayout="scroll" [loading]="loading" [scrollable]="true"
     scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
 

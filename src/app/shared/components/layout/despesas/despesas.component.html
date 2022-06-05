@@ -58,7 +58,7 @@
           <p-button type="submit" icon="fa fa-check" [disabled]="this.despesasForm.invalid" class="standard tableButton-def"
             label="Salvar">
           </p-button>
-          <p-button type="button" icon="fa fa-times" (onClick)="showCorfirmDialog = true" class="dismiss tableButton"
+          <p-button type="button" icon="fa fa-times" (onClick)="openConfirmCancel()" class="dismiss tableButton"
             label="Cancelar">
           </p-button>
         </div>
@@ -118,9 +118,9 @@
 
           <div *ngIf="col.field=='operation'" class="justify-content-center" style="font-size: 16px">
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
-                (click)="editDespesa(rowData)"></p-button>
+                (click)="editDespesa(rowData)" pTooltip="Editar despesa"></p-button>
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-trash"
-                (click)="openConfirmDelete(rowData.code)"></p-button>
+                (click)="openConfirmDelete(rowData.code)" pTooltip="Deleter despesa"></p-button>
         </div>
         </td>
       </tr>
