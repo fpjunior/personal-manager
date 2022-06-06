@@ -15,7 +15,7 @@ export class DespesaService extends RepositoryService<DespesasModel> {
     super(http, URL_DESPESAS);
   }
 
-  getAllDespesas(): Observable<any> {
+   getAllDespesas(): Observable<any> {
     return this.http.get(`${URL_DESPESAS}.json`);
   }
 

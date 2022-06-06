@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContatoComponent } from './contato.component';
+import ContatoComponent from './contato.component';
 
 describe('ContatoComponent', () => {
   let component: ContatoComponent;

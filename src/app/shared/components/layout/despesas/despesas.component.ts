@@ -2,23 +2,19 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/fo
 import {
   Component,
   OnInit,
-  Input,
   Output,
   EventEmitter,
   ViewChild,
   ElementRef,
 } from "@angular/core";
-import { Router } from "@angular/router";
 import { MenuItem } from "primeng/api";
 import { BreadcrumbService } from "../../breadcrumbs/breadcrumbs.service";
-import { DespesasModel } from "./model/despesas.model";
 import { ProgressBarService } from "../../progress-bar/progress-bar.service";
 import { TableStandard } from "src/app/shared/models/table.model"
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 import { tableArr } from "./model/tabela.model";
 import { DespesaService } from "./service/despesas.service";
 import { TiposDespesasService } from "../tiposdespesas/service/tiposdespesas.service";
-import { timingSafeEqual } from "crypto";
 
 @Component({
   selector: "app-despesas",
@@ -26,7 +22,6 @@ import { timingSafeEqual } from "crypto";
   styleUrls: ["./despesas.component.scss"],
 })
 export class DespesasComponent implements OnInit {
-
   // config Table
   @Output() mudouValor = new EventEmitter();
   @ViewChild("campoInput") campoValorInput: ElementRef;
@@ -58,27 +53,36 @@ export class DespesasComponent implements OnInit {
   rowData;
 
   constructor(
-    private breadcrumbService: BreadcrumbService,
-    private despesaService: DespesaService,
-    private progressBarService: ProgressBarService,
-    private formBuilder: FormBuilder,
-    private tiposDespesasService: TiposDespesasService,
+    private _breadcrumbService: BreadcrumbService,
+    private _despesaService: DespesaService,
+    private _progressBarService: ProgressBarService,
+    private _formBuilder: FormBuilder,
+    private _tiposDespesasService: TiposDespesasService,
   ) { }
 
   ngOnInit() {
-    this.initForm();
+    this._initForm();
     this.despesa = {};
-    this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
-    this.getAllDespesas();
-    this.getAllTiposDespesas()
+    this._breadcrumbService.setBreadcrumb(this.breadcrumbItems);
+    this._getAllDespesas();
+    this._getAllTiposDespesas()
   }
 
-  // essa funçao do tipo get faz com que a gente permita usar this.f['nomeDoCampo'].value ao invés de usar this.despesasForm.controls['nomeDoCampo'].value
-  get f(): { [key: string]: AbstractControl; } { return this.despesasForm.controls; }
-
-  getAllTiposDespesas() {
+// a organização do código é importante para que o código seja mais fácil de manter
+// por padrão os métodos privados vêm antes dos métodos públicos por ordem alfabética
+// a escrita do método privado deve iniciar com _
+  private _handleError(err: any): void {
+    this.isErrorResponse = true;
+    this.showModalResponse = true;
+    this.contentResponse = tryCatchErrorFunc(err);
+    this._progressBarService.changeProgressBar(false);
+    setTimeout(() => {
+      this.showModalResponse = false;
+    }, 2000);
+  }
+  private _getAllTiposDespesas() {
     this.isLoading = true;
-    this.tiposDespesasService.getAllTiposDespesas().subscribe(
+    this._tiposDespesasService.getAllTiposDespesas().subscribe(
       (tiposdespesas: any) => {
         this.typeOptions = Object.entries(tiposdespesas).map((e: any) => {
           e[1].id = e[0];
@@ -86,11 +90,38 @@ export class DespesasComponent implements OnInit {
         });
       },
       (error) => {
-        this.handleError(error);
-        this.progressBarService.changeProgressBar(false);
+        this._handleError(error);
+        this._progressBarService.changeProgressBar(false);
       }
     );
   }
+
+  private _initForm(): void {
+    this.despesasForm = this._formBuilder.group({
+      code: [""],
+      type: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
+      description: ["", [Validators.required, Validators.maxLength(100)]],
+      value: ["", [Validators.required, Validators.min(0), Validators.max(999999)]],
+      typePayment: ["", [Validators.required, Validators.min(1), Validators.max(60)]],
+      localEstablishment: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
+      expenseDate: ["", [Validators.required, Validators.maxLength(10), Validators.minLength(10),]],
+    });
+  }
+
+  private _sucessResponse(
+    msgResponse: string
+  ): void {
+    this.isErrorResponse = false;
+    this.showModalResponse = true;
+    this.contentResponse = msgResponse;
+    this._progressBarService.changeProgressBar(false);
+    setTimeout(() => {
+      this.showModalResponse = false;
+    }, 2000);
+  }
+
+  // essa funçao do tipo get faz com que a gente permita usar this.f['nomeDoCampo'].value ao invés de usar this.despesasForm.controls['nomeDoCampo'].value
+  get f(): { [key: string]: AbstractControl; } { return this.despesasForm.controls; }
 
   closeConfirmDialog() {
     this.showCorfirmDialog = false;
@@ -112,39 +143,7 @@ export class DespesasComponent implements OnInit {
 
   onShow = () => this.showModalResponse = true;
 
-  private sucessResponse(
-    msgResponse: string
-  ): void {
-    this.isErrorResponse = false;
-    this.showModalResponse = true;
-    this.contentResponse = msgResponse;
-    this.progressBarService.changeProgressBar(false);
-    setTimeout(() => {
-      this.showModalResponse = false;
-    }, 2000);
-  }
 
-  private handleError(err: any): void {
-    this.isErrorResponse = true;
-    this.showModalResponse = true;
-    this.contentResponse = tryCatchErrorFunc(err);
-    this.progressBarService.changeProgressBar(false);
-    setTimeout(() => {
-      this.showModalResponse = false;
-    }, 2000);
-  }
-
-  private initForm(): void {
-    this.despesasForm = this.formBuilder.group({
-      code: [""],
-      type: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
-      description: ["", [Validators.required, Validators.maxLength(100)]],
-      value: ["", [Validators.required, Validators.min(0), Validators.max(999999)]],
-      typePayment: ["", [Validators.required, Validators.min(1), Validators.max(60)]],
-      localEstablishment: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
-      expenseDate: ["", [Validators.required, Validators.maxLength(10), Validators.minLength(10),]],
-    });
-  }
 
   onHideDialog() { }
 
@@ -177,16 +176,16 @@ export class DespesasComponent implements OnInit {
   }
 
   deleteDespesa() {
-    this.progressBarService.changeProgressBar(true);
-    this.despesaService.deleteDespesa(this.codeDespesa).subscribe(
+    this._progressBarService.changeProgressBar(true);
+    this._despesaService.deleteDespesa(this.codeDespesa).subscribe(
       (response) => {
-        this.sucessResponse("Despesa deletado com sucesso");
+        this._sucessResponse("Despesa deletado com sucesso");
         setTimeout(() => {
-          this.getAllDespesas();
+          this._getAllDespesas();
         }, 2500);
       },
       (error) => {
-        this.handleError(error);
+        this._handleError(error);
       }
     );
   }
@@ -194,17 +193,17 @@ export class DespesasComponent implements OnInit {
   saveDespesa(despesasForm: any): void {
     despesasForm = this.despesasForm.getRawValue();
     despesasForm.type = despesasForm.type.name
-    this.despesaService.saveOrUpdateDespesa(despesasForm).subscribe(
+    this._despesaService.saveOrUpdateDespesa(despesasForm).subscribe(
       (response) => {
         this.despesasForm.reset();
         this.showDialogDespesa = false;
-        this.sucessResponse("Despesa salva com sucesso");
+        this._sucessResponse("Despesa salva com sucesso");
         setTimeout(() => {
-          this.getAllDespesas();
+          this._getAllDespesas();
         }, 2000);
       },
       (error) => {
-        this.handleError(error);
+        this._handleError(error);
       }
     );
   }
@@ -219,10 +218,10 @@ export class DespesasComponent implements OnInit {
 
   // goToTheContactForm = () => this.router.navigate(["/contato-form"]);
 
-  getAllDespesas() {
-    this.progressBarService.changeProgressBar(true);
+  private _getAllDespesas() {
+    this._progressBarService.changeProgressBar(true);
     this.isLoading = true;
-    this.despesaService.getAllDespesas().subscribe(
+    this._despesaService.getAllDespesas().subscribe(
       (despesa: any) => {
         // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
         this.dataToFillTable = Object.entries(despesa).map((e: any) => {
@@ -230,13 +229,13 @@ export class DespesasComponent implements OnInit {
           return e[1];
         });
         this.isLoading = false;
-        this.progressBarService.changeProgressBar(false);
+        this._progressBarService.changeProgressBar(false);
       },
       (error) => {
-        this.handleError(error);
+        this._handleError(error);
         this.isLoading = false;
-        this.handleError(error);
-        this.progressBarService.changeProgressBar(false);
+        this._handleError(error);
+        this._progressBarService.changeProgressBar(false);
       }
     );
   }
