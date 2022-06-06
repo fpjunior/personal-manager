@@ -40,10 +40,26 @@ export class TiposdespesasComponent implements OnInit {
   fullCols = tableTipoDespesaModel;
   cor
   iconsOptions: any[] = [
-    {codeIcon: 'fas fa-bars', name: 'Barras'},
-    {codeIcon: 'pi pi-search', name: 'Lupa'},
-    {codeIcon: 'fa fa-circle', name: 'Circulos'},
+    { codeIcon: 'fas fa-home'},
+    { codeIcon: 'fas fa-car'},
+    { codeIcon: 'fas fa-circle'},
+    { codeIcon: 'fas fa-phone'},
+    { codeIcon: 'fas fa-shopping-cart'},
+    { codeIcon: 'fas fa-briefcase'},
+    { codeIcon: 'fas fa-money-bill'},
+    { codeIcon: 'fas fa-bus'},
+    { codeIcon: 'fas fa-book'},
+    { codeIcon: 'fas fa-cart-arrow-down'},
+    { codeIcon: 'fas fa-coffee'},
+    { codeIcon: 'fas fa-film'},
+    { codeIcon: 'fas fa-graduation-cap'},
+    { codeIcon: 'fa fa-shopping-bag'},
+    { codeIcon: 'fas fa-taxi'},
+    { codeIcon: 'fas fa-medkit'},
+    { codeIcon: 'fas fa-grip-vertical'},
   ]
+
+  selectedCountry: string;
 
   selectedCountries1: Country[];
 
@@ -56,7 +72,7 @@ export class TiposdespesasComponent implements OnInit {
     private tiposDespesasService: TiposDespesasService,
   ) {
 
-   }
+  }
 
   ngOnInit() {
     this.initForm();
@@ -72,15 +88,15 @@ export class TiposdespesasComponent implements OnInit {
       code: [""],
       icon: ["", [Validators.required]],
       name: ["", [Validators.required]],
-      cor: ["",  [Validators.required]],
+      cor: ["", [Validators.required]],
     });
   }
 
-  teste(event){
+  teste(event) {
     console.log(event)
   }
 
-  onHideDialog() {}
+  onHideDialog() { }
 
   openDialogAddContact() {
     this.tiposdespesasForm.reset();
@@ -89,123 +105,124 @@ export class TiposdespesasComponent implements OnInit {
 
   showModalSelectColumns() {
     this.showModalColumn = true;
-}
-
-onHide = () => {
-  this.showModalResponse = false;
-};
-
-onShow(): boolean {
-  return (this.showModalResponse = true);
-}
-
-onHideDialogTable = (): void => {
-  this.showModalColumn = false;
-};
-
-editColumns(cols: TableStandard[]) {
-  this.cols = cols;
-}
-
-confirmAction(){
-  if(this.isEdit){
-    this.showDialogtiposdespesas = false;
-    this.showCorfirmDialog = false;
-  } else {
-    this.deleteTiposDespesas();
-    this.showCorfirmDialog = false;
   }
-}
-deleteTiposDespesas() {
-  this.progressBarService.changeProgressBar(true);
-  this.tiposdespesasService.deleteTiposDespesas(this.idContact).subscribe(
-    (response) => {
-      this.sucessResponse("Contato deletado com sucesso");
-      setTimeout(() => {
-        this.getAllTiposDespesas();
-      }, 2500);
-    },
-    (error) => {
-      this.handleError(error);
-    }
-  );
-}
 
-getAllTiposDespesas() {
-  // this.progressBarService.changeProgressBar(true);
-  this.loading = true;
-  this.tiposDespesasService.getAllTiposDespesas().subscribe(
-    (tiposdespesas: any) => {
-      // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
-      this.dataToFillTable = Object.entries(tiposdespesas).map((e: any) => {
-        e[1].id = e[0];
-        return e[1];
-      });
-      this.loading = false;
-      this.progressBarService.changeProgressBar(false);
-    },
-    (error) => {
-      this.handleError(error);
-      this.loading = false;
-      this.progressBarService.changeProgressBar(false);
-    }
-  );
-}
-
-private sucessResponse(
-  msgResponse: string
-): void {
-  this.isErrorResponse = false;
-  this.showModalResponse = true;
-  this.contentResponse = msgResponse;
-  this.progressBarService.changeProgressBar(false);
-  setTimeout(() => {
+  onHide = () => {
     this.showModalResponse = false;
-  }, 2000);
-}
+  };
 
-private handleError(err: any): void {
-  this.isErrorResponse = true;
-  this.showModalResponse = true;
-  this.contentResponse = tryCatchErrorFunc(err);
-  this.progressBarService.changeProgressBar(false);
-  setTimeout(() => {
-    this.showModalResponse = false;
-  }, 2000);
-}
+  onShow(): boolean {
+    return (this.showModalResponse = true);
+  }
 
-closeConfirmDialog() {
-  this.showCorfirmDialog = false;
+  onHideDialogTable = (): void => {
+    this.showModalColumn = false;
+  };
 
-}
-editContact(event) {
-  this.isEdit = true;
-  this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
-  this.rowData = event;
-  this.showDialogtiposdespesas = true;
-  this.tiposdespesasForm.setValue(event);
+  editColumns(cols: TableStandard[]) {
+    this.cols = cols;
+  }
 
-}
-openConfirmDelete(idToDelete: string) {
-  this.msgModalConfirm = "Tem certeza que deseja excluir este registro?";
-  this.idContact = idToDelete;
-  this.showCorfirmDialog = true;
-}
-
-saveContact(tiposdespesasForm: any): void {
-  tiposdespesasForm = this.tiposdespesasForm.getRawValue();
-  this.tiposdespesasService.saveOrUpdateTiposDespesas(tiposdespesasForm).subscribe(
-    (response) => {
-      this.tiposdespesasForm.reset();
+  confirmAction() {
+    if (this.isEdit) {
       this.showDialogtiposdespesas = false;
-      this.sucessResponse("Contato salvo com sucesso");
-      setTimeout(() => {
-        this.getAllTiposDespesas();
-      }, 2000);
-    },
-    (error) => {
-      this.handleError(error);
+      this.showCorfirmDialog = false;
+    } else {
+      this.deleteTiposDespesas();
+      this.showCorfirmDialog = false;
     }
-  );
-}
+  }
+  deleteTiposDespesas() {
+    this.progressBarService.changeProgressBar(true);
+    this.tiposdespesasService.deleteTiposDespesas(this.idContact).subscribe(
+      (response) => {
+        this.sucessResponse("Contato deletado com sucesso");
+        setTimeout(() => {
+          this.getAllTiposDespesas();
+        }, 2500);
+      },
+      (error) => {
+        this.handleError(error);
+      }
+    );
+  }
+
+  getAllTiposDespesas() {
+    // this.progressBarService.changeProgressBar(true);
+    this.loading = true;
+    this.tiposDespesasService.getAllTiposDespesas().subscribe(
+      (tiposdespesas: any) => {
+        // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
+        this.dataToFillTable = Object.entries(tiposdespesas).map((e: any) => {
+          e[1].id = e[0];
+          return e[1];
+        });
+        this.loading = false;
+        this.progressBarService.changeProgressBar(false);
+      },
+      (error) => {
+        this.handleError(error);
+        this.loading = false;
+        this.progressBarService.changeProgressBar(false);
+      }
+    );
+  }
+
+  private sucessResponse(
+    msgResponse: string
+  ): void {
+    this.isErrorResponse = false;
+    this.showModalResponse = true;
+    this.contentResponse = msgResponse;
+    this.progressBarService.changeProgressBar(false);
+    setTimeout(() => {
+      this.showModalResponse = false;
+    }, 2000);
+  }
+
+  private handleError(err: any): void {
+    this.isErrorResponse = true;
+    this.showModalResponse = true;
+    this.contentResponse = tryCatchErrorFunc(err);
+    this.progressBarService.changeProgressBar(false);
+    setTimeout(() => {
+      this.showModalResponse = false;
+    }, 2000);
+  }
+
+  closeConfirmDialog() {
+    this.showCorfirmDialog = false;
+
+  }
+  editContact(event) {
+    this.isEdit = true;
+    this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
+    this.rowData = event;
+    this.showDialogtiposdespesas = true;
+    this.tiposdespesasForm.setValue(event);
+
+  }
+  openConfirmDelete(idToDelete: string) {
+    this.msgModalConfirm = "Tem certeza que deseja excluir este registro?";
+    this.idContact = idToDelete;
+    this.showCorfirmDialog = true;
+  }
+
+  saveContact(tiposdespesasForm: any): void {
+    tiposdespesasForm = this.tiposdespesasForm.getRawValue();
+    tiposdespesasForm.icon = tiposdespesasForm.icon.codeIcon
+    this.tiposdespesasService.saveOrUpdateTiposDespesas(tiposdespesasForm).subscribe(
+      (response) => {
+        this.tiposdespesasForm.reset();
+        this.showDialogtiposdespesas = false;
+        this.sucessResponse("Contato salvo com sucesso");
+        setTimeout(() => {
+          this.getAllTiposDespesas();
+        }, 2000);
+      },
+      (error) => {
+        this.handleError(error);
+      }
+    );
+  }
 }
