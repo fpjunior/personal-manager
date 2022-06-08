@@ -8,11 +8,8 @@ import {
   ViewChild,
   ElementRef,
 } from "@angular/core";
-import { Router } from "@angular/router";
 import { MenuItem } from "primeng/api";
 import { BreadcrumbService } from "../../breadcrumbs/breadcrumbs.service";
-import { contactsMock } from "./mock/contato.mock";
-import { ContactsModel } from "./model/contact.model";
 import { ContactService } from "./service/contact.service";
 import { ProgressBarService } from "../../progress-bar/progress-bar.service";
 import { TableStandard } from "src/app/shared/models/table.model";
@@ -54,7 +51,7 @@ export class ContatoComponent implements OnInit {
   rowData;
   idContact;
   enablebtnsave: boolean;
-
+  labelError: string;
   showCorfirmDialog: boolean = false;
   msgModalConfirm: string = "";
   isEdit: boolean;
@@ -67,9 +64,25 @@ export class ContatoComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  labelError: string;
+  ngOnInit() {
+    this.initForm();
+    this.contact = {};
+    this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
+    this.getAllContacts();
+  }
 
-  VerifyCpfLength(){
+  initForm(): void {
+    this.contactsForm = this.formBuilder.group({
+      id: [""],
+      name: ["", [Validators.required]],
+      age: ["", [Validators.required]],
+      cpf: ["", [Validators.required]],
+      phone: ["", [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
+    });
+  }
+
+  verifyCpfLength(){
     if(this.contactsForm.controls['cpf'].value.length === 11){
       this.cpfValidator();
     }else{
@@ -78,11 +91,9 @@ export class ContatoComponent implements OnInit {
     }
   }
 
-
-  //  LoseFocus(){
-  //    this.labelError="";
-  // }
-
+  loseFocus(){
+      this.contactsForm.controls['cpf'].setValidators([ Validators.minLength(11)]);
+  }
 
   cpfValidator(): boolean {
 
@@ -142,31 +153,21 @@ export class ContatoComponent implements OnInit {
         this.enablebtnsave= false;
           return true;
       }
-}
-
-
-  ngOnInit() {
-    this.initForm();
-    this.contact = {};
-    this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
-    this.getAllContacts();
   }
+
 
   closeConfirmDialog() {
     this.showCorfirmDialog = false;
   }
 
-  // confirmExit() {
-  //   this.showCorfirmDialog = false;
-  //   this.showDialogContact = false;
-  // }
-
   showModalSelectColumns() {
     this.showModalColumn = true;
   }
+
   onHideDialogTable = (): void => {
     this.showModalColumn = false;
   };
+
   editColumns(cols: TableStandard[]) {
     this.cols = cols;
   }
@@ -199,17 +200,6 @@ export class ContatoComponent implements OnInit {
     setTimeout(() => {
       this.showModalResponse = false;
     }, 2000);
-  }
-
-  initForm(): void {
-    this.contactsForm = this.formBuilder.group({
-      id: [""],
-      name: ["", [Validators.required]],
-      age: ["", [Validators.required]],
-      cpf: ["", [Validators.required]],
-      phone: ["", [Validators.required]],
-      email: ["", [Validators.required, Validators.email]],
-    });
   }
 
   onHideDialog() {}
@@ -282,8 +272,6 @@ export class ContatoComponent implements OnInit {
     this.contactsForm.setValue(event);
   }
 
-  // goToTheContactForm = () => this.router.navigate(["/contato-form"]);
-
   getAllContacts() {
     this.progressBarService.changeProgressBar(true);
     this.loading = true;
@@ -305,13 +293,4 @@ export class ContatoComponent implements OnInit {
       }
     );
   }
-
-  // dialog(display) {
-  //   if (display === false) {
-  //     this.display = true;
-  //   }
-  //   if (display === true) {
-  //     this.display = false;
-  //   }
-  // }
 }

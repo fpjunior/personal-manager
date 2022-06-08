@@ -59,6 +59,7 @@ export class DespesasComponent implements OnInit {
   showCorfirmDialog: boolean = false;
   msgModalConfirm: string = "";
   isEdit: boolean;
+  dataAtual: string = "";
 
   constructor(
     private breadcrumbService: BreadcrumbService,
@@ -73,7 +74,7 @@ export class DespesasComponent implements OnInit {
     this.despesa = {};
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
     this.getAllDespesas();
-this.getAllTiposDespesas()
+    this.getAllTiposDespesas()
 
   }
 
@@ -163,9 +164,16 @@ this.getAllTiposDespesas()
     this.msgModalConfirm = "Tem certeza que deseja cancelar? Alterações serão descartadas";
   }
 
+
+  obterDataAtual() {
+    const date = new Date();
+    this.dataAtual= date.toLocaleDateString("pt-BR");
+}
+
   openDialogAddDespesa() {
     this.despesasForm.reset();
     this.showDialogDespesa = true;
+    this.dataAtual = "";
   }
 
   openConfirmDelete(codeToDelete: string) {
