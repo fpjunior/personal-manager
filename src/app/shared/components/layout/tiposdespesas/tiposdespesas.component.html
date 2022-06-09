@@ -22,7 +22,7 @@
     </p-dropdown>
 
       <div class="field col-3 form-applications">
-        <input-text label="name" [control]="tiposdespesasForm.get('name')" [requiredLabel]="true" formControlName="name"
+        <input-text label="name" maxlength="30" [control]="tiposdespesasForm.get('name')" [requiredLabel]="true" formControlName="name"
           id="name" [type]="'text'">
         </input-text>
       </div>
