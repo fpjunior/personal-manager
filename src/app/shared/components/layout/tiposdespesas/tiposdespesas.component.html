@@ -1,7 +1,7 @@
 <p-dialog #dialogDrop  (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
   [baseZIndex]="10000" [(visible)]="showDialogtiposdespesas" header="Cadastrar Novo Tipo de Despesa">
 
-  <form method="post" [formGroup]="tiposdespesasForm" (ngSubmit)="saveContact(tiposdespesasForm)">
+  <form method="post" [formGroup]="tiposdespesasForm" (ngSubmit)="saveTiposDespesas(tiposdespesasForm)">
 
     <div class="p-grid">
       <!-- <div class="field col-3 form-applications">
@@ -58,7 +58,7 @@
     </span>
   </div>
   <p-button pRipple label="Criar Tipo Despesa" class="standard btn-criar-contato" type="button"
-    (click)="openDialogAddContact()">
+    (click)="openDialogAddTiposDespesas()">
   </p-button>
 </div>
 <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
