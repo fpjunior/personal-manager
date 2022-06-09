@@ -188,7 +188,7 @@ export class DespesasComponent implements OnInit {
     this._progressBarService.changeProgressBar(true);
     this._despesaService.deleteDespesa(this.codeDespesa).subscribe(
       (response) => {
-        this._sucessResponse("Despesa deletado com sucesso");
+        this._sucessResponse("Despesa deletada com sucesso");
         setTimeout(() => {
           this._getAllDespesas();
         }, 2500);
