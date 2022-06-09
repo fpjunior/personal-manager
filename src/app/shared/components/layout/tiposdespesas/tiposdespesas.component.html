@@ -1,27 +1,15 @@
 <p-dialog #dialogDrop  (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
   [baseZIndex]="10000" [(visible)]="showDialogtiposdespesas" header="Cadastrar Novo Tipo de Despesa">
 
-  <form method="post" [formGroup]="tiposdespesasForm" (ngSubmit)="saveContact(tiposdespesasForm)">
+  <form method="post" [formGroup]="tiposdespesasForm" (ngSubmit)="saveTiposDespesas(tiposdespesasForm)">
 
     <div class="p-grid">
-      <div class="field col-3 form-applications">
-        <input-text label="code" formControlName="code" [disabled]="true" id="code" [type]="'text'">
+      <!-- <div class="field col-3 form-applications">
+        <input-text label="Código" formControlName="code" [disabled]="true" id="code" [type]="'text'">
         </input-text>
-      </div>
+      </div> -->
 
-      <div class="field col-3 form-applications">
-        <p-dropdown [options]="iconsOptions" formControlName="icon"  placeholder="Selecione um ícone">
-          <ng-template let-icon pTemplate="item">
-            <i [class]="icon.codeIcon"></i>
-           </ng-template>
-
-           <ng-template let-icon pTemplate="selectedItem">
-             <i [class]="icon.codeIcon"></i>
-           </ng-template>
-        </p-dropdown>
-      </div>
-
-      <p-dropdown [options]="iconsOptions" formControlName="icon" optionLabel="icon" [showClear]="true" placeholder="Select a Country">
+      <p-dropdown [options]="iconsOptions" formControlName="icon" optionLabel="codeIcon" [showClear]="true" placeholder="Select a Country">
         <ng-template let-icon pTemplate="item">
             <div class="country-item country-item-value" >
                 <i [class]="icon.codeIcon"></i>
@@ -33,23 +21,14 @@
         </ng-template>
     </p-dropdown>
 
-      <!-- <div class="field col-3 form-applications">
-          <input-text label="icon" formControlName="icon" id="icon" [type]="'text'">
-          </input-text>
-        </div> -->
-
       <div class="field col-3 form-applications">
-        <input-text label="name" [control]="tiposdespesasForm.get('name')" [requiredLabel]="true" formControlName="name"
+        <input-text label="name" maxlength="30" [control]="tiposdespesasForm.get('name')" [requiredLabel]="true" formControlName="name"
           id="name" [type]="'text'">
         </input-text>
       </div>
 
       <div class="field col-3 form-applications">
-        <!-- <input-text label="cor" [control]="tiposdespesasForm.get('cor')" [requiredLabel]="true" formControlName="cor"
-            id="cor" [type]="'text'">
-          </input-text> -->
         <label [ngClass]="{ required: true }">Cor</label>
-
         <div id="cor">
           <p-colorPicker id="cor" label="cor" (onChange)="teste($event.value)" formControlName="cor"></p-colorPicker>
         </div>
@@ -79,7 +58,7 @@
     </span>
   </div>
   <p-button pRipple label="Criar Tipo Despesa" class="standard btn-criar-contato" type="button"
-    (click)="openDialogAddContact()">
+    (click)="openDialogAddTiposDespesas()">
   </p-button>
 </div>
 <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
@@ -118,19 +97,18 @@
         </span>
 
         <span *ngIf="col.field == 'icon'">
-          <i [class]="dataToFillTable.icon" aria-hidden="true" [style]="{color: rowData.cor}">
+          <i [class]="dataToFillTable.icon " aria-hidden="true" >
           </i>
         </span>
 
         <span *ngIf="col.field == 'cor'">
-          <i class="fa fa-circle" [style]="{color: rowData.cor}">
+          <i class="fa fa-circle fa-2x"  [style]="{color: rowData.cor}">
           </i>
         </span>
 
-
         <div *ngIf="col.field=='operation'" class="justify-content-center" style="font-size: 16px">
           <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
-            (click)="editContact(rowData)" pTooltip="Editar tipo de despesa"></p-button>
+            (click)="editCategoria(rowData)" pTooltip="Editar tipo de despesa"></p-button>
           <p-button pRipple type="button" class="tableButton-def" icon="fas fa-trash"
             (click)="openConfirmDelete(rowData.id)" pTooltip="Deletar tipo de despesa"></p-button>
         </div>
