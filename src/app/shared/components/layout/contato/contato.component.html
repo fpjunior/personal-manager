@@ -29,9 +29,8 @@
 
         <div class="field col-3 form-applications">
           <input-text label="CPF" [control]="contactsForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
-            id="cpf" [type]="'number'" [minlength]="11" [maxlength]="11" pTooltip="Digite o CPF do contato"(keyup)="VerifyCpfLength()">
+            id="cpf" [type]="'number'" [maxlength]="11" pTooltip="Digite o CPF do contato"(keyup)="verifyCpfLength()" (change)="loseFocus()">
           </input-text>
-          <small></small>
         </div>
         <label id="cpf">{{labelError}}</label>
         <!-- cada div recebe uma tag class, e dentro dessa tag, pode ser chamado várias classes, por ex. uma class é essa form-applications
