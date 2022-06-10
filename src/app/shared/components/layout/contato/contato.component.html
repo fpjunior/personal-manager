@@ -32,7 +32,7 @@
             id="cpf" [type]="'number'" [maxlength]="11" pTooltip="Digite o CPF do contato"(keyup)="verifyCpfLength()" (change)="loseFocus()">
           </input-text> -->
           <input-mask [requiredLabel]="true" label="CPF" formControlName="cpf" id="cpf" type="'text'" [maxlength]=14 
-          pTooltip="Digite o CPF do contato" (change)="loseFocus()" (keyup)="verifyCpfLength()" [mask]="'999.999.999.99'">
+          pTooltip="Digite o CPF do contato" (change)="loseFocus()" (keyup)="verifyCpfLength()" [mask]="'999.999.999-99'">
           </input-mask>
           <label id="cpf">{{labelError}}</label>
         </div> 
