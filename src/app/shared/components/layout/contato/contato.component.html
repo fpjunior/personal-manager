@@ -27,23 +27,26 @@
           </input-text>
         </div>
 
-        <div class="field col-3 form-applications">
-          <input-text label="CPF" [control]="contactsForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
+         <div class="field col-3 form-applications">
+          <!-- <input-text label="CPF" [control]="contactsForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
             id="cpf" [type]="'number'" [maxlength]="11" pTooltip="Digite o CPF do contato"(keyup)="verifyCpfLength()" (change)="loseFocus()">
-          </input-text>
-        </div>
-        <label id="cpf">{{labelError}}</label>
+          </input-text> -->
+          <input-mask [requiredLabel]="true" label="CPF" formControlName="cpf" id="cpf" type="'text'" [maxlength]=14 
+          pTooltip="Digite o CPF do contato" (change)="loseFocus()" (keyup)="verifyCpfLength()" [mask]="'999.999.999.99'">
+          </input-mask>
+          <label id="cpf">{{labelError}}</label>
+        </div> 
+        
         <!-- cada div recebe uma tag class, e dentro dessa tag, pode ser chamado várias classes, por ex. uma class é essa form-applications
         e no arquivo .scss tá sendo passado um estilo pra ela-->
         <div class="field col-3 form-applications">
           <!-- <input-text label="Telefone" [control]="contactsForm.get('phone')" [requiredLabel]="true" formControlName="phone"
             id="phone" [type]="'text'"  pTooltip="Digite o telefone do contato">
           </input-text> -->
-
           <input-mask [requiredLabel]="true" label="Telefone"formControlName="phone"
           id="clientPhone" [type]="'text'" [mask]="'(99)99999-9999'"
           [control]="contactsForm.get('phone')">
-      </input-mask>
+          </input-mask>
         </div>
 
         <div class="field col-3 form-applications">

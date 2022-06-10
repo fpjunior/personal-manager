@@ -14,13 +14,19 @@
             id="description" [type]="'text'"  [requiredLabel]="true"  pTooltip="Digite a descrição da despesa">
           </input-text>
         </div>
-
+<!--
         <div class="field col-3 form-applications">
           <input-mask [label]="'Valor'" [requiredLabel]="true"
           formControlName="value" id="clientDocument" [type]="'number'"
-          [control]="despesasForm.get('value')" symbol="R$ " id="value">
-      </input-mask>
-      </div>
+          [control]="despesasForm.get('value')" symbol="R$ "   mask="99-9999" id="value">
+          </input-mask>
+      </div> -->
+
+      <div class="field col-12 md:col-3">
+        <label for="currency-us">United States</label>
+        <p-inputNumber formControlName="value" inputId="currency-us" mode="currency" currency="BRL" locale="pt-BR">
+        </p-inputNumber>
+    </div>
 
         <div class="field col-3 form-applications">
           <input-text label="Local do estabelicimento" [control]="despesasForm.get('localEstablishment')" [requiredLabel]="true" formControlName="localEstablishment"
