@@ -53,6 +53,8 @@ td#name {
 th#cor,
 td#cor {
   width: 35%;
+  text-align: center;
+
 }
 
 th#id,
@@ -102,7 +104,7 @@ td#config {
   height: 29px;
 }
 
-.btn-criar-contato {
+.btn-criar-usuario {
   height: 37px !important;
 }
 :host ::ng-deep .p-dropdown {

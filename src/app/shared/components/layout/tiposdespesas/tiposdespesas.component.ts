@@ -98,7 +98,7 @@ export class TiposdespesasComponent implements OnInit {
 
   onHideDialog() { }
 
-  openDialogAddContact() {
+  openDialogAddUser() {
     this.tiposdespesasForm.reset();
     this.showDialogtiposdespesas = true;
   }
@@ -136,7 +136,7 @@ export class TiposdespesasComponent implements OnInit {
     this.progressBarService.changeProgressBar(true);
     this.tiposdespesasService.deleteTiposDespesas(this.idContact).subscribe(
       (response) => {
-        this.sucessResponse("Contato deletado com sucesso");
+        this.sucessResponse("Usuário deletado com sucesso");
         setTimeout(() => {
           this.getAllTiposDespesas();
         }, 2500);
@@ -194,7 +194,7 @@ export class TiposdespesasComponent implements OnInit {
     this.showCorfirmDialog = false;
 
   }
-  editContact(event) {
+  editCategoria(event) {
     this.isEdit = true;
     this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
     this.rowData = event;
@@ -215,7 +215,7 @@ export class TiposdespesasComponent implements OnInit {
       (response) => {
         this.tiposdespesasForm.reset();
         this.showDialogtiposdespesas = false;
-        this.sucessResponse("Contato salvo com sucesso");
+        this.sucessResponse("Usuário salvo com sucesso");
         setTimeout(() => {
           this.getAllTiposDespesas();
         }, 2000);

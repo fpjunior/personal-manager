@@ -1,4 +1,4 @@
-export interface ContactsModel{
+export interface UsersModel{
   id:number;
   name:string;
   age: string;
