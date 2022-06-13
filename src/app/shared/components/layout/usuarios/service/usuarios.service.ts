@@ -1,10 +1,10 @@
 import { RepositoryService } from "src/app/shared/services/repository.service";
+import { UsersModel } from "../model/usuarios.model";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map, take, timeout } from "rxjs/operators";
 import { URL_CONTACTS } from "src/app/shared/constants/url";
-import { UsersModel } from "../model/usuarios.model";
 
 @Injectable({
   providedIn: "root",
@@ -24,13 +24,13 @@ export class UserService extends RepositoryService<UsersModel> {
       .pipe(map((responseApi: any) => responseApi));
   }
 
-  saveOrUpdateUser(userObj: UsersModel): Observable<any> {
-    if (userObj.id) {
+  saveOrUpdateUser(contactObj: UsersModel): Observable<any> {
+    if (contactObj.id) {
       return this.http
-        .put<any>(`${URL_CONTACTS}/${userObj.id}.json`, userObj)
+        .put<any>(`${URL_CONTACTS}/${contactObj.id}.json`, contactObj)
         .pipe(timeout(20000000), take(1));
     } else {
-      return this.http.post(URL_CONTACTS + ".json", userObj).pipe(
+      return this.http.post(URL_CONTACTS + ".json", contactObj).pipe(
         map((responseApi: any) => responseApi),
         take(1)
       );

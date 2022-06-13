@@ -8,6 +8,10 @@ import { CalculadoraComponent } from './shared/components/layout/calculadora/cal
 
 const routes: Routes = [
   {
+    path: 'login',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
     path: 'cadastro-evento',
     loadChildren: () =>
       import('./modules/cadastro-evento/cadastro-evento.module').then(

@@ -49,11 +49,10 @@ export class AuthService {
   /**
    * Encerra a sessão.
    */
-  logout(): void {
+   logout(): void {
+    // this.portalUserSubject$.next(null);
     localStorage.clear();
-    sessionStorage.clear()
-    this.authPortalUser?.next(null);
-    this.logoutUser?.next(null);
+    this.router.navigate(['login']);
   }
 
   /**
