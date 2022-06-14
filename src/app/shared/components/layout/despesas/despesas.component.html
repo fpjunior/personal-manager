@@ -15,11 +15,17 @@
           </input-text>
         </div>
 
-        <div class="field col-3 form-applications">
+        <!-- <div class="field col-3 form-applications">
           <input-mask [label]="'Valor'" [requiredLabel]="true"
           formControlName="value" id="clientDocument" [type]="'number'"
           [control]="despesasForm.get('itvalue')" symbol="R$ " id="value">
       </input-mask>
+      </div> -->
+
+      <div class="valor">
+        <label for="currency-us" id="val1">Valor</label>
+        <p-inputNumber id="val2"formControlName="value" inputId="currency-us" mode="currency" currency="BRL" locale="pt-BR">
+        </p-inputNumber>
       </div>
 
         <div class="field col-3 form-applications">
