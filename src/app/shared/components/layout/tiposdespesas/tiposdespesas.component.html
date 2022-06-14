@@ -1,7 +1,7 @@
 <p-dialog #dialogDrop  (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
   [baseZIndex]="10000" [(visible)]="showDialogtiposdespesas" header="Cadastrar Novo Tipo de Despesa">
 
-  <form method="post" [formGroup]="tiposdespesasForm" (ngSubmit)="saveContact(tiposdespesasForm)">
+  <form method="post" [formGroup]="tiposdespesasForm" (ngSubmit)="saveTiposDespesas(tiposdespesasForm)">
 
     <div class="p-grid">
       <!-- <div class="field col-3 form-applications">
@@ -9,7 +9,7 @@
         </input-text>
       </div> -->
 
-      <p-dropdown [options]="iconsOptions" formControlName="icon" optionLabel="codeIcon" [showClear]="true" placeholder="Select a Country">
+      <p-dropdown [options]="iconsOptions" formControlName="icon" optionLabel="codeIcon" [showClear]="true" placeholder="SELECIONE UMA CATEGORIA">
         <ng-template let-icon pTemplate="item">
             <div class="country-item country-item-value" >
                 <i [class]="icon.codeIcon"></i>
@@ -22,7 +22,7 @@
     </p-dropdown>
 
       <div class="field col-3 form-applications">
-        <input-text label="name" [control]="tiposdespesasForm.get('name')" [requiredLabel]="true" formControlName="name"
+        <input-text label="name" maxlength="30" [control]="tiposdespesasForm.get('name')" [requiredLabel]="true" formControlName="name"
           id="name" [type]="'text'">
         </input-text>
       </div>
@@ -57,8 +57,8 @@
         placeholder="Digite o Tipo da Despesa" />
     </span>
   </div>
-  <p-button pRipple label="Criar Tipo Despesa" class="standard btn-criar-usuario" type="button"
-    (click)="openDialogAddUser()">
+  <p-button pRipple label="Criar Tipo Despesa" class="standard btn-criar-contato" type="button"
+    (click)="openDialogAddTiposDespesas()">
   </p-button>
 </div>
 <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"

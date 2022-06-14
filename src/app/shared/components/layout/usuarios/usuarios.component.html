@@ -27,24 +27,26 @@
           </input-text>
         </div>
 
-        <div class="field col-3 form-applications">
-          <input-text label="CPF" [control]="usersForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
-            id="cpf" [type]="'number'" [minlength]="11" [maxlength]="11" pTooltip="Digite o CPF do usuário"(keyup)="VerifyCpfLength()">
-          </input-text>
-          <small></small>
+         <div class="field col-3 form-applications">
+          <!-- <input-text label="CPF" [control]="usersForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
+            id="cpf" [type]="'number'" [maxlength]="11" pTooltip="Digite o CPF do contato"(keyup)="verifyCpfLength()" (change)="loseFocus()">
+          </input-text> -->
+          <input-mask [requiredLabel]="true" label="CPF" formControlName="cpf" id="cpf" type="'text'" [maxlength]=14
+          pTooltip="Digite o CPF do contato" (change)="loseFocus()" (keyup)="verifyCpfLength()" [mask]="'999.999.999-99'">
+          </input-mask>
+          <label id="cpf">{{labelError}}</label>
         </div>
-        <label id="cpf">{{labelError}}</label>
+
         <!-- cada div recebe uma tag class, e dentro dessa tag, pode ser chamado várias classes, por ex. uma class é essa form-applications
         e no arquivo .scss tá sendo passado um estilo pra ela-->
         <div class="field col-3 form-applications">
           <!-- <input-text label="Telefone" [control]="usersForm.get('phone')" [requiredLabel]="true" formControlName="phone"
             id="phone" [type]="'text'"  pTooltip="Digite o telefone do usuário">
           </input-text> -->
-
           <input-mask [requiredLabel]="true" label="Telefone"formControlName="phone"
           id="clientPhone" [type]="'text'" [mask]="'(99)99999-9999'"
           [control]="usersForm.get('phone')">
-      </input-mask>
+          </input-mask>
         </div>
 
         <div class="field col-3 form-applications">
@@ -53,7 +55,7 @@
           </input-text>
         </div>
 
-        <!-- aqui são os dois botões no rodapé do dialog, o de SALVA e CANCELAR -->
+        <!-- aqui são os dois botões no rodapé do dialog, o de SALVAR e CANCELAR -->
         <div class="buttons-actions">
           <p-button type="submit" icon="fa fa-check" [disabled]="this.usersForm.invalid || enablebtnsave == true" class="standard tableButton-def"
             label="Salvar">

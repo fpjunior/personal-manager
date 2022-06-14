@@ -60,6 +60,117 @@ export default class UsuariosComponent implements OnInit {
     this.getAllUsers();
   }
 
+
+  initForm(): void {
+    this.usersForm = this._formBuilder.group({
+      id: [""],
+      name: ["", [Validators.required]],
+      age: ["", [Validators.required]],
+      cpf: ["", [Validators.required]],
+      phone: ["", [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
+    });
+  }
+
+  verifyCpfLength(){
+    if(this.usersForm.controls['cpf'].value.length === 14 && this.usersForm.controls['cpf'].value.slice(-1) != " "){
+      this.cpfValidator();
+    }else{
+      this.labelError="";
+      this.enablebtnsave= true;
+    }
+  }
+
+  loseFocus(){
+    if(this.usersForm.controls['cpf'].value.length != 14){
+    this.labelError="CPF não possui 11 números";;
+    }
+  }
+
+  cpfValidator(): boolean {
+
+      let cpf= this.usersForm.controls['cpf'].value.replace(/[^0-9]/g,"");
+      if ((cpf == '00000000000') || (cpf == '11111111111') || (cpf == '22222222222') || (cpf == '33333333333') || (cpf == '44444444444') || (cpf == '55555555555') || (cpf == '66666666666') || (cpf == '77777777777') || (cpf == '88888888888') || (cpf == '99999999999')) {
+        this.labelError="CPF não válido";
+        this.enablebtnsave= true;
+          return false;
+      }
+      let numero: number = 0;
+      let caracter: string = '';
+      let numeros: string = '0123456789';
+      let j: number = 10;
+      let somatorio: number = 0;
+      let resto: number = 0;
+      let digito1: number = 0;
+      let digito2: number = 0;
+      let cpfAux: string = '';
+      cpfAux = cpf.substring(0, 9);
+      for (let i: number = 0; i < 9; i++) {
+          caracter = cpfAux.charAt(i);
+          if (numeros.search(caracter) == -1) {
+              return false;
+          }
+          numero = Number(caracter);
+          somatorio = somatorio + (numero * j);
+          j--;
+      }
+      resto = somatorio % 11;
+      digito1 = 11 - resto;
+      if (digito1 > 9) {
+          digito1 = 0;
+      }
+      j = 11;
+      somatorio = 0;
+      cpfAux = cpfAux + digito1;
+      for (let i: number = 0; i < 10; i++) {
+          caracter = cpfAux.charAt(i);
+          numero = Number(caracter);
+          somatorio = somatorio + (numero * j);
+          j--;
+      }
+      resto = somatorio % 11;
+      digito2 = 11 - resto;
+      if (digito2 > 9) {
+          digito2 = 0;
+      }
+      cpfAux = cpfAux + digito2;
+      if (cpf != cpfAux) {
+        this.labelError="CPF não válido";
+        this.enablebtnsave= true;
+          return false;
+      }
+      else {
+        this.labelError="";
+        this.enablebtnsave= false;
+          return true;
+      }
+  }
+
+
+  closeConfirmDialog() {
+    this.showCorfirmDialog = false;
+  }
+
+  showModalSelectColumns() {
+    this.showModalColumn = true;
+  }
+
+  onHideDialogTable = (): void => {
+    this.showModalColumn = false;
+  };
+
+  editColumns(cols: TableStandard[]) {
+    this.cols = cols;
+  }
+
+  onHide = () => {
+    this.showModalResponse = false;
+  };
+
+  onShow(): boolean {
+    return (this.showModalResponse = true);
+  }
+
   private sucessResponse(
     msgResponse: string
   ): void {
@@ -160,18 +271,6 @@ export default class UsuariosComponent implements OnInit {
     }
   }
 
-  closeConfirmDialog = () => this.showCorfirmDialog = false;
-
-  showModalSelectColumns = () => this.showModalColumn = true;
-
-  onHideDialogTable = () => this.showModalColumn = false;
-
-  editColumns = (cols: TableStandard[]) => this.cols = cols;
-
-  onHide = () => this.showModalResponse = false;
-
-  onShow = () => (this.showModalResponse = true);
-
   onHideDialog() { }
 
   openDialogAddUser() {
@@ -263,13 +362,4 @@ export default class UsuariosComponent implements OnInit {
       }
     );
   }
-
-  // dialog(display) {
-  //   if (display === false) {
-  //     this.display = true;
-  //   }
-  //   if (display === true) {
-  //     this.display = false;
-  //   }
-  // }
 }

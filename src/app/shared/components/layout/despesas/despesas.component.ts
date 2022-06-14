@@ -51,6 +51,8 @@ export class DespesasComponent implements OnInit {
   valueexpenseDate;
   codeDespesa;
   rowData;
+  dataAtual: string = "";
+
 
   constructor(
     private _breadcrumbService: BreadcrumbService,
@@ -66,6 +68,7 @@ export class DespesasComponent implements OnInit {
     this._breadcrumbService.setBreadcrumb(this.breadcrumbItems);
     this._getAllDespesas();
     this._getAllTiposDespesas()
+
   }
 
 // a organização do código é importante para que o código seja mais fácil de manter
@@ -152,10 +155,17 @@ export class DespesasComponent implements OnInit {
     this.msgModalConfirm = "Tem certeza que deseja cancelar? Alterações serão descartadas";
   }
 
+
+  obterDataAtual() {
+    const date = new Date();
+    this.dataAtual= date.toLocaleDateString("pt-BR");
+}
+
   openDialogAddDespesa() {
     this.despesasForm.reset();
     this.despesasForm.setErrors({});
     this.showDialogDespesa = true;
+    this.dataAtual = "";
   }
 
   openConfirmDelete(codeToDelete: string) {
@@ -179,7 +189,7 @@ export class DespesasComponent implements OnInit {
     this._progressBarService.changeProgressBar(true);
     this._despesaService.deleteDespesa(this.codeDespesa).subscribe(
       (response) => {
-        this._sucessResponse("Despesa deletado com sucesso");
+        this._sucessResponse("Despesa deletada com sucesso");
         setTimeout(() => {
           this._getAllDespesas();
         }, 2500);

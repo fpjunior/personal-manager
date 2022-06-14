@@ -37,4 +37,3 @@ export class TiposDespesasService extends RepositoryService<TiposdespesasModel> 
     }
   }
 }
-
