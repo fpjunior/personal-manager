@@ -11,6 +11,12 @@
   border-radius: 3px;
 }
 
+.group-date {
+  display: flex;
+  width: 242px;
+  align-items: flex-end;
+}
+
 .input-filterGlobal {
   width: 98%;
   margin-bottom: 10px;
@@ -78,6 +84,31 @@ td#value {
   justify-content: space-between;
   padding-top: 30px;
   width: 230px;
+}
+
+.group-btn-input {
+  display: flex;
+}
+
+p-button.standard.btn-criar-despesa {
+  width: 52%;
+}
+
+.btn-salvar{
+  margin-right: 28px;
+}
+
+
+.btn-data {
+  bottom: 2px;
+  margin-top: 26px;
+  height: 41px px;
+  border-bottom-width: 0px;
+   margin-bottom: 1px;
+}
+
+span.p-input-icon-left.group-filter-global {
+  width: 100%;
 }
 
 .p-button {
