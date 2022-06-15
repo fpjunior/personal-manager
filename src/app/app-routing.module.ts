@@ -4,49 +4,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { DespesasComponent } from './shared/components/layout/despesas/despesas.component';
 import { TiposdespesasComponent } from './shared/components/layout/tiposdespesas/tiposdespesas.component';
 import { CalculadoraComponent } from './shared/components/layout/calculadora/calculadora.component';
-import { AuthGuard } from './core/guards/auth.guard';
-
+// import { AuthGuard } from './core/guards/auth.guard';
+import { SampleGuard } from './auth/auth.module';
+import { AuthGuard } from './auth/auth.guard';
+import UsuariosComponent from './shared/components/layout/usuarios/usuarios.component';
 
 const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    // canActivate: [SampleGuard],
   },
-  {
-    path: 'cadastro-evento',
-    loadChildren: () =>
-      import('./modules/cadastro-evento/cadastro-evento.module').then(
-        (m) => m.CadastroEventoModule
-      ),
-  },
-  {
-    path: 'example',
-    loadChildren: () =>
-      import('./modules/example/example.module').then(
-        (m) => m.ExampleModule
-      ),
-  },
-  {
-    path: 'ciclo',
-    loadChildren: () =>
-      import('./modules/ciclo/ciclo.module').then(
-        (m) => m.CicloModule
-      ),
-  },
-  {
-    path: 'example2',
-    loadChildren: () =>
-      import('./modules/example2/example2.module').then(
-        (m) => m.Example2Module
-      ),
-  },
-  {
-    path: 'output-property',
-    loadChildren: () =>
-      import('./modules/output-property/output-property.module').then(
-        (m) => m.OutputPropertyModule
-      ),
-  },
+
   {
     path: '',
     canActivate: [AuthGuard],
@@ -57,30 +26,26 @@ const routes: Routes = [
   },
 
   {
+    path: "usuarios",
+    canActivate: [AuthGuard],
+    component: UsuariosComponent,
+  },
+
+  {
     path: "despesas",
+    canActivate: [AuthGuard],
     component: DespesasComponent,
   },
   {
     path: "calculadora",
+    canActivate: [AuthGuard],
     component: CalculadoraComponent,
   },
   {
-    path: "teste",
-    component: TesteComponent,
-  },
-
-  {
     path: "tiposdespesas",
+    canActivate: [AuthGuard],
     component: TiposdespesasComponent,
   },
-
-  { path: 'input-property',
-  loadChildren: () =>
-  import('./modules/input-property/input-property.module').then(
-    (m) => m.InputPropertyModule
-  ),
-  }
-
 ];
 
 @NgModule({

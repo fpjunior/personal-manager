@@ -22,7 +22,7 @@ export class LoginService {
  public login(mail: string, password: string) {
   return new Promise((resolve, reject) => {
   this.afAuth.auth.signInWithEmailAndPassword(mail, password).then((user: any) => {
-  localStorage['token'] = user.Yd;
+  localStorage['token'] = user.uid;
                   this.router.navigate(['']);
   })
                   .catch((error) => {

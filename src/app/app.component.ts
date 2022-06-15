@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BreadcrumbService } from './shared/components/breadcrumbs/breadcrumbs.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { UserService } from './core/services/user/user.service';
 import { MenuItem, PrimeNGConfig } from 'primeng/api';
 import { ptbr } from './shared/constants/pt-br';
@@ -26,7 +26,14 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private config: PrimeNGConfig
-  ) {}
+  ) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isLoginRoute = this.router.url === '/login';
+      }
+    }
+    );
+  }
 
   ngOnInit() {
     // this.breadcrumbItems.push({ label: `Gerência` });
@@ -38,5 +45,5 @@ export class AppComponent implements OnInit {
     this.config.ripple = true;
   }
 
-  
+
 }

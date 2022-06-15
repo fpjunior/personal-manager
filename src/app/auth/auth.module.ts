@@ -8,8 +8,18 @@ import { LoginComponent } from './login/login.component';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   declarations: [LoginComponent]
 })
 export class AuthModule { }
+
+import { CanActivate } from '@angular/router';
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class SampleGuard implements CanActivate {
+    canActivate() {
+        return false;
+    }
+}

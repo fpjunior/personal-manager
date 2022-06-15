@@ -1,4 +1,3 @@
-import { CadastroEventoRoutingModule } from "./modules/cadastro-evento/cadastro-evento-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
@@ -14,23 +13,13 @@ import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { ProgressBarService } from "./shared/components/progress-bar/progress-bar.service";
 import { environment } from "src/environments/environment";
-// import { AngularFirestore } from '@angular/fire/firestore';
-// import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
-// import { AngularFireStorageModule } from '@angular/fire/storage';
-// import { AngularFireAuthModule } from '@angular/fire/auth';
-// import {AngularFireDatabaseModule} from '@angular/fire/database'
-
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuth } from "angularfire2/auth";
-import { AuthGuard } from "./core/guards/auth.guard";
-import { AuthModule } from "./auth/auth.module";
+// import { AuthGuard } from "./core/guards/auth.guard";
+import { AuthModule, SampleGuard } from "./auth/auth.module";
 import { LoginService } from "./auth/login/service/login.service";
-
-
-
-
-
-
+import { AuthService } from "./auth/service/auth.service";
+import { AuthGuard } from "./auth/auth.guard";
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -45,27 +34,18 @@ import { LoginService } from "./auth/login/service/login.service";
     CoreModule,
     ConfirmDialogModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    // AngularFirestore,
-    // AngularFireModule.initializeApp(environment.firebaseConfig),
-    // AngularFirestoreModule,
-    // AngularFireAuthModule,
-    // AngularFireDatabaseModule
   ],
   providers: [
     BreadcrumbService,
     authInterceptorProvider,
     ProgressBarService,
-    AuthGuard,
+    // AuthGuard,
     AngularFireModule,
     AngularFireAuth,
     LoginService,
-    // AngularFireModule,
-    // AngularFirestore,
-    // AngularFireDatabase,
-    // AngularFireDatabaseModule,
-    // AngularFireAuthModule,
-    // AngularFirestoreModule,
-
+    SampleGuard,
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent],
 })

@@ -69,13 +69,12 @@ export class HeaderComponent implements OnInit {
         icon: 'fa fa-address-book',
         command: () => {
           this.visibleSidebar = false;
-          this.route.navigate(['example']);
+          this.route.navigate(['usuarios']);
         },
       },
 
       {
         label: 'Despesas',
-
         icon: 'fas fa-messages-dollar fa-lg:1em',
         disabled: false,
         command: () => {
