@@ -10,6 +10,10 @@ import { LoginService } from './service/login.service';
 export class LoginComponent {
 
 
-  constructor(private router: Router, private loginService: LoginService) { }
+  constructor(private loginService: LoginService) { }
+
+  logOn(mail, password) {
+    this.loginService.login(mail, password);
+  }
 
 }
