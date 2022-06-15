@@ -21,6 +21,10 @@
    <p-splitButton label="Fernando" (onClick)="usuario()" icon="fas fa-user fa-lg" class="headSplitButton"
 		[model]="user">
 	</p-splitButton>
+
+  <!-- <p-splitButton [model]="logout" icon="fas fa-user fa-lg" [label]="userService?.email || 'USER_MAIL'"
+  class="headSplitButton">
+</p-splitButton> -->
 </div>
 
 <app-calculator (onClose)=" this.showModalCalc = false;"  [showModalCalc]="showModalCalc"></app-calculator>

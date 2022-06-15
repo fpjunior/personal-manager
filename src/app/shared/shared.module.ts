@@ -30,7 +30,6 @@ import { PicklistComponent } from "./components/fields/picklist/picklist.compone
 import { DialogPicklistComponent } from "./components/dialogs/dialog-picklist/dialog-picklist.component";
 import { CicloFormComponent } from "./components/layout/ciclo/ciclo-form/ciclo-form.component";
 import { GenericButtonsComponent } from "./components/buttons/generic-buttons/generic-buttons.component";
-import ContatoComponent from "./components/layout/contato/contato.component";
 import { InfoFieldErrorMessageComponent } from "./components/fields/info-field-error-message/info-field-error-message.component";
 import { InputTextComponent } from "./components/fields/input-text/input-text.component";
 import { TiposdespesasComponent } from './components/layout/tiposdespesas/tiposdespesas.component';
@@ -40,6 +39,7 @@ import { CalculadoraComponent } from './components/layout/calculadora/calculador
 import { CalculatorComponent } from './components/calculator/calculator.component';
 import { InputDropdownComponent } from './components/fields/input-dropdown/input-dropdown.component';
 import { InputMaskComponent } from './components/fields/input-mask/input-mask.component';
+import UsuariosComponent from './components/layout/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +59,7 @@ import { InputMaskComponent } from './components/fields/input-mask/input-mask.co
     // CORE
     StepsComponent,
 
-    ContatoComponent,
+    UsuariosComponent,
     DespesasComponent,
     CalculadoraComponent,
     EventoDashboardComponent,
@@ -109,7 +109,7 @@ import { InputMaskComponent } from './components/fields/input-mask/input-mask.co
     FormsModule,
     BreadcrumbsComponent,
     ProgressBarComponent,
-    ContatoComponent,
+    UsuariosComponent,
     DespesasComponent,
     InputMaskComponent,
     EventoDashboardComponent,

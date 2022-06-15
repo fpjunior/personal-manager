@@ -1,11 +1,11 @@
 <div>
-  <!-- aqui abaixo inicia o dialog de contato, é nele que foi injetado os campos do formulário, ele é exibido quando a variável showDialogContact recebe
+  <!-- aqui abaixo inicia o dialog de usuário, é nele que foi injetado os campos do formulário, ele é exibido quando a variável showDialogUser recebe
   o valor true -->
   <p-dialog #dialogDrop (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
-     [(visible)]="showDialogContact" header="Cadastrar Novo Contato">
+     [(visible)]="showDialogUser" header="Cadastrar Novo Usuários">
 
     <!-- aqui começa a tag form, dentro dela fica todos os inputs, com isso, é possível pegar o valor de cada campo para salvar, editar ou deletar -->
-    <form method="post" [formGroup]="contactsForm" (ngSubmit)="saveContact(contactsForm)">
+    <form method="post" [formGroup]="usersForm" (ngSubmit)="saveUser(usersForm)">
 
       <!-- essa div envolve todos os campos do form, ela é essencial para ajustar a posição de todos os campos ao mesmo tempo -->
       <div class="p-grid">
@@ -16,48 +16,48 @@
 
         <!-- observar que cada input foi envolvido em uma div pra que possa ser fácil na hora de aplicar estilos -->
         <div class="field col-3 form-applications">
-          <input-text label="Nome" [control]="contactsForm.get('name')" [requiredLabel]="true" formControlName="name"
-            id="name" [type]="'text'" pTooltip="Digite o nome do contato">
+          <input-text label="Nome" [control]="usersForm.get('name')" [requiredLabel]="true" formControlName="name"
+            id="name" [type]="'text'" pTooltip="Digite o nome do usuário">
           </input-text>
         </div>
 
         <div class="field col-3 form-applications">
-          <input-text label="Idade" [control]="contactsForm.get('age')" [requiredLabel]="true" formControlName="age"
-            id="age" [type]="'number'" [maxlength]="3" max="130" pTooltip="Digite a idade do contato">
+          <input-text label="Idade" [control]="usersForm.get('age')" [requiredLabel]="true" formControlName="age"
+            id="age" [type]="'number'" [maxlength]="3" max="130" pTooltip="Digite a idade do usuário">
           </input-text>
         </div>
 
          <div class="field col-3 form-applications">
-          <!-- <input-text label="CPF" [control]="contactsForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
+          <!-- <input-text label="CPF" [control]="usersForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
             id="cpf" [type]="'number'" [maxlength]="11" pTooltip="Digite o CPF do contato"(keyup)="verifyCpfLength()" (change)="loseFocus()">
           </input-text> -->
-          <input-mask [requiredLabel]="true" label="CPF" formControlName="cpf" id="cpf" type="'text'" [maxlength]=14 
+          <input-mask [requiredLabel]="true" label="CPF" formControlName="cpf" id="cpf" type="'text'" [maxlength]=14
           pTooltip="Digite o CPF do contato" (change)="loseFocus()" (keyup)="verifyCpfLength()" [mask]="'999.999.999-99'">
           </input-mask>
           <label id="cpf">{{labelError}}</label>
-        </div> 
-        
+        </div>
+
         <!-- cada div recebe uma tag class, e dentro dessa tag, pode ser chamado várias classes, por ex. uma class é essa form-applications
         e no arquivo .scss tá sendo passado um estilo pra ela-->
         <div class="field col-3 form-applications">
-          <!-- <input-text label="Telefone" [control]="contactsForm.get('phone')" [requiredLabel]="true" formControlName="phone"
-            id="phone" [type]="'text'"  pTooltip="Digite o telefone do contato">
+          <!-- <input-text label="Telefone" [control]="usersForm.get('phone')" [requiredLabel]="true" formControlName="phone"
+            id="phone" [type]="'text'"  pTooltip="Digite o telefone do usuário">
           </input-text> -->
           <input-mask [requiredLabel]="true" label="Telefone"formControlName="phone"
           id="clientPhone" [type]="'text'" [mask]="'(99)99999-9999'"
-          [control]="contactsForm.get('phone')">
+          [control]="usersForm.get('phone')">
           </input-mask>
         </div>
 
         <div class="field col-3 form-applications">
-          <input-text label="Email" [control]="contactsForm.get('email')" [requiredLabel]="true" formControlName="email"
-            id="email" [type]="'text'" pTooltip="Digite o email do contato">
+          <input-text label="Email" [control]="usersForm.get('email')" [requiredLabel]="true" formControlName="email"
+            id="email" [type]="'text'" pTooltip="Digite o email do usuário">
           </input-text>
         </div>
 
-        <!-- aqui são os dois botões no rodapé do dialog, o de SALVA e CANCELAR -->
+        <!-- aqui são os dois botões no rodapé do dialog, o de SALVAR e CANCELAR -->
         <div class="buttons-actions">
-          <p-button type="submit" icon="fa fa-check" [disabled]="this.contactsForm.invalid || enablebtnsave == true" class="standard tableButton-def"
+          <p-button type="submit" icon="fa fa-check" [disabled]="this.usersForm.invalid || enablebtnsave == true" class="standard tableButton-def"
             label="Salvar">
           </p-button>
           <p-button type="button" icon="fa fa-times" (onClick)="openConfirmCancel()" class="dismiss tableButton"
@@ -70,21 +70,21 @@
     </form>
   </p-dialog>
 
-  <!-- Aqui começa a tela de exibição de contatos, onde tem um input de filtro global e o botão de criar contato -->
+  <!-- Aqui começa a tela de exibição de usuários, onde tem um input de filtro global e o botão de criar usuário -->
   <div class="grid group-inputFilter-btnCreate">
 
-    <!-- esse trecho é um grupo, onde fica juntos o botão de criar contato juntamente com o input de filtro global -->
+    <!-- esse trecho é um grupo, onde fica juntos o botão de criar usuário juntamente com o input de filtro global -->
     <div class="col-12 div-group-nputFilter-btnCreate">
     <span class="p-input-icon-left p-ml-auto input-filterGlobal">
       <!-- essa tag abaixo apenas coloca um ícone dentro do input, o ícone da lupa -->
       <i class="pi pi-search"></i>
         <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-          placeholder="Digite o nome, idade ou cpf do contato" />
+          placeholder="Digite o nome, idade ou cpf do usuário" />
         </span>
       </div>
-      <!-- aqui é o botão de criar contato -->
-      <p-button pRipple label="CRIAR CONTATO" class="standard btn-criar-contato" type="button"
-        (click)="openDialogAddContact()">
+      <!-- aqui é o botão de criar usuário -->
+      <p-button pRipple label="CRIAR USUÁRIO" class="standard btn-criar-usuário" type="button"
+        (click)="openDialogAddUser()">
       </p-button>
   </div>
 
@@ -145,7 +145,7 @@
           <!-- aqui é exibido os botões de operações (editar - excluir) ele é exibido na última coluna, cada linha da tabela é exibido esse par de ícones-->
           <div *ngIf="col.field=='operation'" class="justify-content-center" style="font-size: 16px">
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
-                (click)="editContact(rowData)"></p-button>
+                (click)="editUser(rowData)"></p-button>
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-trash"
                 (click)="openConfirmDelete(rowData.id)"></p-button>
         </div>

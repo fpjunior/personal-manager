@@ -1,5 +1,5 @@
 import { RepositoryService } from "src/app/shared/services/repository.service";
-import { ContactsModel } from "./../model/contact.model";
+import { UsersModel } from "../model/usuarios.model";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
@@ -9,22 +9,22 @@ import { URL_CONTACTS } from "src/app/shared/constants/url";
 @Injectable({
   providedIn: "root",
 })
-export class ContactService extends RepositoryService<ContactsModel> {
+export class UserService extends RepositoryService<UsersModel> {
   constructor(public http: HttpClient) {
     super(http, URL_CONTACTS);
   }
 
-  getAllContacts(): Observable<any> {
+  getAllUsers(): Observable<any> {
     return this.http.get(`${URL_CONTACTS}.json`);
   }
 
-  deleteContact(idContact) {
+  deleteUser(idUser) {
     return this.http
-      .delete(`${URL_CONTACTS}/${idContact}.json`)
+      .delete(`${URL_CONTACTS}/${idUser}.json`)
       .pipe(map((responseApi: any) => responseApi));
   }
 
-  saveOrUpdateContact(contactObj: ContactsModel): Observable<any> {
+  saveOrUpdateUser(contactObj: UsersModel): Observable<any> {
     if (contactObj.id) {
       return this.http
         .put<any>(`${URL_CONTACTS}/${contactObj.id}.json`, contactObj)

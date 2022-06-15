@@ -5,8 +5,13 @@
   align-items: flex-end;
 }
 
-.group-btn-actions {
-  display: flex;
+#val1{
+  font-size:0.35cm;
+}
+
+#botaohoje{
+  position: absolute; top: 436px;
+  margin-left: 20px;
 }
 
 .group-filter-global{
@@ -62,6 +67,10 @@ td#value {
 :host ::ng-deep {
 
 
+.btn-criar-usuario {
+  height: 37px !important;
+}
+:host ::ng-deep {
   .size-first-column {
     width: 77px;
   }
@@ -81,4 +90,5 @@ td#value {
     background: transparent;
     border: 1px solid transparent;
   }
+}
 }

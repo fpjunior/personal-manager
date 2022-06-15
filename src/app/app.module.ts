@@ -20,6 +20,15 @@ import { environment } from "src/environments/environment";
 // import { AngularFireAuthModule } from '@angular/fire/auth';
 // import {AngularFireDatabaseModule} from '@angular/fire/database'
 
+import { AngularFireModule } from "angularfire2";
+import { AngularFireAuth } from "angularfire2/auth";
+import { AuthGuard } from "./core/guards/auth.guard";
+import { AuthModule } from "./auth/auth.module";
+import { LoginService } from "./auth/login/service/login.service";
+
+
+
+
 
 
 @NgModule({
@@ -32,8 +41,10 @@ import { environment } from "src/environments/environment";
     FormsModule,
     SharedModule,
     HttpClientModule,
+    AuthModule,
     CoreModule,
     ConfirmDialogModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     // AngularFirestore,
     // AngularFireModule.initializeApp(environment.firebaseConfig),
     // AngularFirestoreModule,
@@ -44,6 +55,10 @@ import { environment } from "src/environments/environment";
     BreadcrumbService,
     authInterceptorProvider,
     ProgressBarService,
+    AuthGuard,
+    AngularFireModule,
+    AngularFireAuth,
+    LoginService,
     // AngularFireModule,
     // AngularFirestore,
     // AngularFireDatabase,
@@ -56,3 +71,6 @@ import { environment } from "src/environments/environment";
 })
 export class AppModule {
 }
+
+
+

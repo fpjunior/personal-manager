@@ -4,9 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { DespesasComponent } from './shared/components/layout/despesas/despesas.component';
 import { TiposdespesasComponent } from './shared/components/layout/tiposdespesas/tiposdespesas.component';
 import { CalculadoraComponent } from './shared/components/layout/calculadora/calculadora.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 
 const routes: Routes = [
+  {
+    path: 'login',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
   {
     path: 'cadastro-evento',
     loadChildren: () =>
@@ -43,7 +48,8 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'home',
+    path: '',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./modules/home/home.module').then(
         (m) => m.HomeModule

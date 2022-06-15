@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { PortalUser } from 'src/app/core/model/portal-user';
 import { USER } from '../../constants/local-storage-keys';
+import { UserService } from 'src/app/core/user/user.service';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-header',
@@ -12,13 +17,16 @@ import { USER } from '../../constants/local-storage-keys';
 })
 export class HeaderComponent implements OnInit {
 
-  items: MenuItem[];
+   items!: MenuItem[];
+  items2!: MenuItem[];
+  logout: MenuItem[];
   user: MenuItem[];
   visibleSidebar = false;
   portalUser: PortalUser;
   showModalCalc: boolean = false;
 
-  constructor(private route: Router, private authService: AuthService) {
+  constructor(private route: Router, private authService: AuthService, private userService: UserService,
+    ) {
     this.user = [
       // {
       //   label: 'Perfil',
@@ -32,7 +40,7 @@ export class HeaderComponent implements OnInit {
         icon: 'fas fa-sign-out-alt fa-lg:1em',
         command: () => {
           this.authService.logout();
-          window.location.href = this.portalUser.baseUrl;
+          // window.location.href = this.portalUser.baseUrl;
         },
       },
     ];
@@ -57,7 +65,7 @@ export class HeaderComponent implements OnInit {
   private initMenu = (): MenuItem[] =>
     (this.items = [
       {
-        label: 'Contatos',
+        label: 'Usuários',
         icon: 'fa fa-address-book',
         command: () => {
           this.visibleSidebar = false;
