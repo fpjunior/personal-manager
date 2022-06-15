@@ -24,6 +24,9 @@ import { AngularFireModule } from "angularfire2";
 import { AngularFireAuth } from "angularfire2/auth";
 import { AuthGuard } from "./core/guards/auth.guard";
 import { AuthModule } from "./auth/auth.module";
+import { LoginService } from "./auth/login/service/login.service";
+
+
 
 
 
@@ -55,6 +58,7 @@ import { AuthModule } from "./auth/auth.module";
     AuthGuard,
     AngularFireModule,
     AngularFireAuth,
+    LoginService,
     // AngularFireModule,
     // AngularFirestore,
     // AngularFireDatabase,
