@@ -1,9 +1,29 @@
 @import "src/assets/styles/generalStyle.scss";
+@import "src/assets/styles/tables.scss";
+
 
 .group-date {
   display: flex;
   align-items: flex-end;
 }
+
+// .tableButton-def,
+// button.p-button.p-component.p-button-icon-only.p-ripple {
+//   &:hover {
+//     background-color: transparent !important;
+//     border: 1px solid transparent !important;
+//     color: #767676 !important;
+//   }
+//   &:focus {
+//     box-shadow: 0 0 0 0.2rem transparent !important;
+//   }
+
+//   color: #495057;
+//   background: transparent;
+//   border: 1px solid transparent;
+// }
+
+
 
 #val1{
   font-size:0.35cm;

@@ -24,10 +24,11 @@
       white-space: nowrap;
       direction: ltr;
       border: 1px solid #ccc;
-      min-width: 4em !important;
+      // min-width: 4em !important;
 
       &:first-child {
         padding: 0;
+        text-align: center;
       }
 
       &:last-child {
@@ -60,7 +61,7 @@
       > td {
         padding: 0;
         border: 1px solid #cccccc;
-        padding-left: 1em;
+        padding-left: 0.5em;
         padding-right: 0.5em;
 
         text-overflow: ellipsis;
