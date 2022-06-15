@@ -1,49 +1,27 @@
 @import "src/assets/styles/generalStyle.scss";
-@import "src/assets/styles/tables.scss";
 
+.p-button {
+  color: #ffffff;
+  background: #4682b4;
+  border: 1px solid #4682b4;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 3px;
+}
 
-.group-date {
+.input-filterGlobal {
+  width: 98%;
+  margin-bottom: 10px;
+}
+
+.group-inputFilter-btnCreate {
   display: flex;
-  align-items: flex-end;
 }
 
-// .tableButton-def,
-// button.p-button.p-component.p-button-icon-only.p-ripple {
-//   &:hover {
-//     background-color: transparent !important;
-//     border: 1px solid transparent !important;
-//     color: #767676 !important;
-//   }
-//   &:focus {
-//     box-shadow: 0 0 0 0.2rem transparent !important;
-//   }
-
-//   color: #495057;
-//   background: transparent;
-//   border: 1px solid transparent;
-// }
-
-
-
-#val1{
-  font-size:0.35cm;
-}
-
-#botaohoje{
-  position: absolute; top: 436px;
-  margin-left: 20px;
-}
-
-.group-filter-global{
-  width: 412px;
-}
-
-:host ::ng-deep {
-  .btn-today{
-
-    background: red !important;
-    border-color: red !important;
-  }
+.div-group-nputFilter-btnCreate {
+  width: 40%;
 }
 
 
@@ -54,7 +32,7 @@ td#operation {
 }
 
 th#config,
-td#config {
+td#config{
   width: 6%;
 }
 
@@ -69,7 +47,7 @@ td#type {
 }
 
 th#description,
-td#descrption {
+td#descrption{
   width: 17%;
 }
 
@@ -84,10 +62,47 @@ td#value {
 }
 
 
-:host ::ng-deep {
+// esse código altera a cor do botão quando ele recebe foco com mouse
+.p-button:enabled:hover {
+  background: #0d89ec;
+  color: #ffffff;
+  border-color: #0d89ec;
+}
 
+.form-applications {
+  padding-bottom: 17px;
+}
 
-.btn-criar-usuario {
+.buttons-actions {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  width: 230px;
+}
+
+.p-button {
+  color: #ffffff;
+  background: #4682b4;
+  border: 1px solid #4682b4;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 3px;
+}
+
+.p-button:enabled:hover {
+  background: #0d89ec;
+  color: #ffffff;
+  border-color: #0d89ec;
+}
+
+.input-increment {
+  width: 80px;
+  height: 29px;
+}
+
+.btn-criar-contato {
   height: 37px !important;
 }
 :host ::ng-deep {
@@ -110,5 +125,38 @@ td#value {
     background: transparent;
     border: 1px solid transparent;
   }
-}
+  &.p-fieldset .p-fieldset-legend {
+    color: #495057;
+    background: transparent;
+    border: none;
+    font-weight: normal;
+    margin-left: 5px;
+    padding: 0.6rem;
+  }
+  .label {
+    font-size: 13px;
+  }
+
+  .p-card {
+    margin: auto;
+    margin-top: 0.1%;
+    min-height: 83vh;
+    max-width: 95vw;
+  }
+
+  textarea.text-area {
+    padding: 12px 16px;
+    color: #000 !important;
+    font-size: 13px;
+    text-transform: none;
+  }
+
+  .footer {
+    text-align-last: center;
+    // padding-top: 187px;
+  }
+
+  .margin-ten {
+    margin: 10px;
+  }
 }
