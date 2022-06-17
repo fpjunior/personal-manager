@@ -8,8 +8,8 @@ import {
   ElementRef,
 } from "@angular/core";
 import { MenuItem } from "primeng/api";
-import { BreadcrumbService } from "../../breadcrumbs/breadcrumbs.service";
-import { ProgressBarService } from "../../progress-bar/progress-bar.service";
+import { BreadcrumbService } from "../../shared/components/breadcrumbs/breadcrumbs.service";
+import { ProgressBarService } from "../../shared/components/progress-bar/progress-bar.service";
 import { TableStandard } from "src/app/shared/models/table.model"
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 import { tableArr } from "./model/tabela.model";

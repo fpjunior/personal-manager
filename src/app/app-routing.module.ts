@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { DespesasComponent } from './shared/components/layout/despesas/despesas.component';
-import { TiposdespesasComponent } from './shared/components/layout/tiposdespesas/tiposdespesas.component';
-// import { AuthGuard } from './core/guards/auth.guard';
-import { SampleGuard } from './auth/auth.module';
+import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
-import UsuariosComponent from './shared/components/layout/usuarios/usuarios.component';
-import { HomeComponent } from './shared/components/layout/home/home.component';
+import { DespesasComponent } from './pages/despesas/despesas.component';
+import { HomeComponent } from './pages/home/home.component';
+import { TiposdespesasComponent } from './pages/tiposdespesas/tiposdespesas.component';
+import UsuariosComponent from './pages/usuarios/usuarios.component';
 
 const routes: Routes = [
   {

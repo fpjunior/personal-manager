@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TableStandard } from 'src/app/shared/models/table.model';
-import { ProgressBarService } from '../../progress-bar/progress-bar.service';
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 import { TiposDespesasService } from './service/tiposdespesas.service';
 import { tableTipoDespesaModel } from './model/table.model';
 import { MenuItem } from 'primeng/api';
-import { BreadcrumbService } from '../../breadcrumbs/breadcrumbs.service';
+import { ProgressBarService } from 'src/app/shared/components/progress-bar/progress-bar.service';
+import { BreadcrumbService } from 'src/app/shared/components/breadcrumbs/breadcrumbs.service';
 
 interface Country {
   name: string,
@@ -60,9 +60,7 @@ export class TiposdespesasComponent implements OnInit {
   ]
 
   selectedCountry: string;
-
   selectedCountries1: Country[];
-
 
   constructor(
     private progressBarService: ProgressBarService,
@@ -79,9 +77,6 @@ export class TiposdespesasComponent implements OnInit {
     this.getAllTiposDespesas();
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
   }
-
-
-
 
   initForm(): void {
     this.tiposdespesasForm = this.formBuilder.group({

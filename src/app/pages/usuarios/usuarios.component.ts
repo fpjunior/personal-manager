@@ -3,10 +3,10 @@ import {
 } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MenuItem } from "primeng/api";
+import { BreadcrumbService } from "src/app/shared/components/breadcrumbs/breadcrumbs.service";
+import { ProgressBarService } from "src/app/shared/components/progress-bar/progress-bar.service";
 import { TableStandard } from "src/app/shared/models/table.model";
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
-import { BreadcrumbService } from "../../breadcrumbs/breadcrumbs.service";
-import { ProgressBarService } from "../../progress-bar/progress-bar.service";
 import { tableArr } from "./model/table.model";
 import { UserService } from "./service/usuarios.service";
 @Component({

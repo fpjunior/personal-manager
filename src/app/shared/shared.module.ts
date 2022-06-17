@@ -16,8 +16,6 @@ import { ExamplePipe } from "./pipes/example.pipe";
 import { ConfirmDialogComponent } from "./components/dialogs/confirm-dialog/confirm-dialog.component";
 import { CardServicoAbertoComponent } from "./components/widgets/card-servico-aberto/card-servico-aberto.component";
 import { CardVariacaoPrecoComponent } from "./components/widgets/card-variacao-preco/card-variacao-preco.component";
-import { ExampleDashboardComponent } from "./components/layout/example/example-dashboard/example-dashboard.component";
-import { ExampleFormComponent } from "./components/layout/example/example-form/example-form.component";
 import { ButtonModule } from "primeng/button";
 import { Example2FormComponent } from "./components/example2/example2-form/example2-form.component";
 import { StepsComponent } from "./components/steps/steps.component";
@@ -26,12 +24,12 @@ import { DialogPicklistComponent } from "./components/dialogs/dialog-picklist/di
 import { GenericButtonsComponent } from "./components/buttons/generic-buttons/generic-buttons.component";
 import { InfoFieldErrorMessageComponent } from "./components/fields/info-field-error-message/info-field-error-message.component";
 import { InputTextComponent } from "./components/fields/input-text/input-text.component";
-import { TiposdespesasComponent } from './components/layout/tiposdespesas/tiposdespesas.component';
-import { DespesasComponent } from './components/layout/despesas/despesas.component';
+import { DespesasComponent } from '../pages/despesas/despesas.component';
 import { InputDropdownComponent } from './components/fields/input-dropdown/input-dropdown.component';
 import { InputMaskComponent } from './components/fields/input-mask/input-mask.component';
-import UsuariosComponent from './components/layout/usuarios/usuarios.component';
-import { HomeComponent } from './components/layout/home/home.component';
+import { HomeComponent } from '../pages/home/home.component';
+import UsuariosComponent from '../pages/usuarios/usuarios.component';
+import { TiposdespesasComponent } from '../pages/tiposdespesas/tiposdespesas.component';
 
 @NgModule({
   declarations: [
@@ -41,8 +39,6 @@ import { HomeComponent } from './components/layout/home/home.component';
     SpinnerComponent,
     ExampleDirective,
     ProgressBarComponent,
-    ExampleDashboardComponent,
-    ExampleFormComponent,
     Example2FormComponent,
     InfoFieldErrorMessageComponent,
     HomeComponent,

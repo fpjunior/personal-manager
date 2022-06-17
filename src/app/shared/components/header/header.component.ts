@@ -80,15 +80,6 @@ export class HeaderComponent implements OnInit {
           this.route.navigate(['tiposdespesas']);
         },
       },
-      {
-        label: 'Home',
-        icon: 'fas fa-map-marked-alt fa-lg:1em',
-        command: () => {
-          this.visibleSidebar = false;
-          this.route.navigate(['/home']);
-        },
-      },
-
     ]);
 
 }
