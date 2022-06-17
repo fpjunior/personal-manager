@@ -81,6 +81,13 @@ export default class UsuariosComponent implements OnInit {
     }
   }
 
+  inputsClear(){
+    this.usersForm.controls['name'].clearValidators();
+    this.usersForm.controls['age'].clearValidators();
+    this.usersForm.controls['phone'].clearValidators();
+    this.usersForm.controls['email'].clearValidators();
+  }
+
   loseFocus(){
     if(this.usersForm.controls['cpf'].value.length != 14){
     this.labelError="CPF não possui 11 números";;
@@ -276,6 +283,7 @@ export default class UsuariosComponent implements OnInit {
   openDialogAddUser() {
     this.usersForm.reset();
     this.showDialogUser = true;
+    this.inputsClear();
     this.labelError = "";
   }
 
@@ -338,6 +346,7 @@ export default class UsuariosComponent implements OnInit {
     this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
     this.rowData = event;
     this.showDialogUser = true;
+    this.inputsClear();
     this.usersForm.setValue(event);
   }
 
