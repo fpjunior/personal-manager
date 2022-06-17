@@ -27,10 +27,10 @@ export default class UsuariosComponent implements OnInit {
   @Output() mudouValor = new EventEmitter();
   @ViewChild("campoInput") campoValorInput: ElementRef;
   breadcrumbItems: MenuItem[] = [{ label: `Usuários` }];
-  valueName;
-  valueage;
-  valueCpf;
-  valueEmail;
+  valueName= "";
+  valueage="";
+  valueCpf="";
+  valueEmail="";
   showDialogUser = false;
   showModalColumn = false;
   loading = false;
@@ -276,7 +276,15 @@ export default class UsuariosComponent implements OnInit {
   openDialogAddUser() {
     this.usersForm.reset();
     this.showDialogUser = true;
+    this.inputsClear();
     this.labelError = "";
+  }
+
+  inputsClear(){
+    this.usersForm.controls['name'].clearValidators();
+    this.usersForm.controls['age'].clearValidators();
+    this.usersForm.controls['phone'].clearValidators();
+    this.usersForm.controls['email'].clearValidators();
   }
 
   openConfirmCancel() {
@@ -338,8 +346,10 @@ export default class UsuariosComponent implements OnInit {
     this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
     this.rowData = event;
     this.showDialogUser = true;
+    this.inputsClear();
     this.usersForm.setValue(event);
   }
+
 
   getAllUsers() {
     this._progressBarService.changeProgressBar(true);
