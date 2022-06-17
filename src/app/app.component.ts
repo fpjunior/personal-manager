@@ -30,7 +30,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.breadcrumbItems.push({ label: `Gerência` });
-    // this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
+
   }
 }
