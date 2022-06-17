@@ -43,4 +43,9 @@ constructor(private router: Router,
       .catch((error: any) => error);
   }
 
+  usuarioAutenticado() {
+    console.log(localStorage['token'] != null);
+    return localStorage.getItem('token') != null;
+  }
+
 }

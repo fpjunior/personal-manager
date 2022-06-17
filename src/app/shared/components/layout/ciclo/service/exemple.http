@@ -1,1 +1,0 @@
-GET http://localhost:3000/data/2 HTTP/1.1
