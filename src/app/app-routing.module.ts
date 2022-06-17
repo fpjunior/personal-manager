@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DespesasComponent } from './shared/components/layout/despesas/despesas.component';
 import { TiposdespesasComponent } from './shared/components/layout/tiposdespesas/tiposdespesas.component';
-import { CalculadoraComponent } from './shared/components/layout/calculadora/calculadora.component';
 // import { AuthGuard } from './core/guards/auth.guard';
 import { SampleGuard } from './auth/auth.module';
 import { AuthGuard } from './auth/auth.guard';
@@ -32,11 +31,6 @@ const routes: Routes = [
     path: "despesas",
     canActivate: [AuthGuard],
     component: DespesasComponent,
-  },
-  {
-    path: "calculadora",
-    canActivate: [AuthGuard],
-    component: CalculadoraComponent,
   },
   {
     path: "tiposdespesas",

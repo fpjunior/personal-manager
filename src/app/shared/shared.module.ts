@@ -28,8 +28,6 @@ import { InfoFieldErrorMessageComponent } from "./components/fields/info-field-e
 import { InputTextComponent } from "./components/fields/input-text/input-text.component";
 import { TiposdespesasComponent } from './components/layout/tiposdespesas/tiposdespesas.component';
 import { DespesasComponent } from './components/layout/despesas/despesas.component';
-import { CalculadoraComponent } from './components/layout/calculadora/calculadora.component';
-import { CalculatorComponent } from './components/calculator/calculator.component';
 import { InputDropdownComponent } from './components/fields/input-dropdown/input-dropdown.component';
 import { InputMaskComponent } from './components/fields/input-mask/input-mask.component';
 import UsuariosComponent from './components/layout/usuarios/usuarios.component';
@@ -37,7 +35,6 @@ import { HomeComponent } from './components/layout/home/home.component';
 
 @NgModule({
   declarations: [
-    CalculatorComponent,
     ExamplePipe,
     HeaderComponent,
     BreadcrumbsComponent,
@@ -53,7 +50,6 @@ import { HomeComponent } from './components/layout/home/home.component';
     // CORE
     StepsComponent,
     DespesasComponent,
-    CalculadoraComponent,
 
     // DIALOGS
     DialogTableColumnComponent,
@@ -96,12 +92,10 @@ import { HomeComponent } from './components/layout/home/home.component';
     FormsModule,
     BreadcrumbsComponent,
     ProgressBarComponent,
-    DespesasComponent,
     InputMaskComponent,
     PicklistComponent,
     InfoFieldErrorMessageComponent,
-    HomeComponent,
-    UsuariosComponent,
+
 
     // CORE
     StepsComponent,
@@ -125,8 +119,12 @@ import { HomeComponent } from './components/layout/home/home.component';
     InputTextComponent,
     InputDropdownComponent,
 
+
+    // PAGES
     TiposdespesasComponent,
-    CalculadoraComponent,
+    DespesasComponent,
+    UsuariosComponent,
+    HomeComponent,
 
 
   ],
