@@ -1,7 +1,5 @@
 import { DialogTableColumnComponent } from './components/dialogs/dialog-table-column/dialog-table-column.component';
 import { GenericResponseDialogComponent } from "./components/dialogs/generic-response-dialog/generic-response-dialog.component";
-import { InputPropertyDashboardComponent } from "./components/layout/input-property/input-property-dashboard/input-property-dashboard.component";
-import { EventoDashboardComponent } from "./components/layout/cadastro-evento/evento-dashboard/evento-dashboard.component";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -21,25 +19,21 @@ import { CardVariacaoPrecoComponent } from "./components/widgets/card-variacao-p
 import { ExampleDashboardComponent } from "./components/layout/example/example-dashboard/example-dashboard.component";
 import { ExampleFormComponent } from "./components/layout/example/example-form/example-form.component";
 import { ButtonModule } from "primeng/button";
-import { EventoFormComponent } from "./components/layout/cadastro-evento/evento-form/evento-form.component";
-import { CicloDashboardComponent } from "./components/layout/ciclo/ciclo-dashboard/ciclo-dashboard.component";
 import { Example2FormComponent } from "./components/example2/example2-form/example2-form.component";
 import { StepsComponent } from "./components/steps/steps.component";
-import { InputPropertyFormComponent } from "./components/layout/input-property/input-property-form/input-property-form.component";
 import { PicklistComponent } from "./components/fields/picklist/picklist.component";
 import { DialogPicklistComponent } from "./components/dialogs/dialog-picklist/dialog-picklist.component";
-import { CicloFormComponent } from "./components/layout/ciclo/ciclo-form/ciclo-form.component";
 import { GenericButtonsComponent } from "./components/buttons/generic-buttons/generic-buttons.component";
 import { InfoFieldErrorMessageComponent } from "./components/fields/info-field-error-message/info-field-error-message.component";
 import { InputTextComponent } from "./components/fields/input-text/input-text.component";
 import { TiposdespesasComponent } from './components/layout/tiposdespesas/tiposdespesas.component';
-import { TesteComponent } from './components/layout/teste/teste.component';
 import { DespesasComponent } from './components/layout/despesas/despesas.component';
 import { CalculadoraComponent } from './components/layout/calculadora/calculadora.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
 import { InputDropdownComponent } from './components/fields/input-dropdown/input-dropdown.component';
 import { InputMaskComponent } from './components/fields/input-mask/input-mask.component';
 import UsuariosComponent from './components/layout/usuarios/usuarios.component';
+import { HomeComponent } from './components/layout/home/home.component';
 
 @NgModule({
   declarations: [
@@ -53,20 +47,13 @@ import UsuariosComponent from './components/layout/usuarios/usuarios.component';
     ExampleDashboardComponent,
     ExampleFormComponent,
     Example2FormComponent,
-    InputPropertyDashboardComponent,
-    InputPropertyFormComponent,
     InfoFieldErrorMessageComponent,
+    HomeComponent,
+    UsuariosComponent,
     // CORE
     StepsComponent,
-
-    UsuariosComponent,
     DespesasComponent,
     CalculadoraComponent,
-    EventoDashboardComponent,
-    EventoFormComponent,
-    CicloDashboardComponent,
-    CicloFormComponent,
-    TesteComponent,
 
     // DIALOGS
     DialogTableColumnComponent,
@@ -109,15 +96,12 @@ import UsuariosComponent from './components/layout/usuarios/usuarios.component';
     FormsModule,
     BreadcrumbsComponent,
     ProgressBarComponent,
-    UsuariosComponent,
     DespesasComponent,
     InputMaskComponent,
-    EventoDashboardComponent,
-    EventoFormComponent,
-    CicloDashboardComponent,
-    CicloFormComponent,
     PicklistComponent,
     InfoFieldErrorMessageComponent,
+    HomeComponent,
+    UsuariosComponent,
 
     // CORE
     StepsComponent,
@@ -140,7 +124,6 @@ import UsuariosComponent from './components/layout/usuarios/usuarios.component';
     // FIELDS
     InputTextComponent,
     InputDropdownComponent,
-    TesteComponent,
 
     TiposdespesasComponent,
     CalculadoraComponent,

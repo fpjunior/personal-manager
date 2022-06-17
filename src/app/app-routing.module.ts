@@ -1,4 +1,3 @@
-import { TesteComponent } from './shared/components/layout/teste/teste.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DespesasComponent } from './shared/components/layout/despesas/despesas.component';
@@ -8,6 +7,7 @@ import { CalculadoraComponent } from './shared/components/layout/calculadora/cal
 import { SampleGuard } from './auth/auth.module';
 import { AuthGuard } from './auth/auth.guard';
 import UsuariosComponent from './shared/components/layout/usuarios/usuarios.component';
+import { HomeComponent } from './shared/components/layout/home/home.component';
 
 const routes: Routes = [
   {
@@ -19,10 +19,7 @@ const routes: Routes = [
   {
     path: '',
     canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./modules/home/home.module').then(
-        (m) => m.HomeModule
-      ),
+    component: HomeComponent,
   },
 
   {
