@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BreadcrumbService } from './shared/components/breadcrumbs/breadcrumbs.service';
 import { NavigationEnd, Router } from '@angular/router';
-import { UserService } from './core/services/user/user.service';
 import { MenuItem, PrimeNGConfig } from 'primeng/api';
 import { ptbr } from './shared/constants/pt-br';
 
@@ -12,16 +10,12 @@ import { ptbr } from './shared/constants/pt-br';
 })
 export class AppComponent implements OnInit {
   title = 'pesonal-manager';
-
   filteredBrands: any[];
   product: string;
-
   breadcrumbItems: MenuItem[] = [];
   display: boolean = true;
   isLoginRoute = false;
-
   isPermissionDashboard: boolean;
-
 
   constructor(
     private router: Router,
@@ -40,10 +34,6 @@ export class AppComponent implements OnInit {
     // this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
   }
 
-  private configPrimeNG():void {
-    this.config.setTranslation(ptbr);
-    this.config.ripple = true;
-  }
 
 
 }

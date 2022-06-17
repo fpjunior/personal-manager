@@ -3,7 +3,6 @@ import { GenericResponseDialogComponent } from "./components/dialogs/generic-res
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
 import { BreadcrumbsComponent } from "./components/breadcrumbs/breadcrumbs.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { ProgressBarComponent } from "./components/progress-bar/progress-bar.component";
@@ -41,11 +40,9 @@ import { TiposdespesasComponent } from '../pages/tiposdespesas/tiposdespesas.com
     ProgressBarComponent,
     Example2FormComponent,
     InfoFieldErrorMessageComponent,
-    HomeComponent,
-    UsuariosComponent,
+
     // CORE
     StepsComponent,
-    DespesasComponent,
 
     // DIALOGS
     DialogTableColumnComponent,
@@ -70,8 +67,11 @@ import { TiposdespesasComponent } from '../pages/tiposdespesas/tiposdespesas.com
     // BUTTONS
     GenericButtonsComponent,
 
+    // PAGES
+    HomeComponent,
+    UsuariosComponent,
     TiposdespesasComponent,
-
+    DespesasComponent,
   ],
 
   imports: [
@@ -115,14 +115,11 @@ import { TiposdespesasComponent } from '../pages/tiposdespesas/tiposdespesas.com
     InputTextComponent,
     InputDropdownComponent,
 
-
     // PAGES
+    HomeComponent,
+    UsuariosComponent,
     TiposdespesasComponent,
     DespesasComponent,
-    UsuariosComponent,
-    HomeComponent,
-
-
   ],
   entryComponents: [],
   providers: [PrimengModule, ReactiveFormsModule],

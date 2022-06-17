@@ -1,20 +1,16 @@
-import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {
-  Component,
-  OnInit,
-  Output,
-  EventEmitter,
-  ViewChild,
-  ElementRef,
+  Component, ElementRef, EventEmitter, OnInit,
+  Output, ViewChild
 } from "@angular/core";
+import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MenuItem } from "primeng/api";
+import { TableStandard } from "src/app/shared/models/table.model";
+import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 import { BreadcrumbService } from "../../shared/components/breadcrumbs/breadcrumbs.service";
 import { ProgressBarService } from "../../shared/components/progress-bar/progress-bar.service";
-import { TableStandard } from "src/app/shared/models/table.model"
-import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
+import { TiposDespesasService } from "../tiposdespesas/service/tiposdespesas.service";
 import { tableArr } from "./model/tabela.model";
 import { DespesaService } from "./service/despesas.service";
-import { TiposDespesasService } from "../tiposdespesas/service/tiposdespesas.service";
 
 @Component({
   selector: "app-despesas",
@@ -53,7 +49,6 @@ export class DespesasComponent implements OnInit {
   rowData;
   dataAtual: string = "";
 
-
   constructor(
     private _breadcrumbService: BreadcrumbService,
     private _despesaService: DespesaService,
@@ -68,7 +63,6 @@ export class DespesasComponent implements OnInit {
     this._breadcrumbService.setBreadcrumb(this.breadcrumbItems);
     this._getAllDespesas();
     this._getAllTiposDespesas()
-
   }
 
 // a organização do código é importante para que o código seja mais fácil de manter
@@ -146,15 +140,12 @@ export class DespesasComponent implements OnInit {
 
   onShow = () => this.showModalResponse = true;
 
-
-
   onHideDialog() { }
 
   openConfirmCancel() {
     this.showCorfirmDialog = true;
     this.msgModalConfirm = "Tem certeza que deseja cancelar? Alterações serão descartadas";
   }
-
 
   obterDataAtual() {
     const date = new Date();
@@ -225,8 +216,6 @@ export class DespesasComponent implements OnInit {
     this.showDialogDespesa = true;
     this.despesasForm.setValue(event);
   }
-
-  // goToTheContactForm = () => this.router.navigate(["/usuario-form"]);
 
   private _getAllDespesas() {
     this._progressBarService.changeProgressBar(true);

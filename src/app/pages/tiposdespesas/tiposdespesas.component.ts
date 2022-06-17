@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MenuItem } from 'primeng/api';
+import { BreadcrumbService } from 'src/app/shared/components/breadcrumbs/breadcrumbs.service';
+import { ProgressBarService } from 'src/app/shared/components/progress-bar/progress-bar.service';
 import { TableStandard } from 'src/app/shared/models/table.model';
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
-import { TiposDespesasService } from './service/tiposdespesas.service';
 import { tableTipoDespesaModel } from './model/table.model';
-import { MenuItem } from 'primeng/api';
-import { ProgressBarService } from 'src/app/shared/components/progress-bar/progress-bar.service';
-import { BreadcrumbService } from 'src/app/shared/components/breadcrumbs/breadcrumbs.service';
+import { TiposDespesasService } from './service/tiposdespesas.service';
 
 interface Country {
   name: string,
@@ -69,7 +69,6 @@ export class TiposdespesasComponent implements OnInit {
     private formBuilder: FormBuilder,
     private tiposDespesasService: TiposDespesasService,
   ) {
-
   }
 
   ngOnInit() {
@@ -130,7 +129,7 @@ export class TiposdespesasComponent implements OnInit {
   deleteTiposDespesas() {
     this.progressBarService.changeProgressBar(true);
     this.tiposdespesasService.deleteTiposDespesas(this.idTiposDespesas).subscribe(
-      (response) => {
+      () => {
         this.sucessResponse("Tipo Despesas deletado com sucesso");
         setTimeout(() => {
           this.getAllTiposDespesas();
@@ -187,16 +186,16 @@ export class TiposdespesasComponent implements OnInit {
 
   closeConfirmDialog() {
     this.showCorfirmDialog = false;
-
   }
+
   editCategoria(event) {
     this.isEdit = true;
     this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
     this.rowData = event;
     this.showDialogtiposdespesas = true;
     this.tiposdespesasForm.setValue(event);
-
   }
+
   openConfirmDelete(idToDelete: string) {
     this.msgModalConfirm = "Tem certeza que deseja excluir este registro?";
     this.idTiposDespesas = idToDelete;
@@ -207,7 +206,7 @@ export class TiposdespesasComponent implements OnInit {
     tiposdespesasForm = this.tiposdespesasForm.getRawValue();
     tiposdespesasForm.icon = tiposdespesasForm.icon.codeIcon
     this.tiposdespesasService.saveOrUpdateTiposDespesas(tiposdespesasForm).subscribe(
-      (response) => {
+      () => {
         this.tiposdespesasForm.reset();
         this.showDialogtiposdespesas = false;
         this.sucessResponse("Tipo de despesas salvo com sucesso");
