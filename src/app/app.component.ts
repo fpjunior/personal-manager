@@ -33,7 +33,4 @@ export class AppComponent implements OnInit {
     // this.breadcrumbItems.push({ label: `Gerência` });
     // this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
   }
-
-
-
 }
