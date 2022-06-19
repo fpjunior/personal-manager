@@ -23,6 +23,7 @@
     button {
       background-color: $cor-azul-escuro-padrao !important;
       border: 1px solid $cor-azul-escuro-padrao;
+      border-radius: 25px;
       &:hover {
         background-color: #3f88b2;
         border: 1px solid #3f88b2;
@@ -44,6 +45,8 @@
     .p-button {
       background-color: $cor-cinza-escuro-padrao;
       border: 1px solid $cor-cinza-escuro-padrao;
+      border-radius: 25px;
+
       &:hover {
         background-color: #8f8f8f;
         border: 1px solid #8f8f8f;
@@ -77,6 +80,8 @@
   .tableButton {
     background-color: transparent;
     border: 1px solid transparent;
+    border-radius: 25px;
+
     color: #767676;
     font-size: 16px !important;
     margin-bottom: 0 !important;
