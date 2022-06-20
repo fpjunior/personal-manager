@@ -34,6 +34,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: TiposdespesasComponent,
   },
+  {
+    path: "home",
+    canActivate: [AuthGuard],
+    component: HomeComponent,
+  },
 ];
 
 @NgModule({

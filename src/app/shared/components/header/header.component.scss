@@ -1,16 +1,24 @@
 @import "src/assets/styles/colors.scss";
 
 :host ::ng-deep {
+
+  .sidebar-toggle-box {
+    right: 209px;
+    width: 32px;
+    height: 32px;
+    margin-left: 0px;
+}
   // ----- Header -----//
   .top-header {
     margin: 0px !important;
     height: 50px;
     background-color: white;
     .brand {
-      background: #34495e;
+      // background: #34495e;
+      background: #ffffff;
       float: left;
       padding-right: 10px;
-      width: 241px;
+      width: 53px;
       height: 50px;
       position: relative;
       a.logo {
