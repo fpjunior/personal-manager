@@ -130,8 +130,10 @@ export class DespesasComponent implements OnInit {
       this.labelError= "Valor não pode ser 0";
     }else{
       this.labelError= "";
+      // teste
     }
   }
+
 
   showModalSelectColumns() {
     this.showModalColumn = true;
