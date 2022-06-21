@@ -63,7 +63,7 @@ export class HeaderComponent implements OnInit {
 
     {
       label: 'Despesas',
-      icon: 'fas fa-messages-dollar fa-lg:1em',
+      icon: 'fa fa-credit-card fa-lg:1em',
       disabled: false,
       command: () => {
         this.visibleSidebar = false;
