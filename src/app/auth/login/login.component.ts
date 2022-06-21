@@ -17,6 +17,17 @@ export class LoginComponent {
   logOn(mail, password) {
     this.loginService.login(mail, password);
     this.isLoged = true
+    sessionStorage.setItem('user', mail);
+  }
+
+  criarUsuario(mail, password) {
+    this.loginService.criarUsuario(mail, password);
+    this.isLoged = true
+    sessionStorage.setItem('user', mail);
+  }
+
+  recuperarSenha(mail) {
+    this.loginService.recuperarSenha(mail);
   }
 
 }

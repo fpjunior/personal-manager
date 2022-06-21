@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   visibleSidebar = false;
   portalUser: PortalUser;
   showModalCalc: boolean = false;
+  userName = '';
 
   constructor(private route: Router, private authService: AuthService, private userService: UserService,
   ) {
@@ -35,6 +36,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userName = sessionStorage.getItem('user');
     const user = JSON.parse(localStorage.getItem(USER));
     this.portalUser = user;
     this.initMenu();

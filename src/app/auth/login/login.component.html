@@ -9,6 +9,8 @@
   <label for="inputPassword" class="sr-only">Senha</label>
   <input type="password" #password class="form-control" placeholder="Senha" required>
   <button class="btn btn-lg btn-primary btn-block" (click)="logOn(user.value,password.value)" type="submit">Acessar</button>
+  <button class="btn btn-lg btn-primary btn-block" (click)="criarUsuario(user.value,password.value)" type="submit">Criar Usuario</button>
+  <button class="btn btn-lg btn-primary btn-block" (click)="recuperarSenha(user.value)" type="submit">Recuperar Senha</button>
 
 
 </div>
