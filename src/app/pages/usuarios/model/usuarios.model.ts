@@ -1,8 +1,9 @@
 export interface UsersModel{
   id:number;
   name:string;
-  age: string;
+  user:string;
   cpf: string;
   email: string;
   phone: string;
+  password: string;
 }

@@ -3,12 +3,15 @@ import {
 } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MenuItem } from "primeng/api";
+import { LoginService } from "src/app/auth/login/service/login.service";
 import { BreadcrumbService } from "src/app/shared/components/breadcrumbs/breadcrumbs.service";
 import { ProgressBarService } from "src/app/shared/components/progress-bar/progress-bar.service";
 import { TableStandard } from "src/app/shared/models/table.model";
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 import { tableArr } from "./model/table.model";
+import { UsersModel } from "./model/usuarios.model";
 import { UserService } from "./service/usuarios.service";
+
 @Component({
   selector: "app-usuarios",
   templateUrl: "./usuarios.component.html",
@@ -28,7 +31,6 @@ export default class UsuariosComponent implements OnInit {
   @ViewChild("campoInput") campoValorInput: ElementRef;
   breadcrumbItems: MenuItem[] = [{ label: `Usuários` }];
   valueName;
-  valueage;
   valueCpf;
   valueEmail;
   showDialogUser = false;
@@ -50,7 +52,8 @@ export default class UsuariosComponent implements OnInit {
     private _breadcrumbService: BreadcrumbService,
     private _userService: UserService,
     private _progressBarService: ProgressBarService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private loginService: LoginService,
   ) { }
 
   ngOnInit() {
@@ -65,9 +68,10 @@ export default class UsuariosComponent implements OnInit {
     this.usersForm = this._formBuilder.group({
       id: [""],
       name: ["", [Validators.required]],
-      age: ["", [Validators.required]],
+      user: ["", [Validators.required]],
       cpf: ["", [Validators.required]],
       phone: ["", [Validators.required]],
+      password: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
     });
   }
@@ -83,9 +87,10 @@ export default class UsuariosComponent implements OnInit {
 
   inputsClear(){
     this.usersForm.controls['name'].clearValidators();
-    this.usersForm.controls['age'].clearValidators();
     this.usersForm.controls['phone'].clearValidators();
     this.usersForm.controls['email'].clearValidators();
+    this.usersForm.controls['password'].clearValidators();
+    this.usersForm.controls['user'].clearValidators();
   }
 
   loseFocus(){
@@ -204,9 +209,10 @@ export default class UsuariosComponent implements OnInit {
     this.usersForm = this._formBuilder.group({
       id: [""],
       name: ["", [Validators.required]],
-      age: ["", [Validators.required]],
+      user: ["", [Validators.required]],
       cpf: ["", [Validators.required]],
       phone: ["", [Validators.required]],
+      password: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
     });
   }
@@ -331,6 +337,7 @@ export default class UsuariosComponent implements OnInit {
         this.usersForm.reset();
         this.showDialogUser = false;
         this.sucessResponse("Usuario salvo com sucesso");
+        this.loginService.criarUsuario(usersForm.email, usersForm.password)
         setTimeout(() => {
           this.getAllUsers();
         }, 2000);
