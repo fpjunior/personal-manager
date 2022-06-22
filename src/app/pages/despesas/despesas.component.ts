@@ -47,6 +47,7 @@ export class DespesasComponent implements OnInit {
   valueexpenseDate;
   codeDespesa;
   rowData;
+  labelError: string= "";
   dataAtual: string = "";
 
   constructor(
@@ -122,6 +123,14 @@ export class DespesasComponent implements OnInit {
 
   closeConfirmDialog() {
     this.showCorfirmDialog = false;
+  }
+
+  verifyValue(){
+    if(this.despesasForm.controls['value'].value === 0){
+      this.labelError= "Valor não pode ser 0";
+    }else{
+      this.labelError= "";
+    }
   }
 
   showModalSelectColumns() {
