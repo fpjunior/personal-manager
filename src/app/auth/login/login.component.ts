@@ -17,25 +17,20 @@ export class LoginComponent implements OnInit {
     private _userService: UserService
   ) {}
   ngOnInit(): void {
-    this.getAllUsers()
+    this.getAllUsers();
   }
 
   logOn(mail, password) {
-
-   let usuarioNow = this.objUser.filter((e)=> {
-    return e.email.includes(mail)
- })
-
+    let usuarioNow = this.objUser.filter((e) => {
+      return e.email.includes(mail);
+    });
     this.loginService.login(usuarioNow[0]?.email, password);
-
     this.isLoged = true;
-    sessionStorage.setItem("user", mail);
   }
 
   criarUsuario(mail, password) {
     this.loginService.criarUsuario(mail, password);
     this.isLoged = true;
-    sessionStorage.setItem("user", mail);
   }
 
   recuperarSenha(mail) {
@@ -50,8 +45,7 @@ export class LoginComponent implements OnInit {
           return e[1];
         });
       },
-      (error) => {
-      }
+      (error) => {}
     );
   }
 }
