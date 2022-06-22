@@ -8,25 +8,35 @@
     <form method="post" [formGroup]="usersForm" (ngSubmit)="saveUser(usersForm)">
 
       <!-- essa div envolve todos os campos do form, ela é essencial para ajustar a posição de todos os campos ao mesmo tempo -->
-      <div class="p-grid">
+      <div class="p-grid form-user">
 
         <!-- observar que cada input foi envolvido em uma div pra que possa ser fácil na hora de aplicar estilos -->
-        <div class="field col-3 form-applications">
+        <div class="col-12">
           <input-text label="Nome" [control]="usersForm.get('name')" [requiredLabel]="true" formControlName="name"
             id="name" [type]="'text'" pTooltip="Digite o nome do usuário">
           </input-text>
         </div>
 
-        <div class="field col-3 form-applications">
-          <input-text label="Idade" [control]="usersForm.get('age')" [requiredLabel]="true" formControlName="age"
-            id="age" [type]="'number'" [maxlength]="3" max="130" pTooltip="Digite a idade do usuário">
+        <div class="col-12">
+          <input-text label="Email" [control]="usersForm.get('email')" [requiredLabel]="true" formControlName="email"
+            id="email" [type]="'text'" pTooltip="Digite o email do usuário">
           </input-text>
         </div>
 
-         <div class="field col-3 form-applications">
-          <!-- <input-text label="CPF" [control]="usersForm.get('cpf')" [requiredLabel]="true" formControlName="cpf"
-            id="cpf" [type]="'number'" [maxlength]="11" pTooltip="Digite o CPF do contato"(keyup)="verifyCpfLength()" (change)="loseFocus()">
-          </input-text> -->
+        <div class="col-12">
+          <input-text label="Usuário" [control]="usersForm.get('user')" [requiredLabel]="true" formControlName="user"
+            id="user" [type]="'text'" pTooltip="Digite a senha">
+          </input-text>
+        </div>
+
+        <div class="col-12">
+          <input-text label="Senha" [control]="usersForm.get('password')" [requiredLabel]="true" formControlName="password"
+            id="password" [type]="'text'" pTooltip="Digite a senha">
+          </input-text>
+        </div>
+
+
+         <div class="col-12">
           <input-mask [requiredLabel]="true" label="CPF" formControlName="cpf" id="cpf" type="'text'" [maxlength]=14
           pTooltip="Digite o CPF do contato" (change)="loseFocus()" (keyup)="verifyCpfLength()" [mask]="'999.999.999-99'">
           </input-mask>
@@ -35,7 +45,7 @@
 
         <!-- cada div recebe uma tag class, e dentro dessa tag, pode ser chamado várias classes, por ex. uma class é essa form-applications
         e no arquivo .scss tá sendo passado um estilo pra ela-->
-        <div class="field col-3 form-applications">
+        <div class="col-12">
           <!-- <input-text label="Telefone" [control]="usersForm.get('phone')" [requiredLabel]="true" formControlName="phone"
             id="phone" [type]="'text'"  pTooltip="Digite o telefone do usuário">
           </input-text> -->
@@ -45,11 +55,7 @@
           </input-mask>
         </div>
 
-        <div class="field col-3 form-applications">
-          <input-text label="Email" [control]="usersForm.get('email')" [requiredLabel]="true" formControlName="email"
-            id="email" [type]="'text'" pTooltip="Digite o email do usuário">
-          </input-text>
-        </div>
+
 
         <!-- aqui são os dois botões no rodapé do dialog, o de SALVAR e CANCELAR -->
         <div class="buttons-actions">
