@@ -29,7 +29,7 @@
 
         <div class="p-col-12">
           <label for="currency-us">Valor</label>
-          <p-inputNumber formControlName="value" inputId="currency-us" mode="currency" currency="BRL" locale="pt-BR" (onBlur)="verifyValue()">
+          <p-inputNumber class="valor" formControlName="value" inputId="currency-us" mode="currency" currency="BRL" locale="pt-BR" (onBlur)="verifyValue()">
           </p-inputNumber>
           <label id="valor">{{labelError}}</label>
         </div>

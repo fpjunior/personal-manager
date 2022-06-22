@@ -74,6 +74,8 @@ td#value {
 
 
 
+
+
 // esse código altera a cor do botão quando ele recebe foco com mouse
 .p-button:enabled:hover {
   background: #0d89ec;
@@ -145,6 +147,13 @@ span.p-input-icon-left.group-filter-global {
 :host ::ng-deep {
   .size-first-column {
     width: 77px;
+  }
+
+  .valor{
+    .p-inputnumber-input{
+      color: red !important;
+      font-weight: bolder;
+    }
   }
 
   .tableButton-def,
