@@ -165,7 +165,7 @@ export default class UsuariosComponent implements OnInit {
   }
 
   closeConfirmDialog2() {
-    this.showCorfirmDialog = false;
+    this.showCorfirmDialog2 = false;
   }
 
   showModalSelectColumns() {
