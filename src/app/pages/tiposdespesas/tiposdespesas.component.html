@@ -38,7 +38,7 @@
         <p-button type="submit" icon="fa fa-check" [disabled]="this.tiposdespesasForm.invalid"
           class="standard tableButton-def" label="Salvar">
         </p-button>
-        <p-button type="button" icon="fa fa-times" (onClick)="showCorfirmDialog = true" class="dismiss tableButton"
+        <p-button type="button" icon="fa fa-times" (onClick)="openConfirmCancel()" class="dismiss tableButton"
           label="Cancelar">
         </p-button>
       </div>
@@ -129,3 +129,10 @@
   [showModal]="showCorfirmDialog" (confirmEvent)="confirmAction()" [content]="msgModalConfirm"
   (onClose)="closeConfirmDialog()">
 </app-confirm-dialog>
+
+<app-confirm-dialog class="confirmacao" header="Confirmação" (cancelEvent)="showCorfirmDialog2 = false"
+[showModal]="showCorfirmDialog2" (confirmEvent)="confirmAction2()"
+[content]="msgModalConfirm" (onClose)="closeConfirmDialog2()">
+</app-confirm-dialog>
+
+

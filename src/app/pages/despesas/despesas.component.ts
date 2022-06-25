@@ -29,6 +29,7 @@ export class DespesasComponent implements OnInit {
   showDialogDespesa = false;
   showModalResponse = false;
   showCorfirmDialog = false;
+  showCorfirmDialog2 = false;
   immutableCols: string[] = [];
   despesas: Array<any>;
   dataToFillTable: any;
@@ -125,6 +126,21 @@ export class DespesasComponent implements OnInit {
     this.showCorfirmDialog = false;
   }
 
+
+  closeConfirmDialog2() {
+    this.showCorfirmDialog2 = false;
+  }
+
+  confirmAction2() {
+    if (this.isEdit) {
+      this.showDialogDespesa = false;
+      this.showCorfirmDialog2 = false;
+    } else {
+      this.showCorfirmDialog2 = false;
+      this.showDialogDespesa = false;
+    }
+  }
+
   verifyValue(){
     if(this.despesasForm.controls['value'].value === 0){
       this.labelError= "Valor não pode ser 0";
@@ -152,8 +168,8 @@ export class DespesasComponent implements OnInit {
   onHideDialog() { }
 
   openConfirmCancel() {
-    this.showCorfirmDialog = true;
-    this.msgModalConfirm = "Tem certeza que deseja cancelar? Alterações serão descartadas";
+    this.showCorfirmDialog2 = true;
+    this.msgModalConfirm = "Tem certeza que deseja sair? Dados digitados anteriormente não serão salvos.";
   }
 
   obterDataAtual() {
@@ -184,6 +200,8 @@ export class DespesasComponent implements OnInit {
       this.showDialogDespesa = false;
     }
   }
+
+
 
   deleteDespesa() {
     this._progressBarService.changeProgressBar(true);

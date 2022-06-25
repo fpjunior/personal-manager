@@ -27,6 +27,7 @@ export class TiposdespesasComponent implements OnInit {
   showModalResponse = false;
   isEdit: boolean;
   showCorfirmDialog: boolean = false;
+  showCorfirmDialog2: boolean = false;
   idTiposDespesas;
 
   cols = tableTipoDespesaModel;
@@ -188,6 +189,21 @@ export class TiposdespesasComponent implements OnInit {
     this.showCorfirmDialog = false;
   }
 
+
+  closeConfirmDialog2() {
+    this.showCorfirmDialog2 = false;
+  }
+
+  confirmAction2() {
+    if (this.isEdit) {
+      this.showDialogtiposdespesas = false;
+      this.showCorfirmDialog2 = false;
+    } else {
+      this.showCorfirmDialog2 = false;
+      this.showDialogtiposdespesas = false;
+    }
+  }
+
   editCategoria(event) {
     this.isEdit = true;
     this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
@@ -200,6 +216,11 @@ export class TiposdespesasComponent implements OnInit {
     this.msgModalConfirm = "Tem certeza que deseja excluir este registro?";
     this.idTiposDespesas = idToDelete;
     this.showCorfirmDialog = true;
+  }
+
+  openConfirmCancel() {
+    this.showCorfirmDialog2 = true;
+    this.msgModalConfirm = "Tem certeza que deseja sair? Dados digitados anteriormente não serão salvos.";
   }
 
   saveTiposDespesas(tiposdespesasForm: any): void {

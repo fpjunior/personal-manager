@@ -134,3 +134,8 @@
   [showModal]="showCorfirmDialog" (confirmEvent)="confirmAction()" [content]="msgModalConfirm"
   (onClose)="closeConfirmDialog()">
 </app-confirm-dialog>
+
+<app-confirm-dialog class="confirmacao" header="Confirmação" (cancelEvent)="showCorfirmDialog2 = false"
+[showModal]="showCorfirmDialog2" (confirmEvent)="confirmAction2()"
+[content]="msgModalConfirm" (onClose)="closeConfirmDialog2()">
+</app-confirm-dialog>
