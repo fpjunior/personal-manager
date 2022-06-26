@@ -3,8 +3,13 @@
 :host ::ng-deep {
   .wrapper-card.p-card {
     margin: 0em 1.7em;
-    min-height: 600px;
+    min-height: 81vh !important;
     max-height: 260vh;
+    background-color: #bccfd6bf;
+  }
+
+
+  .wrapper-card.p-card.p-component {
   }
 
   nav.nav.justify-content-center {

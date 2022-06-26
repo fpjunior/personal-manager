@@ -8,18 +8,21 @@
     </div>
   </div>
 
-  <div (click)="showModalCalc = true" class= "router-diverg">
-    <i class="fas fa-calculator fa-2x" aria-hidden="true" ></i>
-  </div>
 
   <p-sidebar [blockScroll]="true" [showCloseIcon]="false" [(visible)]="visibleSidebar" [baseZIndex]="10000">
-		<p-panelMenu [multiple]="false" dir="rtl" iconPos="left" [model]="items" [style]="{'width':'239px'}">
-		</p-panelMenu>
-	</p-sidebar> -
+    <p-panelMenu [multiple]="false" dir="rtl" iconPos="left" [model]="items" [style]="{'width':'239px'}">
+    </p-panelMenu>
+  </p-sidebar>
 
-   <p-splitButton [label]="UserName" (onClick)="usuario()" icon="fas fa-user fa-lg" class="headSplitButton"
-		[model]="UserName">
-	</p-splitButton>
+
+  <p-splitButton [label]="UserName" (onClick)="usuario()" icon="fas fa-user fa-lg" class="headSplitButton"
+  [model]="UserName">
+</p-splitButton>
+
+
+<div (click)="showModalCalc = true" class= "">
+  <i class="fas fa-calculator fa-2x" aria-hidden="true" ></i>
+</div>
 </div>
 
 <app-calculator (onClose)="this.showModalCalc = false;"  [showModalCalc]="showModalCalc"></app-calculator>
