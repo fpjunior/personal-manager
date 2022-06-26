@@ -13,7 +13,7 @@
 
 .group-date {
   display: flex;
-  width: 242px;
+  width: 272px;
   align-items: flex-end;
 }
 
@@ -146,9 +146,24 @@ span.p-input-icon-left.group-filter-global {
 .btn-criar-contato {
   height: 37px !important;
 }
+
 :host ::ng-deep {
   .size-first-column {
     width: 77px;
+  }
+
+  .btn-data{
+    border-left-width: 0px !important;
+    button.p-button.p-component.p-ripple {
+      border-radius: 0px 15px 15px 0px;
+    }
+  }
+
+  #input-data{
+
+    input.p-field.p-inputtext.p-component.ng-untouched.ng-pristine.ng-valid {
+      border-radius: 15px 0px 0px 15px!important;
+  }
   }
 
   .valor{
