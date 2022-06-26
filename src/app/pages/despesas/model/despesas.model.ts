@@ -7,4 +7,5 @@ export interface DespesasModel{
     localEstablishment: string;
     expenseDate: string;
     status: boolean;
+    user: string;
 }
