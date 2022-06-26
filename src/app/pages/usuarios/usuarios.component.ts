@@ -37,6 +37,7 @@ export default class UsuariosComponent implements OnInit {
   showModalColumn = false;
   loading = false;
   showCorfirmDialog: boolean = false;
+  showCorfirmDialog2: boolean = false;
   showModalResponse = false;
   contentResponse!: string;
   isErrorResponse!: boolean;
@@ -161,6 +162,10 @@ export default class UsuariosComponent implements OnInit {
 
   closeConfirmDialog() {
     this.showCorfirmDialog = false;
+  }
+
+  closeConfirmDialog2() {
+    this.showCorfirmDialog2 = false;
   }
 
   showModalSelectColumns() {
@@ -294,8 +299,8 @@ export default class UsuariosComponent implements OnInit {
   }
 
   openConfirmCancel() {
-    this.showCorfirmDialog = true;
-    this.msgModalConfirm = "Tem certeza que deseja cancelar? Alterações serão descartadas";
+    this.showCorfirmDialog2 = true;
+    this.msgModalConfirm = "Tem certeza que deseja sair? Dados digitados anteriormente não serão salvos.";
   }
 
   openConfirmDelete(idToDelete: string) {
@@ -311,6 +316,16 @@ export default class UsuariosComponent implements OnInit {
     } else {
       this.deleteUser();
       this.showCorfirmDialog = false;
+      this.showDialogUser = false;
+    }
+  }
+
+  confirmAction2() {
+    if (this.isEdit) {
+      this.showDialogUser = false;
+      this.showCorfirmDialog2 = false;
+    } else {
+      this.showCorfirmDialog2 = false;
       this.showDialogUser = false;
     }
   }

@@ -21,7 +21,8 @@ import { InputMaskModule } from 'primeng/inputmask';
 import {TooltipModule} from 'primeng/tooltip';
 import {ColorPickerModule} from 'primeng/colorpicker';
 import {MultiSelectModule} from 'primeng/multiselect';
-import { CalendarModule } from 'primeng/calendar';
+import {CalendarModule} from 'primeng/calendar';
+
 @NgModule({
   exports: [
     CardModule,
@@ -47,8 +48,7 @@ import { CalendarModule } from 'primeng/calendar';
     TooltipModule,
     ColorPickerModule,
     MultiSelectModule,
-    CalendarModule
-
+    CalendarModule,
   ]
 })
 export class PrimengModule { }
