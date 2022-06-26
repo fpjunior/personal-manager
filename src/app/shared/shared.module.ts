@@ -31,6 +31,7 @@ import UsuariosComponent from '../pages/usuarios/usuarios.component';
 import { TiposdespesasComponent } from '../pages/tiposdespesas/tiposdespesas.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
 
+
 @NgModule({
   declarations: [
     ExamplePipe,
@@ -82,6 +83,7 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
     FormsModule,
     ReactiveFormsModule,
     ButtonModule,
+
   ],
   exports: [
     PrimengModule,

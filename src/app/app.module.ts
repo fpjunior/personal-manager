@@ -19,6 +19,7 @@ import { BreadcrumbService } from "./shared/components/breadcrumbs/breadcrumbs.s
 import { ProgressBarService } from "./shared/components/progress-bar/progress-bar.service";
 import { SharedModule } from "./shared/shared.module";
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
