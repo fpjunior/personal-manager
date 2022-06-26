@@ -11,6 +11,7 @@ import { LoginService } from "./service/login.service";
 export class LoginComponent implements OnInit {
   @Input() isLoged;
   objUser: any;
+  UserName: string;
 
   constructor(
     private loginService: LoginService,
@@ -21,7 +22,9 @@ export class LoginComponent implements OnInit {
   }
 
   logOn(mail, password) {
-    let usuarioNow = this.objUser.filter((e) => {
+    this.UserName = mail.split('@')[0];
+    sessionStorage.setItem('user', this.UserName);
+      let usuarioNow = this.objUser.filter((e) => {
       return e.email.includes(mail);
     });
     this.loginService.login(usuarioNow[0]?.email, password);

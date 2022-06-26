@@ -12,13 +12,13 @@
   .top-header {
     margin: 0px !important;
     height: 50px;
-    background-color: white;
+    background-color: #3c708f;
     .brand {
       // background: #34495e;
-      background: #ffffff;
+      background: #3c708f;
       float: left;
-      padding-right: 10px;
-      width: 53px;
+      padding-right: 29px;
+      width: 211px;
       height: 50px;
       position: relative;
       a.logo {
@@ -31,7 +31,7 @@
       }
 
       .img-logo {
-        padding: 0px 0 3px 25px;
+        // padding: 0px 0 3px 25px;
         width: auto;
         height: 42px;
         cursor: pointer;
@@ -48,7 +48,7 @@
         height: 32px;
         position: absolute;
         right: -15px;
-        background-color: $cor-azul-medio-escuro-padrao;
+        background-color:#2d9cdb;
         color: var(--white-total);
 
         &:hover {
@@ -71,11 +71,11 @@
     }
 
     .router-diverg{
-      width:30px;
+      width: 30px;
       position: absolute;
-      left: 270px;
+      left: 696px;
       cursor: pointer;
-      margin-top: 5px;
+      margin-top: 10px;
     }
 
 
@@ -326,6 +326,12 @@
     }
   }
 
+  i.fas.fa-calculator.fa-2x {
+    color: white;
+    margin-left: 49px;
+    margin-top: 10px;
+  }
+
   /* ------------ TOP BAR THEME BUTTON USER ---------- */
 
   .p-splitbutton {
@@ -335,7 +341,7 @@
     border-radius: 5px;
     width: 200px;
     color: var(--white-total);
-    background-color: var(--white-total);
+    background-color: #3c708f;
     margin-top: 6px;
 
     .p-button-label{

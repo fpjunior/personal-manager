@@ -100,7 +100,12 @@ td#config {
 .btn-criar-usuario {
   height: 37px !important;
 }
+.p-dialog-header {
+
+  border-radius: 25px 25px 0px 0px;
+}
 :host ::ng-deep {
+
   .size-first-column {
     width: 77px;
   }

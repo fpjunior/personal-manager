@@ -3,8 +3,13 @@
 :host ::ng-deep {
   .wrapper-card.p-card {
     margin: 0em 1.7em;
-    min-height: 600px;
+    min-height: 81vh !important;
     max-height: 260vh;
+    background-color: #bccfd6bf;
+  }
+
+
+  .wrapper-card.p-card.p-component {
   }
 
   nav.nav.justify-content-center {
@@ -22,7 +27,7 @@
   background: #ffffff;
   color: #495057;
   box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 6px 16px 0 rgb(0 0 0 / 46%);
-  border-radius: 25px;
+  border-radius: 15px;
 }
 
 

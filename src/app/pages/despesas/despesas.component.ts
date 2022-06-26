@@ -220,8 +220,12 @@ export class DespesasComponent implements OnInit {
 
   saveDespesa(despesasForm: any): void {
     despesasForm = this.despesasForm.getRawValue();
-    despesasForm.type = despesasForm.type.name
-    this._despesaService.saveOrUpdateDespesa(despesasForm).subscribe(
+    const objForSave = {
+      ...despesasForm,
+      user: 'fpsjunior87',
+      type: despesasForm.type.name
+    }
+    this._despesaService.saveOrUpdateDespesa(objForSave).subscribe(
       (response) => {
         this.despesasForm.reset();
         this.showDialogDespesa = false;
@@ -253,7 +257,7 @@ export class DespesasComponent implements OnInit {
         this.dataToFillTable = Object.entries(despesa).map((e: any) => {
           e[1].code = e[0];
           return e[1];
-        });
+        }).filter((e)=> e.user == 'fpsjunior87')
         this.isLoading = false;
         this._progressBarService.changeProgressBar(false);
       },

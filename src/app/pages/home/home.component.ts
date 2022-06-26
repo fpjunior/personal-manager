@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  date1: Date;
+  es: any;
+  dateValue: Date;
 
-  ngOnInit() {
+  constructor() {
+
   }
 
+  ngOnInit() {
+
+}
 }
