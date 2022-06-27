@@ -12,4 +12,4 @@ export class ContasComponent implements OnInit {
   ngOnInit(): void {
   }
 
-}
+};

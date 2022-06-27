@@ -35,6 +35,12 @@
           </input-text>
         </div>
 
+        <div class="col-12">
+          <input-text label="Confirmação da Senha" [control]="usersForm.get('ConfirmPassword')" [requiredLabel]="true" formControlName="ConfirmPassword"
+            id="ConfirmPassword" [type]="'password'" pTooltip="Confirme sua senha">
+            </input-text>
+        </div>
+
 
          <div class="col-12">
           <input-mask [requiredLabel]="true" label="CPF" formControlName="cpf" id="cpf" type="'text'" [maxlength]=14
