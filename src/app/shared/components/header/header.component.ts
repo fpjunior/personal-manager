@@ -88,6 +88,13 @@ export class HeaderComponent implements OnInit {
         this.visibleSidebar = false;
         this.route.navigate(['home']);
       },
+    },    {
+      label: 'Contas',
+      icon: 'fa fa-address-book',
+      command: () => {
+        this.visibleSidebar = false;
+        this.route.navigate(['contas']);
+      },
     },
   ]);
 }
