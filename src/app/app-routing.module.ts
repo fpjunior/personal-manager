@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { DespesasComponent } from './pages/despesas/despesas.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ReceitasComponent } from './pages/receitas/receitas.component';
 import { TiposdespesasComponent } from './pages/tiposdespesas/tiposdespesas.component';
 import UsuariosComponent from './pages/usuarios/usuarios.component';
 
@@ -38,6 +39,11 @@ const routes: Routes = [
     path: "home",
     canActivate: [AuthGuard],
     component: HomeComponent,
+  },
+  {
+    path: "receitas",
+    canActivate: [AuthGuard],
+    component: ReceitasComponent,
   },
 ];
 
