@@ -7,6 +7,11 @@
 @import "fields";
 @import "functions";
 
+input.p-inputtext.p-component{
+  border-radius: 15px !important;
+
+}
+
 
   .pointer {
     cursor: pointer !important;

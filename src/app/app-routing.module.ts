@@ -1,3 +1,4 @@
+import { ContasComponent } from './pages/contas/contas.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
@@ -39,6 +40,11 @@ const routes: Routes = [
     path: "home",
     canActivate: [AuthGuard],
     component: HomeComponent,
+  },
+  {
+    path: "contas",
+    canActivate: [AuthGuard],
+    component: ContasComponent,
   },
   {
     path: "receitas",

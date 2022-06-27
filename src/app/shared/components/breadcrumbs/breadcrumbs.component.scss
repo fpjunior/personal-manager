@@ -20,7 +20,7 @@
 
     .p-breadcrumb {
       border: none;
-      background: transparent;
+      background: #376d8d;
       padding: 1em;
       padding-top: 0.7999em;
       height: 50px;
@@ -59,7 +59,7 @@
             text-decoration: none;
             -webkit-transition: all 0.3s ease-in-out 0s;
             transition: all 0.3s ease-in-out 0s;
-            border-radius: 25px;
+            border-radius: 15px;
             left: 5px;
           }
 
@@ -68,7 +68,7 @@
           }
 
           .p-menuitem-link {
-            border-radius: 25px;
+            border-radius: 15px;
             span {
               &:after {
                 // border-bottom: 1em solid rgba(0, 0, 0, 0);
@@ -182,7 +182,7 @@
             transition: all 0.2s ease-in-out 0s;
             margin-right: 25px;
             margin-left: 10px;
-            border-radius: 25px;
+            border-radius: 15px;
             &::after {
               // border-bottom: 1em solid rgba(0, 0, 0, 0);
               // border-left: 1.1em solid #e0e1e7;

@@ -7,6 +7,7 @@
       width: 488px;
       border-radius: 4px;
 
+
       .p-dialog-header {
         border: none;
         font-size: 16px;
@@ -15,6 +16,7 @@
         color: $cor-cinza-escuro-padrao;
         height: 1em;
         padding: 0em;
+          border-radius: 25px 25px 0px 0px;
       }
 
       .p-dialog-title {
@@ -29,6 +31,7 @@
         font-size: 14px;
         color: $cor-cinza-escuro-padrao;
         padding: 2em;
+
       }
     }
 

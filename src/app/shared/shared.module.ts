@@ -31,6 +31,8 @@ import UsuariosComponent from '../pages/usuarios/usuarios.component';
 import { TiposdespesasComponent } from '../pages/tiposdespesas/tiposdespesas.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
 import { ReceitasComponent } from '../pages/receitas/receitas.component';
+import { ContasComponent } from '../pages/contas/contas.component';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { ReceitasComponent } from '../pages/receitas/receitas.component';
     ProgressBarComponent,
     Example2FormComponent,
     InfoFieldErrorMessageComponent,
+    ContasComponent,
 
     // CORE
     StepsComponent,
@@ -84,6 +87,7 @@ import { ReceitasComponent } from '../pages/receitas/receitas.component';
     FormsModule,
     ReactiveFormsModule,
     ButtonModule,
+
   ],
   exports: [
     PrimengModule,
@@ -126,6 +130,7 @@ import { ReceitasComponent } from '../pages/receitas/receitas.component';
     DespesasComponent,
     CalculatorComponent,
     ReceitasComponent,
+    ContasComponent
   ],
   entryComponents: [],
   providers: [PrimengModule, ReactiveFormsModule],

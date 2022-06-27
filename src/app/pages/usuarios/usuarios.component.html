@@ -31,7 +31,7 @@
 
         <div class="col-12">
           <input-text label="Senha" [control]="usersForm.get('password')" [requiredLabel]="true" formControlName="password"
-            id="password" [type]="'text'" pTooltip="Digite a senha">
+            id="password" [type]="'password'" pTooltip="Digite a senha">
           </input-text>
         </div>
 
@@ -92,7 +92,7 @@
 
   <!-- aqui começa a tabela, tudo que é exibido dentro dela estão dentro das tag <table></table> -->
   <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
-    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[10,25,50]"
      [globalFilterFields]="['name','age','cpf']"
     [reorderableColumns]="true"  responsiveLayout="scroll" [loading]="loading" [scrollable]="true"
     scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
@@ -172,4 +172,9 @@
 <app-confirm-dialog class="confirmacao" header="Confirmação" (cancelEvent)="showCorfirmDialog = false"
 [showModal]="showCorfirmDialog" (confirmEvent)="confirmAction()"
 [content]="msgModalConfirm" (onClose)="closeConfirmDialog()">
+</app-confirm-dialog>
+
+<app-confirm-dialog class="confirmacao" header="Confirmação" (cancelEvent)="showCorfirmDialog2 = false"
+[showModal]="showCorfirmDialog2" (confirmEvent)="confirmAction2()"
+[content]="msgModalConfirm" (onClose)="closeConfirmDialog2()">
 </app-confirm-dialog>

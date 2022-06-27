@@ -1,25 +1,28 @@
 <div class="top-header" header>
   <div class="brand">
-    <!-- <a class="logo" href="./#/" target="_blank"> -->
-      <!-- <img class="img-logo" src="./assets/img/logoINFORMATA.svg" alt="Logo" /> -->
-    <!-- </a> -->
+    <a class="logo" href="./#/" target="_blank">
+       <img class="img-logo" src="./assets/svg/logo2.png" alt="Logo" />
+     </a>
     <div class="sidebar-toggle-box" icon="fas fa-bars" (click)="visibleSidebar = !visibleSidebar">
       <i class="fas fa-bars"></i>
     </div>
   </div>
 
-  <div (click)="showModalCalc = true" class= "router-diverg">
-    <i class="fas fa-calculator fa-2x" aria-hidden="true" ></i>
-  </div>
 
   <p-sidebar [blockScroll]="true" [showCloseIcon]="false" [(visible)]="visibleSidebar" [baseZIndex]="10000">
-		<p-panelMenu [multiple]="false" dir="rtl" iconPos="left" [model]="items" [style]="{'width':'239px'}">
-		</p-panelMenu>
-	</p-sidebar> -
+    <p-panelMenu [multiple]="false" dir="rtl" iconPos="left" [model]="items" [style]="{'width':'239px'}">
+    </p-panelMenu>
+  </p-sidebar>
 
-   <p-splitButton [label]="userName" (onClick)="usuario()" icon="fas fa-user fa-lg" class="headSplitButton"
-		[model]="user">
-	</p-splitButton>
+
+  <p-splitButton [label]="UserName" (onClick)="usuario()" icon="fas fa-user fa-lg" class="headSplitButton"
+  [model]="UserName">
+</p-splitButton>
+
+
+<div (click)="showModalCalc = true" class= "">
+  <i class="fas fa-calculator fa-2x" aria-hidden="true" ></i>
+</div>
 </div>
 
 <app-calculator (onClose)="this.showModalCalc = false;"  [showModalCalc]="showModalCalc"></app-calculator>

@@ -29,6 +29,7 @@ export class DespesasComponent implements OnInit {
   showDialogDespesa = false;
   showModalResponse = false;
   showCorfirmDialog = false;
+  showCorfirmDialog2 = false;
   immutableCols: string[] = [];
   despesas: Array<any>;
   dataToFillTable: any;
@@ -125,6 +126,21 @@ export class DespesasComponent implements OnInit {
     this.showCorfirmDialog = false;
   }
 
+
+  closeConfirmDialog2() {
+    this.showCorfirmDialog2 = false;
+  }
+
+  confirmAction2() {
+    if (this.isEdit) {
+      this.showDialogDespesa = false;
+      this.showCorfirmDialog2 = false;
+    } else {
+      this.showCorfirmDialog2 = false;
+      this.showDialogDespesa = false;
+    }
+  }
+
   verifyValue(){
     if(this.despesasForm.controls['value'].value === 0){
       this.labelError= "Valor não pode ser 0";
@@ -152,8 +168,8 @@ export class DespesasComponent implements OnInit {
   onHideDialog() { }
 
   openConfirmCancel() {
-    this.showCorfirmDialog = true;
-    this.msgModalConfirm = "Tem certeza que deseja cancelar? Alterações serão descartadas";
+    this.showCorfirmDialog2 = true;
+    this.msgModalConfirm = "Tem certeza que deseja sair? Dados digitados anteriormente não serão salvos.";
   }
 
   obterDataAtual() {
@@ -185,6 +201,8 @@ export class DespesasComponent implements OnInit {
     }
   }
 
+
+
   deleteDespesa() {
     this._progressBarService.changeProgressBar(true);
     this._despesaService.deleteDespesa(this.codeDespesa).subscribe(
@@ -202,8 +220,12 @@ export class DespesasComponent implements OnInit {
 
   saveDespesa(despesasForm: any): void {
     despesasForm = this.despesasForm.getRawValue();
-    despesasForm.type = despesasForm.type.name
-    this._despesaService.saveOrUpdateDespesa(despesasForm).subscribe(
+    const objForSave = {
+      ...despesasForm,
+      user: 'fpsjunior87',
+      type: despesasForm.type.name
+    }
+    this._despesaService.saveOrUpdateDespesa(objForSave).subscribe(
       (response) => {
         this.despesasForm.reset();
         this.showDialogDespesa = false;
@@ -235,7 +257,7 @@ export class DespesasComponent implements OnInit {
         this.dataToFillTable = Object.entries(despesa).map((e: any) => {
           e[1].code = e[0];
           return e[1];
-        });
+        }).filter((e)=> e.user == 'fpsjunior87')
         this.isLoading = false;
         this._progressBarService.changeProgressBar(false);
       },

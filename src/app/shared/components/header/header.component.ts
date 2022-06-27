@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   visibleSidebar = false;
   portalUser: PortalUser;
   showModalCalc: boolean = false;
-  userName = '';
+  UserName:string;
 
   constructor(private route: Router, private authService: AuthService, private userService: UserService,
   ) {
@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userName = sessionStorage.getItem('user');
+    this.UserName = sessionStorage.getItem('user')
     const user = JSON.parse(localStorage.getItem(USER));
     this.portalUser = user;
     this.initMenu();
@@ -88,6 +88,13 @@ export class HeaderComponent implements OnInit {
       command: () => {
         this.visibleSidebar = false;
         this.route.navigate(['home']);
+      },
+    },    {
+      label: 'Contas',
+      icon: 'fa fa-address-book',
+      command: () => {
+        this.visibleSidebar = false;
+        this.route.navigate(['contas']);
       },
     },
     {
