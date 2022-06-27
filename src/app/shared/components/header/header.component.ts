@@ -81,7 +81,8 @@ export class HeaderComponent implements OnInit {
         this.visibleSidebar = false;
         this.route.navigate(['tiposdespesas']);
       },
-    },    {
+    },
+    {
       label: 'Home',
       icon: 'fa fa-address-book',
       command: () => {
@@ -94,6 +95,14 @@ export class HeaderComponent implements OnInit {
       command: () => {
         this.visibleSidebar = false;
         this.route.navigate(['contas']);
+      },
+    },
+    {
+      label: 'Receitas',
+      icon: 'fa fa-address-book',
+      command: () => {
+        this.visibleSidebar = false;
+        this.route.navigate(['receitas']);
       },
     },
   ]);

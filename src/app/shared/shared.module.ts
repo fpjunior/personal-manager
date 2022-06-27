@@ -30,6 +30,7 @@ import { HomeComponent } from '../pages/home/home.component';
 import UsuariosComponent from '../pages/usuarios/usuarios.component';
 import { TiposdespesasComponent } from '../pages/tiposdespesas/tiposdespesas.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
+import { ReceitasComponent } from '../pages/receitas/receitas.component';
 import { ContasComponent } from '../pages/contas/contas.component';
 
 
@@ -77,6 +78,7 @@ import { ContasComponent } from '../pages/contas/contas.component';
     TiposdespesasComponent,
     DespesasComponent,
     CalculatorComponent,
+    ReceitasComponent,
   ],
 
   imports: [
@@ -127,6 +129,7 @@ import { ContasComponent } from '../pages/contas/contas.component';
     TiposdespesasComponent,
     DespesasComponent,
     CalculatorComponent,
+    ReceitasComponent,
     ContasComponent
   ],
   entryComponents: [],
