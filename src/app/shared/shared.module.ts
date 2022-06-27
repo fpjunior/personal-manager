@@ -30,6 +30,7 @@ import { HomeComponent } from '../pages/home/home.component';
 import UsuariosComponent from '../pages/usuarios/usuarios.component';
 import { TiposdespesasComponent } from '../pages/tiposdespesas/tiposdespesas.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
+import { ContasComponent } from '../pages/contas/contas.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
     ProgressBarComponent,
     Example2FormComponent,
     InfoFieldErrorMessageComponent,
+    ContasComponent,
 
     // CORE
     StepsComponent,
@@ -125,6 +127,7 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
     TiposdespesasComponent,
     DespesasComponent,
     CalculatorComponent,
+    ContasComponent
   ],
   entryComponents: [],
   providers: [PrimengModule, ReactiveFormsModule],
