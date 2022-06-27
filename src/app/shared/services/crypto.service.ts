@@ -2,11 +2,6 @@ import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
 import { StorageService } from './storage.service';
 
-const MAIN_KEY = "Informata.Moura.WebApp"
-
-// Isso excede o tamnho maximo do storage
-// const MAIN_KEY = CryptoJS.SHA256("Informata.Moura.WebApp", { outputLength: 256 })
-// const MAIN_KEY = CryptoJS.RIPEMD160("Informata.Moura.WebApp")
 
 export enum USER_ROLES {
   "GESTOR" = '0',
@@ -91,8 +86,7 @@ export class CryptoService {
    * @return void
    */
   private encryptMainKey() {
-    const mainKey = this.encryptAES(MAIN_KEY, MAIN_KEY);
-    this.storageService.genericBtoaSet("mainKey", mainKey)
+    // this.storageService.genericBtoaSet("mainKey", mainKey)
   }
 
   /**
