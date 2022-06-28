@@ -35,6 +35,12 @@
           </input-text>
         </div>
 
+        <div class="col-12">
+          <input-text label="Confirmar senha" [control]="usersForm.get('confirmPassword')" [requiredLabel]="true"  
+          id="confirmPassword" [type]="'password'" pToolTip="Confirme a senha" (change)="comparePassword()" [(ngModel)]="confirmPassword">
+        </input-text>
+        <label id="confirmPassword">{{labelErrorComparePassword}}</label>
+        </div>
 
          <div class="col-12">
           <input-mask [requiredLabel]="true" label="CPF" formControlName="cpf" id="cpf" type="'text'" [maxlength]=14
