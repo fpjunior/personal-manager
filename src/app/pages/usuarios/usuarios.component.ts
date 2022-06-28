@@ -368,7 +368,6 @@ export default class UsuariosComponent implements OnInit {
     this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
     this.rowData = event;
     this.showDialogUser = true;
-    this.inputsClear();
     this.usersForm.setValue(event);
   }
 
