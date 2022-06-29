@@ -19,13 +19,13 @@
 
         <div class="col-12">
           <input-text label="Email" [control]="usersForm.get('email')" [requiredLabel]="true" formControlName="email"
-            id="email" [type]="'text'" pTooltip="Digite o email do usuário">
+            id="email" [type]="'text'" pTooltip="Digite o email do usuário" (change)="mailPrefixCapture()">
           </input-text>
         </div>
 
         <div class="col-12">
           <input-text label="Usuário" [control]="usersForm.get('user')" [requiredLabel]="true" formControlName="user"
-            id="user" [type]="'text'" pTooltip="Digite a senha">
+            id="user" [type]="'text'" pTooltip="Digite a senha" [disabled]="true">
           </input-text>
         </div>
 

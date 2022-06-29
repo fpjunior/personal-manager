@@ -405,4 +405,11 @@ export default class UsuariosComponent implements OnInit {
       return;
     }
   }
+  mailPrefixCapture() {
+    let mail = this.usersForm.controls['email'].value;
+    let prefix = mail.split('@')[0];
+
+    this.usersForm.controls['user'].setValue(prefix)
+
+  }
 }
