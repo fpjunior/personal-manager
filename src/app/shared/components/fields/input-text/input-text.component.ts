@@ -22,7 +22,7 @@ export class InputTextComponent implements OnInit, ControlValueAccessor {
   @Input() type = 'text';
   @Input() minValue!: number;
   @Input() maxlength!: number;
-
+  
   @Input() requiredLabel = false;
   private innerValue: any;
   @Input() disabled = false;

@@ -48,6 +48,8 @@ export default class UsuariosComponent implements OnInit {
   isEdit: boolean;
   valido: any;
   labelError: string;
+  labelErrorComparePassword: string;
+  confirmPassword: string;
 
   constructor(
     private _breadcrumbService: BreadcrumbService,
@@ -391,5 +393,22 @@ export default class UsuariosComponent implements OnInit {
         this._progressBarService.changeProgressBar(false);
       }
     );
+  }
+  comparePassword() {
+    let password = this.usersForm.controls['password'].value;
+    let confirmPassword = this.confirmPassword;
+
+    if (password != confirmPassword) {
+      this.labelErrorComparePassword = "Senha incorreta";
+    } else {
+      return;
+    }
+  }
+  mailPrefixCapture() {
+    let mail = this.usersForm.controls['email'].value;
+    let prefix = mail.split('@')[0];
+
+    this.usersForm.controls['user'].setValue(prefix)
+
   }
 }
