@@ -54,7 +54,7 @@
     <span class="p-input-icon-left p-ml-auto input-filterGlobal">
       <i class="pi pi-search"></i>
       <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-        placeholder="Digite o Tipo da Despesa" />
+        placeholder="Digite o Nome da Despesa" />
     </span>
   </div>
   <p-button pRipple label="Criar Tipo Despesa" class="standard btn-criar-contato" type="button"
@@ -63,7 +63,7 @@
 </div>
 <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
   currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
-  [globalFilterFields]="['name','idade','cpf','email']" [reorderableColumns]="true" responsiveLayout="scroll"
+  [globalFilterFields]="['name']" [reorderableColumns]="true" responsiveLayout="scroll"
   [loading]="loading" [scrollable]="true" scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
 
   <ng-template pTemplate="header" let-columns>
