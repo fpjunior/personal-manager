@@ -37,7 +37,7 @@
 
         <div class="col-12">
           <input-text label="Confirmar senha" [control]="usersForm.get('confirmPassword')" [requiredLabel]="true"  
-          id="confirmPassword" [type]="'password'" pToolTip="Confirme a senha" (change)="comparePassword()" [(ngModel)]="confirmPassword">
+          id="confirmPassword" [type]="'password'" pToolTip="Confirme a senha" (change)="comparePassword()" formControlName="confirmPassword">
         </input-text>
         <label id="confirmPassword">{{labelErrorComparePassword}}</label>
         </div>

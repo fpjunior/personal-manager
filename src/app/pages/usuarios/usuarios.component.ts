@@ -65,20 +65,7 @@ export default class UsuariosComponent implements OnInit {
     this._breadcrumbService.setBreadcrumb(this.breadcrumbItems);
     this.getAllUsers();
   }
-
-
-  initForm(): void {
-    this.usersForm = this._formBuilder.group({
-      id: [""],
-      name: ["", [Validators.required]],
-      user: ["", [Validators.required]],
-      cpf: ["", [Validators.required]],
-      phone: ["", [Validators.required]],
-      password: ["", [Validators.required]],
-      email: ["", [Validators.required, Validators.email]],
-    });
-  }
-
+  
   verifyCpfLength(){
     if(this.usersForm.controls['cpf'].value.length === 14 && this.usersForm.controls['cpf'].value.slice(-1) != " "){
       this.cpfValidator();
@@ -221,6 +208,7 @@ export default class UsuariosComponent implements OnInit {
       phone: ["", [Validators.required]],
       password: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
+      confirmPassword: ["", [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -396,12 +384,12 @@ export default class UsuariosComponent implements OnInit {
   }
   comparePassword() {
     let password = this.usersForm.controls['password'].value;
-    let confirmPassword = this.confirmPassword;
+    let confirmPassword = this.usersForm.controls['confirmPassword'].value;
 
     if (password != confirmPassword) {
       this.labelErrorComparePassword = "Senha incorreta";
     } else {
-      return;
+      this.labelErrorComparePassword = "";
     }
   }
   mailPrefixCapture() {
