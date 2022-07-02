@@ -1,0 +1,25 @@
+@import "src/assets/styles/generalStyle.scss";
+
+.wrapper-card.p-card {
+  border: solid 10px red !important;
+  margin: 0em 1.7em;
+  min-height: 81vh !important;
+  max-height: 260vh;
+  background-color: #bccfd6bf;
+}
+:host ::ng-deep {
+  button.p-button.p-component.p-ripple {
+    width: 100%;
+    border-radius: 15px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+  img.img-logo {
+    width: 100%;
+  }
+  .container.grid {
+    text-align-last: center;
+  }
+}
