@@ -79,7 +79,7 @@
         {{col.header}}
 
 
-        <p-sortIcon *ngIf="col.field !== 'operation' && col.field !=='cor' [field]="col.field"></p-sortIcon>
+        <p-sortIcon *ngIf="col.field !== 'operation' && col.field !=='cor'" [field]="col.field"></p-sortIcon>
 
 
         <p-columnFilter *ngIf="col.field !== 'operation'" styleClass="button-operation" [type]="'text'"
