@@ -65,7 +65,21 @@ export default class UsuariosComponent implements OnInit {
     this._breadcrumbService.setBreadcrumb(this.breadcrumbItems);
     this.getAllUsers();
   }
-  
+
+  private _initForm(): void {
+    this.usersForm = this._formBuilder.group({
+      id: [""],
+      name: ["", [Validators.required]],
+      user: ["", [Validators.required]],
+      cpf: ["", [Validators.required]],
+      phone: ["", [Validators.required]],
+      password: ["", [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
+      confirmPassword: ["", [Validators.required, Validators.minLength(6)]],
+      dateRecord: [""],
+    });
+  }
+
   verifyCpfLength(){
     if(this.usersForm.controls['cpf'].value.length === 14 && this.usersForm.controls['cpf'].value.slice(-1) != " "){
       this.cpfValidator();
@@ -199,18 +213,7 @@ export default class UsuariosComponent implements OnInit {
     }, 2000);
   }
 
-  private _initForm(): void {
-    this.usersForm = this._formBuilder.group({
-      id: [""],
-      name: ["", [Validators.required]],
-      user: ["", [Validators.required]],
-      cpf: ["", [Validators.required]],
-      phone: ["", [Validators.required]],
-      password: ["", [Validators.required]],
-      email: ["", [Validators.required, Validators.email]],
-      confirmPassword: ["", [Validators.required, Validators.minLength(6)]],
-    });
-  }
+
 
   VerifyCpfLength() {
     if (this.usersForm.controls['cpf'].value.length === 11) {
@@ -337,6 +340,7 @@ export default class UsuariosComponent implements OnInit {
 
   saveUser(usersForm: any): void {
     usersForm = this.usersForm.getRawValue();
+    usersForm.dateRecord = new Date().toISOString();
     this._userService.saveOrUpdateUser(usersForm).subscribe(
       () => {
         this.usersForm.reset();

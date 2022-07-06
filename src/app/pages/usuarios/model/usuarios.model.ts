@@ -6,4 +6,5 @@ export interface UsersModel{
   email: string;
   phone: string;
   password: string;
+  dateRecord: string;
 }
