@@ -16,8 +16,8 @@
         </div>
 
         <div class="p-col-12">
-          <input-dropdown [control]="despesasForm.get('type')" class="tipo-dropdown" placeholder="SELECIONE"
-            [options]="typeOptions" optionLabel="name" formControlName="type" [requiredLabel]="true" [label]="'Categoria'">
+          <input-dropdown [control]="despesasForm.get('categoria')" class="tipo-dropdown" placeholder="SELECIONE"
+            [options]="categoriaOptions" optionLabel="name" formControlName="categoria" [requiredLabel]="true" [label]="'Categoria'">
           </input-dropdown>
         </div>
 
@@ -42,9 +42,9 @@
         </div>
 
         <div class="p-col-12">
-          <input-text label="Tipo de pagamento" [control]="despesasForm.get('typePayment')" [requiredLabel]="true"
-            formControlName="typePayment" id="typePayment" [type]="'text'" pTooltip="Digite o tipo de pagamento">
-          </input-text>
+          <input-dropdown [control]="despesasForm.get('typePayment')" class="tipo-dropdown" placeholder="SELECIONE"
+            [options]="pagament" optionLabel="name" formControlName="typePayment" [requiredLabel]="true" [label]="'Tipo de pagamento'">
+          </input-dropdown>
         </div>
 
         <div class="p-col-12 group-btn-actions">

@@ -12,6 +12,7 @@ import { TiposDespesasService } from "../tiposdespesas/service/tiposdespesas.ser
 import { tableArr } from "./model/tabela.model";
 import { DespesaService } from "./service/despesas.service";
 
+
 @Component({
   selector: "app-despesas",
   templateUrl: "./despesas.component.html",
@@ -33,14 +34,14 @@ export class DespesasComponent implements OnInit {
   immutableCols: string[] = [];
   despesas: Array<any>;
   dataToFillTable: any;
-  typeOptions: any;
+  categoriaOptions: any;
   despesa: any;
   despesasForm!: FormGroup;
   isEdit: boolean;
   contentResponse!: string;
   msgModalConfirm: string = "";
   isErrorResponse!: boolean;
-  valuetype;
+  valuecategoria;
   valuedescription;
   valuevalue;
   valuetypePayment;
@@ -50,6 +51,7 @@ export class DespesasComponent implements OnInit {
   rowData;
   labelError: string= "";
   dataAtual: string = "";
+  pagament: any;
 
   constructor(
     private _breadcrumbService: BreadcrumbService,
@@ -57,7 +59,15 @@ export class DespesasComponent implements OnInit {
     private _progressBarService: ProgressBarService,
     private _formBuilder: FormBuilder,
     private _tiposDespesasService: TiposDespesasService,
-  ) { }
+  ) {
+    this.pagament = [
+      { value: "1", name: 'PIX'},
+      { value: "2", name: 'CRÉDITO'},
+      { value: "3", name: 'DÉBITO'},
+      { value: "4", name: 'DINHEIRO'},
+      { value: "5", name: 'OUTROS'},
+  ];
+  }
 
   ngOnInit() {
     this._initForm();
@@ -83,7 +93,7 @@ export class DespesasComponent implements OnInit {
     this.isLoading = true;
     this._tiposDespesasService.getAllTiposDespesas().subscribe(
       (tiposdespesas: any) => {
-        this.typeOptions = Object.entries(tiposdespesas).map((e: any) => {
+        this.categoriaOptions = Object.entries(tiposdespesas).map((e: any) => {
           e[1].id = e[0];
           return e[1];
         });
@@ -98,7 +108,7 @@ export class DespesasComponent implements OnInit {
   private _initForm(): void {
     this.despesasForm = this._formBuilder.group({
       code: [""],
-      type: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
+      categoria: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
       description: ["", [Validators.required, Validators.maxLength(100)]],
       value: ["", [Validators.required, Validators.min(0), Validators.max(999999)]],
       typePayment: ["", [Validators.required, Validators.min(1), Validators.max(60)]],
@@ -223,7 +233,8 @@ export class DespesasComponent implements OnInit {
     const objForSave = {
       ...despesasForm,
       user: 'fpsjunior87',
-      type: despesasForm.type.name
+      categoria: despesasForm.categoria.name,
+      typePayment: despesasForm.typePayment.name,
     }
     this._despesaService.saveOrUpdateDespesa(objForSave).subscribe(
       (response) => {
