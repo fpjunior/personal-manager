@@ -36,7 +36,7 @@ export class DespesasComponent implements OnInit {
   dataToFillTable: any;
   categoriaOptions: any;
   despesa: any;
-  despesasForm!: FormGroup;
+  expenseForm!: FormGroup;
   isEdit: boolean;
   contentResponse!: string;
   msgModalConfirm: string = "";
@@ -51,7 +51,7 @@ export class DespesasComponent implements OnInit {
   rowData;
   labelError: string= "";
   dataAtual: string = "";
-  pagament: any;
+  payments: any;
 
   constructor(
     private _breadcrumbService: BreadcrumbService,
@@ -60,7 +60,7 @@ export class DespesasComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _tiposDespesasService: TiposDespesasService,
   ) {
-    this.pagament = [
+    this.payments = [
       { value: "1", name: 'PIX'},
       { value: "2", name: 'CRÉDITO'},
       { value: "3", name: 'DÉBITO'},
@@ -73,8 +73,8 @@ export class DespesasComponent implements OnInit {
     this._initForm();
     this.despesa = {};
     this._breadcrumbService.setBreadcrumb(this.breadcrumbItems);
-    this._getAllDespesas();
-    this._getAllTiposDespesas()
+    this._getAllExpense();
+    this._getAllExpenseType()
   }
 
 // a organização do código é importante para que o código seja mais fácil de manter
@@ -89,7 +89,7 @@ export class DespesasComponent implements OnInit {
       this.showModalResponse = false;
     }, 2000);
   }
-  private _getAllTiposDespesas() {
+  private _getAllExpenseType() {
     this.isLoading = true;
     this._tiposDespesasService.getAllTiposDespesas().subscribe(
       (tiposdespesas: any) => {
@@ -106,7 +106,7 @@ export class DespesasComponent implements OnInit {
   }
 
   private _initForm(): void {
-    this.despesasForm = this._formBuilder.group({
+    this.expenseForm = this._formBuilder.group({
       code: [""],
       categoria: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
       description: ["", [Validators.required, Validators.maxLength(100)]],
@@ -129,8 +129,8 @@ export class DespesasComponent implements OnInit {
     }, 2000);
   }
 
-  // essa funçao do tipo get faz com que a gente permita usar this.f['nomeDoCampo'].value ao invés de usar this.despesasForm.controls['nomeDoCampo'].value
-  get f(): { [key: string]: AbstractControl; } { return this.despesasForm.controls; }
+  // essa funçao do tipo get faz com que a gente permita usar this.f['nomeDoCampo'].value ao invés de usar this.expenseForm.controls['nomeDoCampo'].value
+  get f(): { [key: string]: AbstractControl; } { return this.expenseForm.controls; }
 
   closeConfirmDialog() {
     this.showCorfirmDialog = false;
@@ -152,7 +152,7 @@ export class DespesasComponent implements OnInit {
   }
 
   verifyValue(){
-    if(this.despesasForm.controls['value'].value === 0){
+    if(this.expenseForm.controls['value'].value === 0){
       this.labelError= "Valor não pode ser 0";
     }else{
       this.labelError= "";
@@ -188,8 +188,8 @@ export class DespesasComponent implements OnInit {
 }
 
   openDialogAddDespesa() {
-    this.despesasForm.reset();
-    this.despesasForm.setErrors({});
+    this.expenseForm.reset();
+    this.expenseForm.setErrors({});
     this.showDialogDespesa = true;
     this.dataAtual = "";
   }
@@ -205,7 +205,7 @@ export class DespesasComponent implements OnInit {
       this.showDialogDespesa = false;
       this.showCorfirmDialog = false;
     } else {
-      this.deleteDespesa();
+      this.deleteExpense();
       this.showCorfirmDialog = false;
       this.showDialogDespesa = false;
     }
@@ -213,13 +213,13 @@ export class DespesasComponent implements OnInit {
 
 
 
-  deleteDespesa() {
+  deleteExpense() {
     this._progressBarService.changeProgressBar(true);
-    this._despesaService.deleteDespesa(this.codeDespesa).subscribe(
+    this._despesaService.deleteExpense(this.codeDespesa).subscribe(
       (response) => {
         this._sucessResponse("Despesa deletada com sucesso");
         setTimeout(() => {
-          this._getAllDespesas();
+          this._getAllExpense();
         }, 2500);
       },
       (error) => {
@@ -228,21 +228,21 @@ export class DespesasComponent implements OnInit {
     );
   }
 
-  saveDespesa(despesasForm: any): void {
-    despesasForm = this.despesasForm.getRawValue();
+  saveExpense(expenseForm: any): void {
+    expenseForm = this.expenseForm.getRawValue();
     const objForSave = {
-      ...despesasForm,
+      ...expenseForm,
       user: 'fpsjunior87',
-      categoria: despesasForm.categoria.name,
-      typePayment: despesasForm.typePayment.name,
+      categoria: expenseForm.categoria.name,
+      typePayment: expenseForm.typePayment.name,
     }
     this._despesaService.saveOrUpdateDespesa(objForSave).subscribe(
       (response) => {
-        this.despesasForm.reset();
+        this.expenseForm.reset();
         this.showDialogDespesa = false;
         this._sucessResponse("Despesa salva com sucesso");
         setTimeout(() => {
-          this._getAllDespesas();
+          this._getAllExpense();
         }, 2000);
       },
       (error) => {
@@ -251,18 +251,18 @@ export class DespesasComponent implements OnInit {
     );
   }
 
-  editDespesa(event) {
+  editExpense(event) {
     this.isEdit = true;
     this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
     this.rowData = event;
     this.showDialogDespesa = true;
-    this.despesasForm.setValue(event);
+    this.expenseForm.setValue(event);
   }
 
-  private _getAllDespesas() {
+  private _getAllExpense() {
     this._progressBarService.changeProgressBar(true);
     this.isLoading = true;
-    this._despesaService.getAllDespesas().subscribe(
+    this._despesaService.getAllExpense().subscribe(
       (despesa: any) => {
         // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
         this.dataToFillTable = Object.entries(despesa).map((e: any) => {

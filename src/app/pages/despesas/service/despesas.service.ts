@@ -15,11 +15,11 @@ export class DespesaService extends RepositoryService<DespesasModel> {
     super(http, URL_DESPESAS);
   }
 
-   getAllDespesas(): Observable<any> {
+   getAllExpense(): Observable<any> {
     return this.http.get(`${URL_DESPESAS}.json`);
   }
 
-  deleteDespesa(codeDespesa) {
+  deleteExpense(codeDespesa) {
     return this.http
       .delete(`${URL_DESPESAS}/${codeDespesa}.json`)
       .pipe(map((responseApi: any) => responseApi));
