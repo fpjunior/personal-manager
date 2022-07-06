@@ -1,7 +1,7 @@
 export interface DespesasModel{
     code: number;
     description: string;
-    type: string;
+    categoria: string;
     value: string;
     typePayment: string;
     localEstablishment: string;
