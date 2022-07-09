@@ -3,10 +3,10 @@
     [(visible)]="showDialogDespesa" header="Nova Despesa">
 
     <div class="p-grid">
-      <form method="post" [formGroup]="despesasForm" (ngSubmit)="saveDespesa(despesasForm)">
+      <form method="post" [formGroup]="expenseForm" (ngSubmit)="saveExpense(expenseForm)">
 
         <div class="p-col-8 group-date">
-          <input-text label="Data" [control]="despesasForm.get('expenseDate')" [requiredLabel]="true"
+          <input-text label="Data" [control]="expenseForm.get('expenseDate')" [requiredLabel]="true"
             formControlName="expenseDate" id="input-data" [type]="'text'" [(ngModel)]="dataAtual" pTooltip="Digite a data">
           </input-text>
 
@@ -16,13 +16,13 @@
         </div>
 
         <div class="p-col-12">
-          <input-dropdown [control]="despesasForm.get('categoria')" class="tipo-dropdown" placeholder="SELECIONE"
+          <input-dropdown [control]="expenseForm.get('categoria')" class="tipo-dropdown" placeholder="SELECIONE"
             [options]="categoriaOptions" optionLabel="name" formControlName="categoria" [requiredLabel]="true" [label]="'Categoria'">
           </input-dropdown>
         </div>
 
         <div class="p-col-12">
-          <input-text label="Descrição" [control]="despesasForm.get('description')" formControlName="description"
+          <input-text label="Descrição" [control]="expenseForm.get('description')" formControlName="description"
             id="description" [type]="'text'" [requiredLabel]="true" pTooltip="Digite a descrição da despesa">
           </input-text>
         </div>
@@ -35,20 +35,20 @@
         </div>
 
         <div class="p-col-12">
-          <input-text label="Local do estabelicimento" [control]="despesasForm.get('localEstablishment')"
+          <input-text label="Local do estabelicimento" [control]="expenseForm.get('localEstablishment')"
             [requiredLabel]="true" formControlName="localEstablishment" id="localEstablishment" [type]="'text'"
             pTooltip="Digite o local do estabelicimento">
           </input-text>
         </div>
 
         <div class="p-col-12">
-          <input-dropdown [control]="despesasForm.get('typePayment')" class="tipo-dropdown" placeholder="SELECIONE"
-            [options]="pagament" optionLabel="name" formControlName="typePayment" [requiredLabel]="true" [label]="'Tipo de pagamento'">
+          <input-dropdown [control]="expenseForm.get('typePayment')" class="tipo-dropdown" placeholder="SELECIONE"
+            [options]="payments" optionLabel="name" formControlName="typePayment" [requiredLabel]="true" [label]="'Tipo de pagamento'">
           </input-dropdown>
         </div>
 
         <div class="p-col-12 group-btn-actions">
-          <p-button type="submit" icon="fa fa-check" [disabled]="this.despesasForm.invalid"
+          <p-button type="submit" icon="fa fa-check" [disabled]="this.expenseForm.invalid"
             class="standard tableButton-def btn-salvar" label="Salvar">
           </p-button>
           <p-button type="button" icon="fa fa-times" (onClick)="openConfirmCancel()" class="dismiss tableButton"
@@ -112,7 +112,7 @@
 
           <div *ngIf="col.field=='operation'" class="justify-content-center" style="font-size: 16px">
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
-              (click)="editDespesa(rowData)" pTooltip="Editar despesa"></p-button>
+              (click)="editExpense(rowData)" pTooltip="Editar despesa"></p-button>
             <p-button pRipple type="button" class="tableButton-def" icon="fas fa-trash"
               (click)="openConfirmDelete(rowData.code)" pTooltip="Deleter despesa"></p-button>
           </div>
