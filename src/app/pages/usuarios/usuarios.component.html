@@ -87,7 +87,7 @@
       <!-- essa tag abaixo apenas coloca um ícone dentro do input, o ícone da lupa -->
       <i class="pi pi-search"></i>
         <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-          placeholder="Digite o nome, idade ou cpf do usuário" />
+          placeholder="Digite o nome, usuário ou cpf do usuário" />
         </span>
       </div>
       <!-- aqui é o botão de criar usuário -->
@@ -146,8 +146,12 @@
         os dados na tabela sem utilizar o loop é chamando cada nome da coluna, mas em casos onde existe muitas colunas, isso não é melhor a fazer
       então passamos a utilizar o for pra percorrer um array com todos os dados necessário -->
         <td *ngFor="let col of columns; let i = index" [id]="col.field">
-          <span [pTooltip]="rowData[col.field]">
+          <span *ngIf="col.field !=='dateRecord'" [pTooltip]="rowData[col.field]">
             {{rowData[col.field]}}
+          </span>
+
+          <span *ngIf="col.field == 'dateRecord'" [pTooltip]="rowData[col.field]">
+            {{rowData[col.field] | date: 'dd/MM/yyyy'}}
           </span>
 
           <!-- aqui é exibido os botões de operações (editar - excluir) ele é exibido na última coluna, cada linha da tabela é exibido esse par de ícones-->
