@@ -456,6 +456,12 @@
       }
     }
   }
+  button.p-splitbutton-defaultbutton.p-button.p-component.p-button-icon-only {
+    display: flex;
+    justify-content: flex-start;
+    padding: 16px;
+}
+
   .p-splitbutton.p-buttonset .p-menu::after {
     /*Triangulo*/
     content: "";

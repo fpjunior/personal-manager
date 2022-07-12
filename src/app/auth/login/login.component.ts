@@ -25,7 +25,9 @@ export class LoginComponent implements OnInit {
 
   logOn(mail, password) {
     this.UserName = mail.split('@')[0];
-    this.cryptoService.setToEncrypt("user", mail)
+    // this.cryptoService.setToEncrypt("user", mail)
+    sessionStorage.setItem("user", this.UserName);
+    
 
     // sessionStorage.setItem('user', JSON.stringify(userEncrypt));
       let usuarioNow = this.objUser.filter((e) => {
