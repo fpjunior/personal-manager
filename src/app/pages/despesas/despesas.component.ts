@@ -52,8 +52,7 @@ export class DespesasComponent implements OnInit {
   labelError: string= "";
   dataAtual: string = "";
   payments: any;
-  valit;
-
+  wallet;
 
   constructor(
     private _breadcrumbService: BreadcrumbService,
