@@ -52,6 +52,8 @@ export class DespesasComponent implements OnInit {
   labelError: string= "";
   dataAtual: string = "";
   payments: any;
+  valit;
+
 
   constructor(
     private _breadcrumbService: BreadcrumbService,
@@ -67,7 +69,15 @@ export class DespesasComponent implements OnInit {
       { value: "4", name: 'DINHEIRO'},
       { value: "5", name: 'OUTROS'},
   ];
+
   }
+  dropdownOptions = [
+    { value: '1', label: 'BRADESCO' },
+    { value: '2', label: 'SATANDER' },
+    { value: '3', label: 'CARTEIRA' },
+    { value: '4', label: 'VALE ALIMENTAÇÃO' },
+    { value: '5', label: 'NUBANK' },
+    ];
 
   ngOnInit() {
     this._initForm();
