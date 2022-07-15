@@ -1,5 +1,9 @@
 
 :host ::ng-deep {
+
+  li.p-breadcrumb-home.ng-star-inserted {
+    width: 138px;
+}
   .breadcrumbs-component {
     span.p-menuitem-text.ng-star-inserted {
       color: #2d9cdb;
