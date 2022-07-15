@@ -50,6 +50,7 @@ export default class UsuariosComponent implements OnInit {
   labelError: string;
   labelErrorComparePassword: string;
   confirmPassword: string;
+  newDate = new Date().toISOString().split('T')[0].split('-').reverse().join('/');
 
   constructor(
     private _breadcrumbService: BreadcrumbService,
