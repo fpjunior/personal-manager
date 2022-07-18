@@ -125,7 +125,7 @@
 
           <!-- aqui é o ícone do filter, segue a mesma lógica do sort, sendo adicionado dentro do for -->
           <p-columnFilter *ngIf="col.field !== 'operation'" styleClass="button-operation" [type]="'text'"
-            [field]="col.field" [matchMode]="'contains'" display="menu" #filterTable>
+            [field]="col.field" [matchMode]="'contains'" display="menu" #filterTable [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
           </p-columnFilter>
 
           <!-- aqui finaliza a tag th da exibição de todas as hearders da tabela -->
