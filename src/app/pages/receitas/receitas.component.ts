@@ -44,7 +44,7 @@ export class ReceitasComponent implements OnInit {
   valuecategoria;
   valuedescription;
   valuevalue;
-  valuetypePayment;
+  valueAccount;
   valuelocalEstablishment;
   valueexpenseDate;
   codeReceita;
@@ -52,7 +52,7 @@ export class ReceitasComponent implements OnInit {
   labelError: string= "";
   dataAtual: string = "";
   fixed: any;
-  wallet;
+  conta;
 
   constructor(
     private _breadcrumbService: BreadcrumbService,
@@ -222,11 +222,16 @@ export class ReceitasComponent implements OnInit {
   saveReceita(receitaForm: any): void {
     receitaForm = this.receitaForm.getRawValue();
     receitaForm.dateRecord = new Date().toISOString();
-    this._receitaService.saveOrUpdateReceita(receitaForm).subscribe(
+    const objForSave = {
+      ...receitaForm,
+      account: receitaForm.account.label,
+      fixedIncome: receitaForm.fixedIncome.name,
+    }
+    this._receitaService.saveOrUpdateReceita(objForSave).subscribe(
       () => {
         this.receitaForm.reset();
         this.showDialogReceita = false;
-        this._sucessResponse("testando com sucesso");
+        this._sucessResponse("Receita cadastrada com sucesso");
         setTimeout(() => {
           this.getAllReceitas();
         }, 2000);
@@ -242,7 +247,7 @@ export class ReceitasComponent implements OnInit {
     this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
     this.rowData = event;
     this.showDialogReceita = true;
-    this.receitaForm.setValue(event);
+    this.receitaForm.patchValue(event);
   }
 
   getAllReceitas() {
@@ -254,7 +259,7 @@ export class ReceitasComponent implements OnInit {
         this.dataToFillTable = Object.entries(receita).map((e: any) => {
           e[1].code = e[0];
           return e[1];
-        }).filter((e)=> e.user == 'fpsjunior87')
+        })
         this.isLoading = false;
         this._progressBarService.changeProgressBar(false);
       },

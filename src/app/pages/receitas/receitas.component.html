@@ -16,7 +16,9 @@
         </div>
 
         <div class="p-col-12">
-          <input-dropdown [(ngModel)]="wallet" placeholder="SELECIONE" [options]="dropdownOptions" [label]="'Conta'"></input-dropdown>
+          <input-dropdown [control]="receitaForm.get('account')" class="tipo-dropdown" placeholder="SELECIONE"
+            [options]="dropdownOptions" optionLabel="label" formControlName="account" [requiredLabel]="true" [label]="'Conta'">
+          </input-dropdown>
         </div>
 
         <div class="p-col-12">
@@ -45,7 +47,7 @@
         </div>
 
         <div class="p-col-12 group-btn-actions">
-          <p-button type="submit" icon="fa fa-check" [disabled]="this.receitaForm.valid"
+          <p-button type="submit" icon="fa fa-check" [disabled]="this.receitaForm.invalid"
             class="standard tableButton-def btn-salvar" label="Salvar" (onClick)="saveReceita(receitaForm)">
           </p-button>
           <p-button type="button" icon="fa fa-times" (onClick)="openConfirmCancel()" class="dismiss tableButton"
