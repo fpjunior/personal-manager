@@ -1,3 +1,139 @@
-<p>
-  receitas works!
-</p>
+<div>
+  <p-dialog #dialogDrop (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
+    [(visible)]="showDialogReceita" header="Nova Receita">
+
+    <div class="p-grid">
+      <form method="post" [formGroup]="receitaForm">
+
+        <div class="p-col-8 group-date">
+          <input-text label="Data" [control]="receitaForm.get('expenseDate')" [requiredLabel]="true"
+            formControlName="expenseDate" id="input-data" [type]="'text'" [(ngModel)]="dataAtual" pTooltip="Digite a data">
+          </input-text>
+
+          <p-button (onClick)="obterDataAtual()" icon="fas fa-calendar-alt" type="submit"
+            class="standard tableButton-def btn-data" label="Hoje" pTooltip="Inserir a data de hoje">
+          </p-button>
+        </div>
+
+        <div class="p-col-12">
+          <input-dropdown [(ngModel)]="wallet" placeholder="SELECIONE" [options]="dropdownOptions" [label]="'Conta'"></input-dropdown>
+        </div>
+
+        <div class="p-col-12">
+          <input-text label="Descrição" [control]="receitaForm.get('description')" formControlName="description"
+            id="description" [type]="'text'" [requiredLabel]="true" pTooltip="Digite a descrição da despesa">
+          </input-text>
+        </div>
+
+        <div class="p-col-12">
+          <input-text label="Tipo Receita" [control]="receitaForm.get('typeRevenue')" formControlName="typeRevenue"
+            id="description" [type]="'text'" [requiredLabel]="true" pTooltip="Digite o tipo da receita">
+          </input-text>
+        </div>
+
+        <div class="p-col-12">
+          <label for="currency-us">Valor</label>
+          <p-inputNumber class="valor" formControlName="value" inputId="currency-us" mode="currency" currency="BRL" locale="pt-BR" (onBlur)="verifyValue()">
+          </p-inputNumber>
+          <label id="valor">{{labelError}}</label>
+        </div>
+
+        <div class="p-col-12">
+          <input-dropdown [control]="receitaForm.get('fixedIncome')" class="tipo-dropdown" placeholder="SELECIONE"
+            [options]="fixed" optionLabel="name" formControlName="fixedIncome" [requiredLabel]="true" [label]="'Receita fixa?'">
+          </input-dropdown>
+        </div>
+
+        <div class="p-col-12 group-btn-actions">
+          <p-button type="submit" icon="fa fa-check" [disabled]="this.receitaForm.valid"
+            class="standard tableButton-def btn-salvar" label="Salvar" (onClick)="saveReceita(receitaForm)">
+          </p-button>
+          <p-button type="button" icon="fa fa-times" (onClick)="openConfirmCancel()" class="dismiss tableButton"
+            label="Cancelar">
+          </p-button>
+        </div>
+      </form>
+    </div>
+
+
+  </p-dialog>
+
+  <div class="p-grid">
+    <div class="p-col-4 group-btn-input">
+      <span class="p-input-icon-left group-filter-global">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+          placeholder="Digite o tipo da Receita" />
+      </span>
+      <p-button pRipple label="Cadastrar Receita" class="standard btn-criar-despesa" type="button"
+        (click)="openDialogAddReceita()">
+      </p-button>
+    </div>
+  </div>
+
+  <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
+    [globalFilterFields]="['typeRevenue','value']" [reorderableColumns]="true" responsiveLayout="scroll" [loading]="isLoading"
+    [scrollable]="true" scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
+
+    <ng-template pTemplate="header" let-columns>
+
+      <tr>
+        <th id="config" class="size-first-column">
+          <button pButton type="button" class="tableButton-def" icon="fas fa-cog " (click)="showModalSelectColumns()"
+            pTooltip="Configurações"></button>
+        </th>
+
+        <th columnResizeMode="expand" *ngFor="let col of columns; let i = index" [pTooltip]="col.hintName"
+          tooltipPosition="top" [pSortableColumn]="col.field" pResizableColumn pReorderableColumn [id]="col.field">
+          {{col.header}}
+
+          <p-sortIcon *ngIf="col.field !== 'operation'" [field]="col.field"></p-sortIcon>
+
+          <p-columnFilter *ngIf="col.field !== 'operation'" styleClass="button-operation" [type]="'text'"
+            [field]="col.field" [matchMode]="'contains'" display="menu" #filterTable>
+          </p-columnFilter>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-dataToFillTable let-rowData let-rowIndex="rowIndex" let-columns="columns">
+      <tr>
+
+        <td class="size-first-column" id="config"></td>
+
+        <td *ngFor="let col of columns; let i = index" [id]="col.field">
+          <span [pTooltip]="rowData[col.field]">
+            {{rowData[col.field]}}
+          </span>
+
+          <div *ngIf="col.field=='operation'" class="justify-content-center" style="font-size: 16px">
+            <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
+              (click)="editReceita(rowData)" pTooltip="Editar receita"></p-button>
+            <p-button pRipple type="button" class="tableButton-def" icon="fas fa-trash"
+              (click)="openConfirmDelete(rowData.code)" pTooltip="Deletar receita"></p-button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<generic-response-dialog (onClose)="onHide()" (onShow)="onShow()" [showModal]="showModalResponse"
+  [isError]="isErrorResponse" [content]="contentResponse">
+</generic-response-dialog>
+
+<app-dialog-table-column (onClose)="onHideDialogTable()" [showModal]="showModalColumn" [fullCols]="fullCols"
+  [colsModified]="cols" [immutables]="immutableCols" (saveColumn)="editColumns($event)">
+</app-dialog-table-column>
+
+<app-confirm-dialog class="confirmacao" header="Confirmação" (cancelEvent)="showCorfirmDialog = false"
+  [showModal]="showCorfirmDialog" (confirmEvent)="confirmAction()" [content]="msgModalConfirm"
+  (onClose)="closeConfirmDialog()">
+</app-confirm-dialog>
+
+<app-confirm-dialog class="confirmacao" header="Confirmação" (cancelEvent)="showCorfirmDialog2 = false"
+[showModal]="showCorfirmDialog2" (confirmEvent)="confirmAction2()"
+[content]="msgModalConfirm" (onClose)="closeConfirmDialog2()">
+</app-confirm-dialog>
+
