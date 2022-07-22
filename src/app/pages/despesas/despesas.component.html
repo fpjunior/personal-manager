@@ -98,7 +98,7 @@
           <p-sortIcon *ngIf="col.field !== 'operation'" [field]="col.field"></p-sortIcon>
 
           <p-columnFilter *ngIf="col.field !== 'operation'" styleClass="button-operation" [type]="'text'"
-            [field]="col.field" [matchMode]="'contains'" display="menu" #filterTable>
+            [field]="col.field" [matchMode]="'contains'" display="menu" #filterTable [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
           </p-columnFilter>
         </th>
       </tr>
