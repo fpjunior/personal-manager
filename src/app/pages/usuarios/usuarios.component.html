@@ -31,13 +31,13 @@
 
         <div class="col-12">
           <input-text label="Senha" [control]="usersForm.get('password')" [requiredLabel]="true" formControlName="password"
-            id="password" [type]="'password'" pTooltip="Digite a senha">
+            id="password" [type]="'password'" pTooltip="Digite a senha" [pKeyFilter]="'alphanum'" [maxlength]=8>
           </input-text>
         </div>
 
         <div class="col-12">
           <input-text label="Confirmar senha" [control]="usersForm.get('confirmPassword')" [requiredLabel]="true"
-          id="confirmPassword" [type]="'password'" pToolTip="Confirme a senha" (change)="comparePassword()" formControlName="confirmPassword">
+          id="confirmPassword" [type]="'password'" pToolTip="Confirme a senha" (change)="comparePassword()" formControlName="confirmPassword" pKeyFilter="alphanum" [maxlength]=8>
         </input-text>
         <label id="confirmPassword">{{labelErrorComparePassword}}</label>
         </div>
