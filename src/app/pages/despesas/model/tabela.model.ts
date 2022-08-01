@@ -8,5 +8,7 @@ export const tableArr: TableStandard[] = [
   {hintName: 'Tipo de pagamento', field: 'typePayment', header: 'TIPO PAGAMENTO', showCol: true },
   {hintName: 'Estabelicimento onde foi gasto', field: 'localEstablishment', header: 'LOCAL', showCol: true },
   {hintName: 'Data de expedição', field: 'expenseDate', header: 'DATA', showCol: true },
+  {hintName: 'Despesa Fixa', field: 'fixed', header: 'Despesa Fixa', showCol: true },
+  {hintName: 'Carteira', field: 'wallet', header: 'Carteira', showCol: true },
   {hintName: 'Operações Disponíveis', field: 'operation', header: 'OPERAÇÕES', showCol: true }
 ];

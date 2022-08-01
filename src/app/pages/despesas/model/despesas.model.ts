@@ -6,6 +6,8 @@ export interface DespesasModel{
     typePayment: string;
     localEstablishment: string;
     expenseDate: string;
+    fixed: string;
+    wallet: string;
     status: boolean;
     user: string;
 }
