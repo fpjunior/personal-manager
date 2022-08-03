@@ -13,14 +13,14 @@
   --gradient-pink-color: rgba(210,53, 165);
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  outline: none;
-  transition: all 0.5s ease;
-  /* font-family: 'Press Start 2P', cursive; */
-}
+// * {
+//   padding: 0;
+//   margin: 0;
+//   box-sizing: border-box;
+//   outline: none;
+//   transition: all 0.5s ease;
+//   /* font-family: 'Press Start 2P', cursive; */
+// }
 
 /* .btn-number, .btn-oparator {
   font-family: 'Press Start 2P', cursive;
@@ -36,7 +36,7 @@ body {
 }
 
 .container {
-  height: 65vh;
+  height: 77vh;
   // width: 27vw;
   display: grid;
   place-items: center;
@@ -119,6 +119,20 @@ button {
   border-radius: 50%;
   margin: 5px;
   font-size: 1.5rem;
+  cursor: pointer;
+}
+
+#close{
+  height: 20px;
+  width: 20px;
+  background-color: #F2F2F2;
+  box-shadow: -5px -5px 12px var(--white-color),
+              5px 5px 12px rgba(0,0,0,.16);
+  border: none;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  margin-left: 260px;
+  font-size: 0.8rem;
   cursor: pointer;
 }
 

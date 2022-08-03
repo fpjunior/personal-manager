@@ -31,13 +31,13 @@
 
         <div class="col-12">
           <input-text label="Senha" [control]="usersForm.get('password')" [requiredLabel]="true" formControlName="password"
-            id="password" [type]="'password'" pTooltip="Digite a senha">
+            id="password" [type]="'password'" pTooltip="Digite a senha" [pKeyFilter]="'alphanum'" [maxlength]=8>
           </input-text>
         </div>
 
         <div class="col-12">
-          <input-text label="Confirmar senha" [control]="usersForm.get('confirmPassword')" [requiredLabel]="true"  
-          id="confirmPassword" [type]="'password'" pToolTip="Confirme a senha" (change)="comparePassword()" [(ngModel)]="confirmPassword">
+          <input-text label="Confirmar senha" [control]="usersForm.get('confirmPassword')" [requiredLabel]="true"
+          id="confirmPassword" [type]="'password'" pToolTip="Confirme a senha" (change)="comparePassword()" formControlName="confirmPassword" pKeyFilter="alphanum" [maxlength]=8>
         </input-text>
         <label id="confirmPassword">{{labelErrorComparePassword}}</label>
         </div>
@@ -87,7 +87,7 @@
       <!-- essa tag abaixo apenas coloca um ícone dentro do input, o ícone da lupa -->
       <i class="pi pi-search"></i>
         <input class="input-search" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-          placeholder="Digite o nome, idade ou cpf do usuário" />
+          placeholder="Digite o nome, usuário ou cpf do usuário" />
         </span>
       </div>
       <!-- aqui é o botão de criar usuário -->
@@ -99,7 +99,7 @@
   <!-- aqui começa a tabela, tudo que é exibido dentro dela estão dentro das tag <table></table> -->
   <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[10,25,50]"
-     [globalFilterFields]="['name','user','email']"
+     [globalFilterFields]="['name','user','email']" [sortOrder]="-1" [sortField]="'dateRecord'"
     [reorderableColumns]="true"  responsiveLayout="scroll" [loading]="loading" [scrollable]="true"
     scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
 
@@ -125,7 +125,7 @@
 
           <!-- aqui é o ícone do filter, segue a mesma lógica do sort, sendo adicionado dentro do for -->
           <p-columnFilter *ngIf="col.field !== 'operation'" styleClass="button-operation" [type]="'text'"
-            [field]="col.field" [matchMode]="'contains'" display="menu" #filterTable>
+            [field]="col.field" [matchMode]="'contains'" display="menu" #filterTable [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
           </p-columnFilter>
 
           <!-- aqui finaliza a tag th da exibição de todas as hearders da tabela -->
@@ -146,8 +146,12 @@
         os dados na tabela sem utilizar o loop é chamando cada nome da coluna, mas em casos onde existe muitas colunas, isso não é melhor a fazer
       então passamos a utilizar o for pra percorrer um array com todos os dados necessário -->
         <td *ngFor="let col of columns; let i = index" [id]="col.field">
-          <span [pTooltip]="rowData[col.field]">
+          <span *ngIf="col.field !=='dateRecord'" [pTooltip]="rowData[col.field]">
             {{rowData[col.field]}}
+          </span>
+
+          <span *ngIf="col.field == 'dateRecord'" [pTooltip]="rowData[col.field]">
+            {{rowData[col.field] | date: 'dd/MM/yyyy'}}
           </span>
 
           <!-- aqui é exibido os botões de operações (editar - excluir) ele é exibido na última coluna, cada linha da tabela é exibido esse par de ícones-->

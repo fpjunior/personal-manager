@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { UserService } from "src/app/pages/usuarios/service/usuarios.service";
+import { CryptoService } from "src/app/shared/services/crypto.service";
 import { LoginService } from "./service/login.service";
 
 @Component({
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    private _userService: UserService
+    private _userService: UserService,
+    private cryptoService: CryptoService
   ) {}
   ngOnInit(): void {
     this.getAllUsers();
@@ -23,7 +25,11 @@ export class LoginComponent implements OnInit {
 
   logOn(mail, password) {
     this.UserName = mail.split('@')[0];
-    sessionStorage.setItem('user', this.UserName);
+    // this.cryptoService.setToEncrypt("user", mail)
+    sessionStorage.setItem("user", this.UserName);
+    
+
+    // sessionStorage.setItem('user', JSON.stringify(userEncrypt));
       let usuarioNow = this.objUser.filter((e) => {
       return e.email.includes(mail);
     });

@@ -50,6 +50,7 @@ export default class UsuariosComponent implements OnInit {
   labelError: string;
   labelErrorComparePassword: string;
   confirmPassword: string;
+  newDate = new Date().toISOString().split('T')[0].split('-').reverse().join('/');
 
   constructor(
     private _breadcrumbService: BreadcrumbService,
@@ -66,8 +67,7 @@ export default class UsuariosComponent implements OnInit {
     this.getAllUsers();
   }
 
-
-  initForm(): void {
+  private _initForm(): void {
     this.usersForm = this._formBuilder.group({
       id: [""],
       name: ["", [Validators.required]],
@@ -76,6 +76,8 @@ export default class UsuariosComponent implements OnInit {
       phone: ["", [Validators.required]],
       password: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
+      confirmPassword: ["", [Validators.required, Validators.minLength(6)]],
+      dateRecord: [""],
     });
   }
 
@@ -212,17 +214,7 @@ export default class UsuariosComponent implements OnInit {
     }, 2000);
   }
 
-  private _initForm(): void {
-    this.usersForm = this._formBuilder.group({
-      id: [""],
-      name: ["", [Validators.required]],
-      user: ["", [Validators.required]],
-      cpf: ["", [Validators.required]],
-      phone: ["", [Validators.required]],
-      password: ["", [Validators.required]],
-      email: ["", [Validators.required, Validators.email]],
-    });
-  }
+
 
   VerifyCpfLength() {
     if (this.usersForm.controls['cpf'].value.length === 11) {
@@ -349,6 +341,7 @@ export default class UsuariosComponent implements OnInit {
 
   saveUser(usersForm: any): void {
     usersForm = this.usersForm.getRawValue();
+    usersForm.dateRecord = new Date().toISOString();
     this._userService.saveOrUpdateUser(usersForm).subscribe(
       () => {
         this.usersForm.reset();
@@ -396,12 +389,12 @@ export default class UsuariosComponent implements OnInit {
   }
   comparePassword() {
     let password = this.usersForm.controls['password'].value;
-    let confirmPassword = this.confirmPassword;
+    let confirmPassword = this.usersForm.controls['confirmPassword'].value;
 
     if (password != confirmPassword) {
       this.labelErrorComparePassword = "Senha incorreta";
     } else {
-      return;
+      this.labelErrorComparePassword = "";
     }
   }
   mailPrefixCapture() {

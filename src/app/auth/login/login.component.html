@@ -1,22 +1,35 @@
-<h1>Sessão encerrada</h1>
-  {{isLoged}}
- <div class="container grid">
+<div class="container grid">
+  <div class="p-col-2">
+    <img class="img-logo" src="./assets/svg/logo2.png" alt="Logo" />
+  </div>
+  <div class="p-col-2">
+    <h1>LOGIN</h1>
+  </div>
 
-<div class="p-col-12">
+  <!-- <div class="p-col-6">
   <span>Usuário: </span>
   <input type="text" #user class="form-control" placeholder="Usuario" required autofocus><br><br>
-</div>
+</div> -->
 
-<div class="p-col-12">
-  <span>Senha: </span>
-  <input type="password" #password class="form-control" placeholder="Senha" required><br><br>
-</div>
+  <div class="p-col-2">
+    <input-text #user placeholder="Usuario" autofocus id="user" [type]="'text'" pTooltip="Digite o nome do usuário">
+    </input-text>
+  </div>
 
+  <div class="p-col-2">
+    <input-text #password placeholder="Senha" autofocus id="password" [type]="'text'" pTooltip="Digite a senha">
+    </input-text>
+  </div>
 
-<div class="p-col-12">
-  <button class="btn btn-lg btn-primary btn-block" (click)="logOn(user.value,password.value)" type="submit">Acessar</button><br>
-  <button class="btn btn-lg btn-primary btn-block" (click)="criarUsuario(user.value,password.value)" type="submit">Criar Usuario</button><br>
-  <button class="btn btn-lg btn-primary btn-block" (click)="recuperarSenha(user.value)" type="submit">Recuperar Senha</button><br>
-</div>
+  <div class="p-col-2">
+
+    <p-button type="submit" [disabled]="false" (click)="logOn(user.value,password.value)" label="Logar">
+    </p-button>
+
+    <!-- <button class="btn btn-lg btn-primary btn-block" (click)="criarUsuario(user.value,password.value)"
+      type="submit">Criar Usuario</button><br>
+    <button class="btn btn-lg btn-primary btn-block" (click)="recuperarSenha(user.value)" type="submit">Recuperar
+      Senha</button><br> -->
+  </div>
 
 </div>

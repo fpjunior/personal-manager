@@ -15,9 +15,14 @@
   </p-sidebar>
 
 
-  <p-splitButton [label]="UserName" (onClick)="usuario()" icon="fas fa-user fa-lg" class="headSplitButton"
-  [model]="UserName">
+  <p-splitButton [label]="UserName" (onClick)="usuario()" icon="fas fa-user fa-lg"
+  [model]="user">
 </p-splitButton>
+
+<p-sidebar [blockScroll]="true" [showCloseIcon]="false" [(visible)]="visibleSidebar" [baseZIndex]="10000">
+  <p-panelMenu [multiple]="false" dir="rtl" iconPos="left" [model]="items" [style]="{'width':'239px'}">
+  </p-panelMenu>
+</p-sidebar>
 
 
 <div (click)="showModalCalc = true" class= "">

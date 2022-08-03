@@ -1,3 +1,18 @@
-<p>contas works!</p>
-<br>
-<p>Hello World!</p>
+<div class="p-grid">
+
+  <div >
+    <input-text label="Texto que vai aparecer em cima do input"  [requiredLabel]="true"
+      id="name_do_campo" [type]="'text'" pTooltip="Texto que vai aparecer quando passar o mouse">
+    </input-text>
+  </div>
+
+  <div class="buttons-actions">
+    <p-button type="submit" icon="fa fa-check"
+      class="standard tableButton-def" label="Salvar">
+    </p-button>
+    <p-button type="button" icon="fa fa-times"  class="dismiss tableButton"
+      label="Cancelar">
+    </p-button>
+  </div>
+
+</div>

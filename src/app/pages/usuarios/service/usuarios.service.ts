@@ -25,6 +25,7 @@ export class UserService extends RepositoryService<UsersModel> {
   }
 
   saveOrUpdateUser(contactObj: UsersModel): Observable<any> {
+    let dataRecord = new Date()
     if (contactObj.id) {
       return this.http
         .put<any>(`${URL_CONTACTS}/${contactObj.id}.json`, contactObj)

@@ -62,7 +62,7 @@
   </p-button>
 </div>
 <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
-  currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[5,10,25]"
+  currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas" [rowsPerPageOptions]="[10,25,50]"
   [globalFilterFields]="['name']" [reorderableColumns]="true" responsiveLayout="scroll"
   [loading]="loading" [scrollable]="true" scrollHeight="400px" [filterDelay]="1500" [resizableColumns]="true">
 
@@ -78,6 +78,7 @@
         tooltipPosition="top" [pSortableColumn]="col.field" pResizableColumn pReorderableColumn [id]="col.field">
         {{col.header}}
 
+        <p-sortIcon *ngIf="col.field !=='name'" [field]="col.field"></p-sortIcon>
 
         <p-sortIcon *ngIf="col.field == 'name'" [field]="col.field"></p-sortIcon>
 
