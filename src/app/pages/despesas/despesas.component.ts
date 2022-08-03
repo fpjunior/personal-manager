@@ -124,6 +124,7 @@ export class DespesasComponent implements OnInit {
       description: ["", [Validators.required, Validators.maxLength(100)]],
       value: ["", [Validators.required, Validators.min(0), Validators.max(999999)]],
       typePayment: ["", [Validators.required, Validators.min(1), Validators.max(60)]],
+      wallet: ["", [Validators.required, Validators.min(1), Validators.max(60)]],
       localEstablishment: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
       expenseDate: ["", [Validators.required, Validators.maxLength(10), Validators.minLength(10),]],
       fixed: [""],
@@ -163,6 +164,7 @@ export class DespesasComponent implements OnInit {
       this.showDialogDespesa = false;
     }
   }
+
 
   verifyValue(){
     if(this.expenseForm.controls['value'].value === 0){
@@ -248,6 +250,8 @@ export class DespesasComponent implements OnInit {
       user: 'fpsjunior87',
       categoria: expenseForm.categoria.name,
       typePayment: expenseForm.typePayment.name,
+      wallet: expenseForm.wallet.name,
+      fixed: expenseForm.fixed === null? 'NÃO' : 'SIM',
     }
     this._despesaService.saveOrUpdateDespesa(objForSave).subscribe(
       (response) => {
