@@ -47,19 +47,39 @@ td#code {
   width: 10%;
 }
 
-th#type,
-td#type {
+th#description,
+td#descrption{
   width: 12%;
 }
 
-th#description,
-td#descrption{
-  width: 17%;
+th#wallet,
+td#wallet{
+  width: 10%;
 }
 
 th#typePayment,
 td#typePayment {
-  width: 15%;
+  width: 10%;
+}
+
+th#categoria,
+td#categoria {
+  width: 10%;
+}
+
+th#localEstablishment,
+td#localEstablishment {
+  width: 12%;
+}
+
+th#expenseDate,
+td#expenseDate {
+  width: 12%;
+}
+
+th#fixed,
+td#fixed {
+  width: 12%;
 }
 
 th#value,

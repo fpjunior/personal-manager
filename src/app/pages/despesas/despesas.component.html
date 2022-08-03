@@ -21,9 +21,13 @@
           </input-dropdown>
         </div>
 
+
         <div class="p-col-12">
-          <input-dropdown [(ngModel)]="wallet" placeholder="SELECIONE" [options]="dropdownOptions" [label]="'carteira'"></input-dropdown>
+          <input-dropdown [control]="expenseForm.get('wallet')" class="tipo-dropdown" placeholder="SELECIONE"
+            [options]="dropdownOptions" optionLabel="name" formControlName="wallet" [requiredLabel]="true" [label]="'Carteira'">
+          </input-dropdown>
         </div>
+
 
         <div class="p-col-12">
           <input-text label="Descrição" [control]="expenseForm.get('description')" formControlName="description"
@@ -49,6 +53,11 @@
           <input-dropdown [control]="expenseForm.get('typePayment')" class="tipo-dropdown" placeholder="SELECIONE"
             [options]="payments" optionLabel="name" formControlName="typePayment" [requiredLabel]="true" [label]="'Tipo de pagamento'">
           </input-dropdown>
+        </div>
+
+        <div class="p-col-12">
+          <p-checkbox name="group1" formControlName="fixed"></p-checkbox>
+          <label for="ny">  Despesa fixa</label>
         </div>
 
         <div class="p-col-12 group-btn-actions">
