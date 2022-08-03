@@ -18,6 +18,7 @@ import { authInterceptorProvider } from "./core/interceptors/auth.interceptor";
 import { BreadcrumbService } from "./shared/components/breadcrumbs/breadcrumbs.service";
 import { ProgressBarService } from "./shared/components/progress-bar/progress-bar.service";
 import { SharedModule } from "./shared/shared.module";
+import {KeyFilterModule} from 'primeng/keyfilter';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { SharedModule } from "./shared/shared.module";
     CoreModule,
     ConfirmDialogModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    KeyFilterModule,
   ],
   providers: [
     BreadcrumbService,

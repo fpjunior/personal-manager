@@ -18,10 +18,11 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { TableModule } from 'primeng/table';
 import { StepsModule } from 'primeng/steps';
 import { InputMaskModule } from 'primeng/inputmask';
-import {TooltipModule} from 'primeng/tooltip';
-import {ColorPickerModule} from 'primeng/colorpicker';
-import {MultiSelectModule} from 'primeng/multiselect';
-import {CalendarModule} from 'primeng/calendar';
+import { TooltipModule } from 'primeng/tooltip';
+import { ColorPickerModule } from 'primeng/colorpicker';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { CalendarModule } from 'primeng/calendar';
+import { KeyFilterModule } from 'primeng/keyfilter';
 
 @NgModule({
   exports: [
@@ -49,6 +50,7 @@ import {CalendarModule} from 'primeng/calendar';
     ColorPickerModule,
     MultiSelectModule,
     CalendarModule,
+    KeyFilterModule
   ]
 })
 export class PrimengModule { }
