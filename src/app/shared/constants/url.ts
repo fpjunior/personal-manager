@@ -25,3 +25,4 @@ export const URL_RESTORE_CONFIG_CICLO = JSON_SERVER + '/restore'
 export const URL_CONTACTS = 'https://crud-angular-6d8c7-default-rtdb.firebaseio.com/contacts';
 export const URL_DESPESAS = 'https://crud-angular-6d8c7-default-rtdb.firebaseio.com/despesas';
 export const URL_TIPOS_DESPESAS = 'https://crud-angular-6d8c7-default-rtdb.firebaseio.com/tipo-despesas';
+export const URL_RECEITAS = 'https://crud-angular-6d8c7-default-rtdb.firebaseio.com/receitas';

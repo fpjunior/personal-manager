@@ -99,7 +99,7 @@ export class HeaderComponent implements OnInit {
     },
     {
       label: 'Receitas',
-      icon: 'fa fa-address-book',
+      icon: 'pi  pi-dollar',
       command: () => {
         this.visibleSidebar = false;
         this.route.navigate(['receitas']);
