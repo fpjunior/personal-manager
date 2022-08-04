@@ -392,7 +392,7 @@ export default class UsuariosComponent implements OnInit {
     let confirmPassword = this.usersForm.controls['confirmPassword'].value;
 
     if (password != confirmPassword) {
-      this.labelErrorComparePassword = "Senha incorreta";
+      this.labelErrorComparePassword = "as senhas não conferem";
     } else {
       this.labelErrorComparePassword = "";
     }
