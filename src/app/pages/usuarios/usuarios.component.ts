@@ -29,7 +29,7 @@ export default class UsuariosComponent implements OnInit {
   usersForm!: FormGroup;
   @Output() mudouValor = new EventEmitter();
   @ViewChild("campoInput") campoValorInput: ElementRef;
-  breadcrumbItems: MenuItem[] = [{ label: `Usuários` }];
+  breadcrumbItems: MenuItem[] = [{ label: `Usuário` }];
   valueName;
   valueCpf;
   valueEmail;
