@@ -9,6 +9,7 @@
         </input-text>
       </div> -->
 <div class="p-col-12">
+  <label class="label-icone" [ngClass]="{ required: true }">Ícone</label>
   <p-dropdown [options]="iconsOptions" formControlName="icon" optionLabel="codeIcon" [showClear]="true" placeholder="SELECIONE">
     <ng-template let-icon pTemplate="item">
         <div class="country-item country-item-value" >
