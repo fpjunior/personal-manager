@@ -1,7 +1,45 @@
-
 <div class="p-grid">
-  <div class="col-12">
-      <!-- <label for="basic">Basic</label> -->
-      <p-calendar [(ngModel)]="dateValue" view="month" dateFormat="mm/yy"></p-calendar>
+  <div class="p-col-2">
+    <input-dropdown class="tipo-dropdown" [placeholder]="mesAtual" [id]="'value'" [options]="dropdownOptionsMonth"
+      optionLabel="label" [(ngModel)]="mesAtual"></input-dropdown>
   </div>
+</div>
+
+<div style="display: flex;">
+
+  <p-card class="p-col-4">
+    <p-header>
+      <div class="p-grid" style="display: grid; justify-items: center;">
+        <div class="p-col-3 title-card">
+          <h1>Despesas</h1>
+        </div>
+        <div class="icon">
+          <i class="fas fa-arrow-alt-circle-down" style="color: red; font-size: 40px;" ></i>
+        </div>
+        <span style="color: red; font-size: 28px;
+        font-weight: bolder;">R$ {{sumDespesas}}</span>
+      </div>
+    </p-header>
+  </p-card>
+
+  <p-card class="p-col-4">
+    <p-header>
+      <div class="p-grid">
+        <div class="p-col-3 title-card">
+          <h1>Receitas</h1>
+        </div>
+      </div>
+    </p-header>
+  </p-card>
+
+  <p-card class="p-col-4">
+    <p-header>
+      <div class="p-grid">
+        <div class="p-col-3 title-card">
+          <h1>Saldo Atual</h1>
+        </div>
+      </div>
+    </p-header>
+  </p-card>
+
 </div>
