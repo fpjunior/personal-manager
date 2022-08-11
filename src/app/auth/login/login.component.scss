@@ -1,12 +1,19 @@
 @import "src/assets/styles/generalStyle.scss";
 
-.wrapper-card.p-card {
-  border: solid 10px red !important;
-  margin: 0em 1.7em;
-  min-height: 81vh !important;
-  max-height: 260vh;
-  background-color: #bccfd6bf;
+::ng-deep{
+  .wrapper-card.p-card {
+   width: 500px;
 }
+
+div {
+ display: grid !important;
+ justify-content: space-around !important;
+}
+p-button{
+ width: 180px;
+}
+}
+
 :host ::ng-deep {
   button.p-button.p-component.p-ripple {
     width: 100%;
@@ -21,5 +28,9 @@
   }
   .container.grid {
     text-align-last: center;
+  }
+  .img-logo{
+    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 6px 16px 0 rgb(0 0 0 / 46%);
+        border-radius: 15px !important;
   }
 }
