@@ -28,10 +28,10 @@ import { InputDropdownComponent } from './components/fields/input-dropdown/input
 import { InputMaskComponent } from './components/fields/input-mask/input-mask.component';
 import { HomeComponent } from '../pages/home/home.component';
 import UsuariosComponent from '../pages/usuarios/usuarios.component';
-import { TiposdespesasComponent } from '../pages/tiposdespesas/tiposdespesas.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
 import { ReceitasComponent } from '../pages/receitas/receitas.component';
 import { ContasComponent } from '../pages/contas/contas.component';
+import { CategoriasComponent } from '../pages/tiposdespesas/categorias.component';
 
 
 @NgModule({
@@ -75,7 +75,7 @@ import { ContasComponent } from '../pages/contas/contas.component';
     // PAGES
     HomeComponent,
     UsuariosComponent,
-    TiposdespesasComponent,
+    CategoriasComponent,
     DespesasComponent,
     CalculatorComponent,
     ReceitasComponent,
@@ -126,7 +126,7 @@ import { ContasComponent } from '../pages/contas/contas.component';
     // PAGES
     HomeComponent,
     UsuariosComponent,
-    TiposdespesasComponent,
+    CategoriasComponent,
     DespesasComponent,
     CalculatorComponent,
     ReceitasComponent,

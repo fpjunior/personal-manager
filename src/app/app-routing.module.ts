@@ -5,8 +5,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { DespesasComponent } from './pages/despesas/despesas.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ReceitasComponent } from './pages/receitas/receitas.component';
-import { TiposdespesasComponent } from './pages/tiposdespesas/tiposdespesas.component';
 import UsuariosComponent from './pages/usuarios/usuarios.component';
+import { CategoriasComponent } from './pages/tiposdespesas/categorias.component';
 
 const routes: Routes = [
   {
@@ -32,10 +32,10 @@ const routes: Routes = [
     component: DespesasComponent,
   },
   {
-    path: "tiposdespesas",
+    path: "categorias",
     canActivate: [AuthGuard],
-    component: TiposdespesasComponent,
-  },
+    component: CategoriasComponent,
+    },
   {
     path: "home",
     canActivate: [AuthGuard],

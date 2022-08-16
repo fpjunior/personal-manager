@@ -8,7 +8,7 @@ import { TableStandard } from "src/app/shared/models/table.model";
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 import { BreadcrumbService } from "../../shared/components/breadcrumbs/breadcrumbs.service";
 import { ProgressBarService } from "../../shared/components/progress-bar/progress-bar.service";
-import { TiposDespesasService } from "../tiposdespesas/service/tiposdespesas.service";
+import { CategoriasService } from "../tiposdespesas/service/tiposdespesas.service";
 import { tableArr } from "./model/tabela.model";
 import { ReceitaService } from "./service/receitas.service";
 
@@ -59,7 +59,7 @@ export class ReceitasComponent implements OnInit {
     private _receitaService: ReceitaService,
     private _progressBarService: ProgressBarService,
     private _formBuilder: FormBuilder,
-    private _tiposDespesasService: TiposDespesasService,
+    private _CategoriasService: CategoriasService,
   ) {
     this.fixed = [
       { value: "1", name: 'SIM'},

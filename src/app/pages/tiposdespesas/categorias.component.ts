@@ -6,7 +6,7 @@ import { ProgressBarService } from 'src/app/shared/components/progress-bar/progr
 import { TableStandard } from 'src/app/shared/models/table.model';
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 import { tableTipoDespesaModel } from './model/table.model';
-import { TiposDespesasService } from './service/tiposdespesas.service';
+import { CategoriasService } from './service/tiposdespesas.service';
 
 interface Country {
   name: string,
@@ -14,21 +14,21 @@ interface Country {
 }
 
 @Component({
-  selector: 'app-tiposdespesas',
-  templateUrl: './tiposdespesas.component.html',
-  styleUrls: ['./tiposdespesas.component.scss']
+  selector: 'app-categorias',
+  templateUrl: './categorias.component.html',
+  styleUrls: ['./categorias.component.scss']
 })
-export class TiposdespesasComponent implements OnInit {
+export class CategoriasComponent implements OnInit {
 
   breadcrumbItems: MenuItem[] = [{ label: `Tipo de Despesas` }];
-  showDialogtiposdespesas = false;
-  tiposdespesasForm!: FormGroup;
+  showDialogCategorias = false;
+  categoriasForm!: FormGroup;
   showModalColumn = false;
   showModalResponse = false;
   isEdit: boolean;
   showCorfirmDialog: boolean = false;
   showCorfirmDialog2: boolean = false;
-  idTiposDespesas;
+  idCategorias;
 
   cols = tableTipoDespesaModel;
   loading = false;
@@ -65,21 +65,20 @@ export class TiposdespesasComponent implements OnInit {
 
   constructor(
     private progressBarService: ProgressBarService,
-    private tiposdespesasService: TiposDespesasService,
     private breadcrumbService: BreadcrumbService,
     private formBuilder: FormBuilder,
-    private tiposDespesasService: TiposDespesasService,
+    private categoriasService: CategoriasService,
   ) {
   }
 
   ngOnInit() {
     this.initForm();
-    this.getAllTiposDespesas();
+    this.getAllCategorias();
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
   }
 
   initForm(): void {
-    this.tiposdespesasForm = this.formBuilder.group({
+    this.categoriasForm = this.formBuilder.group({
       code: [""],
       icon: ["", [Validators.required]],
       name: ["", [Validators.required]],
@@ -93,9 +92,9 @@ export class TiposdespesasComponent implements OnInit {
 
   onHideDialog() { }
 
-  openDialogAddTiposDespesas() {
-    this.tiposdespesasForm.reset();
-    this.showDialogtiposdespesas = true;
+  openDialogAddCategorias() {
+    this.categoriasForm.reset();
+    this.showDialogCategorias = true;
   }
 
   showModalSelectColumns() {
@@ -120,20 +119,20 @@ export class TiposdespesasComponent implements OnInit {
 
   confirmAction() {
     if (this.isEdit) {
-      this.showDialogtiposdespesas = false;
+      this.showDialogCategorias = false;
       this.showCorfirmDialog = false;
     } else {
-      this.deleteTiposDespesas();
+      this.deleteCategorias();
       this.showCorfirmDialog = false;
     }
   }
-  deleteTiposDespesas() {
+  deleteCategorias() {
     this.progressBarService.changeProgressBar(true);
-    this.tiposdespesasService.deleteTiposDespesas(this.idTiposDespesas).subscribe(
+    this.categoriasService.deleteCategorias(this.idCategorias).subscribe(
       () => {
         this.sucessResponse("Tipo Despesas deletado com sucesso");
         setTimeout(() => {
-          this.getAllTiposDespesas();
+          this.getAllCategorias();
         }, 2500);
       },
       (error) => {
@@ -142,13 +141,13 @@ export class TiposdespesasComponent implements OnInit {
     );
   }
 
-  getAllTiposDespesas() {
+  getAllCategorias() {
     // this.progressBarService.changeProgressBar(true);
     this.loading = true;
-    this.tiposDespesasService.getAllTiposDespesas().subscribe(
-      (tiposdespesas: any) => {
-        // this.dataToFillTable = Object.entries(TiposDespesas).map(e=> e[1]);
-        this.dataToFillTable = Object.entries(tiposdespesas).map((e: any) => {
+    this.categoriasService.getAllCategorias().subscribe(
+      (categorias: any) => {
+        // this.dataToFillTable = Object.entries(Categorias).map(e=> e[1]);
+        this.dataToFillTable = Object.entries(categorias).map((e: any) => {
           e[1].id = e[0];
           return e[1];
         });
@@ -196,11 +195,11 @@ export class TiposdespesasComponent implements OnInit {
 
   confirmAction2() {
     if (this.isEdit) {
-      this.showDialogtiposdespesas = false;
+      this.showDialogCategorias = false;
       this.showCorfirmDialog2 = false;
     } else {
       this.showCorfirmDialog2 = false;
-      this.showDialogtiposdespesas = false;
+      this.showDialogCategorias = false;
     }
   }
 
@@ -208,13 +207,13 @@ export class TiposdespesasComponent implements OnInit {
     this.isEdit = true;
     this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
     this.rowData = event;
-    this.showDialogtiposdespesas = true;
-    this.tiposdespesasForm.setValue(event);
+    this.showDialogCategorias = true;
+    this.categoriasForm.setValue(event);
   }
 
   openConfirmDelete(idToDelete: string) {
     this.msgModalConfirm = "Tem certeza que deseja excluir este registro?";
-    this.idTiposDespesas = idToDelete;
+    this.idCategorias = idToDelete;
     this.showCorfirmDialog = true;
   }
 
@@ -223,16 +222,16 @@ export class TiposdespesasComponent implements OnInit {
     this.msgModalConfirm = "Tem certeza que deseja sair? Dados digitados anteriormente não serão salvos.";
   }
 
-  saveTiposDespesas(tiposdespesasForm: any): void {
-    tiposdespesasForm = this.tiposdespesasForm.getRawValue();
-    tiposdespesasForm.icon = tiposdespesasForm.icon.codeIcon
-    this.tiposdespesasService.saveOrUpdateTiposDespesas(tiposdespesasForm).subscribe(
+  saveCategorias(categoriasForm: any): void {
+    categoriasForm = this.categoriasForm.getRawValue();
+    categoriasForm.icon = categoriasForm.icon.codeIcon
+    this.categoriasService.saveOrUpdateCategorias(categoriasForm).subscribe(
       () => {
-        this.tiposdespesasForm.reset();
-        this.showDialogtiposdespesas = false;
+        this.categoriasForm.reset();
+        this.showDialogCategorias = false;
         this.sucessResponse("Tipo de despesas salvo com sucesso");
         setTimeout(() => {
-          this.getAllTiposDespesas();
+          this.getAllCategorias();
         }, 2000);
       },
       (error) => {
