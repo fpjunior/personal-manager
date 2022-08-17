@@ -273,9 +273,8 @@ export class DespesasComponent implements OnInit {
     this.isEdit = true;
     this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
     this.rowData = event;
+    this.expenseForm.patchValue(event);
     this.showDialogDespesa = true;
-
-    this.expenseForm.controls["value"].setValue(event.value);
 
     this.payments.filter((payment) => {
       if (payment.name === event.typePayment) {
@@ -295,7 +294,7 @@ export class DespesasComponent implements OnInit {
       }
     });
 
-    this.expenseForm.setValue(event);
+
   }
 
   private _getAllExpense() {
