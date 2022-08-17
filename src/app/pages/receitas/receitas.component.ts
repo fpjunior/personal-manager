@@ -248,6 +248,11 @@ export class ReceitasComponent implements OnInit {
     this.rowData = event;
     this.showDialogReceita = true;
     this.receitaForm.patchValue(event);
+    this.dropdownOptions.filter((option) => {
+      if (option.label === event.account) {
+      this.receitaForm.controls["account"].setValue(option);
+      }
+    });
   }
 
   getAllReceitas() {
