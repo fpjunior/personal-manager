@@ -51,7 +51,6 @@ export class ReceitasComponent implements OnInit {
   rowData;
   labelError: string= "";
   dataAtual: string = "";
-  fixed: any;
   conta;
 
   constructor(
@@ -60,13 +59,8 @@ export class ReceitasComponent implements OnInit {
     private _progressBarService: ProgressBarService,
     private _formBuilder: FormBuilder,
     private _tiposDespesasService: TiposDespesasService,
-  ) {
-    this.fixed = [
-      { value: "1", name: 'SIM'},
-      { value: "2", name: 'NÃO'},
-  ];
+  ) { }
 
-  }
   dropdownOptions = [
     { value: '1', label: 'BRADESCO' },
     { value: '2', label: 'SATANDER' },
@@ -104,7 +98,7 @@ export class ReceitasComponent implements OnInit {
       typeRevenue: ["", [Validators.required, Validators.min(1), Validators.max(60)]],
       expenseDate: ["", [Validators.required, Validators.maxLength(10), Validators.minLength(10),]],
       account: ["", [Validators.required, Validators.min(1), Validators.max(60)]],
-      fixedIncome: ["", [Validators.required, Validators.min(1), Validators.max(60)]],
+      fixedIncome: [""],
     });
   }
 
@@ -225,7 +219,7 @@ export class ReceitasComponent implements OnInit {
     const objForSave = {
       ...receitaForm,
       account: receitaForm.account.label,
-      fixedIncome: receitaForm.fixedIncome.name,
+      fixedIncome: receitaForm.fixedIncome === null? 'NÃO' : 'SIM',
     }
     this._receitaService.saveOrUpdateReceita(objForSave).subscribe(
       () => {
