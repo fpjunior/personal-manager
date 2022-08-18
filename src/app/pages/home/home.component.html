@@ -5,3 +5,32 @@
       <p-calendar [(ngModel)]="dateValue" view="month" dateFormat="mm/yy"></p-calendar>
   </div>
 </div>
+<div style="display: flex;">
+  <p-card class="p-col-4">
+
+    <p-header>
+      <div class="p-grid" style="display: grid; justify-items: center;">
+        <div class="p-col-3 title-card">
+          <h1>Despesas</h1>
+        </div>
+        <div class="icon">
+          <i class="fas fa-arrow-alt-circle-down" style="font-size: 40px; color:red;"></i>
+        </div>
+        <span style="font-size: 28px; color: red; font-weight: bolder;">R$ 480,00</span>
+      </div>
+    </p-header>
+
+  </p-card>
+  <p-card class="p-col-4">
+    <div class="p-grid">
+      <h1>Receitas</h1>
+    </div>
+
+  </p-card>
+  <p-card class="p-col-4">
+    <div class="p-grid">
+      <h1>Saldo Atual</h1>
+    </div>
+
+  </p-card>
+</div>
