@@ -48,6 +48,7 @@ export default class UsuariosComponent implements OnInit {
   isEdit: boolean;
   valido: any;
   labelError: string;
+  labelErrorEmail: string;
   labelErrorComparePassword: string;
   confirmPassword: string;
   newDate = new Date().toISOString().split('T')[0].split('-').reverse().join('/');
@@ -95,6 +96,7 @@ export default class UsuariosComponent implements OnInit {
     this.usersForm.controls['phone'].clearValidators();
     this.usersForm.controls['email'].clearValidators();
     this.usersForm.controls['password'].clearValidators();
+    this.usersForm.controls['confirmPassword'].clearValidators();
     this.usersForm.controls['user'].clearValidators();
   }
 
@@ -103,6 +105,29 @@ export default class UsuariosComponent implements OnInit {
     this.labelError="CPF não possui 11 números";;
     }
   }
+
+  validatorEmail() {
+
+    let field= this.usersForm.controls['email'].value;
+    let teste = field.split('@');
+    let usuario = teste[0];
+    let dominio = teste[1];
+
+    if ((usuario.length >=1) &&
+        (dominio.length >=3) &&
+        (usuario.search("@")==-1) &&
+        (dominio.search("@")==-1) &&
+        (usuario.search(" ")==-1) &&
+        (dominio.search(" ")==-1) &&
+        (dominio.search(".")!=-1) &&
+        (dominio.indexOf(".") >=1)&&
+        (dominio.lastIndexOf(".") < dominio.length - 1)) {
+          this.labelErrorEmail="";
+    }
+    else{
+      this.labelErrorEmail="Email inválido";
+    }
+    }
 
   cpfValidator(): boolean {
 
@@ -401,7 +426,8 @@ export default class UsuariosComponent implements OnInit {
     let mail = this.usersForm.controls['email'].value;
     let prefix = mail.split('@')[0];
 
-    this.usersForm.controls['user'].setValue(prefix)
+    this.usersForm.controls['user'].setValue(prefix);
+    this.validatorEmail();
 
   }
 }

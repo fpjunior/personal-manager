@@ -21,6 +21,7 @@
           <input-text label="Email" [control]="usersForm.get('email')" [requiredLabel]="true" formControlName="email"
             id="email" [type]="'text'" pTooltip="Digite o email do usuário" (change)="mailPrefixCapture()">
           </input-text>
+          <label id="email">{{labelErrorEmail}}</label>
         </div>
 
         <div class="col-12">
