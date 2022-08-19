@@ -98,6 +98,8 @@ export default class UsuariosComponent implements OnInit {
     this.usersForm.controls['password'].clearValidators();
     this.usersForm.controls['confirmPassword'].clearValidators();
     this.usersForm.controls['user'].clearValidators();
+    this.labelErrorEmail="";
+    this.labelError="";
   }
 
   loseFocus(){
@@ -117,8 +119,6 @@ export default class UsuariosComponent implements OnInit {
         (dominio.length >=3) &&
         (usuario.search("@")==-1) &&
         (dominio.search("@")==-1) &&
-        (usuario.search(" ")==-1) &&
-        (dominio.search(" ")==-1) &&
         (dominio.search(".")!=-1) &&
         (dominio.indexOf(".") >=1)&&
         (dominio.lastIndexOf(".") < dominio.length - 1)) {
