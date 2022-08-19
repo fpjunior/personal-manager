@@ -2,6 +2,14 @@
 <div class="p-grid">
   <div class="col-12">
       <!-- <label for="basic">Basic</label> -->
-      <p-calendar [(ngModel)]="dateValue" view="month" dateFormat="mm/yy"></p-calendar>
+    <input-dropdown [options]="optionsMonth" [placeholder]="mesAtual" [(ngModel)]="mesAtual" optionLabel="label" [id]="'value'"> </input-dropdown>
+
+
+      <p-card header="Total despesas" valorDespesa [style]="{'width': '13rem', 'height':'5rem', 'margin-top':'1%', 'min-height':'6vh', 'margin-left':'13px'}">
+      </p-card>
+
+
+      <p-card header="Total de saída" [style]="{'width': '13rem', 'height':'5rem', 'margin-top':'1%', 'min-height':'6vh', 'margin-left':'13px'}">
+      </p-card>
   </div>
 </div>
