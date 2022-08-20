@@ -2,7 +2,8 @@
 <div class="p-grid">
   <div class="col-12">
       <!-- <label for="basic">Basic</label> -->
-      <p-calendar [(ngModel)]="dateValue" view="month" dateFormat="mm/yy"></p-calendar>
+    <input-dropdown [options]="optionsMonth" [placeholder]="mesAtual" [(ngModel)]="mesAtual" optionLabel="label" [id]="'value'"> </input-dropdown>
+
   </div>
 </div>
 <div style="display: flex;">
