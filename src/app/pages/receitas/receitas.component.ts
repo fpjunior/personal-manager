@@ -181,8 +181,8 @@ export class ReceitasComponent implements OnInit {
   openDialogAddReceita() {
     this.receitaForm.reset();
     this.receitaForm.setErrors({});
-    this.inputsClear();
     this.showDialogReceita = true;
+    this.inputsClear();
     this.dataAtual = "";
   }
 
