@@ -95,6 +95,13 @@ export class CategoriasComponent implements OnInit {
   openDialogAddCategorias() {
     this.categoriasForm.reset();
     this.showDialogCategorias = true;
+    this.inputsClear();
+  }
+
+  inputsClear(){
+    this.categoriasForm.controls['icon'].clearValidators();
+    this.categoriasForm.controls['name'].clearValidators();
+    this.categoriasForm.controls['cor'].clearValidators();
   }
 
   showModalSelectColumns() {

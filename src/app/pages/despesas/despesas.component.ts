@@ -206,6 +206,7 @@ export class DespesasComponent implements OnInit {
     this.expenseForm.reset();
     this.expenseForm.setErrors({});
     this.showDialogDespesa = true;
+    this.inputsClear();
     this.dataAtual = "";
   }
 
@@ -275,6 +276,18 @@ export class DespesasComponent implements OnInit {
     this.rowData = event;
     this.showDialogDespesa = true;
     this.expenseForm.setValue(event);
+  }
+
+  inputsClear(){
+    this.expenseForm.controls['categoria'].clearValidators();
+    this.expenseForm.controls['description'].clearValidators();
+    this.expenseForm.controls['value'].clearValidators();
+    this.expenseForm.controls['typePayment'].clearValidators();
+    this.expenseForm.controls['localEstablishment'].clearValidators();
+    this.expenseForm.controls['expenseDate'].clearValidators();
+    this.expenseForm.controls['fixed'].clearValidators();
+    this.expenseForm.controls['wallet'].clearValidators();
+
   }
 
   private _getAllExpense() {

@@ -182,6 +182,7 @@ export class ReceitasComponent implements OnInit {
     this.receitaForm.reset();
     this.receitaForm.setErrors({});
     this.showDialogReceita = true;
+    this.inputsClear();
     this.dataAtual = "";
   }
 
@@ -189,6 +190,15 @@ export class ReceitasComponent implements OnInit {
     this.msgModalConfirm = "Tem certeza que deseja excluir esta Receita?";
     this.codeReceita = codeToDelete;
     this.showCorfirmDialog = true;
+  }
+
+  inputsClear(){
+    this.receitaForm.controls['typeRevenue'].clearValidators();
+    this.receitaForm.controls['description'].clearValidators();
+    this.receitaForm.controls['value'].clearValidators();
+    this.receitaForm.controls['account'].clearValidators();
+    this.receitaForm.controls['expenseDate'].clearValidators();
+    this.receitaForm.controls['fixedIncome'].clearValidators();
   }
 
   confirmAction() {
