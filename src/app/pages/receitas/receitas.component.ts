@@ -8,7 +8,7 @@ import { TableStandard } from "src/app/shared/models/table.model";
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 import { BreadcrumbService } from "../../shared/components/breadcrumbs/breadcrumbs.service";
 import { ProgressBarService } from "../../shared/components/progress-bar/progress-bar.service";
-import { TiposDespesasService } from "../tiposdespesas/service/tiposdespesas.service";
+import { CategoriasService } from "../categorias/service/categorias.service";
 import { tableArr } from "./model/tabela.model";
 import { ReceitaService } from "./service/receitas.service";
 
@@ -58,7 +58,7 @@ export class ReceitasComponent implements OnInit {
     private _receitaService: ReceitaService,
     private _progressBarService: ProgressBarService,
     private _formBuilder: FormBuilder,
-    private _tiposDespesasService: TiposDespesasService,
+    private _categoriasService: CategoriasService,
   ) { }
 
   dropdownOptions = [
@@ -114,7 +114,7 @@ export class ReceitasComponent implements OnInit {
     }, 2000);
   }
 
-  // essa funçao do tipo get faz com que a gente permita usar this.f['nomeDoCampo'].value ao invés de usar this.receitaForm.controls['nomeDoCampo'].value
+  // essa funçao do categoria get faz com que a gente permita usar this.f['nomeDoCampo'].value ao invés de usar this.receitaForm.controls['nomeDoCampo'].value
   get f(): { [key: string]: AbstractControl; } { return this.receitaForm.controls; }
 
   closeConfirmDialog() {

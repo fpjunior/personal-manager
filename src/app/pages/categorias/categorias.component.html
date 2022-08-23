@@ -1,9 +1,9 @@
 <p-dialog #dialogDrop  (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
-  [baseZIndex]="10000" [(visible)]="showDialogtiposdespesas" header="Cadastrar Novo Tipo de Despesa">
+  [baseZIndex]="10000" [(visible)]="showDialogCategorias" header="Cadastrar Nova Categoria">
 
-  <form method="post" [formGroup]="tiposdespesasForm" (ngSubmit)="saveTiposDespesas(tiposdespesasForm)">
+  <form method="post" [formGroup]="categoriasForm" (ngSubmit)="saveCategorias(categoriasForm)">
 
-    <div class="p-grid form-tipos-despesas">
+    <div class="p-grid form-categorias">
       <!-- <div class="field col-3 form-applications">
         <input-text label="Código" formControlName="code" [disabled]="true" id="code" [type]="'text'">
         </input-text>
@@ -23,7 +23,7 @@
 </p-dropdown>
 </div>
       <div class="p-col-12">
-        <input-text label="name" maxlength="30" [control]="tiposdespesasForm.get('name')" [requiredLabel]="true" formControlName="name"
+        <input-text label="name" maxlength="30" [control]="categoriasForm.get('name')" [requiredLabel]="true" formControlName="name"
           id="name" [type]="'text'">
         </input-text>
       </div>
@@ -36,7 +36,7 @@
       </div>
 
       <div class="buttons-actions">
-        <p-button type="submit" icon="fa fa-check" [disabled]="this.tiposdespesasForm.invalid"
+        <p-button type="submit" icon="fa fa-check" [disabled]="this.categoriasForm.invalid"
           class="standard tableButton-def" label="Salvar">
         </p-button>
         <p-button type="button" icon="fa fa-times" (onClick)="openConfirmCancel()" class="dismiss tableButton"
@@ -58,8 +58,8 @@
         placeholder="Digite o Nome da Despesa" />
     </span>
   </div>
-  <p-button pRipple label="Criar Tipo Despesa" class="standard btn-criar-contato" type="button"
-    (click)="openDialogAddTiposDespesas()">
+  <p-button pRipple label="Categorias" class="standard btn-criar-contato" type="button"
+    (click)="openDialogAddCategorias()">
   </p-button>
 </div>
 <p-table #dt [value]="dataToFillTable" [columns]="cols" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
@@ -112,9 +112,9 @@
 
         <div *ngIf="col.field=='operation'" class="justify-content-center" style="font-size: 16px">
           <p-button pRipple type="button" class="tableButton-def" icon="fas fa-pencil-alt"
-            (click)="editCategoria(rowData)" pTooltip="Editar tipo de despesa"></p-button>
+            (click)="editCategoria(rowData)" pTooltip="Editar categoria"></p-button>
           <p-button pRipple type="button" class="tableButton-def" icon="fas fa-trash"
-            (click)="openConfirmDelete(rowData.id)" pTooltip="Deletar tipo de despesa"></p-button>
+            (click)="openConfirmDelete(rowData.id)" pTooltip="Deletar categoria"></p-button>
         </div>
       </td>
     </tr>

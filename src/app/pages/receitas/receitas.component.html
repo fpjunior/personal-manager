@@ -16,20 +16,20 @@
         </div>
 
         <div class="p-col-12">
-          <input-dropdown [control]="receitaForm.get('account')" class="tipo-dropdown" placeholder="SELECIONE"
+          <input-dropdown [control]="receitaForm.get('account')" class="categoria-dropdown" placeholder="SELECIONE"
             [options]="dropdownOptions" optionLabel="label" formControlName="account" [requiredLabel]="true" [label]="'Conta'">
           </input-dropdown>
         </div>
 
         <div class="p-col-12">
           <input-text label="Descrição" [control]="receitaForm.get('description')" formControlName="description"
-            id="description" [type]="'text'" [requiredLabel]="true" pTooltip="Digite a descrição da despesa">
+            id="description" [type]="'text'" [requiredLabel]="true" pTooltip="Digite a descrição da categorias">
           </input-text>
         </div>
 
         <div class="p-col-12">
           <input-text label="Tipo Receita" [control]="receitaForm.get('typeRevenue')" formControlName="typeRevenue"
-            id="description" [type]="'text'" [requiredLabel]="true" pTooltip="Digite o tipo da receita">
+            id="description" [type]="'text'" [requiredLabel]="true" pTooltip="Digite o categoria da receita">
           </input-text>
         </div>
 
@@ -64,9 +64,9 @@
       <span class="p-input-icon-left group-filter-global">
         <i class="pi pi-search"></i>
         <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-          placeholder="Digite o tipo da Receita" />
+          placeholder="Digite o categoria da Receita" />
       </span>
-      <p-button pRipple label="Cadastrar Receita" class="standard btn-criar-despesa" type="button"
+      <p-button pRipple label="Cadastrar Receita" class="standard btn-criar-categorias" type="button"
         (click)="openDialogAddReceita()">
       </p-button>
     </div>

@@ -58,9 +58,9 @@ export class HomeComponent implements OnInit {
     // this._progressBarService.changeProgressBar(true);
     // this.isLoading = true;
     this._despesaService.getAllExpense().subscribe(
-      (despesa: any) => {
+      (categorias: any) => {
         // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
-        this.totalDespesas = Object.entries(despesa).map((e: any) => {
+        this.totalDespesas = Object.entries(categorias).map((e: any) => {
           e[1].code = e[0];
           return e[1];
         })

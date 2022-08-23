@@ -8,7 +8,7 @@ import { TableStandard } from "src/app/shared/models/table.model";
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 import { BreadcrumbService } from "../../shared/components/breadcrumbs/breadcrumbs.service";
 import { ProgressBarService } from "../../shared/components/progress-bar/progress-bar.service";
-import { TiposDespesasService } from "../tiposdespesas/service/tiposdespesas.service";
+import { CategoriasService } from "../categorias/service/categorias.service";
 import { tableArr } from "./model/tabela.model";
 import { DespesaService } from "./service/despesas.service";
 
@@ -35,7 +35,7 @@ export class DespesasComponent implements OnInit {
   despesas: Array<any>;
   dataToFillTable: any;
   categoriaOptions: any;
-  despesa: any;
+  categorias: any;
   expenseForm!: FormGroup;
   isEdit: boolean;
   contentResponse!: string;
@@ -59,7 +59,7 @@ export class DespesasComponent implements OnInit {
     private _despesaService: DespesaService,
     private _progressBarService: ProgressBarService,
     private _formBuilder: FormBuilder,
-    private _tiposDespesasService: TiposDespesasService,
+    private _categoriasService: CategoriasService,
   ) {
 
   this.payments = [
@@ -84,7 +84,7 @@ export class DespesasComponent implements OnInit {
 
   ngOnInit() {
     this._initForm();
-    this.despesa = {};
+    this.categorias = {};
     this._breadcrumbService.setBreadcrumb(this.breadcrumbItems);
     this._getAllExpense();
     this._getAllExpenseType()
@@ -104,9 +104,9 @@ export class DespesasComponent implements OnInit {
   }
   private _getAllExpenseType() {
     this.isLoading = true;
-    this._tiposDespesasService.getAllTiposDespesas().subscribe(
-      (tiposdespesas: any) => {
-        this.categoriaOptions = Object.entries(tiposdespesas).map((e: any) => {
+    this._categoriasService.getAllCategorias().subscribe(
+      (categorias: any) => {
+        this.categoriaOptions = Object.entries(categorias).map((e: any) => {
           e[1].id = e[0];
           return e[1];
         });
@@ -144,7 +144,7 @@ export class DespesasComponent implements OnInit {
     }, 2000);
   }
 
-  // essa funçao do tipo get faz com que a gente permita usar this.f['nomeDoCampo'].value ao invés de usar this.expenseForm.controls['nomeDoCampo'].value
+  // essa funçao do categoria get faz com que a gente permita usar this.f['nomeDoCampo'].value ao invés de usar this.expenseForm.controls['nomeDoCampo'].value
   get f(): { [key: string]: AbstractControl; } { return this.expenseForm.controls; }
 
   closeConfirmDialog() {
@@ -302,9 +302,9 @@ export class DespesasComponent implements OnInit {
     this._progressBarService.changeProgressBar(true);
     this.isLoading = true;
     this._despesaService.getAllExpense().subscribe(
-      (despesa: any) => {
+      (categorias: any) => {
         // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
-        this.dataToFillTable = Object.entries(despesa).map((e: any) => {
+        this.dataToFillTable = Object.entries(categorias).map((e: any) => {
           e[1].code = e[0];
           return e[1];
         })
