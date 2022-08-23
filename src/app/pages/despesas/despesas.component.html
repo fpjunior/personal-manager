@@ -119,6 +119,11 @@
         <td class="size-first-column" id="config"></td>
 
         <td *ngFor="let col of columns; let i = index" [id]="col.field">
+          <span *ngIf="col.field == 'categoria'">
+            <i [class]="dataToFillTable.iconCategoria" aria-hidden="true">
+            </i>
+          </span>
+
           <span [pTooltip]="rowData[col.field]">
             {{rowData[col.field]}}
           </span>

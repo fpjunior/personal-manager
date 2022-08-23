@@ -252,6 +252,7 @@ export class DespesasComponent implements OnInit {
       categoria: expenseForm.categoria.name,
       typePayment: expenseForm.typePayment.name,
       wallet: expenseForm.wallet.name,
+      iconCategoria: expenseForm.categoria.icon,
       fixed: expenseForm.fixed === null? 'NÃO' : 'SIM',
     }
     this._despesaService.saveOrUpdateDespesa(objForSave).subscribe(
