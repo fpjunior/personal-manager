@@ -30,7 +30,6 @@
   width: 40%;
 }
 
-
 // essa parte ajusta a largura das colunas da tabela
 th#operation,
 td#operation {
@@ -92,15 +91,6 @@ td#value {
   font-size: 11.5px;
 }
 
-adicionar essa configuração no class no arquivo css
-
-.p-input-icon-left>i, .p-input-icon-right>i {
-top: 45%;
-} //esse código ajusta o icone de lupa no imput
-
-
-
-
 // esse código altera a cor do botão quando ele recebe foco com mouse
 .p-button:enabled:hover {
   background: #0d89ec;
@@ -144,6 +134,10 @@ p-button.standard.btn-criar-despesa {
 
 span.p-input-icon-left.group-filter-global {
   width: 100%;
+}
+
+.p-input-icon-left>i, .p-input-icon-right>i {
+  top: 45%;
 }
 
 .p-button {
