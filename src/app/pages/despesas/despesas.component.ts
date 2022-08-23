@@ -61,7 +61,8 @@ export class DespesasComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _tiposDespesasService: TiposDespesasService,
   ) {
-    this.payments = [
+
+  this.payments = [
       { value: "1", name: 'PIX'},
       { value: "2", name: 'CRÉDITO'},
       { value: "3", name: 'DÉBITO'},
@@ -272,8 +273,28 @@ export class DespesasComponent implements OnInit {
     this.isEdit = true;
     this.msgModalConfirm = 'Tem certeza que deseja sair? Alterações não serão salvas.';
     this.rowData = event;
+    this.expenseForm.patchValue(event);
     this.showDialogDespesa = true;
-    this.expenseForm.setValue(event);
+
+    this.payments.filter((payment) => {
+      if (payment.name === event.typePayment) {
+      this.expenseForm.controls["typePayment"].setValue(payment);
+      }
+    });
+
+    this.dropdownOptions.filter((option) => {
+      if (option.name === event.wallet) {
+      this.expenseForm.controls["wallet"].setValue(option);
+      }
+    });
+
+    this.categoriaOptions.filter((e) => {
+      if (e.name === event.categoria) {
+        this.expenseForm.get("categoria").setValue(e);
+      }
+    });
+
+
   }
 
   private _getAllExpense() {

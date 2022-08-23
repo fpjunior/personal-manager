@@ -74,12 +74,12 @@ export class HeaderComponent implements OnInit {
     },
 
     {
-      label: 'Tipos Despesas',
+      label: 'Categorias',
       icon: 'fas fa-list-ul fa-lg:1em',
       disabled: false,
       command: () => {
         this.visibleSidebar = false;
-        this.route.navigate(['tiposdespesas']);
+        this.route.navigate(['categorias']);
       },
     },
     {

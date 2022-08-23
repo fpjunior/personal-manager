@@ -41,9 +41,8 @@
         </div>
 
         <div class="p-col-12">
-          <input-dropdown [control]="receitaForm.get('fixedIncome')" class="tipo-dropdown" placeholder="SELECIONE"
-            [options]="fixed" optionLabel="name" formControlName="fixedIncome" [requiredLabel]="true" [label]="'Receita fixa?'">
-          </input-dropdown>
+          <p-checkbox name="group1" formControlName="fixedIncome"></p-checkbox>
+          <label for="ny">  Receita fixa</label>
         </div>
 
         <div class="p-col-12 group-btn-actions">
