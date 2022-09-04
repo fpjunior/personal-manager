@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DespesaService } from "../despesas/service/despesas.service";
+import { ReceitaService } from "../receitas/service/receitas.service";
 
 @Component({
   selector: "app-home",
@@ -13,7 +14,9 @@ export class HomeComponent implements OnInit {
   months;
   mesAtual;
   totalDespesas;
-  sumDespesas
+  sumDespesas;
+  sumReceipts: any;
+  totalReceipts: any;
 
   dropdownOptionsMonth = [
     { value: '1', label: 'Janeiro' },
@@ -30,12 +33,16 @@ export class HomeComponent implements OnInit {
     { value: '12', label: 'Dezembro' }
   ]
 
-  constructor(private _despesaService: DespesaService,) {}
+  constructor(
+    private _despesaService: DespesaService,
+    private _receiptsService: ReceitaService,
+    ) {}
 
   ngOnInit() {
     this.getActualMonth();
     this._getAllExpense();
-    this.verifyMonth()
+    this.verifyMonth();
+    this._getAllReceipts()
   }
 
   onDateChanged(event: any) {
@@ -69,6 +76,38 @@ export class HomeComponent implements OnInit {
       )
 
       this.sumDespesas = this.totalDespesas.reduce((acc, curr) => {
+        return acc + curr.value;
+      }
+      , 0).toString().replace('.', ',');
+
+        // .filter((e)=> e.user == 'fpsjunior87')
+        // this.isLoading = false;
+        // this._progressBarService.changeProgressBar(false);
+      },
+      (error) => {
+        // this._handleError(error);
+        // this.isLoading = false;
+        // this._handleError(error);
+        // this._progressBarService.changeProgressBar(false);
+      }
+    );
+  }
+
+  private _getAllReceipts() {
+    // this._progressBarService.changeProgressBar(true);
+    // this.isLoading = true;
+    this._receiptsService.getAllReceitas().subscribe(
+      (categorias: any) => {
+        // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
+        this.totalReceipts = Object.entries(categorias).map((e: any) => {
+          e[1].code = e[0];
+          return e[1];
+        })
+        this.totalReceipts.filter(e=>
+          e.expenseDate.split('/')[1].toString().includes((this.dateValue.getMonth() +1)).toString()
+      )
+
+      this.sumReceipts = this.totalReceipts.reduce((acc, curr) => {
         return acc + curr.value;
       }
       , 0).toString().replace('.', ',');
