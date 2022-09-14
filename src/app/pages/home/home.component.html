@@ -14,10 +14,10 @@
           <h1>Despesas</h1>
         </div>
         <div class="icon">
-          <i class="fas fa-arrow-alt-circle-down" style="color: red; font-size: 40px;" ></i>
+          <i class="fas fa-arrow-alt-circle-down color-expenses-icon"></i>
         </div>
         <span style="color: red; font-size: 28px;
-        font-weight: bolder;">R$ {{sumDespesas}}</span>
+        font-weight: bolder;">{{sumDespesas}}</span>
       </div>
     </p-header>
   </p-card>
@@ -29,20 +29,25 @@
           <h1>Receitas</h1>
         </div>
         <div class="icon">
-          <i class="fas fa-arrow-alt-circle-up" style="color: rgb(19, 136, 10); font-size: 40px;" ></i>
+          <i class="fas fa-arrow-alt-circle-up color-incoming-icon"></i>
         </div>
         <span style="color: green; font-size: 28px;
-        font-weight: bolder;">R$ {{sumReceipts}}</span>
+        font-weight: bolder;">{{sumReceipts}}</span>
       </div>
     </p-header>
   </p-card>
 
   <p-card class="p-col-4">
     <p-header>
-      <div class="p-grid">
-        <div class="p-col-3 title-card">
+      <div class="p-grid" style="display: grid; justify-items: center;">
+        <div class="p-col-3 title-card title-card-custom">
           <h1>Saldo Atual</h1>
         </div>
+        <div class="icon">
+          <i class="fas fa-wallet color-balance-icon"></i>
+        </div>
+        <span style="color: #5050fc; ; font-size: 28px;
+        font-weight: bolder;">R$1.500,00</span>
       </div>
     </p-header>
   </p-card>

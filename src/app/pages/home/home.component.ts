@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
       this.sumDespesas = this.totalDespesas.reduce((acc, curr) => {
         return acc + curr.value;
       }
-      , 0).toString().replace('.', ',');
+      , 0).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
 
         // .filter((e)=> e.user == 'fpsjunior87')
         // this.isLoading = false;
@@ -110,7 +110,7 @@ export class HomeComponent implements OnInit {
       this.sumReceipts = this.totalReceipts.reduce((acc, curr) => {
         return acc + curr.value;
       }
-      , 0).toString().replace('.', ',');
+      , 0).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
 
         // .filter((e)=> e.user == 'fpsjunior87')
         // this.isLoading = false;
