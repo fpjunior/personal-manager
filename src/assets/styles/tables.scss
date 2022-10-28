@@ -12,6 +12,14 @@
     color: transparent;
   }
 
+  .p-datatable .p-paginator-bottom {
+    border-width: 0 0 1px 0;
+    border-radius: 0;
+    padding-top: 0px;
+    border-bottom-width: 0px;
+    padding-bottom: 0px;
+}
+
   .p-datatable {
     @include fontStandard;
     .p-datatable-thead > tr > th {
