@@ -4,12 +4,12 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map, take, timeout } from "rxjs/operators";
 import { URL_CATEGORIAS } from "src/app/shared/constants/url";
-import { CategoriasModel } from "../model/categorias.model";
+import { ICategorias } from "../model/categorias.model";
 
 @Injectable({
   providedIn: "root",
 })
-export class CategoriasService extends RepositoryService<CategoriasModel> {
+export class CategoriasService extends RepositoryService<ICategorias> {
   constructor(public http: HttpClient) {
     super(http, URL_CATEGORIAS);
   }
@@ -24,7 +24,7 @@ export class CategoriasService extends RepositoryService<CategoriasModel> {
       .pipe(map((responseApi: any) => responseApi));
   }
 
-  saveOrUpdateCategorias(CategoriasObj: CategoriasModel): Observable<any> {
+  saveOrUpdateCategorias(CategoriasObj: ICategorias): Observable<any> {
     if (CategoriasObj.id) {
       return this.http
         .put<any>(`${URL_CATEGORIAS}/${CategoriasObj.id}.json`, CategoriasObj)

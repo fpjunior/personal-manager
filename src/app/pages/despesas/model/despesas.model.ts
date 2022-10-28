@@ -1,4 +1,4 @@
-export interface DespesasModel{
+export interface IDespesas{
     code: number;
     description: string;
     categoria: string;

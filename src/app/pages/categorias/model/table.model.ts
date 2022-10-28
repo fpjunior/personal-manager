@@ -1,6 +1,6 @@
 import { TableStandard } from "src/app/shared/models/table.model";
 
-export const tableCategoriasModel: TableStandard[] = [
+export const tableICategorias: TableStandard[] = [
   // {hintName: 'Código da categoria', field: 'code', header: 'CODE', showCol: true },
   {hintName: 'Icone da categoria', field: 'icon', header: 'Icone', showCol: true },
   {hintName: 'Categoria', field: 'name', header: 'Nome', showCol: true },

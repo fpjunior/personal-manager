@@ -9,7 +9,7 @@ import { ProgressBarService } from "src/app/shared/components/progress-bar/progr
 import { TableStandard } from "src/app/shared/models/table.model";
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 import { tableArr } from "./model/table.model";
-import { UsersModel } from "./model/usuarios.model";
+import { IUsers } from "./model/usuarios.model";
 import { UserService } from "./service/usuarios.service";
 
 @Component({

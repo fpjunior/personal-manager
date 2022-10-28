@@ -12,14 +12,12 @@ import { CategoriasService } from "../categorias/service/categorias.service";
 import { tableArr } from "./model/tabela.model";
 import { DespesaService } from "./service/despesas.service";
 
-
 @Component({
   selector: "app-despesas",
   templateUrl: "./despesas.component.html",
   styleUrls: ["./despesas.component.scss"],
 })
 export class DespesasComponent implements OnInit {
-  // config Table
   @Output() mudouValor = new EventEmitter();
   @ViewChild("campoInput") campoValorInput: ElementRef;
   breadcrumbItems: MenuItem[] = [{ label: `Despesas` }];
@@ -49,10 +47,10 @@ export class DespesasComponent implements OnInit {
   valueexpenseDate;
   codeDespesa;
   rowData;
-  labelError: string= "";
+  labelError: string = "";
   dataAtual: string = "";
   payments: any;
-  dropdownOptions:any;
+  dropdownOptions: any;
 
   constructor(
     private _breadcrumbService: BreadcrumbService,
@@ -62,25 +60,22 @@ export class DespesasComponent implements OnInit {
     private _categoriasService: CategoriasService,
   ) {
 
-  this.payments = [
-      { value: "1", name: 'PIX'},
-      { value: "2", name: 'CRÉDITO'},
-      { value: "3", name: 'DÉBITO'},
-      { value: "4", name: 'DINHEIRO'},
-      { value: "5", name: 'OUTROS'},
-  ];
-
-  this.dropdownOptions = [
-    { value: '1', name: 'BRADESCO'},
-    { value: '2', name: 'SATANDER'},
-    { value: '3', name: 'CARTEIRA'},
-    { value: '4', name: 'VALE ALIMENTAÇÃO'},
-    { value: '5', name: 'NUBANK'},
+    this.payments = [
+      { value: "1", name: 'PIX' },
+      { value: "2", name: 'CRÉDITO' },
+      { value: "3", name: 'DÉBITO' },
+      { value: "4", name: 'DINHEIRO' },
+      { value: "5", name: 'OUTROS' },
     ];
 
+    this.dropdownOptions = [
+      { value: '1', name: 'BRADESCO' },
+      { value: '2', name: 'SATANDER' },
+      { value: '3', name: 'CARTEIRA' },
+      { value: '4', name: 'VALE ALIMENTAÇÃO' },
+      { value: '5', name: 'NUBANK' },
+    ];
   }
-
-
 
   ngOnInit() {
     this._initForm();
@@ -90,9 +85,9 @@ export class DespesasComponent implements OnInit {
     this._getAllExpenseType()
   }
 
-// a organização do código é importante para que o código seja mais fácil de manter
-// por padrão os métodos privados vêm antes dos métodos públicos por ordem alfabética
-// a escrita do método privado deve iniciar com _
+  // a organização do código é importante para que o código seja mais fácil de manter
+  // por padrão os métodos privados vêm antes dos métodos públicos por ordem alfabética
+  // a escrita do método privado deve iniciar com_
   private _handleError(err: any): void {
     this.isErrorResponse = true;
     this.showModalResponse = true;
@@ -167,11 +162,11 @@ export class DespesasComponent implements OnInit {
   }
 
 
-  verifyValue(){
-    if(this.expenseForm.controls['value'].value === 0){
-      this.labelError= "Valor não pode ser 0";
-    }else{
-      this.labelError= "";
+  verifyValue() {
+    if (this.expenseForm.controls['value'].value === 0) {
+      this.labelError = "Valor não pode ser 0";
+    } else {
+      this.labelError = "";
     }
   }
 
@@ -200,8 +195,8 @@ export class DespesasComponent implements OnInit {
 
   obterDataAtual() {
     const date = new Date();
-    this.dataAtual= date.toLocaleDateString("pt-BR");
-}
+    this.dataAtual = date.toLocaleDateString("pt-BR");
+  }
 
   openDialogAddDespesa() {
     this.expenseForm.reset();
@@ -253,7 +248,7 @@ export class DespesasComponent implements OnInit {
       typePayment: expenseForm.typePayment.name,
       wallet: expenseForm.wallet.name,
       iconCategoria: expenseForm.categoria.icon,
-      fixed: expenseForm.fixed === null? 'NÃO' : 'SIM',
+      fixed: expenseForm.fixed === null ? 'NÃO' : 'SIM',
     }
     this._despesaService.saveOrUpdateDespesa(objForSave).subscribe(
       (response) => {
@@ -279,13 +274,13 @@ export class DespesasComponent implements OnInit {
 
     this.payments.filter((payment) => {
       if (payment.name === event.typePayment) {
-      this.expenseForm.controls["typePayment"].setValue(payment);
+        this.expenseForm.controls["typePayment"].setValue(payment);
       }
     });
 
     this.dropdownOptions.filter((option) => {
       if (option.name === event.wallet) {
-      this.expenseForm.controls["wallet"].setValue(option);
+        this.expenseForm.controls["wallet"].setValue(option);
       }
     });
 

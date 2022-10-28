@@ -1,4 +1,4 @@
-export interface CategoriasModel{
+export interface ICategorias{
   id: any;
   code:number;
   icon:string;

@@ -4,12 +4,12 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map, take, timeout } from "rxjs/operators";
 import { URL_RECEITAS } from "src/app/shared/constants/url";
-import { ReceitasModel } from "../model/receitas.model";
+import { IReceitas } from "../model/receitas.model";
 
 @Injectable({
   providedIn: "root",
 })
-export class ReceitaService extends RepositoryService<ReceitasModel> {
+export class ReceitaService extends RepositoryService<IReceitas> {
   constructor(public http: HttpClient) {
     super(http, URL_RECEITAS);
   }
@@ -24,7 +24,7 @@ export class ReceitaService extends RepositoryService<ReceitasModel> {
       .pipe(map((responseApi: any) => responseApi));
   }
 
-  saveOrUpdateReceita(receitaObj:ReceitasModel): Observable<any> {
+  saveOrUpdateReceita(receitaObj:IReceitas): Observable<any> {
     if (receitaObj.code) {
       return this.http
         .put<any>(`${URL_RECEITAS}/${receitaObj.code}.json`, receitaObj)

@@ -1,4 +1,4 @@
-export interface ReceitasModel{
+export interface IReceitas{
   code: number;
   description: string;
   value: string;

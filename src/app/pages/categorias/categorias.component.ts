@@ -5,13 +5,8 @@ import { BreadcrumbService } from 'src/app/shared/components/breadcrumbs/breadcr
 import { ProgressBarService } from 'src/app/shared/components/progress-bar/progress-bar.service';
 import { TableStandard } from 'src/app/shared/models/table.model';
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
-import { tableCategoriasModel } from './model/table.model';
+import { tableICategorias } from './model/table.model';
 import { CategoriasService } from './service/categorias.service';
-
-interface Country {
-  name: string,
-  code: string
-}
 
 @Component({
   selector: 'app-categorias',
@@ -30,7 +25,7 @@ export class CategoriasComponent implements OnInit {
   showCorfirmDialog2: boolean = false;
   idCategorias;
 
-  cols = tableCategoriasModel;
+  cols = tableICategorias;
   loading = false;
   dataToFillTable: any;
   isErrorResponse!: boolean;
@@ -38,38 +33,34 @@ export class CategoriasComponent implements OnInit {
   immutableCols: string[] = [];
   msgModalConfirm: string = "";
   rowData;
-  fullCols = tableCategoriasModel;
-  cor
+  fullCols = tableICategorias;
+  cor;
   iconsOptions: any[] = [
-    { codeIcon: 'fas fa-home'},
-    { codeIcon: 'fas fa-car'},
-    { codeIcon: 'fas fa-circle'},
-    { codeIcon: 'fas fa-phone'},
-    { codeIcon: 'fas fa-shopping-cart'},
-    { codeIcon: 'fas fa-briefcase'},
-    { codeIcon: 'fas fa-money-bill'},
-    { codeIcon: 'fas fa-bus'},
-    { codeIcon: 'fas fa-book'},
-    { codeIcon: 'fas fa-cart-arrow-down'},
-    { codeIcon: 'fas fa-coffee'},
-    { codeIcon: 'fas fa-film'},
-    { codeIcon: 'fas fa-graduation-cap'},
-    { codeIcon: 'fa fa-shopping-bag'},
-    { codeIcon: 'fas fa-taxi'},
-    { codeIcon: 'fas fa-medkit'},
-    { codeIcon: 'fas fa-grip-vertical'},
+    { codeIcon: 'fas fa-home' },
+    { codeIcon: 'fas fa-car' },
+    { codeIcon: 'fas fa-circle' },
+    { codeIcon: 'fas fa-phone' },
+    { codeIcon: 'fas fa-shopping-cart' },
+    { codeIcon: 'fas fa-briefcase' },
+    { codeIcon: 'fas fa-money-bill' },
+    { codeIcon: 'fas fa-bus' },
+    { codeIcon: 'fas fa-book' },
+    { codeIcon: 'fas fa-cart-arrow-down' },
+    { codeIcon: 'fas fa-coffee' },
+    { codeIcon: 'fas fa-film' },
+    { codeIcon: 'fas fa-graduation-cap' },
+    { codeIcon: 'fa fa-shopping-bag' },
+    { codeIcon: 'fas fa-taxi' },
+    { codeIcon: 'fas fa-medkit' },
+    { codeIcon: 'fas fa-grip-vertical' },
   ]
-
-  selectedCountry: string;
-  selectedCountries1: Country[];
 
   constructor(
     private progressBarService: ProgressBarService,
     private breadcrumbService: BreadcrumbService,
     private formBuilder: FormBuilder,
     private categoriasService: CategoriasService,
-  ) {
-  }
+  ) { }
 
   ngOnInit() {
     this.initForm();
@@ -142,11 +133,9 @@ export class CategoriasComponent implements OnInit {
   }
 
   getAllCategorias() {
-    // this.progressBarService.changeProgressBar(true);
     this.loading = true;
     this.categoriasService.getAllCategorias().subscribe(
       (categorias: any) => {
-        // this.dataToFillTable = Object.entries(Categorias).map(e=> e[1]);
         this.dataToFillTable = Object.entries(categorias).map((e: any) => {
           e[1].id = e[0];
           return e[1];
@@ -187,7 +176,6 @@ export class CategoriasComponent implements OnInit {
   closeConfirmDialog() {
     this.showCorfirmDialog = false;
   }
-
 
   closeConfirmDialog2() {
     this.showCorfirmDialog2 = false;

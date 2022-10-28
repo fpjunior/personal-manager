@@ -4,12 +4,12 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map, take, timeout } from "rxjs/operators";
 import { URL_DESPESAS } from "src/app/shared/constants/url";
-import { DespesasModel } from "../model/despesas.model";
+import { IDespesas } from "../model/despesas.model";
 
 @Injectable({
   providedIn: "root",
 })
-export class DespesaService extends RepositoryService<DespesasModel> {
+export class DespesaService extends RepositoryService<IDespesas> {
   constructor(public http: HttpClient) {
     super(http, URL_DESPESAS);
   }
@@ -24,7 +24,7 @@ export class DespesaService extends RepositoryService<DespesasModel> {
       .pipe(map((responseApi: any) => responseApi));
   }
 
-  saveOrUpdateDespesa(despesaObj: DespesasModel): Observable<any> {
+  saveOrUpdateDespesa(despesaObj: IDespesas): Observable<any> {
     if (despesaObj.code) {
       return this.http
         .put<any>(`${URL_DESPESAS}/${despesaObj.code}.json`, despesaObj)

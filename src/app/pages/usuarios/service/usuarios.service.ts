@@ -1,5 +1,5 @@
 import { RepositoryService } from "src/app/shared/services/repository.service";
-import { UsersModel } from "../model/usuarios.model";
+import { IUsers } from "../model/usuarios.model";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
@@ -9,7 +9,7 @@ import { URL_CONTACTS } from "src/app/shared/constants/url";
 @Injectable({
   providedIn: "root",
 })
-export class UserService extends RepositoryService<UsersModel> {
+export class UserService extends RepositoryService<IUsers> {
   constructor(public http: HttpClient) {
     super(http, URL_CONTACTS);
   }
@@ -24,7 +24,7 @@ export class UserService extends RepositoryService<UsersModel> {
       .pipe(map((responseApi: any) => responseApi));
   }
 
-  saveOrUpdateUser(contactObj: UsersModel): Observable<any> {
+  saveOrUpdateUser(contactObj: IUsers): Observable<any> {
     let dataRecord = new Date()
     if (contactObj.id) {
       return this.http
