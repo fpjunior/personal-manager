@@ -105,5 +105,13 @@ export class HeaderComponent implements OnInit {
         this.route.navigate(['receitas']);
       },
     },
+    {
+      label: 'Parâmetros',
+      icon: 'pi  pi-dollar',
+      command: () => {
+        this.visibleSidebar = false;
+        this.route.navigate(['parametros']);
+      },
+    },
   ]);
 }
