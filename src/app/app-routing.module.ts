@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ReceitasComponent } from './pages/receitas/receitas.component';
 import { CategoriasComponent } from './pages/categorias/categorias.component';
 import UsuariosComponent from './pages/usuarios/usuarios.component';
+import { ParametrosComponent } from './pages/parametros/parametros.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,11 @@ const routes: Routes = [
     path: "receitas",
     canActivate: [AuthGuard],
     component: ReceitasComponent,
+  },
+   {
+    path: "parametros",
+    canActivate: [AuthGuard],
+    component: ParametrosComponent,
   },
 ];
 

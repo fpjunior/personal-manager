@@ -32,6 +32,7 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
 import { ReceitasComponent } from '../pages/receitas/receitas.component';
 import { ContasComponent } from '../pages/contas/contas.component';
 import { CategoriasComponent } from '../pages/categorias/categorias.component';
+import { ParametrosComponent } from '../pages/parametros/parametros.component';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { CategoriasComponent } from '../pages/categorias/categorias.component';
     DespesasComponent,
     CalculatorComponent,
     ReceitasComponent,
+    ParametrosComponent
   ],
 
   imports: [
@@ -130,7 +132,8 @@ import { CategoriasComponent } from '../pages/categorias/categorias.component';
     DespesasComponent,
     CalculatorComponent,
     ReceitasComponent,
-    ContasComponent
+    ContasComponent,
+    ParametrosComponent
   ],
   entryComponents: [],
   providers: [PrimengModule, ReactiveFormsModule],
