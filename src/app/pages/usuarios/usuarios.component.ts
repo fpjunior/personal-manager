@@ -163,6 +163,13 @@ export default class UsuariosComponent implements OnInit {
       }
   }
 
+  anonimizarCPF(cpf: string): string {
+    const cpfSemMascara = cpf.replace(/\D/g, ''); // Remove a máscara do CPF
+    const inicioCPF = cpfSemMascara.substring(0, 3); // Obtém os três primeiros dígitos do CPF
+    const finalCPF = cpfSemMascara.substring(9); // Obtém os dois últimos dígitos do CPF
+    const cpfAnonimizado = inicioCPF + '.***.***-' + finalCPF; // Monta o CPF anonimizado com asteriscos
+    return cpfAnonimizado;
+  }
 
   closeConfirmDialog() {
     this.showCorfirmDialog = false;
@@ -373,6 +380,7 @@ export default class UsuariosComponent implements OnInit {
       (user: any) => {
         // this.dataToFillTable = Object.entries(user).map(e=> e[1]);
         this.dataToFillTable = Object.entries(user).map((e: any) => {
+          e[1].cpf= this.anonimizarCPF(e[1].cpf)
           e[1].id = e[0];
           return e[1];
         });
