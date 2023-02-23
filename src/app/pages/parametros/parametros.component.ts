@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParametrosComponent implements OnInit {
 
+  selectedCities: string[] = [];
   constructor() { }
 
   ngOnInit() {
+  }
+
+  teste(event){
+    console.log(event.checked)
   }
 
 }
