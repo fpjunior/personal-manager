@@ -36,106 +36,89 @@ import { ParametrosComponent } from '../pages/parametros/parametros.component';
 
 
 @NgModule({
-  declarations: [
-    ExamplePipe,
-    HeaderComponent,
-    BreadcrumbsComponent,
-    SpinnerComponent,
-    ExampleDirective,
-    ProgressBarComponent,
-    Example2FormComponent,
-    InfoFieldErrorMessageComponent,
-    ContasComponent,
-
-    // CORE
-    StepsComponent,
-
-    // DIALOGS
-    DialogTableColumnComponent,
-    ConfirmDialogComponent,
-    DialogPicklistComponent,
-    GenericResponseDialogComponent,
-
-    // CARDS
-    CardServicoAbertoComponent,
-    CardVariacaoPrecoComponent,
-
-    // TABLES
-    TableDashboardComponent,
-    TableGerenciaComponent,
-
-    //FIELDS
-    PicklistComponent,
-    InputTextComponent,
-    InputDropdownComponent,
-    InputMaskComponent,
-
-    // BUTTONS
-    GenericButtonsComponent,
-
-    // PAGES
-    HomeComponent,
-    UsuariosComponent,
-    CategoriasComponent,
-    DespesasComponent,
-    CalculatorComponent,
-    ReceitasComponent,
-    ParametrosComponent
-  ],
-
-  imports: [
-    CommonModule,
-    PrimengModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ButtonModule,
-
-  ],
-  exports: [
-    PrimengModule,
-    HeaderComponent,
-    SpinnerComponent,
-    FormsModule,
-    BreadcrumbsComponent,
-    ProgressBarComponent,
-    InputMaskComponent,
-    PicklistComponent,
-    InfoFieldErrorMessageComponent,
-
-
-    // CORE
-    StepsComponent,
-
-    // DIALOGS
-    DialogTableColumnComponent,
-    ConfirmDialogComponent,
-    GenericResponseDialogComponent,
-
-    // CARDS
-    CardServicoAbertoComponent,
-    CardVariacaoPrecoComponent,
-    // TABLES
-    TableDashboardComponent,
-    TableGerenciaComponent,
-
-    // BUTTONS
-    GenericButtonsComponent,
-
-    // FIELDS
-    InputTextComponent,
-    InputDropdownComponent,
-
-    // PAGES
-    HomeComponent,
-    UsuariosComponent,
-    CategoriasComponent,
-    DespesasComponent,
-    CalculatorComponent,
-    ReceitasComponent,
-    ContasComponent,
-    ParametrosComponent
-  ],
-  entryComponents: [],
-  providers: [PrimengModule, ReactiveFormsModule],
+    declarations: [
+        ExamplePipe,
+        HeaderComponent,
+        BreadcrumbsComponent,
+        SpinnerComponent,
+        ExampleDirective,
+        ProgressBarComponent,
+        Example2FormComponent,
+        InfoFieldErrorMessageComponent,
+        ContasComponent,
+        // CORE
+        StepsComponent,
+        // DIALOGS
+        DialogTableColumnComponent,
+        ConfirmDialogComponent,
+        DialogPicklistComponent,
+        GenericResponseDialogComponent,
+        // CARDS
+        CardServicoAbertoComponent,
+        CardVariacaoPrecoComponent,
+        // TABLES
+        TableDashboardComponent,
+        TableGerenciaComponent,
+        //FIELDS
+        PicklistComponent,
+        InputTextComponent,
+        InputDropdownComponent,
+        InputMaskComponent,
+        // BUTTONS
+        GenericButtonsComponent,
+        // PAGES
+        HomeComponent,
+        UsuariosComponent,
+        CategoriasComponent,
+        DespesasComponent,
+        CalculatorComponent,
+        ReceitasComponent,
+        ParametrosComponent
+    ],
+    imports: [
+        CommonModule,
+        PrimengModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ButtonModule,
+    ],
+    exports: [
+        PrimengModule,
+        HeaderComponent,
+        SpinnerComponent,
+        FormsModule,
+        BreadcrumbsComponent,
+        ProgressBarComponent,
+        InputMaskComponent,
+        PicklistComponent,
+        InfoFieldErrorMessageComponent,
+        // CORE
+        StepsComponent,
+        // DIALOGS
+        DialogTableColumnComponent,
+        ConfirmDialogComponent,
+        GenericResponseDialogComponent,
+        // CARDS
+        CardServicoAbertoComponent,
+        CardVariacaoPrecoComponent,
+        // TABLES
+        TableDashboardComponent,
+        TableGerenciaComponent,
+        // BUTTONS
+        GenericButtonsComponent,
+        // FIELDS
+        InputTextComponent,
+        InputDropdownComponent,
+        // PAGES
+        HomeComponent,
+        UsuariosComponent,
+        CategoriasComponent,
+        DespesasComponent,
+        CalculatorComponent,
+        ReceitasComponent,
+        ContasComponent,
+        ParametrosComponent
+    ],
+    providers: [PrimengModule, ReactiveFormsModule]
 })
 export class SharedModule {}
