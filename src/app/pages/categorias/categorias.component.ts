@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
 import { BreadcrumbService } from 'src/app/shared/components/breadcrumbs/breadcrumbs.service';
 import { ProgressBarService } from 'src/app/shared/components/progress-bar/progress-bar.service';
@@ -17,7 +17,7 @@ export class CategoriasComponent implements OnInit {
 
   breadcrumbItems: MenuItem[] = [{ label: `Categorias` }];
   showDialogCategorias = false;
-  categoriasForm!: FormGroup;
+  categoriasForm!: UntypedFormGroup;
   showModalColumn = false;
   showModalResponse = false;
   isEdit: boolean;
@@ -58,7 +58,7 @@ export class CategoriasComponent implements OnInit {
   constructor(
     private progressBarService: ProgressBarService,
     private breadcrumbService: BreadcrumbService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private categoriasService: CategoriasService,
   ) { }
 

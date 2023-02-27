@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import * as FORMAT from '@brazilian-utils/brazilian-utils';
 import * as REGEX from '../../shared/utils/regex.util'
 
@@ -72,13 +72,13 @@ export class ValidateFields {
     return !control?.valid && (control?.touched || control?.dirty);
   }
 
-  forceVerificationFormField(formGroup: FormGroup): void {
+  forceVerificationFormField(formGroup: UntypedFormGroup): void {
     Object.keys(formGroup.controls).forEach(field => {
       const control = formGroup.get(field);
 
-      if (control instanceof FormControl) {
+      if (control instanceof UntypedFormControl) {
         control.markAsTouched({ onlySelf: true });
-      } else if (control instanceof FormGroup) {
+      } else if (control instanceof UntypedFormGroup) {
         this.forceVerificationFormField(control);
       }
     });

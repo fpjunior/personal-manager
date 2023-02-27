@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 /**
  * formGroup?: FormGroup;
@@ -21,7 +21,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class GenericButtonsComponent {
 
-  @Input() formGroup?: FormGroup;
+  @Input() formGroup?: UntypedFormGroup;
   @Input() hiddenMiddle = false;
   @Input() disableSubmit = false;
 

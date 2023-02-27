@@ -2,7 +2,7 @@ import {
   Component, ElementRef, EventEmitter, OnInit,
   Output, ViewChild
 } from "@angular/core";
-import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { MenuItem } from "primeng/api";
 import { TableStandard } from "src/app/shared/models/table.model";
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
@@ -34,7 +34,7 @@ export class DespesasComponent implements OnInit {
   dataToFillTable: any;
   categoriaOptions: any;
   categorias: any;
-  expenseForm!: FormGroup;
+  expenseForm!: UntypedFormGroup;
   isEdit: boolean;
   contentResponse!: string;
   msgModalConfirm: string = "";
@@ -56,7 +56,7 @@ export class DespesasComponent implements OnInit {
     private _breadcrumbService: BreadcrumbService,
     private _despesaService: DespesaService,
     private _progressBarService: ProgressBarService,
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
     private _categoriasService: CategoriasService,
   ) {
 

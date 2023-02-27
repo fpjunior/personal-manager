@@ -1,7 +1,7 @@
 import {
   Component, ElementRef, EventEmitter, OnInit, Output, ViewChild
 } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { MenuItem } from "primeng/api";
 import { LoginService } from "src/app/auth/login/service/login.service";
 import { BreadcrumbService } from "src/app/shared/components/breadcrumbs/breadcrumbs.service";
@@ -26,7 +26,7 @@ export default class UsuariosComponent implements OnInit {
   dataToFillTable: any;
   users: Array<any>;
   user: any;
-  usersForm!: FormGroup;
+  usersForm!: UntypedFormGroup;
   @Output() mudouValor = new EventEmitter();
   @ViewChild("campoInput") campoValorInput: ElementRef;
   breadcrumbItems: MenuItem[] = [{ label: `Usuário` }];
@@ -56,7 +56,7 @@ export default class UsuariosComponent implements OnInit {
     private _breadcrumbService: BreadcrumbService,
     private _userService: UserService,
     private _progressBarService: ProgressBarService,
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
     private loginService: LoginService,
   ) { }
 
