@@ -37,12 +37,12 @@
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
     "webpack": "^4.41.2",
-    "zone.js": "~0.11.8"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "0.1102.19",
-    "@angular-devkit/build-angular": "~0.1102.19",
-    "@angular/cli": "~11.2.19",
+    "@angular-devkit/architect": "0.1202.18",
+    "@angular-devkit/build-angular": "~12.2.18",
+    "@angular/cli": "~12.2.18",
     "@angular/compiler-cli": "~15.2.0",
     "@angular/language-service": "~15.2.0",
     "@ngtools/webpack": "^15.2.0",
