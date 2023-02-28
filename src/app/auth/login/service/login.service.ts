@@ -1,4 +1,4 @@
-import * as firebase from "firebase/app";
+import * as firebase from "firebase/compat/app";
 import { AngularFireAuth } from "angularfire2/auth";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
