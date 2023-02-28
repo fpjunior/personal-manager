@@ -45,6 +45,7 @@
     "@angular/cli": "~11.2.19",
     "@angular/compiler-cli": "~15.2.0",
     "@angular/language-service": "~15.2.0",
+    "@ngtools/webpack": "^15.2.0",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
