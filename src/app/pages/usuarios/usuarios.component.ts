@@ -1,3 +1,4 @@
+import { User } from './../../core/user/model/user.model';
 import {
   Component, ElementRef, EventEmitter, OnInit, Output, ViewChild
 } from "@angular/core";
@@ -283,6 +284,14 @@ export default class UsuariosComponent implements OnInit {
     }
   }
 
+  AnonimizaUser(usuario: string) {
+    if(usuario.length > 3 ) {
+        return usuario.substr(0,3) + '*'.repeat(usuario.length - 3);
+    } else {
+        return usuario;
+    }
+}
+
   onHideDialog() { }
 
   openDialogAddUser() {
@@ -373,6 +382,7 @@ export default class UsuariosComponent implements OnInit {
       (user: any) => {
         // this.dataToFillTable = Object.entries(user).map(e=> e[1]);
         this.dataToFillTable = Object.entries(user).map((e: any) => {
+          e[1].user = this.AnonimizaUser(e[1].user);
           e[1].id = e[0];
           return e[1];
         });
