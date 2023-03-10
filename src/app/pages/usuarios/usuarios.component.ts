@@ -283,6 +283,24 @@ export default class UsuariosComponent implements OnInit {
     }
   }
 
+  AnonimizaName(name: string): string {
+  if (name.length <= 3) {
+    return name;
+  }
+  const parts: string[] = name.split(" ");
+  const maskedParts: string[] = parts.map((part: string, index: number) => {
+    if (part.length <= 3) {
+      return part;
+    }
+    if (index === 0) {
+      const masked: string = part.slice(3).replace(/./g, "*");
+      return `${part.slice(0, 3)}${masked}`;
+    }
+    return part.replace(/./g, "*");
+  });
+  return maskedParts.join(" ");
+}
+
   onHideDialog() { }
 
   openDialogAddUser() {
@@ -373,6 +391,7 @@ export default class UsuariosComponent implements OnInit {
       (user: any) => {
         // this.dataToFillTable = Object.entries(user).map(e=> e[1]);
         this.dataToFillTable = Object.entries(user).map((e: any) => {
+          e[1].name = this.AnonimizaName(e[1].name);
           e[1].id = e[0];
           return e[1];
         });
