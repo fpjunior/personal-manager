@@ -283,6 +283,14 @@ export default class UsuariosComponent implements OnInit {
     }
   }
 
+  anonymizeEmail(email: string): string {
+    const [username, domain] = email.split("@");
+
+    const maskedUsername = username.slice(0, 3).concat("*".repeat(username.length - 3));
+
+    return `${maskedUsername}@${domain}`;
+  }
+
   onHideDialog() { }
 
   openDialogAddUser() {
@@ -373,6 +381,7 @@ export default class UsuariosComponent implements OnInit {
       (user: any) => {
         // this.dataToFillTable = Object.entries(user).map(e=> e[1]);
         this.dataToFillTable = Object.entries(user).map((e: any) => {
+          e[1].email = this.anonymizeEmail(e[1].email);
           e[1].id = e[0];
           return e[1];
         });
