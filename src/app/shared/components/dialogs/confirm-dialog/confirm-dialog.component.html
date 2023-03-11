@@ -1,6 +1,7 @@
 <div class="g-dialog">
 
-  <p-dialog [draggable]="false" [modal]="true" [baseZIndex]="10000" [(visible)]="showModal" [header]="header">
+  <p-dialog [draggable]="false" [modal]="true" [baseZIndex]="10000"
+  [(visible)]="showModal" [header]="header" (onHide)="hideEvent.emit()">
 
     <span>{{content}}</span>
 

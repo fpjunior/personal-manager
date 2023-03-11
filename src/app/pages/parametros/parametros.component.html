@@ -1,5 +1,20 @@
-<h5>Multiple</h5>
+<div class="div-general">
+  <h5>Parâmetros</h5>
 <div class="field-checkbox">
     <p-checkbox name="group1" (onChange)="teste($event)" value="true" [(ngModel)]="selectedCities" inputId="ny"></p-checkbox>
     <label for="ny">Anomimizar Dados</label>
 </div>
+
+<div class="buttons-actions">
+  <p-button type="submit" icon="fa fa-check"
+    class="standard tableButton-def" label="Salvar" (click)="saveParameter('save')">
+  </p-button>
+  <p-button type="button" icon="fa fa-times"  class="dismiss tableButton"
+    label="Cancelar" (click)="cancelParameter('cancel')">
+  </p-button>
+</div>
+</div>
+<app-confirm-dialog class="confirmacao" header="Confirmação" (cancelEvent)="showCorfirmDialog = false"
+  [showModal]="showCorfirmDialog" (confirmEvent)="confirmAction()" [content]="msgModalConfirm"
+   (onClose)="showCorfirmDialog = false" (hideEvent)="showCorfirmDialog = false">
+</app-confirm-dialog>

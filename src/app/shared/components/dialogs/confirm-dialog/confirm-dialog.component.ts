@@ -12,6 +12,7 @@ export class ConfirmDialogComponent implements OnInit {
 @Input() header: string;
 @Output() confirmEvent = new EventEmitter();
 @Output() cancelEvent = new EventEmitter();
+@Output() hideEvent = new EventEmitter();
 
 @Input() labelConfirm?: string = 'SIM';
 @Input() labelCancel?: string = 'NÃO';
