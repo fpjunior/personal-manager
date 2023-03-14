@@ -184,6 +184,41 @@ export default class UsuariosComponent implements OnInit {
     this.cols = cols;
   }
 
+  anonymizeCPF(cpf: string): string {
+    const cpfSemMascara = cpf.replace(/\D/g, ''); // Remove a máscara do CPF
+    const inicioCPF = cpfSemMascara.substring(0, 3); // Obtém os três primeiros dígitos do CPF
+    const finalCPF = cpfSemMascara.substring(9); // Obtém os dois últimos dígitos do CPF
+    const cpfAnonimizado = inicioCPF + '.***.***-' + finalCPF; // Monta o CPF anonimizado com asteriscos
+    return cpfAnonimizado;
+  }
+
+  anonymizeUser(usuario: string) {
+    if(usuario.length > 3 ) {
+        return usuario.substr(0,3) + '*'.repeat(usuario.length - 3);
+    } else {
+        return usuario;
+    }
+}
+
+anonymizeName(name: string): string {
+  if (name.length <= 3) {
+    return name;
+  }
+  const parts: string[] = name.split(" ");
+  const maskedParts: string[] = parts.map((part: string, index: number) => {
+    if (part.length <= 3) {
+      return part;
+    }
+    if (index === 0) {
+      const masked: string = part.slice(3).replace(/./g, "*");
+      return `${part.slice(0, 3)}${masked}`;
+    }
+    return part.replace(/./g, "*");
+  });
+  return maskedParts.join(" ");
+}
+
+
   onHide = () => {
     this.showModalResponse = false;
   };
@@ -382,6 +417,9 @@ export default class UsuariosComponent implements OnInit {
         // this.dataToFillTable = Object.entries(user).map(e=> e[1]);
         this.dataToFillTable = Object.entries(user).map((e: any) => {
           e[1].email = this.anonymizeEmail(e[1].email);
+          e[1].cpf = this.anonymizeCPF(e[1].cpf);
+          e[1].user = this.anonymizeUser(e[1].user);
+          e[1].name = this.anonymizeName(e[1].name);
           e[1].id = e[0];
           return e[1];
         });
