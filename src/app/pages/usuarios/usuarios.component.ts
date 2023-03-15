@@ -184,7 +184,7 @@ export default class UsuariosComponent implements OnInit {
     this.cols = cols;
   }
 
-  anonymizeCPF(cpf: string): string {
+  private anonymizeCPF(cpf: string): string {
     const cpfSemMascara = cpf.replace(/\D/g, ''); // Remove a máscara do CPF
     const inicioCPF = cpfSemMascara.substring(0, 3); // Obtém os três primeiros dígitos do CPF
     const finalCPF = cpfSemMascara.substring(9); // Obtém os dois últimos dígitos do CPF
@@ -192,7 +192,7 @@ export default class UsuariosComponent implements OnInit {
     return cpfAnonimizado;
   }
 
-  anonymizeUser(usuario: string) {
+  private anonymizeUser(usuario: string) {
     if(usuario.length > 3 ) {
         return usuario.substr(0,3) + '*'.repeat(usuario.length - 3);
     } else {
@@ -200,29 +200,29 @@ export default class UsuariosComponent implements OnInit {
     }
 }
 
-anonymizePhone(phoneNumber: string): string {
-  const ddd = phoneNumber.substring(1, 3);
-  const suffix = phoneNumber.substring(phoneNumber.length - 3);
-  return `(${ddd})*****-*${suffix}`;
-}
-
-anonymizeName(name: string): string {
-  if (name.length <= 3) {
-    return name;
+  private anonymizePhone(phoneNumber: string): string {
+    const ddd = phoneNumber.substring(1, 3);
+    const suffix = phoneNumber.substring(phoneNumber.length - 3);
+    return `(${ddd})*****-*${suffix}`;
   }
-  const parts: string[] = name.split(" ");
-  const maskedParts: string[] = parts.map((part: string, index: number) => {
-    if (part.length <= 3) {
-      return part;
+
+  private anonymizeName(name: string): string {
+    if (name.length <= 3) {
+      return name;
     }
-    if (index === 0) {
-      const masked: string = part.slice(3).replace(/./g, "*");
-      return `${part.slice(0, 3)}${masked}`;
-    }
-    return part.replace(/./g, "*");
-  });
-  return maskedParts.join(" ");
-}
+    const parts: string[] = name.split(" ");
+    const maskedParts: string[] = parts.map((part: string, index: number) => {
+      if (part.length <= 3) {
+        return part;
+      }
+      if (index === 0) {
+        const masked: string = part.slice(3).replace(/./g, "*");
+        return `${part.slice(0, 3)}${masked}`;
+      }
+      return part.replace(/./g, "*");
+    });
+    return maskedParts.join(" ");
+  }
 
 
   onHide = () => {
