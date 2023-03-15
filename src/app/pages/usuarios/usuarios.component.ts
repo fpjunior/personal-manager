@@ -200,6 +200,12 @@ export default class UsuariosComponent implements OnInit {
     }
 }
 
+anonymizePhone(phoneNumber: string): string {
+  const ddd = phoneNumber.substring(1, 3);
+  const suffix = phoneNumber.substring(phoneNumber.length - 3);
+  return `(${ddd})*****-*${suffix}`;
+}
+
 anonymizeName(name: string): string {
   if (name.length <= 3) {
     return name;
@@ -420,6 +426,7 @@ anonymizeName(name: string): string {
           e[1].cpf = this.anonymizeCPF(e[1].cpf);
           e[1].user = this.anonymizeUser(e[1].user);
           e[1].name = this.anonymizeName(e[1].name);
+          e[1].phone =this.anonymizePhone(e[1].phone);
           e[1].id = e[0];
           return e[1];
         });
