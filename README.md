@@ -1,31 +1,38 @@
-# PesonalManager
+# Personal Manager - Projeto POC para Alunos de Programação
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.5.
+Este projeto tem como objetivo servir como um ambiente para alunos de programação colocarem em prática o que estão estudando. 
 
-## Development server
+## Equipe de Desenvolvimento
+- brenohdias
+- ivsonramos
+- fpjunior
+- SalvadorJonathan
+- ElliotVallentin
+- vinidoka
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Gerenciamento do Projeto
+O projeto está sendo gerenciado por Fernando Pedro(fpjunior).
 
-## Code scaffolding
+## Descrição do Projeto
+O Personal Manager é uma aplicação web completa de gerenciamento pessoal. Com o Personal Manager, você pode facilmente cadastrar contas a pagar e contas a receber, além de gerenciar despesas e contas de forma eficiente. A aplicação também permite que você crie, edite e remova sua conta de usuário, oferecendo segurança e controle total sobre suas informações.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Com uma dashboard intuitiva, você pode visualizar facilmente o total de dívidas e receitas de um determinado mês, acompanhando de perto seu fluxo de caixa e planejando suas finanças pessoais com maior facilidade. Além disso, o Personal Manager oferece recursos completos de cadastro de despesas e contas, permitindo que você mantenha suas finanças organizadas e atualizadas.
 
-## Build
+## Instalação
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1. Clone o repositório `git clone https://github.com/fpjunior/personal-manager`
+2. Instale as dependências com `npm install`
+3. Inicie o servidor com `ng serve`
+4. Navegue até `http://localhost:4200/`
 
-## Running unit tests
+## Como Usar
+ Para começar, crie uma conta de usuário, faça login com um email válido e começe a usar
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Contribuindo
+Aceitamos e encorajamos contribuições de todos os níveis de habilidade. Se você estiver interessado em contribuir para o projeto, por favor, envie um email para fpsjunior87@gmail.com com o título "SOLICITAÇAO DE CONTRIBUIÇAO PM".
 
-## Running end-to-end tests
+## Licença
+Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Initialize the server
- 
-start the db.json server in the src/assets/server folder. use this command  json-server --watch filmes.json
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Contato
+Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato com nossa equipe de desenvolvimento em [fpsjunior87@gmail.com]. Agradecemos seu interesse no Personal Manager!
