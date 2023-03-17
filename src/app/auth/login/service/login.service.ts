@@ -16,13 +16,16 @@ export class LoginService {
     this.user = afAuth.authState;
   }
 
-  recuperarSenha(mail: string) {
-    return new Promise((resolve, reject) => {
-      this.afAuth.auth
-        .sendPasswordResetEmail(mail)
-        .then(() => {})
-        .catch((error) => {
-          reject(error);
+  recuperarSenha(mail: string): Observable<any> {
+    return Observable.create(observer => {
+      this.afAuth.auth.sendPasswordResetEmail(mail)
+        .then(obj => {
+          console.log(obj);
+          observer.next(obj);
+          observer.complete();
+        })
+        .catch(error => {
+          observer.error(error);
         });
     });
   }

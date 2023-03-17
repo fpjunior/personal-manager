@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.UserName = mail.split('@')[0];
     // this.cryptoService.setToEncrypt("user", mail)
     sessionStorage.setItem("user", this.UserName);
-    
+
 
     // sessionStorage.setItem('user', JSON.stringify(userEncrypt));
       let usuarioNow = this.objUser.filter((e) => {
@@ -43,7 +43,14 @@ export class LoginComponent implements OnInit {
   }
 
   recuperarSenha(mail) {
-    this.loginService.recuperarSenha(mail);
+    this.loginService.recuperarSenha(mail).subscribe(
+      (sucess)=>{
+        alert("sucesso")
+      },
+      (error)=> {
+        alert("erro")
+      }
+    );
   }
 
   private getAllUsers() {
