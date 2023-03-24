@@ -23,7 +23,7 @@ export class CategoriasComponent implements OnInit {
   isEdit: boolean;
   showCorfirmDialog: boolean = false;
   showCorfirmDialog2: boolean = false;
-  idCategorias;
+  idCategorias: string;
 
   cols = tableICategorias;
   loading = false;

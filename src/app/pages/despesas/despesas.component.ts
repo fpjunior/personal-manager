@@ -4,6 +4,7 @@ import {
 } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MenuItem } from "primeng/api";
+import { Subscription } from "rxjs";
 import { TableStandard } from "src/app/shared/models/table.model";
 import { tryCatchErrorFunc } from "src/app/shared/utils/try-catch-error-func.util";
 import { BreadcrumbService } from "../../shared/components/breadcrumbs/breadcrumbs.service";
@@ -51,6 +52,7 @@ export class DespesasComponent implements OnInit {
   dataAtual: string = "";
   payments: any;
   dropdownOptions: any;
+  itemCount: number;
 
   constructor(
     private _breadcrumbService: BreadcrumbService,
@@ -289,30 +291,48 @@ export class DespesasComponent implements OnInit {
         this.expenseForm.get("categoria").setValue(e);
       }
     });
-
-
   }
+
+  private getAllExpenseSubscription: Subscription;
 
   private _getAllExpense() {
     this._progressBarService.changeProgressBar(true);
     this.isLoading = true;
-    this._despesaService.getAllExpense().subscribe(
-      (categorias: any) => {
-        // this.dataToFillTable = Object.entries(contact).map(e=> e[1]);
-        this.dataToFillTable = Object.entries(categorias).map((e: any) => {
-          e[1].code = e[0];
-          return e[1];
-        })
-        // .filter((e)=> e.user == 'fpsjunior87')
+    this.getAllExpenseSubscription = this._despesaService.getAllExpense().subscribe(
+      (despesas: any[]) => {
+        this.dataToFillTable = despesas;
+        this.itemCount = this.dataToFillTable.length;
+        // this.dataToFillTable = this.dataToFillTable.filter((e) => e.user == sessionStorage.getItem('user'))
         this.isLoading = false;
         this._progressBarService.changeProgressBar(false);
       },
       (error) => {
-        this._handleError(error);
+        this._handleError(error.error);
         this.isLoading = false;
-        this._handleError(error);
         this._progressBarService.changeProgressBar(false);
       }
     );
+}
+
+  ngAfterContentChecked() {
+    // Atualiza a contagem de itens após cada verificação de conteúdo
+    // if (this.dataToFillTable) {
+    //   this.itemCount = this.dataToFillTable.length;
+    //   console.log(this.itemCount)
+    // }
   }
+
+
+  ngOnDestroy() {
+    if (this.getAllExpenseSubscription) {
+      this.getAllExpenseSubscription.unsubscribe();
+    }
+  }
+
+  // ngDoCheck() {
+  //   // Verifica se houve mudanças nos itens da lista
+  //   if (this.dataToFillTable && this.dataToFillTable.length > 0) {
+  //     this.dataToFillTable = this.dataToFillTable.filter((e) => e.user == sessionStorage.getItem('user'))
+  //   }
+  // }
 }

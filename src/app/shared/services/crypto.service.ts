@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
 import { StorageService } from './storage.service';
 
+const MAIN_KEY = "Informata.Moura.WebApp"
+
+// Isso excede o tamnho maximo do storage
+// const MAIN_KEY = CryptoJS.SHA256("Informata.Moura.WebApp", { outputLength: 256 })
+// const MAIN_KEY = CryptoJS.RIPEMD160("Informata.Moura.WebApp")
 
 export enum USER_ROLES {
   "GESTOR" = '0',
@@ -44,13 +49,11 @@ export class CryptoService {
    * @return void
    */
   setToEncrypt(key: string, value: string) {
-    this.storageService.genericBtoaSet(key, this.encryptWithSafeKey(value));
+    if (key && value) {
+      this.storageService.genericBtoaSet(key, this.encryptWithSafeKey(value));
+    }
+    return this.hasError(6)
   }
-
-  // setToEncryptSession(key: string, value: string) {
-  //   this.storageService.genericBtoaSetSession(key, this.encryptWithSafeKey(value));
-  // }
-
 
   /**
    * Create an additional layer of encryption based on the SafeKey
@@ -70,10 +73,6 @@ export class CryptoService {
 
     let valueDecrypted = this.storageService.genericBtoaGet(key)
 
-    if (session) {
-      valueDecrypted = this.storageService.genericBtoaGetSession(key)
-    }
-
     if (valueDecrypted) {
       return this.decryptAES(valueDecrypted, this.getSafeKey())
     }
@@ -86,7 +85,8 @@ export class CryptoService {
    * @return void
    */
   private encryptMainKey() {
-    // this.storageService.genericBtoaSet("mainKey", mainKey)
+    const mainKey = this.encryptAES(MAIN_KEY, MAIN_KEY);
+    this.storageService.genericBtoaSet("mainKey", mainKey)
   }
 
   /**
@@ -109,7 +109,14 @@ export class CryptoService {
    */
   private encryptAES = (text: string | CryptoJS.lib.WordArray, key: string | CryptoJS.lib.WordArray) => {
     const cfg = this.getOption(this.returnKeyIV(key));
-    return CryptoJS.AES.encrypt(text, key, cfg).toString();
+    if (text && key) {
+      // console.log(text);
+      // console.log(JSON.stringify(text));
+      // console.log("===========");
+
+      return CryptoJS.AES.encrypt(text, key, cfg).toString();
+    }
+    return this.hasError(7);
   };
 
   /**

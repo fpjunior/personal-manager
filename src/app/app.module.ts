@@ -3,8 +3,8 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { AngularFireModule } from "angularfire2";
-import { AngularFireAuth } from "angularfire2/auth";
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuth } from '@angular/fire/auth';
 import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { environment } from "src/environments/environment";
 import { AppRoutingModule } from "./app-routing.module";
@@ -35,6 +35,7 @@ import {KeyFilterModule} from 'primeng/keyfilter';
     CoreModule,
     ConfirmDialogModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    // provideFirestore(() => getFirestore())
     KeyFilterModule,
   ],
   providers: [

@@ -4,15 +4,15 @@
 
 export const environment = {
   production: false,
-  URL_API: 'http://192.168.0.30:8600/mdwbprc/api/',
+  URL_API: 'https://firestore.googleapis.com/v1/projects/personal-manager-44471/databases/(default)/documents/',
   firebaseConfig: {
-    apiKey: "AIzaSyDvFMEV994fSYOCx_uQNLtksbzPP19pwfE",
-    authDomain: "crud-angular-6d8c7.firebaseapp.com",
-    databaseURL: "https://crud-angular-6d8c7-default-rtdb.firebaseio.com",
-    projectId: "crud-angular-6d8c7",
-    storageBucket: "crud-angular-6d8c7.appspot.com",
-    messagingSenderId: "828086220892",
-    appId: "1:828086220892:web:4308b8ab8b17a9f0698e99"
+    apiKey: "AIzaSyDYAwmTH__bzIA64GJRR6BwsbnSRj6FVZM",
+    authDomain: "personal-manager-44471.firebaseapp.com",
+    projectId: "personal-manager-44471",
+    storageBucket: "personal-manager-44471.appspot.com",
+    messagingSenderId: "322173734981",
+    appId: "1:322173734981:web:990b6a8bb51f89346d132c",
+    measurementId: "G-1KCL8PLLPP"
   },
 };
 /*

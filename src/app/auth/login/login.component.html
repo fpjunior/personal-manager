@@ -11,24 +11,32 @@
   <input type="text" #user class="form-control" placeholder="Usuario" required autofocus><br><br>
 </div> -->
 
+<form [formGroup]="loginForm">
+
   <div class="p-col-2">
-    <input-text #user placeholder="Usuario" autofocus id="user" [type]="'text'" pTooltip="Digite o nome do usuário">
+    <input-text #user placeholder="Usuario" autofocus id="user"
+     label="Usuário" formControlName="user" id="user" [type]="'user'"
+     [control]="loginForm.get('user')" pTooltip="Digite o nome do usuário">
     </input-text>
   </div>
 
   <div class="p-col-2">
-    <input-text #password placeholder="Senha" autofocus id="password" [type]="'text'" pTooltip="Digite a senha">
+    <input-text #password label="Senha" [type]="'password'" placeholder="Senha" autofocus id="password"
+    formControlName="password" pTooltip="Digite a senha">
     </input-text>
   </div>
 
   <div class="p-col-2">
-
-    <p-button type="submit" [disabled]="false" (click)="logOn(user.value,password.value)" label="Logar">
+    <p-button type="submit" [disabled]="false"
+    label="Logar" [disabled]="!loginForm.valid" (click)="login()">
     </p-button>
+    <small class='recuperar-senha' id="password-help" (click)="resetPassword()">Esqueceu a senha?</small>
     <!-- <button class="btn btn-lg btn-primary btn-block" (click)="criarUsuario(user.value,password.value)"
       type="submit">Criar Usuario</button><br>
     <button class="btn btn-lg btn-primary btn-block" (click)="recuperarSenha(user.value)" type="submit">Recuperar
       Senha</button><br> -->
   </div>
+
+</form>
 
 </div>

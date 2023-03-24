@@ -1,5 +1,6 @@
 @import "src/assets/styles/generalStyle.scss";
 
+
 .wrapper-card.p-card {
   border: solid 10px red !important;
   margin: 0em 1.7em;
@@ -13,6 +14,15 @@
     border-radius: 15px;
   }
 
+  .wrapper-card.p-card.p-component {
+    width: 20% !important;
+}
+
+  .p-card{
+    display: flex !important;
+    justify-content: center !important;
+  }
+
   h1 {
     text-align: center;
   }
@@ -23,3 +33,19 @@
     text-align-last: center;
   }
 }
+
+small#password-help {
+  cursor: pointer;
+  color: #007ad9;
+  margin-top: 30px;
+  padding-left: 14rem;
+  display: flex;
+}
+
+
+// :host::ng-deep{}
+//  .p-card {
+//   width: 20% !important;
+// }
+
+
