@@ -50,6 +50,7 @@
           },
           "configurations": {
             "production": {
+              "aot": false,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -131,5 +132,11 @@
   },
   "cli": {
     "analytics": "c02d33c4-b87e-457d-af04-ee851de2f618"
-  }
+  },
+  "allowedCommonJsDependencies": [
+    "firebase/app",
+    "chart.js",
+    "crypto-js"
+  ]
 }
+
