@@ -134,7 +134,7 @@ export class CategoriasComponent implements OnInit {
 
   getAllCategorias() {
     this.loading = true;
-    this.categoriasService.getAllCategorias().subscribe(
+    this.categoriasService.getAllCategory().subscribe(
       (categorias: any) => {
         this.dataToFillTable = Object.entries(categorias).map((e: any) => {
           e[1].id = e[0];

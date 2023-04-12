@@ -6,8 +6,8 @@
       <form method="post" [formGroup]="expenseForm" (ngSubmit)="saveExpense(expenseForm)">
 
         <div class="p-col-8 group-date">
-          <input-text label="Data" [control]="expenseForm.get('expenseDate')" [requiredLabel]="true"
-            formControlName="expenseDate" id="input-data" [type]="'text'" [(ngModel)]="dataAtual" pTooltip="Digite a data">
+          <input-text label="Data" [control]="expenseForm.get('date')" [requiredLabel]="true"
+            formControlName="date" id="input-data" [type]="'text'" [(ngModel)]="dataAtual" pTooltip="Digite a data">
           </input-text>
 
           <p-button (onClick)="obterDataAtual()" icon="fas fa-calendar-alt" type="submit"
@@ -16,8 +16,8 @@
         </div>
 
         <div class="p-col-12">
-          <input-dropdown [control]="expenseForm.get('categoria')" class="tipo-dropdown" placeholder="SELECIONE"
-            [options]="categoriaOptions" optionLabel="name" formControlName="categoria" [requiredLabel]="true" [label]="'Categoria'">
+          <input-dropdown [control]="expenseForm.get('category')" class="tipo-dropdown" placeholder="SELECIONE"
+            [options]="categoriaOptions" optionLabel="name" formControlName="category" [requiredLabel]="true" [label]="'Categoria'">
           </input-dropdown>
         </div>
 
@@ -37,26 +37,26 @@
 
         <div class="p-col-12">
           <label for="currency-us">Valor</label>
-          <p-inputNumber class="valor" formControlName="value" inputId="currency-us" mode="currency" currency="BRL" locale="pt-BR" (onBlur)="verifyValue()">
+          <p-inputNumber class="valor" formControlName="amount" inputId="currency-us" mode="currency" currency="BRL" locale="pt-BR" (onBlur)="verifyValue()">
           </p-inputNumber>
           <label id="valor">{{labelError}}</label>
         </div>
 
         <div class="p-col-12">
-          <input-text label="Local do estabelicimento" [control]="expenseForm.get('localEstablishment')"
-            [requiredLabel]="true" formControlName="localEstablishment" id="localEstablishment" [type]="'text'"
+          <input-text label="Local do estabelicimento" [control]="expenseForm.get('establishment')"
+            [requiredLabel]="true" formControlName="establishment" id="localEstablishment" [type]="'text'"
             pTooltip="Digite o local do estabelicimento">
           </input-text>
         </div>
 
         <div class="p-col-12">
-          <input-dropdown [control]="expenseForm.get('typePayment')" class="tipo-dropdown" placeholder="SELECIONE"
-            [options]="payments" optionLabel="name" formControlName="typePayment" [requiredLabel]="true" [label]="'Tipo de pagamento'">
+          <input-dropdown [control]="expenseForm.get('paymentType')" class="tipo-dropdown" placeholder="SELECIONE"
+            [options]="payments" optionLabel="name" formControlName="paymentType" [requiredLabel]="true" [label]="'Tipo de pagamento'">
           </input-dropdown>
         </div>
 
         <div class="p-col-12">
-          <p-checkbox name="group1" formControlName="fixed"></p-checkbox>
+          <p-checkbox name="group1" formControlName="isFixed"></p-checkbox>
           <label for="ny">  Despesa fixa</label>
         </div>
 

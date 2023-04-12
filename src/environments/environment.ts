@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  URL_API: 'https://firestore.googleapis.com/v1/projects/personal-manager-44471/databases/(default)/documents/',
+  // URL_API: 'https://firestore.googleapis.com/v1/projects/personal-manager-44471/databases/(default)/documents/',
+  URL_API: 'http://localhost:3001/api/',
   firebaseConfig: {
     apiKey: "AIzaSyDYAwmTH__bzIA64GJRR6BwsbnSRj6FVZM",
     authDomain: "personal-manager-44471.firebaseapp.com",

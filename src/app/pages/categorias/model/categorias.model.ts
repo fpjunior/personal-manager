@@ -3,5 +3,5 @@ export interface ICategorias{
   code:number;
   icon:string;
   name: string;
-  cor: string;
+  color: string;
 }

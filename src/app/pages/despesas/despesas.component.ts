@@ -84,7 +84,7 @@ export class DespesasComponent implements OnInit {
     this.categorias = {};
     this._breadcrumbService.setBreadcrumb(this.breadcrumbItems);
     this._getAllExpense();
-    this._getAllExpenseType()
+    this._getAllCategory()
   }
 
   // a organização do código é importante para que o código seja mais fácil de manter
@@ -99,14 +99,30 @@ export class DespesasComponent implements OnInit {
       this.showModalResponse = false;
     }, 2000);
   }
-  private _getAllExpenseType() {
+
+  private _getAllExpense() {
+    this._progressBarService.changeProgressBar(true);
     this.isLoading = true;
-    this._categoriasService.getAllCategorias().subscribe(
-      (categorias: any) => {
-        this.categoriaOptions = Object.entries(categorias).map((e: any) => {
-          e[1].id = e[0];
-          return e[1];
-        });
+    this.getAllExpenseSubscription = this._despesaService.getAllExpense().subscribe(
+      (despesas: any[]) => {
+        this.dataToFillTable = despesas;
+        this.itemCount = this.dataToFillTable.length;
+        // this.dataToFillTable = this.dataToFillTable.filter((e) => e.user == sessionStorage.getItem('user'))
+        this.isLoading = false;
+        this._progressBarService.changeProgressBar(false);
+      },
+      (error) => {
+        this._handleError(error.error);
+        this.isLoading = false;
+        this._progressBarService.changeProgressBar(false);
+      }
+    );
+  }
+  private _getAllCategory() {
+    this.isLoading = true;
+    this._categoriasService.getAllCategory().subscribe(
+      (category: any) => {
+        this.categoriaOptions = category;
       },
       (error) => {
         this._handleError(error);
@@ -118,14 +134,14 @@ export class DespesasComponent implements OnInit {
   private _initForm(): void {
     this.expenseForm = this._formBuilder.group({
       code: [""],
-      categoria: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
+      category: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
       description: ["", [Validators.required, Validators.maxLength(100)]],
-      value: ["", [Validators.required, Validators.min(0), Validators.max(999999)]],
-      typePayment: ["", [Validators.required, Validators.min(1), Validators.max(60)]],
+      amount: ["", [Validators.required, Validators.min(0), Validators.max(999999)]],
+      paymentType: ["", [Validators.required, Validators.min(1), Validators.max(60)]],
       wallet: ["", [Validators.required, Validators.min(1), Validators.max(60)]],
-      localEstablishment: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
-      expenseDate: ["", [Validators.required, Validators.maxLength(10), Validators.minLength(10),]],
-      fixed: [""],
+      establishment: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
+      date: ["", [Validators.required, Validators.maxLength(10), Validators.minLength(10),]],
+      isFixed: [""],
     });
   }
 
@@ -165,7 +181,7 @@ export class DespesasComponent implements OnInit {
 
 
   verifyValue() {
-    if (this.expenseForm.controls['value'].value === 0) {
+    if (this.expenseForm.controls['amount'].value === 0) {
       this.labelError = "Valor não pode ser 0";
     } else {
       this.labelError = "";
@@ -245,12 +261,11 @@ export class DespesasComponent implements OnInit {
     expenseForm = this.expenseForm.getRawValue();
     const objForSave = {
       ...expenseForm,
-      user: 'fpsjunior87',
-      categoria: expenseForm.categoria.name,
-      typePayment: expenseForm.typePayment.name,
+      category: expenseForm.category.name,
+      paymentType: expenseForm.paymentType.name,
       wallet: expenseForm.wallet.name,
-      iconCategoria: expenseForm.categoria.icon,
-      fixed: expenseForm.fixed === null ? 'NÃO' : 'SIM',
+      iconCategory: expenseForm.category.icon,
+      isFixed: expenseForm.isFixed === null ? 'NÃO' : 'SIM',
     }
     this._despesaService.saveOrUpdateDespesa(objForSave).subscribe(
       (response) => {
@@ -295,24 +310,7 @@ export class DespesasComponent implements OnInit {
 
   private getAllExpenseSubscription: Subscription;
 
-  private _getAllExpense() {
-    this._progressBarService.changeProgressBar(true);
-    this.isLoading = true;
-    this.getAllExpenseSubscription = this._despesaService.getAllExpense().subscribe(
-      (despesas: any[]) => {
-        this.dataToFillTable = despesas;
-        this.itemCount = this.dataToFillTable.length;
-        // this.dataToFillTable = this.dataToFillTable.filter((e) => e.user == sessionStorage.getItem('user'))
-        this.isLoading = false;
-        this._progressBarService.changeProgressBar(false);
-      },
-      (error) => {
-        this._handleError(error.error);
-        this.isLoading = false;
-        this._progressBarService.changeProgressBar(false);
-      }
-    );
-}
+
 
   ngAfterContentChecked() {
     // Atualiza a contagem de itens após cada verificação de conteúdo
