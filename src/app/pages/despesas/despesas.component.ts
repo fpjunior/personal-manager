@@ -303,6 +303,9 @@ export class DespesasComponent implements OnInit {
           e[1].code = e[0];
           return e[1];
         })
+        this.dataToFillTable = this.dataToFillTable.filter(e => {
+          return e.user = localStorage.getItem('user')
+        })
         // .filter((e)=> e.user == 'fpsjunior87')
         this.isLoading = false;
         this._progressBarService.changeProgressBar(false);
