@@ -1,5 +1,7 @@
+<!DOCTYPE html>
+<html lang="ept-BR">
 <div>
-  <p-dialog #dialogDrop (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
+  <p-dialog (onHide)="onHideDialog()" [draggable]="false" closeIcon="fa fa-times" [modal]="true"
     [(visible)]="showDialogDespesa" header="Nova Despesa">
 
     <div class="p-grid">
@@ -157,3 +159,4 @@
 [showModal]="showCorfirmDialog2" (confirmEvent)="confirmAction2()"
 [content]="msgModalConfirm" (onClose)="closeConfirmDialog2()">
 </app-confirm-dialog>
+</html>

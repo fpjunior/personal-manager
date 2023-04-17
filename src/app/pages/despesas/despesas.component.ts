@@ -12,7 +12,7 @@ import { ProgressBarService } from "../../shared/components/progress-bar/progres
 import { CategoriasService } from "../categorias/service/categorias.service";
 import { tableArr } from "./model/tabela.model";
 import { DespesaService } from "./service/despesas.service";
-
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: "app-despesas",
   templateUrl: "./despesas.component.html",
@@ -60,7 +60,10 @@ export class DespesasComponent implements OnInit {
     private _progressBarService: ProgressBarService,
     private _formBuilder: FormBuilder,
     private _categoriasService: CategoriasService,
+    private titleService: Title
   ) {
+
+    this.titleService.setTitle('Despesas');
 
     this.payments = [
       { value: "1", name: 'PIX' },
