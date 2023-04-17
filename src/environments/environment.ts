@@ -12,7 +12,7 @@ export const environment = {
     projectId: "crud-angular-6d8c7",
     storageBucket: "crud-angular-6d8c7.appspot.com",
     messagingSenderId: "828086220892",
-    appId: "1:828086220892:web:4308b8ab8b17a9f0698e99"
+    appId: "1:828086220892:web:ce1b4771e065ecdd698e99"
   },
 };
 /*

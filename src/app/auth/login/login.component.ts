@@ -23,17 +23,17 @@ export class LoginComponent implements OnInit {
     this.getAllUsers();
   }
 
-  logOn(mail, password) {
-    this.UserName = mail.split('@')[0];
+  logOn(email, password) {
+    this.UserName = email.split('@')[0];
     // this.cryptoService.setToEncrypt("user", mail)
     sessionStorage.setItem("user", this.UserName);
 
 
     // sessionStorage.setItem('user', JSON.stringify(userEncrypt));
-      let usuarioNow = this.objUser.filter((e) => {
-      return e.email.includes(mail);
-    });
-    this.loginService.login(usuarioNow[0]?.email, password);
+    //   let usuarioNow = this.objUser.filter((e) => {
+    //   return e.email.includes(mail);
+    // });
+    this.loginService.login(email, password);
     this.isLoged = true;
   }
 
